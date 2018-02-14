@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+        <title>
+            
+                技术分为术和道两种 |
+                    
+                        Alive
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+                <meta name="keywords" content="Swift, Python, ML, CV" />
+                
+                        
+                                
+                                        
+                                                <meta name="description" content="2017年9月回顾。">
+<meta name="keywords" content="思考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术分为术和道两种">
+<meta property="og:url" content="http://blog.x-fei.me/2017/10/01/技术分为术和道两种/index.html">
+<meta property="og:site_name" content="Alive">
+<meta property="og:description" content="2017年9月回顾。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-10-01T08:29:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="技术分为术和道两种">
+<meta name="twitter:description" content="2017年9月回顾。">
+                                                    
+
+                                                            
+
+                                                                <link rel="icon" href="/css/images/mylogo.png">
+                                                                <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+                                                                
+                                                                    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+                                                                    
+                                                                        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+                                                                        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+                                                                        <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+                                                                        <style type="text/css">
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+                                                                                font-weight: 500;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+                                                                                font-weight: 500;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+                                                                                font-weight: lighter;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+                                                                                font-weight: 400;
+                                                                                font-style: italic;
+                                                                            }
+                                                                        </style>
+                                                                        <link rel="stylesheet" href="/css/style.css">
+
+                                                                            <script src="/js/jquery-2.0.3.min.js"></script>
+                                                                                <script src="/js/bootstrap.js"></script>
+                                                                                    <script src="/js/bigfoot.min.js"></script>
+
+                                                                                        <!-- Bootstrap core CSS -->
+                                                                                        <link rel="stylesheet" href="/css/bootstrap.css">
+
+                                                                                        
+                                                                                                <link rel="stylesheet" href="/css/dialog.css">
+                                                                                                    <link rel="stylesheet" href="/css/bigfoot-default.css">
+                                                                                                        
+
+                                                                                                            
+
+                                                                                                                    
+                                                                                                                        <link rel="stylesheet" href="/css/header-post.css">
+                                                                                                                        
+
+                                                                                                                            
+
+                                                                                                                                    
+
+</head>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+
+            <div class="container">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+                
+                    <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+                    
+
+                            <div class="navbar-collapse collapse">
+                                <ul class="hnav navbar-nav">
+                                    
+                                        <li>
+                                            <a class="main-nav-link" href="/">
+                                                BLOG
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a class="main-nav-link" href="/archives">
+                                                ARCHIVES
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a class="main-nav-link" href="/friends">
+                                                FRIENDS
+                                            </a>
+                                        </li>
+                                        
+                                            <li>
+                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
+                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
+                                            </li>
+                                            <li>
+                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
+                                            </li>
+                                            <li>
+                                                <!-- <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div> -->
+                                            </li>
+                            </div>
+            </div>
+
+        </div>
+    </div>
+
+</header>
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-技术分为术和道两种" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      技术分为术和道两种
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/10/01/技术分为术和道两种/" class="article-date">
+	  <time datetime="2017-10-01T07:07:21.000Z" itemprop="datePublished">2017-10-01</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017年9月回顾。<br><a id="more"></a></p>
+<blockquote>
+<p>技术分为术和道两种，具体的做事方法是术，做事的原理和原则是道。术会从独门绝技到普及再到落伍，追求术的人会很辛苦，只有掌握了道的本质和精髓才能永远游刃有余。 ​</p>
+</blockquote>
+<p>上面这句话引用自吴军先生的《数学之美》。思索了很久，然后17年整个9月就在二者之间作出了我目前认为的最合适的决定。  </p>
+<h3 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h3><p>7月25号，拖了很久的一个项目写完了。然后准备秋招。还是想做移动应用开发。而对于Android而言，虽然Java算比较熟悉的了，但是看了一下面经，要看的书太多了，而且入门门槛低，现在基本饱和了吧。正式转iOS开发。  </p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>一周看了两本书，OC以及iOS编程，但是没有真机，只能在模拟器上运行。<br>8月开始，花了7-10天吧，实践加学习Swift3。<br>13号去上海，学校安排的实习。期间又写了一段时间的Java，感觉很浪费时间。所以这段时间算是一直咸鱼了，想做的事没有做好的，就断断续续地刷剑指Offer，然后完美错过阿里秋招！！！！！<br>就很迷，不知道去哪里找这些公司的校招信息，后面才了解到牛客网有一个专门的板块做这个的。<br>8月30号回长沙，开始读《Effective Objective-C》和《Objective-C 高级编程》，继续刷《剑指Offer》。<br>月末的时候写了自己的简历。</p>
+<h3 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h3><p>从9月8号开始，一直笔试到14号，每天在1到2场之间。重点关注的是京东、新美大、网易、头条以及腾讯。其余的公司全当练手。笔试过程中三点不爽。一是网络和操作系统我看的太少了，准备太不充分，而且一开始看书实在是太慢了，应该看快一点，多看几遍。二是我投递的iOS岗，不得不去答一堆C++的题目，然后就被虐的很惨。三是编程，弱鸡还是弱鸡。不过还好，基本2题的话，1.5A，3题有2A。  </p>
+<h3 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h3><p>网申的速度都比较慢。第一家面试的公司（富途证券），算是腾讯系的公司，技术团队挺好的。前一天晚上参加完线下笔试，第二天就去面试了。一上午两轮技术+HR面结束。感觉很糟糕，毕竟第一次面。然而就是这家公司，在后来给我发了offer。<br>面试的第二家公司，百度。。。。没错，就是百度了，霸面的。前文提到过，这里就不说了。<br>趋势科技面试。由于不太了解，而且说好的视频面试，面试官自己的摄像头一片黑。就很尴尬，然后面了一面就结束了。<br>面试的第四家公司，今日头条。头条给我面试邀请的邮件还是意料之外的，因为头条的笔试题我记得我做的一般，花了比较多的功夫在拓展题上，然后编程题就sb了。面了两轮技术面，面试官都是比较年轻的帅小哥，二面感觉不太好吧，提到很多我没来得及深入研究的东西。所以我只能说一点半点。然后我问了头条现在是用什么来写的，还是OC，还是Swift，还是混编。最重要的一点没有问，什么时候给回复。所以二面结束，他说让我等HR通知。等到现在，估计没戏了。<br>最后27号，网易面试，但是我后面由于时间和票的原因，通知校招组，我放弃了面试，官网的招聘状态也变成了灰色的放弃面试状态。  </p>
+<p>我本科的面试之旅大概就到这里了。当然后面腾讯来长沙的话，通知面试的话去面一下，笔试没过就去霸面～</p>
+<h3 id="推免"><a href="#推免" class="headerlink" title="推免"></a>推免</h3><p>面试头条的时候，莫名其妙有了推免资格（中间发生了一些“有趣”的故事），但是还处于可以放弃的阶段，这时候还没有Offer，比较着急，就没有放弃推免的名额。然后先投了中山和哈工大深研院。后面想了很多，做技术，做学术，赚钱，女朋友。。。等等等等，然后我就文章开头的话做了一番思想斗争后，决定为了更多的💰，去读研。  </p>
+<h3 id="中山"><a href="#中山" class="headerlink" title="中山"></a>中山</h3><p>之后去了中山参加复试，联系了导师，然后基本上就定下来了。但是报名比较晚了，复试成绩也一般，只有专硕了。学费贵，奖学金少。  </p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>这个月，一开始路越走越窄，后面路越走越宽。但是，即使路宽了，还是只能选一条。选一条，否定了别的路，感觉就否定了别的自己。就很难受，很失落。但是长远来看，本科毕业，工作强度高，拿到的年薪一般（除了头条），两年后的成长空间，一般而言，大概涨不到50%，遇到瓶颈可能早一点。花两年，做一笔投资，学历+高起薪，发展前景还是可观的。其实所有的发展都是看个人能力的，能力到了，瓶颈便不复存在。能力不够，投资再多也是有去无回。所以，大四&amp;后两年。过上高三的生活吧！既然否定了其他的自己，决定走这条路，那就全力以赴，奔跑下去～  </p>
+<p><strong>Flag：三年后不后悔。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'xfeif';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/思考/">思考</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/06/Hackx上海/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hackx上海
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/26/Canton-Tower/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Canton Tower</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方向"><span class="nav-number">1.</span> <span class="nav-text">方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#笔试"><span class="nav-number">3.</span> <span class="nav-text">笔试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试"><span class="nav-number">4.</span> <span class="nav-text">面试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推免"><span class="nav-number">5.</span> <span class="nav-text">推免</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中山"><span class="nav-number">6.</span> <span class="nav-text">中山</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">7.</span> <span class="nav-text">思考</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+    
+
+                <div class="container">
+                    <div class="row">
+                        <p>
+                            <!-- Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+                            <p id="copyRightEn"> &copy;
+                                2015 -
+                                    2018
+                                        <a href="http://blog.x-fei.me/">XFeiF(eva.aeolus@gmail.com)</a>
+                                        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+                        </p>
+
+                        <!-- 
+                                <p id="copyRightCn">
+                                    XFeiF hold copyright
+                                </p>
+                                 -->
+                    </div>
+
+
+                </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+        contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+        contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Blog</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/friends" class="mobile-nav-link">Friends</a>
+  
+</nav> -->
+    
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-97811913-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Alive
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 XFeiF All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
