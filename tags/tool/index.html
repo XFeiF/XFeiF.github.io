@@ -6,7 +6,7 @@
     
         <title>
             
-                swift 3 algorithm: 二叉搜索树 |
+                tag: tool |
                     
                         Alive
         </title>
@@ -17,18 +17,16 @@
                         
                                 
                                         
-                                                <meta name="description" content="有趣的 Swift 3 算法。    今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！   准备打开XCode，新建Playground，创建searchBinaryTreeDemo。   样例树12345678// 1.////              9//            /">
-<meta name="keywords" content="algorithm,swift">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Swift 3 Algorithm: 二叉搜索树">
-<meta property="og:url" content="http://blog.x-fei.me/2017/09/04/Swift-3-Algorithm-二叉搜索树/index.html">
+                                                <meta name="description" content="I&apos;ll follow You Lord for all my days!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alive">
+<meta property="og:url" content="http://blog.x-fei.me/tags/tool/index.html">
 <meta property="og:site_name" content="Alive">
-<meta property="og:description" content="有趣的 Swift 3 算法。    今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！   准备打开XCode，新建Playground，创建searchBinaryTreeDemo。   样例树12345678// 1.////              9//            /">
+<meta property="og:description" content="I&apos;ll follow You Lord for all my days!">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-09-05T10:28:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift 3 Algorithm: 二叉搜索树">
-<meta name="twitter:description" content="有趣的 Swift 3 算法。    今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！   准备打开XCode，新建Playground，创建searchBinaryTreeDemo。   样例树12345678// 1.////              9//            /">
+<meta name="twitter:title" content="Alive">
+<meta name="twitter:description" content="I&apos;ll follow You Lord for all my days!">
                                                     
 
                                                             
@@ -91,13 +89,15 @@
                                                                                                                         
 
                                                                                                                             
+                                                                                                                                <link rel="stylesheet" href="/css/archive.css">
+                                                                                                                                
 
                                                                                                                                     
 
 </head>
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+  <body>
 
 
   
@@ -119,7 +119,7 @@
 
                 
                     <a class="brand" style="
-                 border-width: 0px;  margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal" >
+                 border-width: 0px;  margin-top: 0px;"  >
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
               </a>
                     
@@ -204,121 +204,44 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Swift-3-Algorithm-二叉搜索树" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
+          <section id="main" style="float:none;">
   
-    <h1 class="thumb" class="article-title" itemprop="name">
-      Swift 3 Algorithm: 二叉搜索树
-    </h1>
   
-
-      </header>
+  
     
-    <div class="article-meta">
+    
       
-	<a href="/2017/09/04/Swift-3-Algorithm-二叉搜索树/" class="article-date">
-	  <time datetime="2017-09-04T07:02:56.000Z" itemprop="datePublished">2017-09-04</time>
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/archives/2018" class="archive-year">2018</a></h1>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+	<a href="/2018/08/26/Lazy-Tricks/" class="archive-article-date">
+	  <time datetime="2018-08-26T05:43:31.000Z" itemprop="datePublished">2018-08-26</time>
 	</a>
 
       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>有趣的 <code>Swift 3</code> 算法。  </p>
-</blockquote>
-<p><em>今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！</em><br>这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！  </p>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>打开XCode，新建Playground，创建searchBinaryTreeDemo。  </p>
-<h3 id="样例树"><a href="#样例树" class="headerlink" title="样例树"></a>样例树</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//              9</span></span><br><span class="line"><span class="comment">//            /   \</span></span><br><span class="line"><span class="comment">//           6     10</span></span><br><span class="line"><span class="comment">//          / \     \</span></span><br><span class="line"><span class="comment">//         5   7     11</span></span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="创建结点"><a href="#创建结点" class="headerlink" title="创建结点"></a>创建结点</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> value: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">var</span> leftChild: <span class="type">Node</span>?</span><br><span class="line">    <span class="keyword">var</span> rightChild: <span class="type">Node</span>?</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(value: <span class="type">Int</span>, leftChild: <span class="type">Node</span>?, rightChild:<span class="type">Node</span>?) &#123;</span><br><span class="line">        <span class="keyword">self</span>.value = value</span><br><span class="line">        <span class="keyword">self</span>.leftChild = leftChild</span><br><span class="line">        <span class="keyword">self</span>.rightChild = rightChild</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>子结点为可选类型！   </p>
-<h3 id="构建样例树"><a href="#构建样例树" class="headerlink" title="构建样例树"></a>构建样例树</h3><p>下面利用上面的<code>Node</code>结构创建样例树<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// left branch</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fiveNode = <span class="type">Node</span>(value: <span class="number">5</span>, leftChild: <span class="literal">nil</span>, rightChild: <span class="literal">nil</span>)</span><br><span class="line"><span class="keyword">let</span> sevenNode = <span class="type">Node</span>(value: <span class="number">7</span>, leftChild: <span class="literal">nil</span>, rightChild: <span class="literal">nil</span>)</span><br><span class="line"><span class="keyword">let</span> sixNode = <span class="type">Node</span>(value: <span class="number">6</span>, leftChild: fiveNode, rightChild: sevenNode)</span><br><span class="line"></span><br><span class="line"><span class="comment">// right branch</span></span><br><span class="line"><span class="keyword">let</span> elevenNode = <span class="type">Node</span>(value: <span class="number">11</span>, leftChild: <span class="literal">nil</span>, rightChild: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tenNode = <span class="type">Node</span>(value: <span class="number">10</span>, leftChild: <span class="literal">nil</span>, rightChild: elevenNode)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nineRootNode = <span class="type">Node</span>(value: <span class="number">9</span>, leftChild: sixNode, rightChild: tenNode)</span><br></pre></td></tr></table></figure></p>
-<h3 id="实现算法"><a href="#实现算法" class="headerlink" title="实现算法"></a>实现算法</h3><p>中序遍历～<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3 .</span></span><br><span class="line"><span class="comment">// 实现算法，在这棵树中寻找一个特定的值。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">search</span><span class="params">(<span class="number">_</span> node: Node?, <span class="number">_</span> searchValue: Int)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> node == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> node?.value == searchValue &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (node?.value)! &gt; searchValue &#123;</span><br><span class="line">        <span class="keyword">return</span> search(node?.leftChild, searchValue)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> search(node?.rightChild, searchValue)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>我们分别调用<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">search(inieRootNode, <span class="number">5</span>)</span><br><span class="line">search(inieRootNode, <span class="number">6</span>)</span><br><span class="line">search(inieRootNode, <span class="number">11</span>)</span><br><span class="line">search(inieRootNode, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
-<p>可以观察到<code>playground</code>右侧面板中，函数的递归执行次数:<br>5-&gt;2次、6-&gt;1次、11-&gt;2次、0-&gt;3次。  </p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>我们知道二叉树搜索的效率是log(n)。<br>可以通过在上述二叉搜索树的中序列表中搜索来比较。  </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// efficiency  </span></span><br><span class="line"><span class="keyword">let</span> list = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]</span><br><span class="line"><span class="keyword">let</span> index0 = list.index(<span class="keyword">where</span>: &#123;$<span class="number">0</span> == <span class="number">0</span>&#125;)</span><br><span class="line"><span class="keyword">let</span> index5 = list.index(<span class="keyword">where</span>: &#123;$<span class="number">0</span> == <span class="number">5</span>&#125;)</span><br><span class="line"><span class="keyword">let</span> index6 = list.index(<span class="keyword">where</span>: &#123;$<span class="number">0</span> == <span class="number">6</span>&#125;)</span><br><span class="line"><span class="keyword">let</span> index11 = list.index(<span class="keyword">where</span>: &#123;$<span class="number">0</span> == <span class="number">11</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p>可以在右侧面板中看到对于不存在的元素，二叉搜索树需要搜索三次，而for循环则需要7次。对于元素11，二叉搜索树需要搜索2次，for循环依然需要11次。  </p>
-<p>本文除了帮助理解二叉搜索树，它的效率之外，还需要了解swift可选值的解析～  </p>
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2018/08/26/Lazy-Tricks/">Lazy Tricks🙈</a>
+    </h1>
+  
 
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-        
-	<section id="comments" class="comment">
-	  <div id="disqus_thread">
-	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	  </div>
-	</section>
-
-	<script type="text/javascript">
-	var disqus_shortname = 'xfeif';
-	(function(){
-	  var dsq = document.createElement('script');
-	  dsq.type = 'text/javascript';
-	  dsq.async = true;
-	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	}());
-	(function(){
-	  var dsq = document.createElement('script');
-	  dsq.type = 'text/javascript';
-	  dsq.async = true;
-	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	}());
-	</script>
-
-
-
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/09/20/武汉一行/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          武汉一行
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/09/04/Swift-3-Fun-Algorithms-Filter-Map-Reduce-Higher-Order-Functions/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
-<!-- Table of Contents -->
 
-  <aside id="toc-sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
-    
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例树"><span class="nav-number">2.</span> <span class="nav-text">样例树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建结点"><span class="nav-number">3.</span> <span class="nav-text">创建结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建样例树"><span class="nav-number">4.</span> <span class="nav-text">构建样例树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现算法"><span class="nav-number">5.</span> <span class="nav-text">实现算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">6.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">7.</span> <span class="nav-text">分析</span></a></li></ol>
-    
-    </div>
-  </aside>
 </section>
         
       </div>
@@ -418,8 +341,6 @@
 
 
 
-  <script src="/js/dialog.js"></script>
-
 
 
 <!-- Google Analytics -->
@@ -509,8 +430,6 @@ ga('send', 'pageview');
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>

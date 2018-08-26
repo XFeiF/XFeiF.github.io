@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="Alive">
 <meta property="og:description" content="Time：6.26-7.27Location: SYSUContest: MICCAI 2018 SKIN Lesion Analysis Towards Melanoma DetectionTask: Lesion SegmentationRank: 29/66  严格意义上我第一次打这种比赛。除了做白日梦，无用功，大概就只能搬搬砖了。有很多经验教训，只能说too old, too n">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-08-26T02:32:49.618Z">
+<meta property="og:updated_time" content="2018-08-26T06:00:56.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary: MICCAI 2018 Skin Lesion Contest">
 <meta name="twitter:description" content="Time：6.26-7.27Location: SYSUContest: MICCAI 2018 SKIN Lesion Analysis Towards Melanoma DetectionTask: Lesion SegmentationRank: 29/66  严格意义上我第一次打这种比赛。除了做白日梦，无用功，大概就只能搬搬砖了。有很多经验教训，只能说too old, too n">
@@ -240,7 +240,7 @@
 <p><em>Q2: resize的时候需要保持比例吗？</em><br><strong>A2</strong>: 借鉴往年的经验，保持了大部分图片的宽高比为4:3。但是最后Top1的MT并没有保持比例，而是直接Resize，因此这一点存在争议，我觉得一组对比实验确定一下就可以了。</p>
 <h3 id="Preprocessing"><a href="#Preprocessing" class="headerlink" title="Preprocessing"></a>Preprocessing</h3><p>对图像归一化;<br>尝试了使用或者添加<code>HSV</code>通道；(崔哥看H通道结果并不好，弃；最后MT添加了SV通道);<br>尝试了<code>Color Constancy</code> (没有提升);<br>尝试了<code>Gamma</code>校正，然并卵……  </p>
 <h3 id="Augmentation"><a href="#Augmentation" class="headerlink" title="Augmentation"></a>Augmentation</h3><p>数据量偏少，需要做增强。这个比较实用，但是过于保守，应当考虑到皮肤病的病灶区域形状多变性，所以<code>Flip</code>,<code>Rotate</code>, <code>Zoom</code>可以都做一些，尺度也可以大一些。  </p>
-<h3 id="Kth-folder-Cross-Validation"><a href="#Kth-folder-Cross-Validation" class="headerlink" title="Kth folder Cross Validation"></a>Kth folder Cross Validation</h3><p>多折交叉验证。<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup> 在<code>Local Validation Set</code>以及<code>Public Validation Set</code>上的性能并不能完全代表在<code>Private Validation Set</code>上的性能，所以做多折交叉验证一方面增强模型的鲁棒性，一方面相当于做了模型的集成。<br>这个时候需要我们去shuffle数据集，划分成5份。<br><em>Q3: 先做<code>augmentation</code>还是先划分数据集?</em><br><strong>A3</strong>: 先做<code>augmentation</code>。保证增强后的数据集足够大。  </p>
+<h3 id="Kth-folder-Cross-Validation"><a href="#Kth-folder-Cross-Validation" class="headerlink" title="Kth folder Cross Validation"></a>Kth folder Cross Validation</h3><p>多折交叉验证<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup>。 在<code>Local Validation Set</code>以及<code>Public Validation Set</code>上的性能并不能完全代表在<code>Private Validation Set</code>上的性能，所以做多折交叉验证一方面增强模型的鲁棒性，一方面相当于做了模型的集成。<br>这个时候需要我们去shuffle数据集，划分成5份。<br><em>Q3: 先做<code>augmentation</code>还是先划分数据集?</em><br><strong>A3</strong>: 先做<code>augmentation</code>。保证增强后的数据集足够大。  </p>
 <p>我和崔哥两个人主要负责这个task，但是我俩数据预处理一开始就没有统一，无论是resize到什么尺寸还是normalization，间接导致我俩模型性能不能比较，这个问题还是相当严重的，不能及时发现某一网络的性能，从而快速调整，影响整体进度及结果。因此到最后一周多，统一了预处理但没有时间去做交叉验证了。模型的target function更接近<code>Public Validation Set</code>。</p>
 <h2 id="模型选择与实现"><a href="#模型选择与实现" class="headerlink" title="模型选择与实现"></a>模型选择与实现</h2><p>比赛和平时科研的最大不同在于，比赛更看重模型最终的性能，而不是很在意其创新性。对于比赛而言，做baseline的最好方法就是选一个当前top的模型，不做别的动作，直接调整至输出一个不错的结果。  </p>
 <h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><p>这个就需要依赖平时的积累了，读最新的顶会或者A类期刊的论文，关注新的高性能高表现的网络，这些模型都可以作为备选，以及一些模型中某一组件（tech），比如CRF，multi-scale，ASPP等，通过做实验去证明这些结构的有效性。  </p>
@@ -261,8 +261,8 @@
 <h4 id="多模型集成方法"><a href="#多模型集成方法" class="headerlink" title="多模型集成方法"></a>多模型集成方法</h4><p>直接平均法；<br>加权平均法；<br>投票法；<br>留一法。  </p>
 <p>在网络训练的过程中使用dropout也算是多模型集成的一种。  </p>
 <p>实际操作中单模型，多模型集成相结合！  </p>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>我研究了3个星期的deeplabv3+，最后表现并不好，因此最后一周meeting的时候，这个model被kill掉了，最后熬了一夜只做了U-Net的各种集成。<br>虽然没有取得靠前的名次，但是收获了很多宝贵的经验。从如何打比赛到如何做实验、保存实验记录，以及总结了一套个人感觉比较完善的工作流程，一些Tips。</p>
-<div class="footnotes"><ol><br>    <li class="footnote" id="fn:1"><br>        <p>这个在台大李宏毅老师的机器学习视频中有详细的介绍。 <a href="#fnref:1" title="Cross Validation"> </a></p><p><br>    </p></li><br>    <li class="footnote" id="fn:2"><br>        <p>实验整理请看👉🏻 <a href="#fnref:2" title="Cross Validation"> </a></p><p><br>    </p></li><br></ol></div> 
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>我研究了3个星期的deeplabv3+，最后表现并不好，因此最后一周meeting的时候，这个model被kill掉了，最后熬了一夜只做了U-Net的各种集成。<br>虽然没有取得靠前的名次，但是收获了很多宝贵的经验。从如何打比赛到如何做实验、保存实验记录，以及总结了一套个人感觉比较完善的工作流程，一些Tips<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a> </sup>。</p>
+<div class="footnotes"><ol><br>    <li class="footnote" id="fn:1"><br>        <p>这个在台大李宏毅老师的机器学习视频中有详细的介绍。 <a href="#fnref:1" title="Cross Validation"> </a></p><p><br>    </p></li><br>    <li class="footnote" id="fn:2"><br>        <p>实验整理请看👉🏻 <a href="/2018/08/26/训练网络管理实验的科学探索/" target="_blank">训练网络管理实验的科学探索💪🏼</a> <a href="#fnref:2" title="Cross Validation"> </a></p><p><br>    </p></li><br>     <li class="footnote" id="fn:3"><br>        <p>实验整理请看👉🏻 <a href="/2018/08/26/训练网络管理实验的科学探索/" target="_blank">训练网络管理实验的科学探索💪🏼</a> <a href="#fnref:3" title="Cross Validation"> </a></p><p><br>    </p></li><br></ol></div> 
 
 
 <script type="text/javascript">
@@ -322,7 +322,7 @@
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          训练网络管理实验的科学探索
+          训练网络管理实验的科学探索💪🏼
         
       </div>
     </a>
