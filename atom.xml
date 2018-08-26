@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.x-fei.me/"/>
-  <updated>2018-08-26T07:06:20.273Z</updated>
+  <updated>2018-08-26T07:11:57.992Z</updated>
   <id>http://blog.x-fei.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://blog.x-fei.me/2018/08/26/Lazy-Tricks/"/>
     <id>http://blog.x-fei.me/2018/08/26/Lazy-Tricks/</id>
     <published>2018-08-26T05:43:31.000Z</published>
-    <updated>2018-08-26T07:06:20.273Z</updated>
+    <updated>2018-08-26T07:11:57.992Z</updated>
     
     <content type="html"><![CDATA[<p>🍻 高效率 <del>懒人</del> 养成Tricks！🍻<br><a id="more"></a><br>持续收集中～ 🛰  </p><p>抱歉，部分只提供建议，教程什么的，google不到算我输。</p><h2 id="工具-🔧"><a href="#工具-🔧" class="headerlink" title="工具 🔧"></a>工具 🔧</h2><h3 id="ubuntu-desktop-with-openssh-server"><a href="#ubuntu-desktop-with-openssh-server" class="headerlink" title="ubuntu desktop with openssh-server"></a>ubuntu desktop with openssh-server</h3><p>主力机还是自己的笔记本，实验室的 <del>laji</del> 主机怎么办？🐶<br>👇 👇 👇 👇<br>给你的Ubuntu桌面版主机安装<a href="https://help.ubuntu.com/lts/serverguide/openssh-server.html.en" target="_blank" rel="noopener"><code>openssh-server</code></a>，像访问服务器那样访问自己的主机吧！</p><h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><p>开启脚本的命令不能关！难道我的笔记本要一直放在实验室吗？🙊<br>怎么把命令挂在后台啊！太难了，学不会🙃<br><a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340" target="_blank" rel="noopener"><code>tmux</code></a>你值得拥有！不关机，不kill，关掉命令行都可以！<br>配合<a href="https://help.ubuntu.com/lts/serverguide/openssh-server.html.en" target="_blank" rel="noopener"><code>openssh-server</code></a>，主力机不动，ssh到ubuntu主机上，访问服务器，把脚本挂到tmux上。理论上可以随便玩。</p><h2 id="Tricks-🚲"><a href="#Tricks-🚲" class="headerlink" title="Tricks 🚲"></a>Tricks 🚲</h2><h3 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h3><p>训练CNNs的时候，最初的使用姿势可能是 <code>python cnn.py</code>。  </p><p>但是，要调整网络参数的时候怎么办，还需要到源码中找到然后一个一个修改吗？<strong>No!</strong>  </p><p><code>pytorch</code>里有<code>argparse</code>，<code>tf</code>有<code>FLAGS</code>，我可以这样 <code>python cnn.py -g 0 -param1 val1 -param2 val2 -param3 val3 -param4 val4 -param5 val5 -param6...</code>，  想接多少就。。。接多少！👀 👀 👀  </p><p>推荐写入到shell脚本中，可以顺序执行多个py文件，一个实验一个shell做到底，不用盯着显卡了。</p><p><img src="/images/shell-ml.png" width="50%" height="50%" title="Shell"></p><h3 id="log的生成"><a href="#log的生成" class="headerlink" title="log的生成"></a>log的生成</h3><p>log生成配合shell脚本使用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh myscript.sh 2&gt;&amp;1 | tee logs/myscript.log</span><br></pre></td></tr></table></figure></p><p>原理：<br><img src="/images/output_redirect.png" alt="Output Redirect">  </p><hr><p><center><strong>持续收集中～ 🛰</strong></center>  </p>]]></content>
     
@@ -104,9 +104,9 @@
     </summary>
     
     
-      <category term="出行" scheme="http://blog.x-fei.me/tags/%E5%87%BA%E8%A1%8C/"/>
-    
       <category term="HACKx" scheme="http://blog.x-fei.me/tags/HACKx/"/>
+    
+      <category term="出行" scheme="http://blog.x-fei.me/tags/%E5%87%BA%E8%A1%8C/"/>
     
   </entry>
   
