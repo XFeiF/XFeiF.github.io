@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.x-fei.me/"/>
-  <updated>2017-11-06T05:10:10.000Z</updated>
+  <updated>2018-08-26T05:11:27.749Z</updated>
   <id>http://blog.x-fei.me/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>训练网络管理实验的科学探索</title>
+    <link href="http://blog.x-fei.me/2018/08/26/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/"/>
+    <id>http://blog.x-fei.me/2018/08/26/训练网络管理实验的科学探索/</id>
+    <published>2018-08-26T03:26:49.000Z</published>
+    <updated>2018-08-26T05:11:27.749Z</updated>
+    
+    <content type="html"><![CDATA[<p>Some tips about how to manage your experiments！  </p><blockquote><p>无论是打比赛还是写论文，我们都需要做大量的实验。有人说深度调参是“玄学”，为了有效探索这门玄学，需要对模型的结构、参数、结果做全面详尽的记录，对实验结果、模型参数进行合理保存。这里，分享一些我以及我的师兄教给我的在训练网络并科学管理实验方面的一些心得体会。  </p></blockquote><a id="more"></a><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>我们在实验过程中对数据集会遇到两种情况。一是实验需要尝试多个不同的数据集，二是对同一数据集作了不同的预处理操作从而产生了多个“不同”的数据集。为了避免后期总结或者做对比实验的时候找不到对应的数据集，需要我们对数据集进行记录，可以根据数据集的各项特征进⾏区分。这时我们就可以写一个<code>readme_dateset.txt</code>来记录对应特征的数据集文件夹。  </p><!-- todo --><p>数据集图片<br>readme_dataset 图片  </p><h2 id="实验记录"><a href="#实验记录" class="headerlink" title="实验记录"></a>实验记录</h2><p>实验记录，一方面有助于自己了解模型在当前数据集、epoch、参数等条件下的性能，另一方面分析本条实验记录的结果可以帮助我们确定下一步的优化方向，最后在自己写report或者paper的时候，有丰富的图文数据支持。这里我们使用Excel表格来记录我们的实验。  </p><h3 id="基本实验记录"><a href="#基本实验记录" class="headerlink" title="基本实验记录"></a>基本实验记录</h3><p>针对单一实验，我们可以针对自己的需要，先确定一些可能需要修改、做对比实验的参数或者条件，比如不同预处理的数据集，图片的size等，之后可以添加更多的参数，对于已确定的参数可以放到靠后一点的列。同一实验，我们要对比某一参数的表现，最为直接的度量衡就是<code>Loss Function</code>，因此也要将其记录下来。同时我们最好将实验结果的分析也记录下来。<br>这样的话，我们的列表的Head基本上可以确定下来了，例如：</p><table><thead><tr><th>id</th><th>loss</th><th>dataset</th><th>params</th><th>analysis</th></tr></thead><tbody><tr><td>a1</td><td>0.1</td><td>trainset</td><td>…</td><td>300x400优于200x300</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Some tips about how to manage your experiments！  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;无论是打比赛还是写论文，我们都需要做大量的实验。有人说深度调参是“玄学”，为了有效探索这门玄学，需要对模型的结构、参数、结果做全面详尽的记录，对实验结果、模型参数进行合理保存。这里，分享一些我以及我的师兄教给我的在训练网络并科学管理实验方面的一些心得体会。  &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="trick" scheme="http://blog.x-fei.me/tags/trick/"/>
+    
+      <category term="Machine Learning" scheme="http://blog.x-fei.me/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Summary: MICCAI 2018 Skin Lesion Contest</title>
+    <link href="http://blog.x-fei.me/2018/08/26/Summary-MICCAI-2018-Skin-Lesion-Contest/"/>
+    <id>http://blog.x-fei.me/2018/08/26/Summary-MICCAI-2018-Skin-Lesion-Contest/</id>
+    <published>2018-08-25T17:31:37.000Z</published>
+    <updated>2018-08-26T02:32:49.618Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Time：6.26-7.27<br>Location: SYSU<br>Contest: MICCAI 2018 SKIN Lesion Analysis Towards Melanoma Detection<br>Task: Lesion Segmentation<br>Rank: 29/66</p></blockquote><p>严格意义上我第一次打这种比赛。除了做白日梦，无用功，大概就只能搬搬砖了。有很多经验教训，只能说<code>too old, too naive</code>。下面从数据预处理，模型选择与实现，后处理，以及模型集成这几个方面总结一下这次比赛。  </p><a id="more"></a><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>预处理需要分析训练集本身的特性，结合任务的特点。分割给了2594张图片作为训练集，尺寸差异很大。  </p><h3 id="Resize"><a href="#Resize" class="headerlink" title="Resize"></a>Resize</h3><p>由于GPU显存、CNNs以及本身scale不统一的问题，需要对数据做resize。 </p><p><em>Q1: resize到什么大小？</em><br><strong>A1</strong>: 一般300x400, 256x256, 512x512   </p><p><em>Q2: resize的时候需要保持比例吗？</em><br><strong>A2</strong>: 借鉴往年的经验，保持了大部分图片的宽高比为4:3。但是最后Top1的MT并没有保持比例，而是直接Resize，因此这一点存在争议，我觉得一组对比实验确定一下就可以了。</p><h3 id="Preprocessing"><a href="#Preprocessing" class="headerlink" title="Preprocessing"></a>Preprocessing</h3><p>对图像归一化;<br>尝试了使用或者添加<code>HSV</code>通道；(崔哥看H通道结果并不好，弃；最后MT添加了SV通道);<br>尝试了<code>Color Constancy</code> (没有提升);<br>尝试了<code>Gamma</code>校正，然并卵……  </p><h3 id="Augmentation"><a href="#Augmentation" class="headerlink" title="Augmentation"></a>Augmentation</h3><p>数据量偏少，需要做增强。这个比较实用，但是过于保守，应当考虑到皮肤病的病灶区域形状多变性，所以<code>Flip</code>,<code>Rotate</code>, <code>Zoom</code>可以都做一些，尺度也可以大一些。  </p><h3 id="Kth-folder-Cross-Validation"><a href="#Kth-folder-Cross-Validation" class="headerlink" title="Kth folder Cross Validation"></a>Kth folder Cross Validation</h3><p>多折交叉验证。<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup> 在<code>Local Validation Set</code>以及<code>Public Validation Set</code>上的性能并不能完全代表在<code>Private Validation Set</code>上的性能，所以做多折交叉验证一方面增强模型的鲁棒性，一方面相当于做了模型的集成。<br>这个时候需要我们去shuffle数据集，划分成5份。<br><em>Q3: 先做<code>augmentation</code>还是先划分数据集?</em><br><strong>A3</strong>: 先做<code>augmentation</code>。保证增强后的数据集足够大。  </p><p>我和崔哥两个人主要负责这个task，但是我俩数据预处理一开始就没有统一，无论是resize到什么尺寸还是normalization，间接导致我俩模型性能不能比较，这个问题还是相当严重的，不能及时发现某一网络的性能，从而快速调整，影响整体进度及结果。因此到最后一周多，统一了预处理但没有时间去做交叉验证了。模型的target function更接近<code>Public Validation Set</code>。</p><h2 id="模型选择与实现"><a href="#模型选择与实现" class="headerlink" title="模型选择与实现"></a>模型选择与实现</h2><p>比赛和平时科研的最大不同在于，比赛更看重模型最终的性能，而不是很在意其创新性。对于比赛而言，做baseline的最好方法就是选一个当前top的模型，不做别的动作，直接调整至输出一个不错的结果。  </p><h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><p>这个就需要依赖平时的积累了，读最新的顶会或者A类期刊的论文，关注新的高性能高表现的网络，这些模型都可以作为备选，以及一些模型中某一组件（tech），比如CRF，multi-scale，ASPP等，通过做实验去证明这些结构的有效性。  </p><h3 id="模型实现"><a href="#模型实现" class="headerlink" title="模型实现"></a>模型实现</h3><p>这就要讨论到用啥主流框架的问题了，我们都是<code>tf</code>的‘脑残粉’，因此一直可怜巴巴痛并快乐地debug。但是遇到改一些架构问题的时候，因为对<code>tf</code>的掌控有限，所以并不得心应手。被老板诟病过很多次，要么换<code>pytorch</code>，要么<code>keras</code>。  </p><h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>训练的时候，做好实验记录！<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a> </sup> 模型参数初始化，最好还是把训练好的网络的权重拿过来直接用。</p><p>打比赛，用<code>pytorch</code>或者<code>keras</code>能快速实现网络、我们的一些想法，把注意力集中到如何提升性能这一方面来，而不是某些技术细节。但是技术细节却是我们比较看重的长期的个人能力，因此之后估计也是走双修的路线吧。</p><h2 id="后处理Post-Processing"><a href="#后处理Post-Processing" class="headerlink" title="后处理Post_Processing"></a>后处理Post_Processing</h2><p>是否需要后处理取决于模型的结果，根据predict的结果，分析模型有哪些做的不够好的地方，是模型本身的缺陷还是数据的问题，为了最终的得分的话，都可以做后处理，去除一些共性的问题。  </p><p>比如Task1规定的，每个图片可能有不止一块lesion区域，但是label只标记了最中间、最主要的那一块。这就导致模型识别出了小块的lesion，但是label没有标记，反而会影响得分。因此我们后处理做了求最大连通区域，去洞操作。</p><h2 id="模型集成"><a href="#模型集成" class="headerlink" title="模型集成"></a>模型集成</h2><p>为了综合提升模型的性能，最终提交的结果需要对单个、多个模型做集成。  </p><h3 id="单模型集成"><a href="#单模型集成" class="headerlink" title="单模型集成"></a>单模型集成</h3><p>单模型的集成分为两大类。  </p><ul><li>多层特征融合：比如尝试改进U-Net的结构，将Encoder层的特征通过卷积再融合到Decoder的最后一层；或者采用简单的multi-scale，将输入数据调整为不同的scale，分别提取特征，最后做融合。  </li><li>网络快照集成法：利用了网络解空间中的局部最优解来对单个网络做模型集成。通过循环调整网络学习率可使网络依次收敛到不同的局部最优解处，取不同epoch处的模型进行融合。  </li></ul><p>但是这里我们做的不够好，比较合理的做法是将不同scale的特征融合到一起的，但是囿于自身技术，没能实现。</p><h3 id="多模型集成"><a href="#多模型集成" class="headerlink" title="多模型集成"></a>多模型集成</h3><p>多模型集成的方法相对较多，看方法名就可以知道大概做法了。需要注意的是，前面的个别单模型集成方法也可以运用到多模型当中，多模型的一些方法也可以看作是单模型的。  </p><h4 id="多模型生成策略"><a href="#多模型生成策略" class="headerlink" title="多模型生成策略"></a>多模型生成策略</h4><p>同一模型不同初始化；<br>同一模型不同训练轮数；<br>不同目标函数；<br>不同网络结构。  </p><h4 id="多模型集成方法"><a href="#多模型集成方法" class="headerlink" title="多模型集成方法"></a>多模型集成方法</h4><p>直接平均法；<br>加权平均法；<br>投票法；<br>留一法。  </p><p>在网络训练的过程中使用dropout也算是多模型集成的一种。  </p><p>实际操作中单模型，多模型集成相结合！  </p><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>我研究了3个星期的deeplabv3+，最后表现并不好，因此最后一周meeting的时候，这个model被kill掉了，最后熬了一夜只做了U-Net的各种集成。<br>虽然没有取得靠前的名次，但是收获了很多宝贵的经验。从如何打比赛到如何做实验、保存实验记录，以及总结了一套个人感觉比较完善的工作流程，一些Tips。</p><div class="footnotes"><ol><br>    <li class="footnote" id="fn:1"><br>        <p>这个在台大李宏毅老师的机器学习视频中有详细的介绍。 <a href="#fnref:1" title="Cross Validation"> </a></p><p><br>    </p></li><br>    <li class="footnote" id="fn:2"><br>        <p>实验整理请看👉🏻 <a href="#fnref:2" title="Cross Validation"> </a></p><p><br>    </p></li><br></ol></div> <script type="text/javascript">    $.bigfoot();</script><script type="text/javascript">    var bigfoot = $.bigfoot({        deleteOnUnhover: false,        preventPageScroll: false,        hoverDelay: 250,    });</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Time：6.26-7.27&lt;br&gt;Location: SYSU&lt;br&gt;Contest: MICCAI 2018 SKIN Lesion Analysis Towards Melanoma Detection&lt;br&gt;Task: Lesion Segmentation&lt;br&gt;Rank: 29/66&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;严格意义上我第一次打这种比赛。除了做白日梦，无用功，大概就只能搬搬砖了。有很多经验教训，只能说&lt;code&gt;too old, too naive&lt;/code&gt;。下面从数据预处理，模型选择与实现，后处理，以及模型集成这几个方面总结一下这次比赛。  &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="think" scheme="http://blog.x-fei.me/tags/think/"/>
+    
+      <category term="summary" scheme="http://blog.x-fei.me/tags/summary/"/>
+    
+  </entry>
   
   <entry>
     <title>Hackx上海</title>
