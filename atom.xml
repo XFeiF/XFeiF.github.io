@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Alive</title>
+  <title>Make everyday count!</title>
   
-  <subtitle>Just Do IT!</subtitle>
+  <subtitle>Everything will be ok!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.x-fei.me/"/>
@@ -82,9 +82,9 @@
     </summary>
     
     
-      <category term="think" scheme="http://blog.x-fei.me/tags/think/"/>
-    
       <category term="summary" scheme="http://blog.x-fei.me/tags/summary/"/>
+    
+      <category term="think" scheme="http://blog.x-fei.me/tags/think/"/>
     
   </entry>
   
@@ -104,9 +104,9 @@
     </summary>
     
     
-      <category term="HACKx" scheme="http://blog.x-fei.me/tags/HACKx/"/>
-    
       <category term="出行" scheme="http://blog.x-fei.me/tags/%E5%87%BA%E8%A1%8C/"/>
+    
+      <category term="HACKx" scheme="http://blog.x-fei.me/tags/HACKx/"/>
     
   </entry>
   
