@@ -6,8 +6,6 @@
     
         <title>
             
-                archives: 2017/8 |
-                    
                         Make everyday count!
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,7 +18,7 @@
                                                 <meta name="description" content="I&apos;ll follow You Lord for all my days!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Make everyday count!">
-<meta property="og:url" content="http://blog.x-fei.me/archives/2017/08/index.html">
+<meta property="og:url" content="http://blog.x-fei.me/page/3/index.html">
 <meta property="og:site_name" content="Make everyday count!">
 <meta property="og:description" content="I&apos;ll follow You Lord for all my days!">
 <meta property="og:locale" content="en">
@@ -78,19 +76,16 @@
                                                                                         <link rel="stylesheet" href="/css/bootstrap.css">
 
                                                                                         
-                                                                                                <link rel="stylesheet" href="/css/dialog.css">
-                                                                                                    <link rel="stylesheet" href="/css/bigfoot-default.css">
-                                                                                                        
+                                                                                            <link rel="stylesheet" href="/css/home.css">
+                                                                                            
 
                                                                                                             
+                                                                                                                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
+                                                                                                                
 
                                                                                                                     
-                                                                                                                        <link rel="stylesheet" href="/css/header-post.css">
-                                                                                                                        
 
                                                                                                                             
-                                                                                                                                <link rel="stylesheet" href="/css/archive.css">
-                                                                                                                                
 
                                                                                                                                     
 
@@ -101,257 +96,231 @@
 
 
   
-  <div id="container">
-    <div id="wrap">
-      
-        <header>
+    <header id="header">
 
-    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-inner">
+    <!-- 背景图模式 -->
+    
 
-            <div class="container">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-                
-                    <a class="brand" style="
-                 border-width: 0px;  margin-top: 0px;"  >
-                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
-              </a>
-                    
-
-                            <div class="navbar-collapse collapse">
-                                <ul class="hnav navbar-nav">
+        
+                                <div id="intrologo" class="intro-logo">
                                     
-                                        <li>
-                                            <a class="main-nav-link" href="/">
-                                                BLOG
-                                            </a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a class="main-nav-link" href="/archives">
-                                                ARCHIVES
-                                            </a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a class="main-nav-link" href="/friends">
-                                                FRIENDS
-                                            </a>
-                                        </li>
-                                        
-                                            <li>
-                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
-                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
-                                            </li>
-                                            <li>
-                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
-                                            </li>
-                                            <li>
-                                                <!-- <div id="search-form-wrap">
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
 
-</div> -->
-                                            </li>
-                            </div>
-            </div>
 
-        </div>
-    </div>
+                                        <canvas width="100%" height="100%"></canvas>
+                                        <script>
+                                            var c = document.getElementsByTagName('canvas')[0],
+                                                x = c.getContext('2d'),
+                                                w = window.innerWidth,
+                                                h = window.innerHeight,
+                                                pr = window.devicePixelRatio || 1,
+                                                f = 90,
+                                                q,
+                                                m = Math,
+                                                r = 0,
+                                                u = m.PI * 2,
+                                                v = m.cos,
+                                                z = m.random
+                                            c.width = w * pr
+                                            c.height = h * pr
+                                            x.scale(pr, pr)
+                                            x.globalAlpha = 0.6
+
+                                            <!-- 折线Polyline背景 -->
+                                                
+
+                                            function redraw() {
+                                                var pattern = Trianglify({
+                                                    width: window.innerWidth,
+                                                    height: window.innerHeight
+                                                });
+                                                pattern.canvas(c)
+                                            }
+                                            document.getElementById("intrologo").onclick = redraw
+                                            document.getElementById("intrologo").ontouchstart = redraw
+                                            redraw()
+                                            
+                                        </script>
+
+
+                                        
+                                            <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);">
+                                                
+
+                                                            
+                                                                                <div class="homelogoback"  style="border: 1px solid #404040;"
+                                                                                    >
+                                                                                        <h1>
+                                                                                            <a href="#content" id="logo">
+                                                                                                Make everyday count!
+                                                                                            </a>
+                                                                                        </h1>
+                                                                                        <h3>
+                                                                                            I&#39;ll follow You Lord for all my days!
+                                                                                        </h3>
+                                                                                        <h5>
+                                                                                            XFeiF
+                                                                                        </h5>
+                                                                                        <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+                                                                                </div>
+                                                                                
+
+                                                    </div>
+                                            </div>
+
+                                            <!-- 自适应主页背景大图 -->
+                                            
+
+                                                    <!-- home_logo_image居中 -->
+                                                    
+                                                            <script>
+                                                                var homelogodiv = document.getElementById("homelogo");
+                                                                if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+                                                                    homelogodiv.style.width = (document.body.clientWidth + 66) + "px";
+                                                                    homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+                                                                } else {
+                                                                    homelogodiv.style.width = (homelogodiv.clientWidth + 66) + "px";
+                                                                    homelogodiv.style.marginLeft = (homelogodiv.clientWidth) * -0.5 + "px";
+                                                                }
+                                                            </script>
+                                                            
+
+                                                                <div class="intro-navigate">
+                                                                    <p class="navigater-list">
+                                                                        
+                                                                            <a id="beautifont" class="main-nav-link" href="/">
+                                                                                BLOG
+                                                                            </a>
+                                                                            
+                                                                            <a id="beautifont" class="main-nav-link" href="/archives">
+                                                                                ARCHIVES
+                                                                            </a>
+                                                                            
+                                                                            <a id="beautifont" class="main-nav-link" href="/friends">
+                                                                                FRIENDS
+                                                                            </a>
+                                                                            
+                                                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
+                                                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
+                                                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
+                                                                    </p>
+                                                                </div>
 
 </header>
-
-
+  
+  <div id="container">
+    <div id="wrap">
       
             
       <div id="content" class="outer">
         
-          <section id="main">
-  <div class="archives-tags-wrap"><blockquote><span>There are 14 posts in total till now.</span></blockquote>
+          <section id="main" style="float:none;">
+  
+    <article id="post-给Hexo添加Bigfoot"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/09/02/给Hexo添加Bigfoot/">给Hexo添加Bigfoot</a>
+    </h1>
+  
 
-
-<!-- 分页显示 -->
-
-	
-	
-		
-		
-		  
-		  
-		  <section class="archives-wrap">
-		    <div class="archive-year-wrap">
-		      <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
-		    </div>
-		    <div class="archives">
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
+      </header>
+    
+    <div class="article-meta">
       
-	<a href="/2017/08/29/Stay-hungry-Stay-foolish/" class="archive-article-date">
+	<a href="/2017/09/02/给Hexo添加Bigfoot/" class="article-date">
+	  <time datetime="2017-09-02T15:08:52.000Z" itemprop="datePublished">2017-09-02</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.bigfootjs.com/" target="_blank" rel="noopener">Bigfoot.js</a> 是一个很漂亮的footnote<a href="https://baike.baidu.com/item/%E8%84%9A%E6%B3%A8/17821082?fr=aladdin" target="_blank" rel="noopener">脚注</a>插件。我之前搭建Ghost博客的时候，在萌天的博客上有看到过，经过萌天介绍，认识了Bigfoot。现在将Bigfoot集成到我目前在用的hexo博客hiker主题中。<br>
+        <!-- Bigfoot.js 是一个很漂亮的footnote脚注插件。我之前搭建Ghost博客的时候，在萌天的博客上有看到过，经过萌天介绍，认识了Bigfoot。现在将Bigfoot集成到我目前在用的hexo博客hiker主题中。
+效果就是右边这个小气泡按钮啦，萌不萌？ 1    
+ 下面就为Hexo博客添加Bigfoot支持吧！
+下载所需文件Bigfoot依赖jquery，所以需要下载以下内容：B......  -->
+        <p class="article-more-link">
+          <a href="/2017/09/02/给Hexo添加Bigfoot/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Stay-hungry-Stay-foolish"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/29/Stay-hungry-Stay-foolish/">Stay hungry, Stay Young</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/29/Stay-hungry-Stay-foolish/" class="article-date">
 	  <time datetime="2017-08-29T11:59:27.000Z" itemprop="datePublished">2017-08-29</time>
 	</a>
 
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/08/29/Stay-hungry-Stay-foolish/">Stay hungry, Stay Young</a>
-    </h1>
-  
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>忘记第几次重新搭建博客了，之前重装系统、换笔记本或者服务器到期，（其实更关键的是博客更新太少了）。<br>现在重新开张，希望有缘到我这个小站来的你，能收获一些东西！：）  </p>
+<p>Stay hungry, Stay Young!</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/think/">think</a></li></ul>
+
+    </footer>
   </div>
+  
 </article>
-	
-	
-		</div></section>
-	
 
-	<!-- 页数指示器 -->
-	
+<!-- Table of Contents -->
+
+  
 
 
-
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 </section>
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/XFeiF" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://twitter.com/XFeiF" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://www.facebook.com/XFeiF" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:eva.aeolus@gmail.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/HACKx/" style="font-size: 10px;">HACKx</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/swift/" style="font-size: 20px;">swift</a> <a href="/tags/think/" style="font-size: 15px;">think</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/trick/" style="font-size: 15px;">trick</a> <a href="/tags/出行/" style="font-size: 15px;">出行</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/感想/" style="font-size: 10px;">感想</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/09/13/PyTorch-Notes/">PyTorch Api Notes 📙</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/26/Lazy-Tricks/">Lazy Tricks🙈</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/26/训练网络管理实验的科学探索/">训练网络管理实验的科学探索💪🏼</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/26/Summary-MICCAI-2018-Skin-Lesion-Contest/">Summary: MICCAI 2018 Skin Lesion Contest</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
         
       </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
       
       <footer id="footer">
     
@@ -445,6 +414,8 @@
 
 <script src="/js/scripts.js"></script>
 
+
+  <script src="/js/home.js"></script>
 
 
 

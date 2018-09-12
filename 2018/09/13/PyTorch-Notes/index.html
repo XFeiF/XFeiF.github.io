@@ -6,7 +6,7 @@
     
         <title>
             
-                lazy tricks🙈 |
+                pytorch api notes 📙 |
                     
                         Make everyday count!
         </title>
@@ -17,21 +17,18 @@
                         
                                 
                                         
-                                                <meta name="description" content="🍻 高效率 懒人 养成Tricks！🍻">
-<meta name="keywords" content="trick,tool">
+                                                <meta name="description" content="Simple Api Notes ✍🏼 For Beginners！记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。">
+<meta name="keywords" content="PyTorch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lazy Tricks🙈">
-<meta property="og:url" content="http://blog.x-fei.me/2018/08/26/Lazy-Tricks/index.html">
+<meta property="og:title" content="PyTorch Api Notes 📙">
+<meta property="og:url" content="http://blog.x-fei.me/2018/09/13/PyTorch-Notes/index.html">
 <meta property="og:site_name" content="Make everyday count!">
-<meta property="og:description" content="🍻 高效率 懒人 养成Tricks！🍻">
+<meta property="og:description" content="Simple Api Notes ✍🏼 For Beginners！记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://blog.x-fei.me/images/shell-ml.png">
-<meta property="og:image" content="http://blog.x-fei.me/images/output_redirect.png">
-<meta property="og:updated_time" content="2018-08-26T07:11:57.992Z">
+<meta property="og:updated_time" content="2018-09-12T17:17:18.944Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lazy Tricks🙈">
-<meta name="twitter:description" content="🍻 高效率 懒人 养成Tricks！🍻">
-<meta name="twitter:image" content="http://blog.x-fei.me/images/shell-ml.png">
+<meta name="twitter:title" content="PyTorch Api Notes 📙">
+<meta name="twitter:description" content="Simple Api Notes ✍🏼 For Beginners！记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。">
                                                     
 
                                                             
@@ -207,7 +204,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Lazy-Tricks" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-PyTorch-Notes" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -215,7 +212,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Lazy Tricks🙈
+      PyTorch Api Notes 📙
     </h1>
   
 
@@ -223,8 +220,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/08/26/Lazy-Tricks/" class="article-date">
-	  <time datetime="2018-08-26T05:43:31.000Z" itemprop="datePublished">2018-08-26</time>
+	<a href="/2018/09/13/PyTorch-Notes/" class="article-date">
+	  <time datetime="2018-09-12T17:14:38.000Z" itemprop="datePublished">2018-09-13</time>
 	</a>
 
       
@@ -232,20 +229,65 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>🍻 高效率 <del>懒人</del> 养成Tricks！🍻<br><a id="more"></a><br>持续收集中～ 🛰  </p>
-<p>抱歉，部分只提供建议，教程什么的，google不到算我输。</p>
-<h2 id="工具-🔧"><a href="#工具-🔧" class="headerlink" title="工具 🔧"></a>工具 🔧</h2><h3 id="ubuntu-desktop-with-openssh-server"><a href="#ubuntu-desktop-with-openssh-server" class="headerlink" title="ubuntu desktop with openssh-server"></a>ubuntu desktop with openssh-server</h3><p>主力机还是自己的笔记本，实验室的 <del>laji</del> 主机怎么办？🐶<br>👇 👇 👇 👇<br>给你的Ubuntu桌面版主机安装<a href="https://help.ubuntu.com/lts/serverguide/openssh-server.html.en" target="_blank" rel="noopener"><code>openssh-server</code></a>，像访问服务器那样访问自己的主机吧！</p>
-<h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><p>开启脚本的命令不能关！难道我的笔记本要一直放在实验室吗？🙊<br>怎么把命令挂在后台啊！太难了，学不会🙃<br><a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340" target="_blank" rel="noopener"><code>tmux</code></a>你值得拥有！不关机，不kill，关掉命令行都可以！<br>配合<a href="https://help.ubuntu.com/lts/serverguide/openssh-server.html.en" target="_blank" rel="noopener"><code>openssh-server</code></a>，主力机不动，ssh到ubuntu主机上，访问服务器，把脚本挂到tmux上。理论上可以随便玩。</p>
-<h2 id="Tricks-🚲"><a href="#Tricks-🚲" class="headerlink" title="Tricks 🚲"></a>Tricks 🚲</h2><h3 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h3><p>训练CNNs的时候，最初的使用姿势可能是 <code>python cnn.py</code>。  </p>
-<p>但是，要调整网络参数的时候怎么办，还需要到源码中找到然后一个一个修改吗？<strong>No!</strong>  </p>
-<p><code>pytorch</code>里有<code>argparse</code>，<code>tf</code>有<code>FLAGS</code>，我可以这样 <code>python cnn.py -g 0 -param1 val1 -param2 val2 -param3 val3 -param4 val4 -param5 val5 -param6...</code>，  想接多少就。。。接多少！👀 👀 👀  </p>
-<p>推荐写入到shell脚本中，可以顺序执行多个py文件，一个实验一个shell做到底，不用盯着显卡了。</p>
-<p><img src="/images/shell-ml.png" width="50%" height="50%" title="Shell"></p>
-<h3 id="log的生成"><a href="#log的生成" class="headerlink" title="log的生成"></a>log的生成</h3><p>log生成配合shell脚本使用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh myscript.sh 2&gt;&amp;1 | tee logs/myscript.log</span><br></pre></td></tr></table></figure></p>
-<p>原理：<br><img src="/images/output_redirect.png" alt="Output Redirect">  </p>
+        <p><center>Simple Api Notes ✍🏼 For Beginners！</center><br>记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。<br><a id="more"></a></p>
+<h1 id="torch"><a href="#torch" class="headerlink" title="torch"></a>torch</h1><h2 id="Serialization"><a href="#Serialization" class="headerlink" title="Serialization"></a>Serialization</h2><h3 id="torch-save"><a href="#torch-save" class="headerlink" title="torch.save"></a>torch.save</h3><p><code>torch.save(obj, f, pickle_module=&lt;module ‘pickle’ from ‘/homes/alexandrov/.pyenv/versions/3.6.5/lib/python3.6/pickle.py’&gt;, pickle_protocol=2)</code> 存储对象到硬盘中。</p>
+<h3 id="torch-load"><a href="#torch-load" class="headerlink" title="torch.load"></a>torch.load</h3><p><code>torch.load(f,map_location=None,pickle_module=&lt;module ‘pickle’ from ‘/homes/alexandrov/.pyenv/versions/3.6.5/lib/python3.6/pickle.py’&gt;)</code><br>从文件中加载由<code>torch.save()</code>方法存储的对象。<br>序列化存储调用。</p>
+<h1 id="torch-nn"><a href="#torch-nn" class="headerlink" title="torch.nn"></a>torch.nn</h1><h2 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h2><h3 id="torch-nn-Module"><a href="#torch-nn-Module" class="headerlink" title="torch.nn.Module"></a>torch.nn.Module</h3><p>所有网络模型的基类，即所有自定义的网络都要继承该类。<br><code>Modules</code>可以包含其他<code>Modules</code>， 允许嵌套成树形结构。<br>当我们调用<code>xxmodel.cuda()</code>的时候，模型的参数也会转化为<code>cuda Tensor</code>。  </p>
+<h4 id="cuda"><a href="#cuda" class="headerlink" title="cuda"></a>cuda</h4><p><code>cuda(device=None)</code><br>这个方法帮助我们把所有的模型参数和<code>buffers</code>转移到GPU。<br>注意，这会使得参数和<code>buffers</code>变成不同的对象（<code>cuda Tensor</code>）。所以如果<br>优化时模型存在于GPU上时，本方法需要 <strong>在构造优化器之前被调用</strong>。  </p>
+<p>与之对应的有个方法<code>cpu()</code>。  </p>
+<h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4><p><code>eval()</code><br>使模型处于<code>evaluation</code>模式。 对特定的模块(层)有效，比如<code>Dropout</code>,<code>BatchNorm</code>等，<br>在遇到更具体的模块的时候注意它们的文档。  </p>
+<h4 id="train"><a href="#train" class="headerlink" title="train"></a>train</h4><p><code>train()</code><br>使模型处于<code>training</code>模式，同<code>eval()</code>方法，对特点模块有效。</p>
+<h4 id="forward"><a href="#forward" class="headerlink" title="forward"></a>forward</h4><p><code>forward(*input)</code><br>定义每次调用时的计算过程。 <strong>所有的子类都需要覆盖这个方法</strong>。  </p>
+<h4 id="to"><a href="#to" class="headerlink" title="to"></a>to</h4><p><code>to(*args, **kwargs)</code><br>移动或者映射所有的参数、<code>buffers</code>。  </p>
+<p>可以这么调用:  </p>
+<ul>
+<li><code>to(device=None, dtype=None, non_blocking=False)</code>  </li>
+<li><code>to(dtype, non_blocking=False)</code>  </li>
+<li><code>to(tensor, non_blocking=False)</code>  </li>
+</ul>
+<p>这里的<code>dtype</code>是此模块中浮点参数和缓冲区的所需浮点类型.  </p>
+<h4 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h4><p><code>modules()</code><br>返回可以迭代模型所有模块的迭代器(<code>yields</code>)。  </p>
+<h4 id="load-state-dict"><a href="#load-state-dict" class="headerlink" title="load_state_dict"></a>load_state_dict</h4><p><code>load_state_dict(state_dict,strict=True)</code><br>从<code>state_dict</code>中拷贝参数和缓冲区。<br>如果<code>strict</code>为真，那么<code>state_dict</code>就必须和模型<code>state_dict()</code>方法返回的key完全匹配。<br>这个方法可以用来调用<code>pretrain</code>的model。  </p>
+<h4 id="state-dict"><a href="#state-dict" class="headerlink" title="state_dict"></a>state_dict</h4><p><code>state_dict(destination=None,prefix=&#39;&#39;,keep_vars=False)</code><br>返回包含模块完整状态的词典。<br>所有的参数和缓冲区都被包含进去。key对应参数和缓冲区的名字。</p>
+<h4 id="named-modules"><a href="#named-modules" class="headerlink" title="named_modules"></a>named_modules</h4><p><code>named_modules(memo=None,prefix=&#39;&#39;)</code><br>返回网络中所有模块的迭代器<code>yields</code>，同时包含模块的名称以及模块本身。  </p>
 <hr>
-<p><center><strong>持续收集中～ 🛰</strong></center>  </p>
-
+<h3 id="torch-nn-ModuleList-modules-None"><a href="#torch-nn-ModuleList-modules-None" class="headerlink" title="torch.nn.ModuleList(modules=None)"></a>torch.nn.ModuleList(modules=None)</h3><p>在<code>list</code>中持有若干子模块。<br>可以像python自带的<code>list</code>一样，调用下标。但是它包含的模块均是正确注册<br>过的，可以通过调用<code>modules</code>方法可视化。 </p>
+<h4 id="append"><a href="#append" class="headerlink" title="append"></a>append</h4><p><code>append(module)</code><br>添加一个。  </p>
+<h4 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h4><p><code>extend(modules)</code><br>添加多个。  </p>
+<hr>
+<h3 id="torch-nn-Sequential-args"><a href="#torch-nn-Sequential-args" class="headerlink" title="torch.nn.Sequential(*args)"></a>torch.nn.Sequential(*args)</h3><p>一个队列容器，模块传递进构造器的顺序就是它们添加到模型的顺序，因此一个有序的模块字典<code>OrderedDict</code>也可以传入构造器中。  </p>
+<hr>
+<h2 id="Pooling-layers"><a href="#Pooling-layers" class="headerlink" title="Pooling layers"></a>Pooling layers</h2><h3 id="AdaptiveMaxPool2d"><a href="#AdaptiveMaxPool2d" class="headerlink" title="AdaptiveMaxPool2d"></a>AdaptiveMaxPool2d</h3><p><code>torch.nn.AdaptiveMaxPool2d(output_size,return_indices=False)</code><br>在由多个输入平面组成的输入信号上应用2D自适应最大池化。<br>对于任何输入尺寸，输出的大小为H x W. 输出特征的数量等于输入平面的数量。  </p>
+<p>参数：  </p>
+<ul>
+<li><code>output_size</code>- 目标输出尺寸。可以是一个<code>tuple</code>，也可以是单个值（表示宽和高相同）。<br>除了<code>int</code>也可以是<code>None</code>，代表输出和输入尺寸相同。  </li>
+<li><code>return_indices</code>- 默认<code>False</code>。如果是<code>True</code>，和输出一起返回切片。对<code>nn.MaxUnpool2d</code>有用。  </li>
+</ul>
+<hr>
+<h2 id="Normalization-layers"><a href="#Normalization-layers" class="headerlink" title="Normalization layers"></a>Normalization layers</h2><h3 id="BatchNorm2d"><a href="#BatchNorm2d" class="headerlink" title="BatchNorm2d"></a>BatchNorm2d</h3><p><code>BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)</code><br>未完。。  </p>
+<hr>
+<h2 id="Non-linear-activations"><a href="#Non-linear-activations" class="headerlink" title="Non-linear activations"></a>Non-linear activations</h2><h3 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h3><ul>
+<li>Input: (N,∗) where * means, any number of additional dimensions</li>
+<li>Output: (N,∗), same shape as the input  </li>
+</ul>
+<hr>
+<h2 id="Dropout-layers"><a href="#Dropout-layers" class="headerlink" title="Dropout layers"></a>Dropout layers</h2><h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h3><p><code>torch.nn.Dropout(p=0.5, inplace=False)</code><br>在训练期间，使用来自伯努利分布的样本以概率p随机地将输入张量的一些元素归零。 在每个前向传播中随机化零个元素。<br>此外，输出按1/(1-p)的比例缩放.  </p>
+<ul>
+<li>p – probability of an element to be zeroed. Default: 0.5</li>
+<li>inplace – If set to True, will do this operation in-place. Default: False</li>
+</ul>
+<hr>
+<h1 id="torch-nn-functional"><a href="#torch-nn-functional" class="headerlink" title="torch.nn.functional"></a>torch.nn.functional</h1><h2 id="Convolution-functions"><a href="#Convolution-functions" class="headerlink" title="Convolution functions"></a>Convolution functions</h2><h3 id="conv2d"><a href="#conv2d" class="headerlink" title="conv2d"></a>conv2d</h3><p><code>conv2d(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1) → Tensor</code>  </p>
+<ul>
+<li>input – 输入张量的形状 (minibatch×in_channels×iH×iW)  </li>
+<li>weight – filters of shape (out_channels × (in_channels/groups) × kH × kW)  </li>
+<li>bias – optional bias tensor of shape (out_channels). Default: None  </li>
+<li>stride – 卷积核的步长. 可以是一个数，也可以是一个tuple (sH, sW). 默认为1  </li>
+<li>padding – 输入边缘的隐式零填充，可以是一个数或者一个tuple (padH, padW). 默认为0  </li>
+<li>dilation – 内核元素之间的间距. 可以是一个数或者一个tuple (dH, dW). 默认为1  </li>
+<li>groups – split input into groups, in_channels should be divisible by the number of groups. Default: 1</li>
+</ul>
+<h2 id="Pooling-functions"><a href="#Pooling-functions" class="headerlink" title="Pooling functions"></a>Pooling functions</h2>
       
     </div>
     <footer class="article-footer">
@@ -280,7 +322,7 @@
 
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trick/">trick</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyTorch/">PyTorch</a></li></ul>
 
     </footer>
   </div>
@@ -288,19 +330,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/09/13/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/26/训练网络管理实验的科学探索/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/13/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">训练网络管理实验的科学探索💪🏼</div>
+      <div class="article-nav-title">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</div>
     </a>
   
 </nav>
@@ -314,7 +347,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具-🔧"><span class="nav-number">1.</span> <span class="nav-text">工具 🔧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-desktop-with-openssh-server"><span class="nav-number">1.1.</span> <span class="nav-text">ubuntu desktop with openssh-server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tmux"><span class="nav-number">1.2.</span> <span class="nav-text">tmux</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tricks-🚲"><span class="nav-number">2.</span> <span class="nav-text">Tricks 🚲</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell脚本"><span class="nav-number">2.1.</span> <span class="nav-text">shell脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log的生成"><span class="nav-number">2.2.</span> <span class="nav-text">log的生成</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#torch"><span class="nav-number">1.</span> <span class="nav-text">torch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Serialization"><span class="nav-number">1.1.</span> <span class="nav-text">Serialization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#torch-save"><span class="nav-number">1.1.1.</span> <span class="nav-text">torch.save</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#torch-load"><span class="nav-number">1.1.2.</span> <span class="nav-text">torch.load</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#torch-nn"><span class="nav-number">2.</span> <span class="nav-text">torch.nn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Containers"><span class="nav-number">2.1.</span> <span class="nav-text">Containers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#torch-nn-Module"><span class="nav-number">2.1.1.</span> <span class="nav-text">torch.nn.Module</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cuda"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">cuda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eval"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">eval</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#train"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">train</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forward"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">forward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#to"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">to</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#modules"><span class="nav-number">2.1.1.6.</span> <span class="nav-text">modules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#load-state-dict"><span class="nav-number">2.1.1.7.</span> <span class="nav-text">load_state_dict</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#state-dict"><span class="nav-number">2.1.1.8.</span> <span class="nav-text">state_dict</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#named-modules"><span class="nav-number">2.1.1.9.</span> <span class="nav-text">named_modules</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#torch-nn-ModuleList-modules-None"><span class="nav-number">2.1.2.</span> <span class="nav-text">torch.nn.ModuleList(modules=None)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#append"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">append</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extend"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">extend</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#torch-nn-Sequential-args"><span class="nav-number">2.1.3.</span> <span class="nav-text">torch.nn.Sequential(*args)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pooling-layers"><span class="nav-number">2.2.</span> <span class="nav-text">Pooling layers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AdaptiveMaxPool2d"><span class="nav-number">2.2.1.</span> <span class="nav-text">AdaptiveMaxPool2d</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalization-layers"><span class="nav-number">2.3.</span> <span class="nav-text">Normalization layers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BatchNorm2d"><span class="nav-number">2.3.1.</span> <span class="nav-text">BatchNorm2d</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-linear-activations"><span class="nav-number">2.4.</span> <span class="nav-text">Non-linear activations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReLU"><span class="nav-number">2.4.1.</span> <span class="nav-text">ReLU</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dropout-layers"><span class="nav-number">2.5.</span> <span class="nav-text">Dropout layers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dropout"><span class="nav-number">2.5.1.</span> <span class="nav-text">Dropout</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#torch-nn-functional"><span class="nav-number">3.</span> <span class="nav-text">torch.nn.functional</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Convolution-functions"><span class="nav-number">3.1.</span> <span class="nav-text">Convolution functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#conv2d"><span class="nav-number">3.1.1.</span> <span class="nav-text">conv2d</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pooling-functions"><span class="nav-number">3.2.</span> <span class="nav-text">Pooling functions</span></a></li></ol></li></ol>
     
     </div>
   </aside>
