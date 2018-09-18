@@ -17,18 +17,18 @@
                         
                                 
                                         
-                                                <meta name="description" content="LeetCode Challenge 🏆   挑战目标🎖: 100道DP题 &amp;nbsp;&amp;nbsp;&amp;nbsp;时间&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🗓: &amp;nbsp;70天 （2018-09-13 👉🏻 2018-11-15） &amp;nbsp;&amp;nbsp;&amp;nbsp;进度&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🛴: &amp;nbsp;12/100 成功奖励🍭: ███">
+                                                <meta name="description" content="LeetCode Challenge 🏆   挑战目标🎖: 100道DP题 &amp;nbsp;&amp;nbsp;&amp;nbsp;时间&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🗓: &amp;nbsp;70天 （2018-09-13 👉🏻 2018-11-15） &amp;nbsp;&amp;nbsp;&amp;nbsp;进度&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🛴: &amp;nbsp;14/100 成功奖励🍭: ███">
 <meta name="keywords" content="leetcode,dynamic programming,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️">
 <meta property="og:url" content="http://blog.x-fei.me/2018/09/16/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/index.html">
 <meta property="og:site_name" content="Make everyday count!">
-<meta property="og:description" content="LeetCode Challenge 🏆   挑战目标🎖: 100道DP题 &amp;nbsp;&amp;nbsp;&amp;nbsp;时间&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🗓: &amp;nbsp;70天 （2018-09-13 👉🏻 2018-11-15） &amp;nbsp;&amp;nbsp;&amp;nbsp;进度&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🛴: &amp;nbsp;12/100 成功奖励🍭: ███">
+<meta property="og:description" content="LeetCode Challenge 🏆   挑战目标🎖: 100道DP题 &amp;nbsp;&amp;nbsp;&amp;nbsp;时间&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🗓: &amp;nbsp;70天 （2018-09-13 👉🏻 2018-11-15） &amp;nbsp;&amp;nbsp;&amp;nbsp;进度&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🛴: &amp;nbsp;14/100 成功奖励🍭: ███">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-17T06:47:45.350Z">
+<meta property="og:updated_time" content="2018-09-18T11:16:23.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️">
-<meta name="twitter:description" content="LeetCode Challenge 🏆   挑战目标🎖: 100道DP题 &amp;nbsp;&amp;nbsp;&amp;nbsp;时间&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🗓: &amp;nbsp;70天 （2018-09-13 👉🏻 2018-11-15） &amp;nbsp;&amp;nbsp;&amp;nbsp;进度&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🛴: &amp;nbsp;12/100 成功奖励🍭: ███">
+<meta name="twitter:description" content="LeetCode Challenge 🏆   挑战目标🎖: 100道DP题 &amp;nbsp;&amp;nbsp;&amp;nbsp;时间&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🗓: &amp;nbsp;70天 （2018-09-13 👉🏻 2018-11-15） &amp;nbsp;&amp;nbsp;&amp;nbsp;进度&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;🛴: &amp;nbsp;14/100 成功奖励🍭: ███">
                                                     
 
                                                             
@@ -231,10 +231,85 @@
       
         <p><center> LeetCode Challenge 🏆 </center></p>
 <blockquote>
-<p>挑战目标🎖: 100道DP题<br> <span>&nbsp;&nbsp;&nbsp;</span>时间<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>🗓: <span>&nbsp;</span>70天 （2018-09-13 👉🏻 2018-11-15）<br> <span>&nbsp;&nbsp;&nbsp;</span>进度<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>🛴: <span>&nbsp;</span>12/100<br> 成功奖励🍭: ██████████<br> 失败惩罚🙈: ██████████  </p>
+<p>挑战目标🎖: 100道DP题<br> <span>&nbsp;&nbsp;&nbsp;</span>时间<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>🗓: <span>&nbsp;</span>70天 （2018-09-13 👉🏻 2018-11-15）<br> <span>&nbsp;&nbsp;&nbsp;</span>进度<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>🛴: <span>&nbsp;</span>14/100<br> 成功奖励🍭: ██████████<br> 失败惩罚🙈: ██████████  </p>
 </blockquote>
-<p>Solved: 🥈🥉🥉<br><a id="more"></a></p>
+<p>Solved: 🥈🥉🥉🥉🥉<br><a id="more"></a></p>
 <hr>
+<h2 id="Day6"><a href="#Day6" class="headerlink" title="Day6"></a>Day6</h2><p><strong>Date: 18-09-18</strong>  </p>
+<h3 id="474-M"><a href="#474-M" class="headerlink" title="474-M"></a>474-M</h3><p><a href="https://leetcode.com/problems/ones-and-zeroes/description/" target="_blank" rel="noopener">474. Ones and Zeroes</a>  </p>
+<blockquote>
+<p>Difficulty：★★★☆☆<br>Beats: 15.76%<br>Time Complexity: O(n)<br>Remark: 就题目本身而言，属于经典的0/1背包问题，而且属于二维费用的背包问题。同时这题揭露了LeetCode中python3和python评判的差异，同样的代码，python3用时更久。  </p>
+</blockquote>
+<p>Explanation:<br>先Mark一下，状态方程很简单：<code>dp[i][j] = max(dp[i][j], dp[i-zeros][j-ones]+1)</code><br>留待背包问题做个总结。  </p>
+<p>Code:  </p>
+<pre><code class="py"><span class="comment"># 使用python，可AC；使用python3，TLE</span>
+<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">findMaxForm</span><span class="params">(self, strs, m, n)</span>:</span>
+        <span class="string">"""</span>
+<span class="string">        :type strs: List[str]</span>
+<span class="string">        :type m: int</span>
+<span class="string">        :type n: int</span>
+<span class="string">        :rtype: int</span>
+<span class="string">        """</span>
+        dp = [[<span class="number">0</span>] * (n+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(m+<span class="number">1</span>) ]
+        <span class="keyword">for</span> s <span class="keyword">in</span> strs:
+            s0 = s.count(<span class="string">'0'</span>)
+            s1 = len(s) - s0
+            <span class="keyword">for</span> i <span class="keyword">in</span> range(m, s0<span class="number">-1</span>, <span class="number">-1</span>):
+                <span class="keyword">for</span> j <span class="keyword">in</span> range(n, s1<span class="number">-1</span>, <span class="number">-1</span>):
+                    dp[i][j] = max(dp[i][j], dp[i-s0][j-s1]+<span class="number">1</span>)
+
+        <span class="keyword">return</span> dp[m][n]
+</code></pre>
+<hr>
+
+<h3 id="392-M"><a href="#392-M" class="headerlink" title="392-M"></a>392-M</h3><p><a href="https://leetcode.com/problems/is-subsequence/description/" target="_blank" rel="noopener">392. Is Subsequence</a></p>
+<blockquote>
+<p>Difficulty：★★★☆☆<br>Beats: 62.02%<br>Time Complexity: O(nm)<br>Remark: 中规中矩的DP，但是构建状态矩阵的时候MLE了两次，之后改用了递归。</p>
+</blockquote>
+<p>Explanation:  </p>
+<ul>
+<li><p><em>Step1: 判断</em><br>满足重叠子问题、最优子结构性质。</p>
+</li>
+<li><p><em>Step2: 状态</em><br>首先明确一点，如果一个串B是串A的子串，那么串B中字符出现的先后顺序在串A中也是一样的。想一想为什么？<br>在知道了上面一这点后，我们可以这样定义状态，若当前字符s[i]对应串A的A[j]，其状态为<code>true</code>。  </p>
+</li>
+<li><p><em>Step3: 状态方程</em><br>那么s[i+1]在哪里找呢？我们需要在A[j+1:]里找，重复上面的过程。如果有一次s[k]没有找到对应字符，直接返回<code>false</code>。</p>
+</li>
+<li><p><em>Step4: Tabulation or Memorizatio</em><br>这里我用的是自上而下的递归。  </p>
+</li>
+</ul>
+<p>Code:  </p>
+<pre><code class="py"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">isSubsequence</span><span class="params">(self, s, t)</span>:</span>
+        <span class="string">"""</span>
+<span class="string">        :type s: str</span>
+<span class="string">        :type t: str</span>
+<span class="string">        :rtype: bool</span>
+<span class="string">        """</span>
+        <span class="function"><span class="keyword">def</span> <span class="title">sub</span><span class="params">(s, t)</span>:</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="keyword">True</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> t: <span class="keyword">return</span> <span class="keyword">False</span>
+            target = s[<span class="number">0</span>]
+            idx = <span class="number">-1</span>
+            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(t)):
+                <span class="keyword">if</span> target == t[i]:
+                    idx = i
+                    <span class="keyword">break</span>
+            <span class="keyword">if</span> idx &lt; <span class="number">0</span>:
+                <span class="keyword">return</span> <span class="keyword">False</span>
+            <span class="keyword">return</span> sub(s[<span class="number">1</span>:], t[idx+<span class="number">1</span>:])
+        <span class="keyword">return</span> sub(s, t)
+
+    <span class="comment"># 利用Python自带函数  </span>
+    <span class="function"><span class="keyword">def</span> <span class="title">isSubsequence</span><span class="params">(self, s, t)</span>:</span>
+        ind = <span class="number">-1</span>
+        <span class="keyword">for</span> i <span class="keyword">in</span> s:
+            <span class="keyword">try</span>: ind = t.index(i,ind+<span class="number">1</span>)
+            <span class="keyword">except</span>: <span class="keyword">return</span> <span class="keyword">False</span>
+        <span class="keyword">return</span> <span class="keyword">True</span>
+</code></pre>
+<hr>
+
 <h2 id="Day5"><a href="#Day5" class="headerlink" title="Day5"></a>Day5</h2><p><strong>Date: 18-09-17</strong>  </p>
 <h3 id="357-M"><a href="#357-M" class="headerlink" title="357-M"></a>357-M</h3><p><a href="https://leetcode.com/problems/count-numbers-with-unique-digits/description/" target="_blank" rel="noopener">357. Count Numbers with Unique Digits</a>  </p>
 <blockquote>
@@ -728,7 +803,7 @@ pre = tmp
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Day5"><span class="nav-number">1.</span> <span class="nav-text">Day5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#357-M"><span class="nav-number">1.1.</span> <span class="nav-text">357-M</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day4"><span class="nav-number">2.</span> <span class="nav-text">Day4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#714-M"><span class="nav-number">2.1.</span> <span class="nav-text">714-M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#647-M"><span class="nav-number">2.2.</span> <span class="nav-text">647-M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#877-M"><span class="nav-number">2.3.</span> <span class="nav-text">877-M</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day3"><span class="nav-number">3.</span> <span class="nav-text">Day3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#413-M"><span class="nav-number">3.1.</span> <span class="nav-text">413-M</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day2"><span class="nav-number">4.</span> <span class="nav-text">Day2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#338-M"><span class="nav-number">4.1.</span> <span class="nav-text">338-M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#053-E"><span class="nav-number">4.2.</span> <span class="nav-text">053-E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#303-E"><span class="nav-number">4.3.</span> <span class="nav-text">303-E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#198-E"><span class="nav-number">4.4.</span> <span class="nav-text">198-E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day1"><span class="nav-number">5.</span> <span class="nav-text">Day1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#746-E"><span class="nav-number">5.1.</span> <span class="nav-text">746-E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#121-E"><span class="nav-number">5.2.</span> <span class="nav-text">121-E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#070-E"><span class="nav-number">5.3.</span> <span class="nav-text">070-E</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Day6"><span class="nav-number">1.</span> <span class="nav-text">Day6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#474-M"><span class="nav-number">1.1.</span> <span class="nav-text">474-M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#392-M"><span class="nav-number">1.2.</span> <span class="nav-text">392-M</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day5"><span class="nav-number">2.</span> <span class="nav-text">Day5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#357-M"><span class="nav-number">2.1.</span> <span class="nav-text">357-M</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day4"><span class="nav-number">3.</span> <span class="nav-text">Day4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#714-M"><span class="nav-number">3.1.</span> <span class="nav-text">714-M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#647-M"><span class="nav-number">3.2.</span> <span class="nav-text">647-M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#877-M"><span class="nav-number">3.3.</span> <span class="nav-text">877-M</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day3"><span class="nav-number">4.</span> <span class="nav-text">Day3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#413-M"><span class="nav-number">4.1.</span> <span class="nav-text">413-M</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day2"><span class="nav-number">5.</span> <span class="nav-text">Day2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#338-M"><span class="nav-number">5.1.</span> <span class="nav-text">338-M</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#053-E"><span class="nav-number">5.2.</span> <span class="nav-text">053-E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#303-E"><span class="nav-number">5.3.</span> <span class="nav-text">303-E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#198-E"><span class="nav-number">5.4.</span> <span class="nav-text">198-E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day1"><span class="nav-number">6.</span> <span class="nav-text">Day1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#746-E"><span class="nav-number">6.1.</span> <span class="nav-text">746-E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#121-E"><span class="nav-number">6.2.</span> <span class="nav-text">121-E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#070-E"><span class="nav-number">6.3.</span> <span class="nav-text">070-E</span></a></li></ol></li></ol>
     
     </div>
   </aside>
