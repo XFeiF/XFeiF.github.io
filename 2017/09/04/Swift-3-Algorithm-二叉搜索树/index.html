@@ -82,17 +82,18 @@
                                                                                         
                                                                                                 <link rel="stylesheet" href="/css/dialog.css">
                                                                                                     <link rel="stylesheet" href="/css/bigfoot-default.css">
-                                                                                                        
-
+                                                                                                        <link rel="stylesheet" href="/css/directory.css">
                                                                                                             
 
-                                                                                                                    
-                                                                                                                        <link rel="stylesheet" href="/css/header-post.css">
-                                                                                                                        
+                                                                                                                
 
+                                                                                                                        
+                                                                                                                            <link rel="stylesheet" href="/css/header-post.css">
                                                                                                                             
 
-                                                                                                                                    
+                                                                                                                                
+
+                                                                                                                                        
 
 </head>
 
@@ -204,32 +205,34 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Swift-3-Algorithm-二叉搜索树" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
+          <section id="main" style="float:none;"><article id="post-Swift-3-Algorithm-二叉搜索树" style="width: 75%; float:left;"
+     class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
   
     <h1 class="thumb" class="article-title" itemprop="name">
       Swift 3 Algorithm: 二叉搜索树
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
+                        </header>
+                        
+                            <div class="article-meta">
+                                
 	<a href="/2017/09/04/Swift-3-Algorithm-二叉搜索树/" class="article-date">
 	  <time datetime="2017-09-04T07:02:56.000Z" itemprop="datePublished">2017-09-04</time>
 	</a>
 
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
+                                    
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                            <blockquote>
 <p>有趣的 <code>Swift 3</code> 算法。  </p>
 </blockquote>
 <p><em>今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！</em><br>这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！  </p>
@@ -247,12 +250,12 @@
 <p>可以在右侧面板中看到对于不存在的元素，二叉搜索树需要搜索三次，而for循环则需要7次。对于元素11，二叉搜索树需要搜索2次，for循环依然需要11次。  </p>
 <p>本文除了帮助理解二叉搜索树，它的效率之外，还需要了解swift可选值的解析～  </p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-        
+                                                
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                
 	<section id="comments" class="comment">
 	  <div id="disqus_thread">
 	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
@@ -279,14 +282,14 @@
 
 
 
-      
-      
+                                                    
+                                                        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
 
-    </footer>
-  </div>
-  
-    
+                            </footer>
+            </div>
+            
+                
 <nav id="article-nav">
   
     <a href="/2017/09/20/武汉一行/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -306,20 +309,20 @@
   
 </nav>
 
-  
+                    
 </article>
 
 <!-- Table of Contents -->
 
-  <aside id="toc-sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
-    
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例树"><span class="nav-number">2.</span> <span class="nav-text">样例树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建结点"><span class="nav-number">3.</span> <span class="nav-text">创建结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建样例树"><span class="nav-number">4.</span> <span class="nav-text">构建样例树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现算法"><span class="nav-number">5.</span> <span class="nav-text">实现算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">6.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">7.</span> <span class="nav-text">分析</span></a></li></ol>
-    
-    </div>
-  </aside>
-</section>
+    <aside id="toc-sidebar">
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            
+                <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例树"><span class="nav-number">2.</span> <span class="nav-text">样例树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建结点"><span class="nav-number">3.</span> <span class="nav-text">创建结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建样例树"><span class="nav-number">4.</span> <span class="nav-text">构建样例树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现算法"><span class="nav-number">5.</span> <span class="nav-text">实现算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">6.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">7.</span> <span class="nav-text">分析</span></a></li></ol>
+                    
+        </div>
+    </aside>
+    </section>
         
       </div>
       

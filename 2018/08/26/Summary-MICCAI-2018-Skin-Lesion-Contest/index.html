@@ -82,17 +82,18 @@
                                                                                         
                                                                                                 <link rel="stylesheet" href="/css/dialog.css">
                                                                                                     <link rel="stylesheet" href="/css/bigfoot-default.css">
-                                                                                                        
-
+                                                                                                        <link rel="stylesheet" href="/css/directory.css">
                                                                                                             
 
-                                                                                                                    
-                                                                                                                        <link rel="stylesheet" href="/css/header-post.css">
-                                                                                                                        
+                                                                                                                
 
+                                                                                                                        
+                                                                                                                            <link rel="stylesheet" href="/css/header-post.css">
                                                                                                                             
 
-                                                                                                                                    
+                                                                                                                                
+
+                                                                                                                                        
 
 </head>
 
@@ -204,32 +205,34 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Summary-MICCAI-2018-Skin-Lesion-Contest" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
+          <section id="main" style="float:none;"><article id="post-Summary-MICCAI-2018-Skin-Lesion-Contest" style="width: 75%; float:left;"
+     class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
   
     <h1 class="thumb" class="article-title" itemprop="name">
       Summary: MICCAI 2018 Skin Lesion Contest
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
+                        </header>
+                        
+                            <div class="article-meta">
+                                
 	<a href="/2018/08/26/Summary-MICCAI-2018-Skin-Lesion-Contest/" class="article-date">
 	  <time datetime="2018-08-25T17:31:37.000Z" itemprop="datePublished">2018-08-26</time>
 	</a>
 
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
+                                    
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                            <blockquote>
 <p>Time：6.26-7.27<br>Location: SYSU<br>Contest: MICCAI 2018 SKIN Lesion Analysis Towards Melanoma Detection<br>Task: Lesion Segmentation<br>Rank: 29/66</p>
 </blockquote>
 <p>严格意义上我第一次打这种比赛。除了做白日梦，无用功，大概就只能搬搬砖了。有很多经验教训，只能说<code>too old, too naive</code>。下面从数据预处理，模型选择与实现，后处理，以及模型集成这几个方面总结一下这次比赛。  </p>
@@ -276,12 +279,12 @@
     });
 </script>
 
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-        
+                                                
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                
 	<section id="comments" class="comment">
 	  <div id="disqus_thread">
 	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
@@ -308,14 +311,14 @@
 
 
 
-      
-      
+                                                    
+                                                        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/summary/">summary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/think/">think</a></li></ul>
 
-    </footer>
-  </div>
-  
-    
+                            </footer>
+            </div>
+            
+                
 <nav id="article-nav">
   
     <a href="/2018/08/26/训练网络管理实验的科学探索/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -335,20 +338,20 @@
   
 </nav>
 
-  
+                    
 </article>
 
 <!-- Table of Contents -->
 
-  <aside id="toc-sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
-    
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">1.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Resize"><span class="nav-number">1.1.</span> <span class="nav-text">Resize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preprocessing"><span class="nav-number">1.2.</span> <span class="nav-text">Preprocessing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Augmentation"><span class="nav-number">1.3.</span> <span class="nav-text">Augmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kth-folder-Cross-Validation"><span class="nav-number">1.4.</span> <span class="nav-text">Kth folder Cross Validation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型选择与实现"><span class="nav-number">2.</span> <span class="nav-text">模型选择与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择"><span class="nav-number">2.1.</span> <span class="nav-text">选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型实现"><span class="nav-number">2.2.</span> <span class="nav-text">模型实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">2.3.</span> <span class="nav-text">训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后处理Post-Processing"><span class="nav-number">3.</span> <span class="nav-text">后处理Post_Processing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型集成"><span class="nav-number">4.</span> <span class="nav-text">模型集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单模型集成"><span class="nav-number">4.1.</span> <span class="nav-text">单模型集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多模型集成"><span class="nav-number">4.2.</span> <span class="nav-text">多模型集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多模型生成策略"><span class="nav-number">4.2.1.</span> <span class="nav-text">多模型生成策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多模型集成方法"><span class="nav-number">4.2.2.</span> <span class="nav-text">多模型集成方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol>
-    
-    </div>
-  </aside>
-</section>
+    <aside id="toc-sidebar">
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            
+                <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">1.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Resize"><span class="nav-number">1.1.</span> <span class="nav-text">Resize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preprocessing"><span class="nav-number">1.2.</span> <span class="nav-text">Preprocessing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Augmentation"><span class="nav-number">1.3.</span> <span class="nav-text">Augmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kth-folder-Cross-Validation"><span class="nav-number">1.4.</span> <span class="nav-text">Kth folder Cross Validation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型选择与实现"><span class="nav-number">2.</span> <span class="nav-text">模型选择与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择"><span class="nav-number">2.1.</span> <span class="nav-text">选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型实现"><span class="nav-number">2.2.</span> <span class="nav-text">模型实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">2.3.</span> <span class="nav-text">训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后处理Post-Processing"><span class="nav-number">3.</span> <span class="nav-text">后处理Post_Processing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型集成"><span class="nav-number">4.</span> <span class="nav-text">模型集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单模型集成"><span class="nav-number">4.1.</span> <span class="nav-text">单模型集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多模型集成"><span class="nav-number">4.2.</span> <span class="nav-text">多模型集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多模型生成策略"><span class="nav-number">4.2.1.</span> <span class="nav-text">多模型生成策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多模型集成方法"><span class="nav-number">4.2.2.</span> <span class="nav-text">多模型集成方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol>
+                    
+        </div>
+    </aside>
+    </section>
         
       </div>
       
