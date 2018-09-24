@@ -6,6 +6,8 @@
     
         <title>
             
+                多项式拟合-线性回归(python) |
+                    
                         Make everyday count!
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,16 +17,51 @@
                         
                                 
                                         
-                                                <meta name="description" content="I&apos;ll follow You Lord for all my days!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Make everyday count!">
-<meta property="og:url" content="http://blog.x-fei.me/index.html">
+                                                <meta name="description" content="Machine Learning Exercise 1.1     1.实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4">
+<meta name="keywords" content="python,linear regression,machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多项式拟合-线性回归(Python)">
+<meta property="og:url" content="http://blog.x-fei.me/2018/09/24/线性回归-多项式拟合/index.html">
 <meta property="og:site_name" content="Make everyday count!">
-<meta property="og:description" content="I&apos;ll follow You Lord for all my days!">
+<meta property="og:description" content="Machine Learning Exercise 1.1     1.实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/LSE.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/RMS.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/loss_with_reg.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/def_func.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/theta_grad.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/theta_update.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/1order2.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i1000.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i10000.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i20000.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i10000l1.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i10000l2.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i3000LSE.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i3000MSE.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i50000s50v50.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4i50000s100v50.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o1std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o2std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o3std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o4std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o5std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o6std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o7std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o8std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o9std.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/params.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o9overfitting.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o9lambda0_1.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o9lambda0_25.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o9lambda0_5.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o9lambda1.png">
+<meta property="og:image" content="http://blog.x-fei.me/2018/09/24/images/o9lambda5.png">
+<meta property="og:updated_time" content="2018-09-24T15:27:00.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Make everyday count!">
-<meta name="twitter:description" content="I&apos;ll follow You Lord for all my days!">
+<meta name="twitter:title" content="多项式拟合-线性回归(Python)">
+<meta name="twitter:description" content="Machine Learning Exercise 1.1     1.实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4">
+<meta name="twitter:image" content="http://blog.x-fei.me/2018/09/24/images/LSE.png">
                                                     
 
                                                             
@@ -76,14 +113,16 @@
                                                                                         <link rel="stylesheet" href="/css/bootstrap.css">
 
                                                                                         
-                                                                                            <link rel="stylesheet" href="/css/home.css">
-                                                                                            
+                                                                                                <link rel="stylesheet" href="/css/dialog.css">
+                                                                                                    <link rel="stylesheet" href="/css/bigfoot-default.css">
+                                                                                                        <link rel="stylesheet" href="/css/directory.css">
+                                                                                                            
 
                                                                                                                 
-                                                                                                                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
-                                                                                                                    
 
                                                                                                                         
+                                                                                                                            <link rel="stylesheet" href="/css/header-post.css">
+                                                                                                                            
 
                                                                                                                                 
 
@@ -92,131 +131,115 @@
 </head>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  
-    <header id="header">
-
-    <!-- 背景图模式 -->
-    
-
-        
-                                <div id="intrologo" class="intro-logo">
-                                    
-
-
-
-                                        <canvas width="100%" height="100%"></canvas>
-                                        <script>
-                                            var c = document.getElementsByTagName('canvas')[0],
-                                                x = c.getContext('2d'),
-                                                w = window.innerWidth,
-                                                h = window.innerHeight,
-                                                pr = window.devicePixelRatio || 1,
-                                                f = 90,
-                                                q,
-                                                m = Math,
-                                                r = 0,
-                                                u = m.PI * 2,
-                                                v = m.cos,
-                                                z = m.random
-                                            c.width = w * pr
-                                            c.height = h * pr
-                                            x.scale(pr, pr)
-                                            x.globalAlpha = 0.6
-
-                                            <!-- 折线Polyline背景 -->
-                                                
-
-                                            function redraw() {
-                                                var pattern = Trianglify({
-                                                    width: window.innerWidth,
-                                                    height: window.innerHeight
-                                                });
-                                                pattern.canvas(c)
-                                            }
-                                            document.getElementById("intrologo").onclick = redraw
-                                            document.getElementById("intrologo").ontouchstart = redraw
-                                            redraw()
-                                            
-                                        </script>
-
-
-                                        
-                                            <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);">
-                                                
-
-                                                            
-                                                                                <div class="homelogoback"  style="border: 1px solid #404040;"
-                                                                                    >
-                                                                                        <h1>
-                                                                                            <a href="#content" id="logo">
-                                                                                                Make everyday count!
-                                                                                            </a>
-                                                                                        </h1>
-                                                                                        <h3>
-                                                                                            I&#39;ll follow You Lord for all my days!
-                                                                                        </h3>
-                                                                                        <h5>
-                                                                                            XFeiF
-                                                                                        </h5>
-                                                                                        <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-                                                                                </div>
-                                                                                
-
-                                                    </div>
-                                            </div>
-
-                                            <!-- 自适应主页背景大图 -->
-                                            
-
-                                                    <!-- home_logo_image居中 -->
-                                                    
-                                                            <script>
-                                                                var homelogodiv = document.getElementById("homelogo");
-                                                                if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-                                                                    homelogodiv.style.width = (document.body.clientWidth + 66) + "px";
-                                                                    homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-                                                                } else {
-                                                                    homelogodiv.style.width = (homelogodiv.clientWidth + 66) + "px";
-                                                                    homelogodiv.style.marginLeft = (homelogodiv.clientWidth) * -0.5 + "px";
-                                                                }
-                                                            </script>
-                                                            
-
-                                                                <div class="intro-navigate">
-                                                                    <p class="navigater-list">
-                                                                        
-                                                                            <a id="beautifont" class="main-nav-link" href="/">
-                                                                                BLOG
-                                                                            </a>
-                                                                            
-                                                                            <a id="beautifont" class="main-nav-link" href="/archives">
-                                                                                ARCHIVES
-                                                                            </a>
-                                                                            
-                                                                            <a id="beautifont" class="main-nav-link" href="/friends">
-                                                                                FRIENDS
-                                                                            </a>
-                                                                            
-                                                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
-                                                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
-                                                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
-                                                                    </p>
-                                                                </div>
-
-</header>
   
   <div id="container">
     <div id="wrap">
       
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+
+            <div class="container">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+                
+                    <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+                    
+
+                            <div class="navbar-collapse collapse">
+                                <ul class="hnav navbar-nav">
+                                    
+                                        <li>
+                                            <a class="main-nav-link" href="/">
+                                                BLOG
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a class="main-nav-link" href="/archives">
+                                                ARCHIVES
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a class="main-nav-link" href="/friends">
+                                                FRIENDS
+                                            </a>
+                                        </li>
+                                        
+                                            <li>
+                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
+                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
+                                            </li>
+                                            <li>
+                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
+                                            </li>
+                                            <li>
+                                                <!-- <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div> -->
+                                            </li>
+                            </div>
+            </div>
+
+        </div>
+    </div>
+
+</header>
+
+
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
-  
-    <article id="post-线性回归-多项式拟合"  class="article article-type-
+          <section id="main" style="float:none;"><article id="post-线性回归-多项式拟合" style="width: 75%; float:left;"
+     class="article article-type-
         post" itemscope itemprop="blogPost" >
             <div id="articleInner" class="article-inner">
                 
@@ -224,8 +247,8 @@
                         <header class="article-header">
                             
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/09/24/线性回归-多项式拟合/">多项式拟合-线性回归(Python)</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      多项式拟合-线性回归(Python)
     </h1>
   
 
@@ -396,298 +419,67 @@
                             <footer class="article-footer">
                                 
                                             
+                                                
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'xfeif';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+                                                    
                                                         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linear-regression/">linear regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/machine-learning/">machine learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
                             </footer>
             </div>
             
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Git事故-SSL23-GET-SERVER-HELLO"  class="article article-type-
-        post" itemscope itemprop="blogPost" >
-            <div id="articleInner" class="article-inner">
                 
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/21/Git事故-SSL23-GET-SERVER-HELLO/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">事故-SSL23_GET_SERVER_HELLO</div>
+    </a>
+  
+</nav>
+
                     
-                        <header class="article-header">
-                            
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/09/21/Git事故-SSL23-GET-SERVER-HELLO/">事故-SSL23_GET_SERVER_HELLO</a>
-    </h1>
-  
-
-                        </header>
-                        
-                            <div class="article-meta">
-                                
-	<a href="/2018/09/21/Git事故-SSL23-GET-SERVER-HELLO/" class="article-date">
-	  <time datetime="2018-09-21T02:27:28.000Z" itemprop="datePublished">2018-09-21</time>
-	</a>
-
-                                    
-                                        
-                            </div>
-                            <div class="article-entry" itemprop="articleBody">
-                                
-                                            <blockquote>
-<p>fatal: unable to access ‘<a href="https://github.com/xxx/yyyy.git/" target="_blank" rel="noopener">https://github.com/xxx/yyyy.git/</a>‘: error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol  </p>
-</blockquote>
-<p>有点头疼，之前使用<code>hexo deploy</code>的时候出现过这个问题，我还以为是某次网络环境差导致本地和远程的版本不一致，但是发现当我把<code>_config.yml</code>中的deploy选项中repo的<code>https</code>换成<code>http</code>之后，又能重新导向了，事情比较多就没有深究。  </p>
-<p>今天尝试<code>git push</code>的时候，又出现上面这个问题。应该Git或者它的配置出问题了。  </p>
-<p>Solution:  </p>
-<ul>
-<li>因为<code>homebrew</code>要用到连接github但是连不上，所以先下载安装包升级<code>git</code>  </li>
-<li>因为还保留这<code>http.sslversion=tlsv1.0</code>的设置，但是它已经被git给ban了，所以删掉它，网上有些解决方案要求指定：<code>git config --global http.sslVersion sslv3</code>    </li>
-<li>之前某次觉得<code>git clone</code>下载慢，所以修改了<code>proxy</code>，有点鸡肋了，删。  </li>
-</ul>
-<p>花了我早上宝贵的一个多小时，fvck。<br>PS: 想起昨天发现如果目录超出默认目录的size，就会很影响美观，所以尝试给目录加上折叠功能，加是加上了，但是有个一点瑕疵让我感觉很不爽，坑先挖了，埋不埋以后再说。  </p>
-
-                                                
-                            </div>
-                            <footer class="article-footer">
-                                
-                                            
-                                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/geek/">geek</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-                            </footer>
-            </div>
-            
 </article>
 
 <!-- Table of Contents -->
 
-  
-    <article id="post-LeetCode-Challenge-Dynamic-Programming-Problems-X-100"  class="article article-type-
-        post" itemscope itemprop="blogPost" >
-            <div id="articleInner" class="article-inner">
-                
-                    
-                        <header class="article-header">
-                            
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/09/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</a>
-    </h1>
-  
-
-                        </header>
-                        
-                            <div class="article-meta">
-                                
-	<a href="/2018/09/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/" class="article-date">
-	  <time datetime="2018-09-17T16:00:00.000Z" itemprop="datePublished">2018-09-18</time>
-	</a>
-
-                                    
-                                        
-                            </div>
-                            <div class="article-entry" itemprop="articleBody">
-                                
-                                    <p><center> LeetCode Challenge 🏆 </center></p>
-<blockquote>
-<p>挑战目标🎖: 100道DP题<br> <span>&nbsp;&nbsp;&nbsp;</span>时间<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>🗓: <span>&nbsp;</span>10/70 （2018-09-13 👉🏻 2018-11-15）<br> <span>&nbsp;&nbsp;&nbsp;</span>进度<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>🛴: <span>&nbsp;</span>21/100<br> 成功奖励🍭: ██████████<br> 失败惩罚🙈: ██████████  </p>
-</blockquote>
-<p>Solved: 🥈🥈🥉<br>
-                                        <!--  LeetCode Challenge 🏆 
-
-挑战目标🎖: 100道DP题 &nbsp;&nbsp;&nbsp;时间&nbsp;&nbsp;&nbsp;&nbsp;🗓: &nbsp;10/70 （2018-09-13 👉🏻 2018-11-15） &nbsp;&nbsp;&nbsp;进度&nbsp;&nbsp;&nbsp;&nbsp;🛴: &nbsp;21/100 成功奖励🍭......  -->
-                                        <p class="article-more-link">
-                                            <a href="/2018/09/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/#more">
-                                                Read More
-                                            </a>
-                                        </p>
-                                        
-                            </div>
-                            <footer class="article-footer">
-                                
-                                            
-                                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-                            </footer>
-            </div>
+    <aside id="toc-sidebar">
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
             
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-PyTorch-Notes"  class="article article-type-
-        post" itemscope itemprop="blogPost" >
-            <div id="articleInner" class="article-inner">
-                
+                <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Machine Learning Exercise 1.1 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-实验题目"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.实验题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-实验过程及代码"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.实验过程及代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-数据生成"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">2.1 数据生成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-损失函数"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.2 损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-梯度下降"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">2.3 梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-结果绘图"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">2.4 结果绘图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-实验结果及分析"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.实验结果及分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1同模型-不同参数"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">3.1同模型-不同参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1迭代次数学习率"><span class="nav-number">1.0.3.1.1.</span> <span class="nav-text">3.1.1迭代次数学习率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2不同评价指标"><span class="nav-number">1.0.3.1.2.</span> <span class="nav-text">3.1.2不同评价指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-添加正则项-过拟合、欠拟合分析"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">3.3 添加正则项(过拟合、欠拟合分析)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-实验总结"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.实验总结</span></a></li></ol></li></ol></li></ol>
                     
-                        <header class="article-header">
-                            
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/09/13/PyTorch-Notes/">PyTorch Api Notes 📙</a>
-    </h1>
-  
-
-                        </header>
-                        
-                            <div class="article-meta">
-                                
-	<a href="/2018/09/13/PyTorch-Notes/" class="article-date">
-	  <time datetime="2018-09-12T17:14:38.000Z" itemprop="datePublished">2018-09-13</time>
-	</a>
-
-                                    
-                                        
-                            </div>
-                            <div class="article-entry" itemprop="articleBody">
-                                
-                                    <p><center>Simple Api Notes ✍🏼 For Beginners！</center><br>记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。<br>
-                                        <!-- Simple Api Notes ✍🏼 For Beginners！记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。
-torchSerializationtorch.savetorch.save(obj, f, pickle_module=&lt;module ‘pickle’ from ‘/homes/alexandrov/.pyenv/versions/3.6.5/li......  -->
-                                        <p class="article-more-link">
-                                            <a href="/2018/09/13/PyTorch-Notes/#more">
-                                                Read More
-                                            </a>
-                                        </p>
-                                        
-                            </div>
-                            <footer class="article-footer">
-                                
-                                            
-                                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyTorch/">PyTorch</a></li></ul>
-
-                            </footer>
-            </div>
-            
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Lazy-Tricks"  class="article article-type-
-        post" itemscope itemprop="blogPost" >
-            <div id="articleInner" class="article-inner">
-                
-                    
-                        <header class="article-header">
-                            
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/26/Lazy-Tricks/">Lazy Tricks🙈</a>
-    </h1>
-  
-
-                        </header>
-                        
-                            <div class="article-meta">
-                                
-	<a href="/2018/08/26/Lazy-Tricks/" class="article-date">
-	  <time datetime="2018-08-26T05:43:31.000Z" itemprop="datePublished">2018-08-26</time>
-	</a>
-
-                                    
-                                        
-                            </div>
-                            <div class="article-entry" itemprop="articleBody">
-                                
-                                    <p>🍻 高效率 <del>懒人</del> 养成Tricks！🍻<br>
-                                        <!-- 🍻 高效率 懒人 养成Tricks！🍻持续收集中～ 🛰  
-抱歉，部分只提供建议，教程什么的，google不到算我输。
-工具 🔧ubuntu desktop with openssh-server主力机还是自己的笔记本，实验室的 laji 主机怎么办？🐶👇 👇 👇 👇给你的Ubuntu桌面版主机安装openssh-server，像访问服务器那样访问自己的主机吧！
-tmux开......  -->
-                                        <p class="article-more-link">
-                                            <a href="/2018/08/26/Lazy-Tricks/#more">
-                                                Read More
-                                            </a>
-                                        </p>
-                                        
-                            </div>
-                            <footer class="article-footer">
-                                
-                                            
-                                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trick/">trick</a></li></ul>
-
-                            </footer>
-            </div>
-            
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-训练网络管理实验的科学探索"  class="article article-type-
-        post" itemscope itemprop="blogPost" >
-            <div id="articleInner" class="article-inner">
-                
-                    
-                        <header class="article-header">
-                            
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/26/训练网络管理实验的科学探索/">训练网络管理实验的科学探索💪🏼</a>
-    </h1>
-  
-
-                        </header>
-                        
-                            <div class="article-meta">
-                                
-	<a href="/2018/08/26/训练网络管理实验的科学探索/" class="article-date">
-	  <time datetime="2018-08-26T03:26:49.000Z" itemprop="datePublished">2018-08-26</time>
-	</a>
-
-                                    
-                                        
-                            </div>
-                            <div class="article-entry" itemprop="articleBody">
-                                
-                                    <p>👏🏼 Some tips about how to manage your experiments！👏🏼  </p>
-<blockquote>
-<p>无论是打比赛还是写论文，我们都需要做大量的实验。有人说深度调参是“玄学”，为了有效探索这门玄学，需要对模型的结构、参数、结果做全面详尽的记录，对实验结果、模型参数进行合理保存。这里，分享一些我以及我的师兄教给我的在训练网络并科学管理实验方面的一些心得体会。✍🏼  </p>
-</blockquote>
-                                        <!-- 👏🏼 Some tips about how to manage your experiments！👏🏼  
-
-无论是打比赛还是写论文，我们都需要做大量的实验。有人说深度调参是“玄学”，为了有效探索这门玄学，需要对模型的结构、参数、结果做全面详尽的记录，对实验结果、模型参数进行合理保存。这里，分享一些我以及我的师兄教给我的在训练网络并科学管理实验方面的一些心得体会。✍🏼  
-
-
-数......  -->
-                                        <p class="article-more-link">
-                                            <a href="/2018/08/26/训练网络管理实验的科学探索/#more">
-                                                Read More
-                                            </a>
-                                        </p>
-                                        
-                            </div>
-                            <footer class="article-footer">
-                                
-                                            
-                                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trick/">trick</a></li></ul>
-
-                            </footer>
-            </div>
-            
-</article>
-
-<!-- Table of Contents -->
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
-
-</section>
+        </div>
+    </aside>
+    </section>
         
       </div>
-      
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
       
       <footer id="footer">
     
@@ -782,9 +574,9 @@ tmux开......  -->
 <script src="/js/scripts.js"></script>
 
 
-  <script src="/js/home.js"></script>
 
 
+  <script src="/js/dialog.js"></script>
 
 
 
@@ -875,6 +667,8 @@ ga('send', 'pageview');
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>

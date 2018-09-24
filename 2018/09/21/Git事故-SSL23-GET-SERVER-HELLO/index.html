@@ -6,7 +6,7 @@
     
         <title>
             
-                tag: algorithm |
+                事故-ssl23_get_server_hello |
                     
                         Make everyday count!
         </title>
@@ -17,16 +17,18 @@
                         
                                 
                                         
-                                                <meta name="description" content="I&apos;ll follow You Lord for all my days!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Make everyday count!">
-<meta property="og:url" content="http://blog.x-fei.me/tags/algorithm/index.html">
+                                                <meta name="description" content="fatal: unable to access ‘https://github.com/xxx/yyyy.git/‘: error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol    有点头疼，之前使用hexo deploy的时候出现过这个问题，我还以为是某次网络环境差导致本地和远程的版本不一致，但是发现当我把_con">
+<meta name="keywords" content="git,geek">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事故-SSL23_GET_SERVER_HELLO">
+<meta property="og:url" content="http://blog.x-fei.me/2018/09/21/Git事故-SSL23-GET-SERVER-HELLO/index.html">
 <meta property="og:site_name" content="Make everyday count!">
-<meta property="og:description" content="I&apos;ll follow You Lord for all my days!">
+<meta property="og:description" content="fatal: unable to access ‘https://github.com/xxx/yyyy.git/‘: error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol    有点头疼，之前使用hexo deploy的时候出现过这个问题，我还以为是某次网络环境差导致本地和远程的版本不一致，但是发现当我把_con">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-21T04:26:50.562Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Make everyday count!">
-<meta name="twitter:description" content="I&apos;ll follow You Lord for all my days!">
+<meta name="twitter:title" content="事故-SSL23_GET_SERVER_HELLO">
+<meta name="twitter:description" content="fatal: unable to access ‘https://github.com/xxx/yyyy.git/‘: error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol    有点头疼，之前使用hexo deploy的时候出现过这个问题，我还以为是某次网络环境差导致本地和远程的版本不一致，但是发现当我把_con">
                                                     
 
                                                             
@@ -90,15 +92,13 @@
                                                                                                                             
 
                                                                                                                                 
-                                                                                                                                    <link rel="stylesheet" href="/css/archive.css">
-                                                                                                                                    
 
                                                                                                                                         
 
 </head>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -120,7 +120,7 @@
 
                 
                     <a class="brand" style="
-                 border-width: 0px;  margin-top: 0px;"  >
+                 border-width: 0px;  margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
               </a>
                     
@@ -205,118 +205,121 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
+          <section id="main" style="float:none;"><article id="post-Git事故-SSL23-GET-SERVER-HELLO" style="width: 75%; float:left;"
+     class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      事故-SSL23_GET_SERVER_HELLO
+    </h1>
+  
+
+                        </header>
+                        
+                            <div class="article-meta">
+                                
+	<a href="/2018/09/21/Git事故-SSL23-GET-SERVER-HELLO/" class="article-date">
+	  <time datetime="2018-09-21T02:27:28.000Z" itemprop="datePublished">2018-09-21</time>
+	</a>
+
+                                    
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                            <blockquote>
+<p>fatal: unable to access ‘<a href="https://github.com/xxx/yyyy.git/" target="_blank" rel="noopener">https://github.com/xxx/yyyy.git/</a>‘: error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol  </p>
+</blockquote>
+<p>有点头疼，之前使用<code>hexo deploy</code>的时候出现过这个问题，我还以为是某次网络环境差导致本地和远程的版本不一致，但是发现当我把<code>_config.yml</code>中的deploy选项中repo的<code>https</code>换成<code>http</code>之后，又能重新导向了，事情比较多就没有深究。  </p>
+<p>今天尝试<code>git push</code>的时候，又出现上面这个问题。应该Git或者它的配置出问题了。  </p>
+<p>Solution:  </p>
+<ul>
+<li>因为<code>homebrew</code>要用到连接github但是连不上，所以先下载安装包升级<code>git</code>  </li>
+<li>因为还保留这<code>http.sslversion=tlsv1.0</code>的设置，但是它已经被git给ban了，所以删掉它，网上有些解决方案要求指定：<code>git config --global http.sslVersion sslv3</code>    </li>
+<li>之前某次觉得<code>git clone</code>下载慢，所以修改了<code>proxy</code>，有点鸡肋了，删。  </li>
+</ul>
+<p>花了我早上宝贵的一个多小时，fvck。<br>PS: 想起昨天发现如果目录超出默认目录的size，就会很影响美观，所以尝试给目录加上折叠功能，加是加上了，但是有个一点瑕疵让我感觉很不爽，坑先挖了，埋不埋以后再说。  </p>
+
+                                                
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'xfeif';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+                                                    
+                                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/geek/">geek</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+                            </footer>
+            </div>
+            
+                
+<nav id="article-nav">
+  
+    <a href="/2018/09/24/线性回归-多项式拟合/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          多项式拟合-线性回归(Python)
+        
+      </div>
+    </a>
   
   
+    <a href="/2018/09/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</div>
+    </a>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2018" class="archive-year">2018</a></h1>
+</nav>
+
+                    
+</article>
+
+<!-- Table of Contents -->
+
+    <aside id="toc-sidebar">
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            
+                        <ol class="nav">
+                            None
+                        </ol>
+                        
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2018/09/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/" class="archive-article-date">
-	  <time datetime="2018-09-17T16:00:00.000Z" itemprop="datePublished">2018-09-18</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/09/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/04/Swift-3-Algorithm-二叉搜索树/" class="archive-article-date">
-	  <time datetime="2017-09-04T07:02:56.000Z" itemprop="datePublished">2017-09-04</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/04/Swift-3-Algorithm-二叉搜索树/">Swift 3 Algorithm: 二叉搜索树</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/04/Swift-3-Fun-Algorithms-Filter-Map-Reduce-Higher-Order-Functions/" class="archive-article-date">
-	  <time datetime="2017-09-04T02:01:52.000Z" itemprop="datePublished">2017-09-04</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/04/Swift-3-Fun-Algorithms-Filter-Map-Reduce-Higher-Order-Functions/">Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/03/Swift-3-Fun-Algorithms-WrappingArray/" class="archive-article-date">
-	  <time datetime="2017-09-03T02:21:26.000Z" itemprop="datePublished">2017-09-03</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/Swift-3-Fun-Algorithms-WrappingArray/">Swift 3 Fun Algorithms:Wrapping Array</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-</section>
+    </aside>
+    </section>
         
       </div>
       
@@ -415,6 +418,8 @@
 
 
 
+  <script src="/js/dialog.js"></script>
+
 
 
 <!-- Google Analytics -->
@@ -504,6 +509,8 @@ ga('send', 'pageview');
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>
