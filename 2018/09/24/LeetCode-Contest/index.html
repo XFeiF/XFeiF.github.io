@@ -6,7 +6,7 @@
     
         <title>
             
-                tag: python |
+                leetcode-contest |
                     
                         Make everyday count!
         </title>
@@ -17,16 +17,18 @@
                         
                                 
                                         
-                                                <meta name="description" content="I&apos;ll follow You Lord for all my days!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Make everyday count!">
-<meta property="og:url" content="http://blog.x-fei.me/tags/python/index.html">
+                                                <meta name="description" content="ContestsContest103910-M910. Smallest Range II">
+<meta name="keywords" content="leetcode,algorithm,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-Contest">
+<meta property="og:url" content="http://blog.x-fei.me/2018/09/24/LeetCode-Contest/index.html">
 <meta property="og:site_name" content="Make everyday count!">
-<meta property="og:description" content="I&apos;ll follow You Lord for all my days!">
+<meta property="og:description" content="ContestsContest103910-M910. Smallest Range II">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-24T16:07:14.886Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Make everyday count!">
-<meta name="twitter:description" content="I&apos;ll follow You Lord for all my days!">
+<meta name="twitter:title" content="LeetCode-Contest">
+<meta name="twitter:description" content="ContestsContest103910-M910. Smallest Range II">
                                                     
 
                                                             
@@ -90,15 +92,13 @@
                                                                                                                             
 
                                                                                                                                 
-                                                                                                                                    <link rel="stylesheet" href="/css/archive.css">
-                                                                                                                                    
 
                                                                                                                                         
 
 </head>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -120,7 +120,7 @@
 
                 
                     <a class="brand" style="
-                 border-width: 0px;  margin-top: 0px;"  >
+                 border-width: 0px;  margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
               </a>
                     
@@ -205,87 +205,120 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
+          <section id="main" style="float:none;"><article id="post-LeetCode-Contest" style="width: 75%; float:left;"
+     class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
   
+    <h1 class="thumb" class="article-title" itemprop="name">
+      LeetCode-Contest
+    </h1>
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2018" class="archive-year">2018</a></h1>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2018/09/24/LeetCode-Contest/" class="archive-article-date">
+
+                        </header>
+                        
+                            <div class="article-meta">
+                                
+	<a href="/2018/09/24/LeetCode-Contest/" class="article-date">
 	  <time datetime="2018-09-24T15:28:35.000Z" itemprop="datePublished">2018-09-24</time>
 	</a>
 
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/09/24/LeetCode-Contest/">LeetCode-Contest</a>
-    </h1>
-  
+                                    
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                            <h2 id="Contests"><a href="#Contests" class="headerlink" title="Contests"></a>Contests</h2><h3 id="Contest103"><a href="#Contest103" class="headerlink" title="Contest103"></a>Contest103</h3><p><strong>910-M</strong><br><a href="https://leetcode.com/problems/smallest-range-ii/description/" target="_blank" rel="noopener">910. Smallest Range II</a>  </p>
+<a id="more"></a>
+<div><br>Given an array A of integers, for each integer A[i] we need to choose either x = -K or x = K, and add x to A[i] (only once).<br><br>After this process, we have some array B.<br><br>Return the smallest possible difference between the maximum value of B and the minimum value of B.<br><br>Example 1:<br>Input: A = [0,10], K = 2<br>Output: 6<br>Explanation: B = [2,8]<br><br>Example 2:<br>Input: A = [1,3,6], K = 3<br>Output: 3<br>Explanation: B = [4,6,3]<br><br>Note:<br>1 &lt;= A.length &lt;= 10000<br>0 &lt;= A[i] &lt;= 10000<br>0 &lt;= K &lt;= 10000<br></div>   
 
-    </header>
-  </div>
+
+<p><em>参考lee215的解释</em>  </p>
+<p><strong>Intuition:</strong><br>For each integer A[i],<br>we may choose either x = -K or x = K.  </p>
+<p>If we add K to all B[i], the result won’t change.  </p>
+<p>It’s the same as:<br>For each integer A[i], we may choose either x = 0 or x = 2 * K.  </p>
+<p><strong>Explanation:</strong><br>We sort the A first, and we choose to add x = 0 to all A[i].<br>Now we have <code>res = A[n - 1] - A[0]</code>.<br>Starting from the smallest of A, we add 2 * K to A[i],<br>hoping this process will reduce the difference.  </p>
+<p>Update the new <code>mx = max(mx, A[i] + 2 * K)</code><br>Update the new <code>mn = min(A[i + 1], A[0] + 2 * K)</code><br>Update the <code>res = min(res, mx - mn)</code>  </p>
+<p><strong>Time Complexity:</strong><br>O(NlogN), in both of the worst and the best cases.  </p>
+<p><strong>Remark:</strong><br>理解他的<code>update</code>操作很有意思。我想找一个数，它加上<code>2*K</code>之后比原来最大的数要大（意味着题目中，这个数加上K比原来最大的数减去K要大，那么此时它就是最大的；如果它加之后还没有最大的数减去K大，那原来最大的数还是最大的）。</p>
+<pre><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">smallestRangeII</span><span class="params">(self, A, K)</span>:</span>
+       A.sort()
+       res = A[<span class="number">-1</span>] - A[<span class="number">0</span>]
+       <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A) - <span class="number">1</span>):
+           big = max(A[<span class="number">-1</span>], A[i] + <span class="number">2</span> * K)
+           small = min(A[i + <span class="number">1</span>], A[<span class="number">0</span>] + <span class="number">2</span> * K)
+           res = min(res, big - small)
+       <span class="keyword">return</span> res
+</code></pre>
+
+                                                
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'xfeif';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+                                                    
+                                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+                            </footer>
+            </div>
+            
+                
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/24/线性回归-多项式拟合/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">多项式拟合-线性回归(Python)</div>
+    </a>
+  
+</nav>
+
+                    
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2018/09/24/线性回归-多项式拟合/" class="archive-article-date">
-	  <time datetime="2018-09-24T15:24:56.000Z" itemprop="datePublished">2018-09-24</time>
-	</a>
 
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/09/24/线性回归-多项式拟合/">多项式拟合-线性回归(Python)</a>
-    </h1>
-  
+<!-- Table of Contents -->
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2018/09/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/" class="archive-article-date">
-	  <time datetime="2018-09-17T16:00:00.000Z" itemprop="datePublished">2018-09-18</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/09/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-</section>
+    <aside id="toc-sidebar">
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            
+                <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Contests"><span class="nav-number">1.</span> <span class="nav-text">Contests</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Contest103"><span class="nav-number">1.1.</span> <span class="nav-text">Contest103</span></a></li></ol></li></ol>
+                    
+        </div>
+    </aside>
+    </section>
         
       </div>
       
@@ -384,6 +417,8 @@
 
 
 
+  <script src="/js/dialog.js"></script>
+
 
 
 <!-- Google Analytics -->
@@ -473,6 +508,8 @@ ga('send', 'pageview');
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>

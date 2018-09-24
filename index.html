@@ -216,6 +216,57 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-LeetCode-Contest"  class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/09/24/LeetCode-Contest/">LeetCode-Contest</a>
+    </h1>
+  
+
+                        </header>
+                        
+                            <div class="article-meta">
+                                
+	<a href="/2018/09/24/LeetCode-Contest/" class="article-date">
+	  <time datetime="2018-09-24T15:28:35.000Z" itemprop="datePublished">2018-09-24</time>
+	</a>
+
+                                    
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                    <h2 id="Contests"><a href="#Contests" class="headerlink" title="Contests"></a>Contests</h2><h3 id="Contest103"><a href="#Contest103" class="headerlink" title="Contest103"></a>Contest103</h3><p><strong>910-M</strong><br><a href="https://leetcode.com/problems/smallest-range-ii/description/" target="_blank" rel="noopener">910. Smallest Range II</a>  </p>
+                                        <!-- ContestsContest103910-M910. Smallest Range II  
+
+Given an array A of integers, for each integer A[i] we need to choose either x = -K or x = K, and add x to A[i] (only once).After this process, we h......  -->
+                                        <p class="article-more-link">
+                                            <a href="/2018/09/24/LeetCode-Contest/#more">
+                                                Read More
+                                            </a>
+                                        </p>
+                                        
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+                            </footer>
+            </div>
+            
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-线性回归-多项式拟合"  class="article article-type-
         post" itemscope itemprop="blogPost" >
             <div id="articleInner" class="article-inner">
@@ -242,156 +293,20 @@
                             </div>
                             <div class="article-entry" itemprop="articleBody">
                                 
-                                            <h1><center>Machine Learning Exercise 1.1 </center></h1>  
+                                    <h1><center>Machine Learning Exercise 1.1 </center></h1>  
 
 <h3 id="1-实验题目"><a href="#1-实验题目" class="headerlink" title="1.实验题目"></a>1.实验题目</h3><p>编写程序:模拟仿真多项式回归<br>参见 textbook p4-12(PRML)。完成以下任务:<br>1) 生成正弦序列 s(n);<br>2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);<br>3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况  </p>
 <p>注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4，实验仿真生成图 1- 6、图 1-7，给出模型系数表。</p>
-<h3 id="2-实验过程及代码"><a href="#2-实验过程及代码" class="headerlink" title="2.实验过程及代码"></a>2.实验过程及代码</h3><p>实验过程按照题目要求可以拆解为4步完成。首先进行数据采样，添加噪声；接着定义损失函数，<br>以及正则项；<br>之后采用梯度下降寻找局部最优解；再通过画图可视化实验结果。以下为具体描述：  </p>
-<h4 id="2-1-数据生成"><a href="#2-1-数据生成" class="headerlink" title="2.1 数据生成"></a>2.1 数据生成</h4><p>利用<code>numpy</code>在<code>sin(2*pi*x)</code>的基础上生成点，并添加高斯噪声（其中均值设为0，方差设为0.3）。<br>为了方便后序的实验，我们在生成数据<code>x, y</code>的同时添加阶数，  每个<code>x</code>调整为形如<br><code>x = [1, x, x^2, ..., x^M]</code>的形式。最前面的1对应目标函数的b。  </p>
-<p>数据生成代码如下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># define gaussion noise function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">noise</span><span class="params">(mu=<span class="number">0</span>, sigma=<span class="number">0.3</span>)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    dtype:</span></span><br><span class="line"><span class="string">        mu: default 0</span></span><br><span class="line"><span class="string">        sigma: default 0.3</span></span><br><span class="line"><span class="string">    rtype:</span></span><br><span class="line"><span class="string">        noise: float</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">return</span> np.random.normal(mu, sigma)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">genTargetWithNoise</span><span class="params">(x, noise=noise)</span>:</span></span><br><span class="line">    <span class="string">''' target = sin(2*pi*x) + noise</span></span><br><span class="line"><span class="string">    dtype:</span></span><br><span class="line"><span class="string">        x: float</span></span><br><span class="line"><span class="string">        noise: noise function  </span></span><br><span class="line"><span class="string">    rtype:</span></span><br><span class="line"><span class="string">        t: float</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"><span class="comment">#     assert 0 &lt;= x &lt;= 1</span></span><br><span class="line">    t = np.sin(<span class="number">2</span>*np.pi*x)</span><br><span class="line">    <span class="keyword">if</span> noise:</span><br><span class="line">        t += noise()</span><br><span class="line">    <span class="keyword">return</span> t</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">regenX</span><span class="params">(random, poly_degree)</span>:</span></span><br><span class="line">    xs = [[x ** i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, poly_degree+<span class="number">1</span>)] <span class="keyword">for</span> x <span class="keyword">in</span> random]</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> xs:</span><br><span class="line">        x.insert(<span class="number">0</span>, <span class="number">1.</span>)</span><br><span class="line">    <span class="keyword">return</span> xs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">genData</span><span class="params">(numPoints, noise, poly_degree)</span>:</span></span><br><span class="line">    <span class="string">'''Generate data.</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># random sample floats in the half-open interval [0.0, 1.0).</span></span><br><span class="line">    random = np.random.random_sample((numPoints,))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># generate targets for random</span></span><br><span class="line">    targets = list(map(genTargetWithNoise, random))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># remake data to ractangle form and add 1. to all x to correspond with b</span></span><br><span class="line">    xs = regenX(random, poly_degree)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> np.array(xs), np.array(targets)</span><br></pre></td></tr></table></figure></p>
-<h4 id="2-2-损失函数"><a href="#2-2-损失函数" class="headerlink" title="2.2 损失函数"></a>2.2 损失函数</h4><p>这里我们按照《PRML》中式<code>1-2, 1-3</code>的定义，使用平方误差与均方误差。同时添加正则项。<br>如式<code>1-4</code>。  </p>
-<div align="center"><br><img src="../images/LSE.png" height="10%" title="LSE" style="text-align:center"><br></div><br><div align="center"><br><img src="../images/RMS.png" height="6%" title="RMS"><br></div><br><div align="center"><br><img src="../images/loss_with_reg.png" height="8%" title="loss_with_reg"><br></div>  
+                                        <!-- Machine Learning Exercise 1.1   
 
-<p>代码如下：  </p>
-<pre><code class="py"><span class="comment"># define a polynomial</span>
-<span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(xs, theta)</span>:</span>
-    xs = np.asarray(xs)
-<span class="comment">#     print(xs.shape)</span>
-    <span class="keyword">if</span> xs.shape[<span class="number">0</span>] &gt; <span class="number">1</span>:
-        <span class="keyword">return</span> [x.T.dot(theta) <span class="keyword">for</span> x <span class="keyword">in</span> xs]
-    <span class="keyword">return</span> xs.T.dot(theta)
-
-<span class="comment"># define squares error</span>
-<span class="function"><span class="keyword">def</span> <span class="title">LSE_loss</span><span class="params">(y_true, y_hat, theta, penalization=<span class="number">0.1</span>)</span>:</span>
-    y_true = np.asarray(y_true)
-    y_hat = np.asarray(y_hat)
-
-    <span class="comment"># set the regularizer  </span>
-    regularizer = (penalization / <span class="number">2</span>) * (np.dot(theta.T, theta))
-
-    <span class="keyword">return</span> (<span class="number">1</span>/<span class="number">2</span>) * np.square(y_hat - y_true).sum() + regularizer
-
-<span class="comment"># define mean squares error loss</span>
-<span class="function"><span class="keyword">def</span> <span class="title">MSE_loss</span><span class="params">(y_true, y_hat, theta, penalization=<span class="number">0.1</span>)</span>:</span>
-    y_true = np.asarray(y_true)
-    y_hat = np.asarray(y_hat)
-
-    <span class="comment"># set the regularizer  </span>
-    regularizer = (penalization / <span class="number">2</span>) * (np.dot(theta.T, theta))
-
-    <span class="comment"># compute mse</span>
-    mse = np.sqrt(np.square(y_hat - y_true).sum()/len(y_hat)) + regularizer
-
-    <span class="keyword">return</span> mse
-</code></pre>
-<h4 id="2-3-梯度下降"><a href="#2-3-梯度下降" class="headerlink" title="2.3 梯度下降"></a>2.3 梯度下降</h4><p>上面两步我们分别准备好了数据以及损失函数，这一步我们设置一些常用的参数，利用梯度下降法寻找<br>局部最优解。定义的多项式函数如下:  </p>
-<div align="center"><br><img src="../images/def_func.png" height="7%" title="Poly"><br></div>  
-
-<p>这里我们的<code>theta0</code>设置为1，由于我们在准备数据的时候已经处理好了输入<code>x</code>，因此我们<br>的<code>bias</code>项可以直接并入到<code>w</code>中，构成新的<code>theta</code>。</p>
-<p>对参数theta求导:  </p>
-<div align="center"><br><img src="../images/theta_grad.png" height="7%" title="theta_grad"><br></div><br>更新theta:<br><div align="center"><br><img src="../images/theta_update.png" height="7%" title="theta_update"><br></div>    
-
-<p>代码如下：  </p>
-<pre><code class="py"><span class="comment"># gd</span>
-<span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(x, y, x_val, y_val, theta, lr, sample_num, numIterations, loss_name=<span class="string">'LSE'</span>, penalization=<span class="number">0</span>)</span>:</span>
-    xTrans = x.transpose()
-    record = []
-    freq = <span class="number">100</span> <span class="keyword">if</span> numIterations &lt; <span class="number">10000</span> <span class="keyword">else</span> <span class="number">1000</span>
-    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, numIterations+<span class="number">1</span>):
-        y_hat = f(x, theta)
-
-        <span class="keyword">if</span> loss_name == <span class="string">'LSE'</span>:
-            loss = LSE_loss(y, y_hat, theta, penalization)
-        <span class="keyword">elif</span> loss_name == <span class="string">'MSE'</span>:
-            loss = MSE_loss(y, y_hat, theta, penalization)
-
-        <span class="keyword">if</span> i % freq == <span class="number">0</span>:
-            print(<span class="string">"Iteration %d | %s loss: %f"</span> % (i, loss_name,  loss))
-            y_val_hat = f(x_val, theta)
-            <span class="keyword">if</span> loss_name == <span class="string">'LSE'</span>:
-                val_loss = LSE_loss(y_val, y_val_hat, theta)
-            <span class="keyword">elif</span> loss_name == <span class="string">'MSE'</span>:
-                val_loss = MSE_loss(y_val, y_val_hat, theta)
-            record.append([i, loss, val_loss])
-        <span class="comment"># avg gradient per example</span>
-        gradient = (x.T.dot(y_hat - y) / sample_num) + penalization*theta
-        <span class="comment"># update</span>
-        theta = theta - lr * gradient
-    <span class="keyword">return</span> theta, record
-</code></pre>
-<h4 id="2-4-结果绘图"><a href="#2-4-结果绘图" class="headerlink" title="2.4 结果绘图"></a>2.4 结果绘图</h4><p>这一步我们通过在训练结果以及在训练中保存的结果分别绘制<code>train loss, val loss</code>对比图，<br>与拟合结果图。<br>代码如下：  </p>
-<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">plotLoss</span><span class="params">(record)</span>:</span>
-    x = [it[<span class="number">0</span>] <span class="keyword">for</span> it <span class="keyword">in</span> record]
-    train_loss = [it[<span class="number">1</span>] <span class="keyword">for</span> it <span class="keyword">in</span> record]
-    val_loss = [it[<span class="number">2</span>] <span class="keyword">for</span> it <span class="keyword">in</span> record]
-
-    plt.figure(figsize=(<span class="number">8</span>, <span class="number">4</span>))
-    plt.plot(x, train_loss, label=<span class="string">'$train-loss$'</span>, color=<span class="string">'green'</span>, linewidth=<span class="number">0.5</span>)
-    plt.plot(x, val_loss, label=<span class="string">'$val-loss$'</span>, color=<span class="string">'red'</span>, linewidth=<span class="number">0.5</span>)
-
-    plt.plot(x, train_loss, <span class="string">'go'</span>, markerfacecolor=<span class="string">'none'</span>)
-    plt.plot(x, val_loss, <span class="string">'ro'</span>, markerfacecolor=<span class="string">'none'</span>)
-
-    plt.xlabel(<span class="string">'Iterations'</span>)
-    plt.ylabel(<span class="string">'Loss'</span>)
-    plt.title(<span class="string">'Train vs Val'</span>)
-    plt.legend()
-    plt.show()
-
-<span class="function"><span class="keyword">def</span> <span class="title">plotNow</span><span class="params">(x, y, target_func, cur_func, theta, poly_degree)</span>:</span>
-    xrange = np.arange(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0.01</span>)
-    targetfunc = target_func(<span class="number">2</span>*np.pi*xrange)
-    re_xrange = regenX(xrange, poly_degree)
-    curfunc = cur_func(re_xrange, theta)
-
-    plt.figure(figsize=(<span class="number">8</span>, <span class="number">4</span>))
-    plt.plot(xrange, targetfunc, label=<span class="string">'$sin(2πx)$'</span>, color=<span class="string">'green'</span>, linewidth=<span class="number">0.5</span>)
-    plt.plot(xrange, curfunc, label=<span class="string">'$Polynomial$'</span>, color=<span class="string">'red'</span>, linewidth=<span class="number">0.5</span>)
-
-    plt.xlabel(<span class="string">'x'</span>)
-    plt.ylabel(<span class="string">'y'</span>)
-    plt.title(<span class="string">'Polynomial'</span>)
-    <span class="comment"># plt.xlim(0,1)</span>
-    plt.ylim(<span class="number">-2</span>,<span class="number">2</span>)
-    plt.legend()
-    plt.plot(x, y, <span class="string">'bo'</span>, markerfacecolor=<span class="string">'none'</span>)
-    plt.show()
-</code></pre>
-<p>效果图如下：  </p>
-<div align="center"><br><img src="../images/1order2.png" height="50%" title="example"><br></div>  
-
-<h3 id="3-实验结果及分析"><a href="#3-实验结果及分析" class="headerlink" title="3.实验结果及分析"></a>3.实验结果及分析</h3><p>实验中，我们分别对了3大组主要的对比实验，分别是：1）对同一阶数的模型用不同的参数作对比实<br>验；2）对不同阶数（模型复杂度）的模型作对比实验；3）对模型添加L2正则项。</p>
-<h4 id="3-1同模型-不同参数"><a href="#3-1同模型-不同参数" class="headerlink" title="3.1同模型-不同参数"></a>3.1同模型-不同参数</h4><p>这里我们选取<code>M=4</code>的模型，4阶模型复杂度适中。  </p>
-<h5 id="3-1-1迭代次数学习率"><a href="#3-1-1迭代次数学习率" class="headerlink" title="3.1.1迭代次数学习率"></a>3.1.1迭代次数学习率</h5><p>学习率保持不变。迭代次数过少，有可能没有达到局部（全局）最小点的时候终止，导致模型本身欠拟<br>合，需要增加迭代次数；迭代次数过多，模型可能对训练数据过拟合，在测试数据上的误差变大，泛化能力变差。<br>下面三图中，学习率设为0.1,迭代次数分别为1000，10000，20000。  </p>
-<div align="center"><br><img src="../images/o4i1000.png" height="50%" title="iter:1000"><br><img src="../images/o4i10000.png" height="50%" title="iter:10000"><br></div><br><div align="center"><br><img src="../images/o4i20000.png" height="80%" title="iter:10000"><br></div>    
-
-<p>迭代次数固定为10000，学习率分别设为0.1，0.01。观察到，迭代相同的次数时，<code>lr=0.1</code>时，测<br>试集上的误差要小一些。  </p>
-<div align="center"><br><img src="../images/o4i10000l1.png" height="50%" title="lr:0.1"><br><img src="../images/o4i10000l2.png" height="50%" title="lr:0.01"><br></div>  
-
-<h5 id="3-1-2不同评价指标"><a href="#3-1-2不同评价指标" class="headerlink" title="3.1.2不同评价指标"></a>3.1.2不同评价指标</h5><p>保持其他条件一致，分别使用两种<code>Loss fucntion</code>做实验。  </p>
-<div align="center"><br><img src="../images/o4i3000LSE.png" height="50%" title="LSE"><br><img src="../images/o4i3000MSE.png" height="50%" title="MSE"><br></div><br>对比发现，有时候单一的评价指标并不能反应模型的准确性能，换了MSE，过拟合了。<br><br>##### 3.1.3 不同数据量<br>训练测试集数量分别采用<code>(50,50)，(100, 50)</code>。分别用50、100组输入作为训练，均用50组输入<br>作为测试。为了方便对比，我们都将其训练至过拟合。<br><div align="center"><br><img src="../images/o4i50000s50v50.png" height="50%" title="train:50 val:50"><br><img src="../images/o4i50000s100v50.png" height="50%" title="train:100 val:50"><br></div><br>对比观察可知，当训练数据增多时，模型的泛化能力相应增强。<br><br>### 3.2 不同模型-同参数<br>通过<code>4.1</code>的实验，我们将参数固定为:<br> <code>(训练, 测试) = (100, 50), learning_rate = 0.1, iterations=5000</code>。<br><br>M=1, 2, 3<br><div align="center"><br><img src="../images/o1std.png" height="40%" title="M=1"><br><img src="../images/o2std.png" height="40%" title="M=2"><br><img src="../images/o3std.png" height="40%" title="M=3"><br></div>  
-
-<p>M=4, 5, 6  </p>
-<div align="center"><br><img src="../images/o4std.png" height="40%" title="M=4"><br><img src="../images/o5std.png" height="40%" title="M=5"><br><img src="../images/o6std.png" height="38%" title="M=6"><br></div>    
-
-<p>M=7, 8, 9</p>
-<div align="center"><br><img src="../images/o7std.png" height="30%" title="M=7"><br><img src="../images/o8std.png" height="38%" title="M=8"><br><img src="../images/o9std.png" height="38%" title="M=9"><br></div>    
-
-<p>这里我们没有训练到过拟合。观察输出的<code>Val loss</code>，当模型的复杂度上升的时候，模型的表达能力<br>相应提高，因此泛化能力变好，val loss呈现出下降的趋势。同时我发现<code>M=1</code>时，模型训练到2000<br>轮，就不再开始训练了，而更高阶的模型依然可以继续训练。  </p>
-<p>一次实验中的模型系数表如下：  </p>
-<div align="center"><br><img src="../images/params.png" title="模型系数表"><br></div>   
-
-<h4 id="3-3-添加正则项-过拟合、欠拟合分析"><a href="#3-3-添加正则项-过拟合、欠拟合分析" class="headerlink" title="3.3 添加正则项(过拟合、欠拟合分析)"></a>3.3 添加正则项(过拟合、欠拟合分析)</h4><p>当我们的迭代次数设置少，或者学习率过低，或者模型过于简单的时候，都可能会出现欠拟合。比如只<br>迭代1000次，学习率设为0.0001，只用<code>M=1</code>的模型。</p>
-<p>我们选取<code>M=4</code>的模型，先将其训练至过拟合。  </p>
-<div align="center"><br><img src="../images/o9overfitting.png" height="50%" title="过拟合"><br></div>  
-
-<p>设置lamda分别为<code>0.1, 0.25, 0.5, 1, 5</code>。  </p>
-<p><div align="center"><br><img src="../images/o9lambda0_1.png" height="50%" title="lambda=0.1"><br><img src="../images/o9lambda0_25.png" height="50%" title="lambda=0.25"><br></div> </p>
-<p><div align="center"><br><img src="../images/o9lambda0_5.png" height="50%" title="lambda=0.5"><br><img src="../images/o9lambda1.png" height="50%" title="lambda=1"><br></div> </p>
-<p><div align="center"><br><img src="../images/o9lambda5.png" height="50%" title="lambda=5"><br></div><br>观察可知，lambda越大，惩罚越大，模型泛化能力越好。</p>
-<h3 id="4-实验总结"><a href="#4-实验总结" class="headerlink" title="4.实验总结"></a>4.实验总结</h3><p>通过本次实验，在概念上，对多项式拟合有了更加全面深入的理解，能正确分析过拟合、欠拟合的<br>情况，运用L2范数增加模型的鲁棒性；在实验呢实践上，给了一个以后做实验的参照物，学习了如<br>何做对比实验、参数如何调整，更熟悉代码实现。</p>
-
-                                                
+1.实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况  
+注:参考误差函数式 1-2，带正则项的修正误差函数式 ......  -->
+                                        <p class="article-more-link">
+                                            <a href="/2018/09/24/线性回归-多项式拟合/#more">
+                                                Read More
+                                            </a>
+                                        </p>
+                                        
                             </div>
                             <footer class="article-footer">
                                 
@@ -610,63 +525,6 @@ tmux开......  -->
                                             
                                                         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trick/">trick</a></li></ul>
-
-                            </footer>
-            </div>
-            
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-训练网络管理实验的科学探索"  class="article article-type-
-        post" itemscope itemprop="blogPost" >
-            <div id="articleInner" class="article-inner">
-                
-                    
-                        <header class="article-header">
-                            
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/26/训练网络管理实验的科学探索/">训练网络管理实验的科学探索💪🏼</a>
-    </h1>
-  
-
-                        </header>
-                        
-                            <div class="article-meta">
-                                
-	<a href="/2018/08/26/训练网络管理实验的科学探索/" class="article-date">
-	  <time datetime="2018-08-26T03:26:49.000Z" itemprop="datePublished">2018-08-26</time>
-	</a>
-
-                                    
-                                        
-                            </div>
-                            <div class="article-entry" itemprop="articleBody">
-                                
-                                    <p>👏🏼 Some tips about how to manage your experiments！👏🏼  </p>
-<blockquote>
-<p>无论是打比赛还是写论文，我们都需要做大量的实验。有人说深度调参是“玄学”，为了有效探索这门玄学，需要对模型的结构、参数、结果做全面详尽的记录，对实验结果、模型参数进行合理保存。这里，分享一些我以及我的师兄教给我的在训练网络并科学管理实验方面的一些心得体会。✍🏼  </p>
-</blockquote>
-                                        <!-- 👏🏼 Some tips about how to manage your experiments！👏🏼  
-
-无论是打比赛还是写论文，我们都需要做大量的实验。有人说深度调参是“玄学”，为了有效探索这门玄学，需要对模型的结构、参数、结果做全面详尽的记录，对实验结果、模型参数进行合理保存。这里，分享一些我以及我的师兄教给我的在训练网络并科学管理实验方面的一些心得体会。✍🏼  
-
-
-数......  -->
-                                        <p class="article-more-link">
-                                            <a href="/2018/08/26/训练网络管理实验的科学探索/#more">
-                                                Read More
-                                            </a>
-                                        </p>
-                                        
-                            </div>
-                            <footer class="article-footer">
-                                
-                                            
-                                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trick/">trick</a></li></ul>
 
                             </footer>
             </div>
