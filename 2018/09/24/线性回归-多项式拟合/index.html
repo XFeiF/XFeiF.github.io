@@ -17,13 +17,13 @@
                         
                                 
                                         
-                                                <meta name="description" content="Machine Learning Exercise 1.1     1.实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4">
+                                                <meta name="description" content="Machine Learning Exercise 1   实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4，实验仿真生">
 <meta name="keywords" content="python,linear regression,machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多项式拟合-线性回归(Python)">
 <meta property="og:url" content="http://blog.x-fei.me/2018/09/24/线性回归-多项式拟合/index.html">
 <meta property="og:site_name" content="Make everyday count!">
-<meta property="og:description" content="Machine Learning Exercise 1.1     1.实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4">
+<meta property="og:description" content="Machine Learning Exercise 1   实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4，实验仿真生">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://blog.x-fei.me/images/LSE.png">
 <meta property="og:image" content="http://blog.x-fei.me/images/RMS.png">
@@ -57,10 +57,10 @@
 <meta property="og:image" content="http://blog.x-fei.me/images/o9lambda0_5.png">
 <meta property="og:image" content="http://blog.x-fei.me/images/o9lambda1.png">
 <meta property="og:image" content="http://blog.x-fei.me/images/o9lambda5.png">
-<meta property="og:updated_time" content="2018-09-24T16:42:17.229Z">
+<meta property="og:updated_time" content="2018-09-25T08:15:15.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多项式拟合-线性回归(Python)">
-<meta name="twitter:description" content="Machine Learning Exercise 1.1     1.实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4">
+<meta name="twitter:description" content="Machine Learning Exercise 1   实验题目编写程序:模拟仿真多项式回归参见 textbook p4-12(PRML)。完成以下任务:1) 生成正弦序列 s(n);2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况   注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4，实验仿真生">
 <meta name="twitter:image" content="http://blog.x-fei.me/images/LSE.png">
                                                     
 
@@ -265,13 +265,12 @@
                             </div>
                             <div class="article-entry" itemprop="articleBody">
                                 
-                                            <h1><center>Machine Learning Exercise 1.1 </center></h1>  
-
-<h3 id="1-实验题目"><a href="#1-实验题目" class="headerlink" title="1.实验题目"></a>1.实验题目</h3><p>编写程序:模拟仿真多项式回归<br>参见 textbook p4-12(PRML)。完成以下任务:<br>1) 生成正弦序列 s(n);<br>2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);<br>3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况  </p>
+                                            <p><strong><center>Machine Learning Exercise 1</center></strong>  </p>
+<h3 id="实验题目"><a href="#实验题目" class="headerlink" title="实验题目"></a>实验题目</h3><p>编写程序:模拟仿真多项式回归<br>参见 textbook p4-12(PRML)。完成以下任务:<br>1) 生成正弦序列 s(n);<br>2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);<br>3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况  </p>
 <p>注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4，实验仿真生成图 1- 6、图 1-7，给出模型系数表。</p>
 <a id="more"></a>
-<h3 id="2-实验过程及代码"><a href="#2-实验过程及代码" class="headerlink" title="2.实验过程及代码"></a>2.实验过程及代码</h3><p>实验过程按照题目要求可以拆解为4步完成。首先进行数据采样，添加噪声；接着定义损失函数，<br>以及正则项；<br>之后采用梯度下降寻找局部最优解；再通过画图可视化实验结果。以下为具体描述：  </p>
-<h4 id="2-1-数据生成"><a href="#2-1-数据生成" class="headerlink" title="2.1 数据生成"></a>2.1 数据生成</h4><p>利用<code>numpy</code>在<code>sin(2*pi*x)</code>的基础上生成点，并添加高斯噪声（其中均值设为0，方差设为0.3）。<br>为了方便后序的实验，我们在生成数据<code>x, y</code>的同时添加阶数，  每个<code>x</code>调整为形如<br><code>x = [1, x, x^2, ..., x^M]</code>的形式。最前面的1对应目标函数的b。  </p>
+<h3 id="实验过程及代码"><a href="#实验过程及代码" class="headerlink" title="实验过程及代码"></a>实验过程及代码</h3><p>实验过程按照题目要求可以拆解为4步完成。首先进行数据采样，添加噪声；接着定义损失函数，<br>以及正则项；<br>之后采用梯度下降寻找局部最优解；再通过画图可视化实验结果。以下为具体描述：  </p>
+<h4 id="数据生成"><a href="#数据生成" class="headerlink" title="数据生成"></a>数据生成</h4><p>利用<code>numpy</code>在<code>sin(2*pi*x)</code>的基础上生成点，并添加高斯噪声（其中均值设为0，方差设为0.3）。<br>为了方便后序的实验，我们在生成数据<code>x, y</code>的同时添加阶数，  每个<code>x</code>调整为形如<br><code>x = [1, x, x^2, ..., x^M]</code>的形式。最前面的1对应目标函数的b。  </p>
 <p>数据生成代码如下：  </p>
 <pre><code class="py"><span class="comment"># define gaussion noise function</span>
 <span class="function"><span class="keyword">def</span> <span class="title">noise</span><span class="params">(mu=<span class="number">0</span>, sigma=<span class="number">0.3</span>)</span>:</span>
@@ -320,7 +319,7 @@
 
     <span class="keyword">return</span> np.array(xs), np.array(targets)
 </code></pre>
-<h4 id="2-2-损失函数"><a href="#2-2-损失函数" class="headerlink" title="2.2 损失函数"></a>2.2 损失函数</h4><p>这里我们按照《PRML》中式<code>1-2, 1-3</code>的定义，使用平方误差与均方误差。同时添加正则项。<br>如式<code>1-4</code>。  </p>
+<h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><p>这里我们按照《PRML》中式<code>1-2, 1-3</code>的定义，使用平方误差与均方误差。同时添加正则项。<br>如式<code>1-4</code>。  </p>
 <div align="center"><br><img src="/images/LSE.png" width="60%" alt="LSE" style="text-align:center"><br></div><br><div align="center"><br><img src="/images/RMS.png" width="60%" alt="RMS"><br></div><br><div align="center"><br><img src="/images/loss_with_reg.png" width="60%" alt="loss_with_reg"><br></div>  
 
 <p>代码如下：  </p>
@@ -355,7 +354,7 @@
 
     <span class="keyword">return</span> mse
 </code></pre>
-<h4 id="2-3-梯度下降"><a href="#2-3-梯度下降" class="headerlink" title="2.3 梯度下降"></a>2.3 梯度下降</h4><p>上面两步我们分别准备好了数据以及损失函数，这一步我们设置一些常用的参数，利用梯度下降法寻找<br>局部最优解。定义的多项式函数如下:  </p>
+<h4 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h4><p>上面两步我们分别准备好了数据以及损失函数，这一步我们设置一些常用的参数，利用梯度下降法寻找<br>局部最优解。定义的多项式函数如下:  </p>
 <div align="center"><br><img src="/images/def_func.png" width="60%" alt="Poly"><br></div>  
 
 <p>这里我们的<code>theta0</code>设置为1，由于我们在准备数据的时候已经处理好了输入<code>x</code>，因此我们<br>的<code>bias</code>项可以直接并入到<code>w</code>中，构成新的<code>theta</code>。</p>
@@ -390,7 +389,7 @@
         theta = theta - lr * gradient
     <span class="keyword">return</span> theta, record
 </code></pre>
-<h4 id="2-4-结果绘图"><a href="#2-4-结果绘图" class="headerlink" title="2.4 结果绘图"></a>2.4 结果绘图</h4><p>这一步我们通过在训练结果以及在训练中保存的结果分别绘制<code>train loss, val loss</code>对比图，<br>与拟合结果图。<br>代码如下：  </p>
+<h4 id="结果绘图"><a href="#结果绘图" class="headerlink" title="结果绘图"></a>结果绘图</h4><p>这一步我们通过在训练结果以及在训练中保存的结果分别绘制<code>train loss, val loss</code>对比图，<br>与拟合结果图。<br>代码如下：  </p>
 <pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">plotLoss</span><span class="params">(record)</span>:</span>
     x = [it[<span class="number">0</span>] <span class="keyword">for</span> it <span class="keyword">in</span> record]
     train_loss = [it[<span class="number">1</span>] <span class="keyword">for</span> it <span class="keyword">in</span> record]
@@ -431,9 +430,9 @@
 <p>效果图如下：  </p>
 <div align="center"><br><img src="/images/1order2.png" width="50%" alt="example"><br></div>  
 
-<h3 id="3-实验结果及分析"><a href="#3-实验结果及分析" class="headerlink" title="3.实验结果及分析"></a>3.实验结果及分析</h3><p>实验中，我们分别对了3大组主要的对比实验，分别是：1）对同一阶数的模型用不同的参数作对比实<br>验；2）对不同阶数（模型复杂度）的模型作对比实验；3）对模型添加L2正则项。</p>
-<h4 id="3-1同模型-不同参数"><a href="#3-1同模型-不同参数" class="headerlink" title="3.1同模型-不同参数"></a>3.1同模型-不同参数</h4><p>这里我们选取<code>M=4</code>的模型，4阶模型复杂度适中。  </p>
-<h5 id="3-1-1迭代次数学习率"><a href="#3-1-1迭代次数学习率" class="headerlink" title="3.1.1迭代次数学习率"></a>3.1.1迭代次数学习率</h5><p>学习率保持不变。迭代次数过少，有可能没有达到局部（全局）最小点的时候终止，导致模型本身欠拟<br>合，需要增加迭代次数；迭代次数过多，模型可能对训练数据过拟合，在测试数据上的误差变大，泛化能力变差。<br>下面三图中，学习率设为0.1,迭代次数分别为1000，10000，20000。  </p>
+<h3 id="实验结果及分析"><a href="#实验结果及分析" class="headerlink" title="实验结果及分析"></a>实验结果及分析</h3><p>实验中，我们分别对了3大组主要的对比实验，分别是：1）对同一阶数的模型用不同的参数作对比实<br>验；2）对不同阶数（模型复杂度）的模型作对比实验；3）对模型添加L2正则项。</p>
+<h4 id="同模型-不同参数"><a href="#同模型-不同参数" class="headerlink" title="同模型-不同参数"></a>同模型-不同参数</h4><p>这里我们选取<code>M=4</code>的模型，4阶模型复杂度适中。  </p>
+<h5 id="迭代次数学习率"><a href="#迭代次数学习率" class="headerlink" title="迭代次数学习率"></a>迭代次数学习率</h5><p>学习率保持不变。迭代次数过少，有可能没有达到局部（全局）最小点的时候终止，导致模型本身欠拟<br>合，需要增加迭代次数；迭代次数过多，模型可能对训练数据过拟合，在测试数据上的误差变大，泛化能力变差。<br>下面三图中，学习率设为0.1,迭代次数分别为1000，10000，20000。  </p>
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i1000.png" width="350" height="400" alt="iter:1000"></div>
 
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i10000.png" width="350" height="400" alt="iter:10000"></div>
@@ -445,19 +444,19 @@
 
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i10000l2.png" width="350" height="400" alt="lr:0.01"></div>
 
-<h5 id="3-1-2不同评价指标"><a href="#3-1-2不同评价指标" class="headerlink" title="3.1.2不同评价指标"></a>3.1.2不同评价指标</h5><p>保持其他条件一致，分别使用两种<code>Loss fucntion</code>做实验。  </p>
+<h5 id="不同评价指标"><a href="#不同评价指标" class="headerlink" title="不同评价指标"></a>不同评价指标</h5><p>保持其他条件一致，分别使用两种<code>Loss fucntion</code>做实验。  </p>
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i3000LSE.png" width="350" height="400" alt="LSE"></div>
 
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i3000MSE.png" width="350" height="400" alt="MSE"></div>
 
 <p>对比发现，有时候单一的评价指标并不能反应模型的准确性能，换了MSE，过拟合了。  </p>
-<h5 id="3-1-3-不同数据量"><a href="#3-1-3-不同数据量" class="headerlink" title="3.1.3 不同数据量"></a>3.1.3 不同数据量</h5><p>训练测试集数量分别采用<code>(50,50)，(100, 50)</code>。分别用50、100组输入作为训练，均用50组输入<br>作为测试。为了方便对比，我们都将其训练至过拟合。  </p>
+<h5 id="不同数据量"><a href="#不同数据量" class="headerlink" title="不同数据量"></a>不同数据量</h5><p>训练测试集数量分别采用<code>(50,50)，(100, 50)</code>。分别用50、100组输入作为训练，均用50组输入<br>作为测试。为了方便对比，我们都将其训练至过拟合。  </p>
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i50000s50v50.png" width="340" height="400" alt="train:50 val:50"></div>
 
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i50000s100v50.png" width="360" height="450" alt="train:100 val:50"></div>  
 
 <p>对比观察可知，当训练数据增多时，模型的泛化能力相应增强。 </p>
-<h3 id="3-2-不同模型-同参数"><a href="#3-2-不同模型-同参数" class="headerlink" title="3.2 不同模型-同参数"></a>3.2 不同模型-同参数</h3><p>通过<code>4.1</code>的实验，我们将参数固定为:<br> <code>(训练, 测试) = (100, 50), learning_rate = 0.1, iterations=5000</code>。  </p>
+<h4 id="不同模型-同参数"><a href="#不同模型-同参数" class="headerlink" title="不同模型-同参数"></a>不同模型-同参数</h4><p>通过<code>4.1</code>的实验，我们将参数固定为:<br> <code>(训练, 测试) = (100, 50), learning_rate = 0.1, iterations=5000</code>。  </p>
 <p>M=1, 2, 3  </p>
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o1std.png" width="230" alt="M=1"></div>
 
@@ -483,7 +482,7 @@
 <p>一次实验中的模型系数表如下：  </p>
 <div align="center"><br><img src="/images/params.png" alt="模型系数表"><br></div>   
 
-<h4 id="3-3-添加正则项-过拟合、欠拟合分析"><a href="#3-3-添加正则项-过拟合、欠拟合分析" class="headerlink" title="3.3 添加正则项(过拟合、欠拟合分析)"></a>3.3 添加正则项(过拟合、欠拟合分析)</h4><p>当我们的迭代次数设置少，或者学习率过低，或者模型过于简单的时候，都可能会出现欠拟合。比如只<br>迭代1000次，学习率设为0.0001，只用<code>M=1</code>的模型。</p>
+<h4 id="添加正则项-过拟合、欠拟合分析"><a href="#添加正则项-过拟合、欠拟合分析" class="headerlink" title="添加正则项(过拟合、欠拟合分析)"></a>添加正则项(过拟合、欠拟合分析)</h4><p>当我们的迭代次数设置少，或者学习率过低，或者模型过于简单的时候，都可能会出现欠拟合。比如只<br>迭代1000次，学习率设为0.0001，只用<code>M=1</code>的模型。</p>
 <p>我们选取<code>M=4</code>的模型，先将其训练至过拟合。  </p>
 <div align="center"><br><img src="/images/o9overfitting.png" width="50%" alt="过拟合"><br></div>  
 
@@ -497,7 +496,7 @@
 <div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o9lambda1.png" width="360" height="450" alt="lambda=1"></div>  
 
 <p><div align="center"><br><img src="/images/o9lambda5.png" width="50%" alt="lambda=5"><br></div><br>观察可知，lambda越大，惩罚越大，模型泛化能力越好。</p>
-<h3 id="4-实验总结"><a href="#4-实验总结" class="headerlink" title="4.实验总结"></a>4.实验总结</h3><p>通过本次实验，在概念上，对多项式拟合有了更加全面深入的理解，能正确分析过拟合、欠拟合的<br>情况，运用L2范数增加模型的鲁棒性；在实验呢实践上，给了一个以后做实验的参照物，学习了如<br>何做对比实验、参数如何调整，更熟悉代码实现。</p>
+<h3 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h3><p>通过本次实验，在概念上，对多项式拟合有了更加全面深入的理解，能正确分析过拟合、欠拟合的<br>情况，运用L2范数增加模型的鲁棒性；在实验呢实践上，给了一个以后做实验的参照物，学习了如<br>何做对比实验、参数如何调整，更熟悉代码实现。</p>
 
                                                 
                             </div>
@@ -567,7 +566,7 @@
         <div id="toc" class="toc-article">
             <strong class="toc-title">Contents</strong>
             
-                <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Machine Learning Exercise 1.1 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-实验题目"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.实验题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-实验过程及代码"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.实验过程及代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-数据生成"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">2.1 数据生成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-损失函数"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.2 损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-梯度下降"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">2.3 梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-结果绘图"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">2.4 结果绘图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-实验结果及分析"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.实验结果及分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1同模型-不同参数"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">3.1同模型-不同参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1迭代次数学习率"><span class="nav-number">1.0.3.1.1.</span> <span class="nav-text">3.1.1迭代次数学习率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2不同评价指标"><span class="nav-number">1.0.3.1.2.</span> <span class="nav-text">3.1.2不同评价指标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-3-不同数据量"><span class="nav-number">1.0.3.1.3.</span> <span class="nav-text">3.1.3 不同数据量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-不同模型-同参数"><span class="nav-number">1.0.4.</span> <span class="nav-text">3.2 不同模型-同参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-添加正则项-过拟合、欠拟合分析"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">3.3 添加正则项(过拟合、欠拟合分析)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-实验总结"><span class="nav-number">1.0.5.</span> <span class="nav-text">4.实验总结</span></a></li></ol></li></ol></li></ol>
+                <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验题目"><span class="nav-number">1.</span> <span class="nav-text">实验题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验过程及代码"><span class="nav-number">2.</span> <span class="nav-text">实验过程及代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据生成"><span class="nav-number">2.1.</span> <span class="nav-text">数据生成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#损失函数"><span class="nav-number">2.2.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降"><span class="nav-number">2.3.</span> <span class="nav-text">梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果绘图"><span class="nav-number">2.4.</span> <span class="nav-text">结果绘图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果及分析"><span class="nav-number">3.</span> <span class="nav-text">实验结果及分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同模型-不同参数"><span class="nav-number">3.1.</span> <span class="nav-text">同模型-不同参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代次数学习率"><span class="nav-number">3.1.1.</span> <span class="nav-text">迭代次数学习率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不同评价指标"><span class="nav-number">3.1.2.</span> <span class="nav-text">不同评价指标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不同数据量"><span class="nav-number">3.1.3.</span> <span class="nav-text">不同数据量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同模型-同参数"><span class="nav-number">3.2.</span> <span class="nav-text">不同模型-同参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加正则项-过拟合、欠拟合分析"><span class="nav-number">3.3.</span> <span class="nav-text">添加正则项(过拟合、欠拟合分析)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验总结"><span class="nav-number">4.</span> <span class="nav-text">实验总结</span></a></li></ol>
                     
         </div>
     </aside>
