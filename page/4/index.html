@@ -6,8 +6,6 @@
     
         <title>
             
-                tag: think |
-                    
                         Make everyday count!
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,7 +18,7 @@
                                                 <meta name="description" content="I&apos;ll follow You Lord for all my days!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Make everyday count!">
-<meta property="og:url" content="http://blog.x-fei.me/tags/think/index.html">
+<meta property="og:url" content="http://blog.x-fei.me/page/4/index.html">
 <meta property="og:site_name" content="Make everyday count!">
 <meta property="og:description" content="I&apos;ll follow You Lord for all my days!">
 <meta property="og:locale" content="en">
@@ -78,20 +76,16 @@
                                                                                         <link rel="stylesheet" href="/css/bootstrap.css">
 
                                                                                         
-                                                                                                <link rel="stylesheet" href="/css/dialog.css">
-                                                                                                    <link rel="stylesheet" href="/css/bigfoot-default.css">
-                                                                                                        <link rel="stylesheet" href="/css/directory.css">
-                                                                                                            
+                                                                                            <link rel="stylesheet" href="/css/home.css">
+                                                                                            
 
                                                                                                                 
+                                                                                                                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
+                                                                                                                    
 
                                                                                                                         
-                                                                                                                            <link rel="stylesheet" href="/css/header-post.css">
-                                                                                                                            
 
                                                                                                                                 
-                                                                                                                                    <link rel="stylesheet" href="/css/archive.css">
-                                                                                                                                    
 
                                                                                                                                         
 
@@ -102,202 +96,183 @@
 
 
   
-  <div id="container">
-    <div id="wrap">
-      
-        <header>
+    <header id="header">
 
-    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-inner">
+    <!-- 背景图模式 -->
+    
 
-            <div class="container">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-                
-                    <a class="brand" style="
-                 border-width: 0px;  margin-top: 0px;"  >
-                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
-              </a>
-                    
-
-                            <div class="navbar-collapse collapse">
-                                <ul class="hnav navbar-nav">
+        
+                                <div id="intrologo" class="intro-logo">
                                     
-                                        <li>
-                                            <a class="main-nav-link" href="/">
-                                                BLOG
-                                            </a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a class="main-nav-link" href="/archives">
-                                                ARCHIVES
-                                            </a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a class="main-nav-link" href="/friends">
-                                                FRIENDS
-                                            </a>
-                                        </li>
-                                        
-                                            <li>
-                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
-                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
-                                            </li>
-                                            <li>
-                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
-                                            </li>
-                                            <li>
-                                                <!-- <div id="search-form-wrap">
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
 
-</div> -->
-                                            </li>
-                            </div>
-            </div>
 
-        </div>
-    </div>
+                                        <canvas width="100%" height="100%"></canvas>
+                                        <script>
+                                            var c = document.getElementsByTagName('canvas')[0],
+                                                x = c.getContext('2d'),
+                                                w = window.innerWidth,
+                                                h = window.innerHeight,
+                                                pr = window.devicePixelRatio || 1,
+                                                f = 90,
+                                                q,
+                                                m = Math,
+                                                r = 0,
+                                                u = m.PI * 2,
+                                                v = m.cos,
+                                                z = m.random
+                                            c.width = w * pr
+                                            c.height = h * pr
+                                            x.scale(pr, pr)
+                                            x.globalAlpha = 0.6
+
+                                            <!-- 折线Polyline背景 -->
+                                                
+
+                                            function redraw() {
+                                                var pattern = Trianglify({
+                                                    width: window.innerWidth,
+                                                    height: window.innerHeight
+                                                });
+                                                pattern.canvas(c)
+                                            }
+                                            document.getElementById("intrologo").onclick = redraw
+                                            document.getElementById("intrologo").ontouchstart = redraw
+                                            redraw()
+                                            
+                                        </script>
+
+
+                                        
+                                            <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);">
+                                                
+
+                                                            
+                                                                                <div class="homelogoback"  style="border: 1px solid #404040;"
+                                                                                    >
+                                                                                        <h1>
+                                                                                            <a href="#content" id="logo">
+                                                                                                Make everyday count!
+                                                                                            </a>
+                                                                                        </h1>
+                                                                                        <h3>
+                                                                                            I&#39;ll follow You Lord for all my days!
+                                                                                        </h3>
+                                                                                        <h5>
+                                                                                            XFeiF
+                                                                                        </h5>
+                                                                                        <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+                                                                                </div>
+                                                                                
+
+                                                    </div>
+                                            </div>
+
+                                            <!-- 自适应主页背景大图 -->
+                                            
+
+                                                    <!-- home_logo_image居中 -->
+                                                    
+                                                            <script>
+                                                                var homelogodiv = document.getElementById("homelogo");
+                                                                if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+                                                                    homelogodiv.style.width = (document.body.clientWidth + 66) + "px";
+                                                                    homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+                                                                } else {
+                                                                    homelogodiv.style.width = (homelogodiv.clientWidth + 66) + "px";
+                                                                    homelogodiv.style.marginLeft = (homelogodiv.clientWidth) * -0.5 + "px";
+                                                                }
+                                                            </script>
+                                                            
+
+                                                                <div class="intro-navigate">
+                                                                    <p class="navigater-list">
+                                                                        
+                                                                            <a id="beautifont" class="main-nav-link" href="/">
+                                                                                BLOG
+                                                                            </a>
+                                                                            
+                                                                            <a id="beautifont" class="main-nav-link" href="/archives">
+                                                                                ARCHIVES
+                                                                            </a>
+                                                                            
+                                                                            <a id="beautifont" class="main-nav-link" href="/friends">
+                                                                                FRIENDS
+                                                                            </a>
+                                                                            
+                                                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
+                                                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
+                                                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
+                                                                    </p>
+                                                                </div>
 
 </header>
-
-
+  
+  <div id="container">
+    <div id="wrap">
       
             
       <div id="content" class="outer">
         
           <section id="main" style="float:none;">
   
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2018" class="archive-year">2018</a></h1>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2018/09/29/这辈子还有很多很丧的时候/" class="archive-article-date">
-	  <time datetime="2018-09-29T13:53:13.000Z" itemprop="datePublished">2018-09-29</time>
-	</a>
-
-      
+    <article id="post-Stay-hungry-Stay-foolish"  class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
   
     <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/09/29/这辈子还有很多很丧的时候/">这辈子还有很多很丧的时候</a>
+      <a class="article-title" href="/2017/08/29/Stay-hungry-Stay-foolish/">Stay hungry, Stay Young</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2018/08/26/Summary-MICCAI-2018-Skin-Lesion-Contest/" class="archive-article-date">
-	  <time datetime="2018-08-25T17:31:37.000Z" itemprop="datePublished">2018-08-26</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2018/08/26/Summary-MICCAI-2018-Skin-Lesion-Contest/">Summary: MICCAI 2018 Skin Lesion Contest</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/08/29/Stay-hungry-Stay-foolish/" class="archive-article-date">
+                        </header>
+                        
+                            <div class="article-meta">
+                                
+	<a href="/2017/08/29/Stay-hungry-Stay-foolish/" class="article-date">
 	  <time datetime="2017-08-29T11:59:27.000Z" itemprop="datePublished">2017-08-29</time>
 	</a>
 
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/08/29/Stay-hungry-Stay-foolish/">Stay hungry, Stay Young</a>
-    </h1>
-  
+                                    
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                            <p>忘记第几次重新搭建博客了，之前重装系统、换笔记本或者服务器到期，（其实更关键的是博客更新太少了）。<br>现在重新开张，希望有缘到我这个小站来的你，能收获一些东西！：）  </p>
+<p>Stay hungry, Stay Young!</p>
 
-    </header>
-  </div>
+                                                
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/think/">think</a></li></ul>
+
+                            </footer>
+            </div>
+            
 </article>
-  
-  
-    </div></section>
+
+<!-- Table of Contents -->
+
   
 
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
 
 </section>
         
       </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
       
       <footer id="footer">
     
@@ -391,6 +366,8 @@
 
 <script src="/js/scripts.js"></script>
 
+
+  <script src="/js/home.js"></script>
 
 
 
