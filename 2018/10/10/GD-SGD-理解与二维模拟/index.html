@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+        <title>
+            
+                gd &amp; sgd 理解与二维模拟 |
+                    
+                        Make everyday count!
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+                <meta name="keywords" content="Swift, Python, ML, CV" />
+                
+                        
+                                
+                                        
+                                                <meta name="description" content="Machine Learning Exercise 2     实验题目 Generate n = 2,000 points uniformly at random in the two-dimensional unit square. Which point do you expect the centroid to be?   What objective does the centroid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GD &amp; SGD 理解与二维模拟">
+<meta property="og:url" content="http://blog.x-fei.me/2018/10/10/GD-SGD-理解与二维模拟/index.html">
+<meta property="og:site_name" content="Make everyday count!">
+<meta property="og:description" content="Machine Learning Exercise 2     实验题目 Generate n = 2,000 points uniformly at random in the two-dimensional unit square. Which point do you expect the centroid to be?   What objective does the centroid">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://blog.x-fei.me/images/hw2_points.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/dist_func.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/grad_dist.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/gd_2errors.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/hw2_error1.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/gd_good.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/sgd_good.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/sgd_rand.png">
+<meta property="og:updated_time" content="2018-10-11T12:22:07.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GD &amp; SGD 理解与二维模拟">
+<meta name="twitter:description" content="Machine Learning Exercise 2     实验题目 Generate n = 2,000 points uniformly at random in the two-dimensional unit square. Which point do you expect the centroid to be?   What objective does the centroid">
+<meta name="twitter:image" content="http://blog.x-fei.me/images/hw2_points.png">
+                                                    
+
+                                                            
+
+                                                                <link rel="icon" href="/css/images/mylogo.png">
+                                                                <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+                                                                
+                                                                    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+                                                                    
+                                                                        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+                                                                        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+                                                                        <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+                                                                        <style type="text/css">
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+                                                                                font-weight: 500;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+                                                                                font-weight: 500;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+                                                                                font-weight: lighter;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+                                                                                font-weight: 400;
+                                                                                font-style: italic;
+                                                                            }
+                                                                        </style>
+                                                                        <link rel="stylesheet" href="/css/style.css">
+
+                                                                            <script src="/js/jquery-2.0.3.min.js"></script>
+                                                                                <script src="/js/bootstrap.js"></script>
+                                                                                    <script src="/js/bigfoot.min.js"></script>
+
+                                                                                        <!-- Bootstrap core CSS -->
+                                                                                        <link rel="stylesheet" href="/css/bootstrap.css">
+
+                                                                                        
+                                                                                                <link rel="stylesheet" href="/css/dialog.css">
+                                                                                                    <link rel="stylesheet" href="/css/bigfoot-default.css">
+                                                                                                        <link rel="stylesheet" href="/css/directory.css">
+                                                                                                            
+
+                                                                                                                
+
+                                                                                                                        
+                                                                                                                            <link rel="stylesheet" href="/css/header-post.css">
+                                                                                                                            
+
+                                                                                                                                
+
+                                                                                                                                        
+
+</head>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+
+            <div class="container">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+                
+                    <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+                    
+
+                            <div class="navbar-collapse collapse">
+                                <ul class="hnav navbar-nav">
+                                    
+                                        <li>
+                                            <a class="main-nav-link" href="/">
+                                                BLOG
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a class="main-nav-link" href="/archives">
+                                                ARCHIVES
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a class="main-nav-link" href="/friends">
+                                                FRIENDS
+                                            </a>
+                                        </li>
+                                        
+                                            <li>
+                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
+                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
+                                            </li>
+                                            <li>
+                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
+                                            </li>
+                                            <li>
+                                                <!-- <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div> -->
+                                            </li>
+                            </div>
+            </div>
+
+        </div>
+    </div>
+
+</header>
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-GD-SGD-理解与二维模拟" style="width: 75%; float:left;"
+     class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      GD &amp; SGD 理解与二维模拟
+    </h1>
+  
+
+                        </header>
+                        
+                            <div class="article-meta">
+                                
+	<a href="/2018/10/10/GD-SGD-理解与二维模拟/" class="article-date">
+	  <time datetime="2018-10-10T13:12:56.000Z" itemprop="datePublished">2018-10-10</time>
+	</a>
+
+                                    
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                            <p><strong><center>Machine Learning Exercise 2</center></strong>    </p>
+<h3 id="实验题目"><a href="#实验题目" class="headerlink" title="实验题目"></a>实验题目</h3><ol>
+<li>Generate n = 2,000 points uniformly at random in the two-dimensional unit square. Which point do you expect the centroid to be?  </li>
+<li>What objective does the centroid of the points optimize?  </li>
+<li>Apply gradient descent (GD) to find the centroid.  </li>
+<li>Apply stochastic gradient descent (SGD) to find the centroid. Can you<br>say in simple words, what the algorithm is doing?  </li>
+</ol>
+<a id="more"></a>
+<h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p>1)编程语言不限。<br>2)作业包含一份报告(word 或 pdf 格式)及代码加注释，并打包到.zip，其中 zip 文件的命名格式为学号_姓名。<br>3)不允许使用梯度下降相关的库函数。<br>4)禁止抄袭。    </p>
+<h3 id="实验过程及代码"><a href="#实验过程及代码" class="headerlink" title="实验过程及代码"></a>实验过程及代码</h3><h4 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h4><p><strong>Generate n = 2,000 points uniformly at random in the two-dimensional unit square. Which point do you expect the centroid to be?</strong><br>在数学和物理学中，平面图形的质心或几何中心是图中所有点的算术平均值；在几何学中，重心时质心的同义词；在天体物理学和天文学中，重心是两个或多个轨道相互环绕的物质的质心。如果物理对象具有均匀的密度，则其质心与其形状的质心相同。<br>首先生成2000个分布在0~1范围之间的随机散点，从统计学的角度理解，它们具有均匀的密度，质心是最能代表这群点的点，它到所有点距离之和最小。由于点的生成是随机的，所以期望的点是<code>(0.5, 0.5)</code>。  </p>
+<p>我们利用如下的代码生成2000个分布在0~1范围之间的随机散点，用蓝色点标出，同时用红点标注我们期望的质心。  </p>
+<pre><code class="py"><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt  
+
+Sample_num = <span class="number">2000</span>
+x = np.random.random_sample((Sample_num, ))
+y = np.random.random_sample((Sample_num, ))
+
+plt.figure(figsize=(<span class="number">8</span>, <span class="number">8</span>))
+plt.plot(x, y, <span class="string">'b.'</span>)
+plt.plot(<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="string">'ro'</span>)
+</code></pre>
+<div align="center"><br><img src="/images/hw2_points.png" width="60%" alt="Sample"><br></div>   
+
+<h4 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h4><p><strong>What objective does the centroid of the points optimize?</strong><br>在<em>Q1</em>中我们分析得到，质心是一群点中到其他所有点距离和最小的点，所以我们的目标就是最小化距离之和。<br>假设当前点为:<code>C(x,y)</code>，与其他所有点的距离为<code>dist(x,y)</code>。所以优化的目标是：  </p>
+<div align="center"><br><img src="/images/dist_func.png" width="60%" alt="optimize_func"><br></div>    
+
+<p>此时我们可以定义损失函数如下：  </p>
+<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">cost</span><span class="params">(c, points)</span>:</span>
+    <span class="string">'''</span>
+<span class="string">    params:</span>
+<span class="string">      c: (x,y) 表示待求的质心坐标</span>
+<span class="string">      points: 所有的点</span>
+<span class="string">    return:</span>
+<span class="string">      dist: c到所有点的距离之和 </span>
+<span class="string">    '''</span>
+    <span class="keyword">return</span> sum(sum((c - points) ** <span class="number">2</span>, axis=<span class="number">1</span>) ** <span class="number">0.5</span>)
+</code></pre>
+<h4 id="Q3"><a href="#Q3" class="headerlink" title="Q3"></a>Q3</h4><p><strong>Apply gradient descent (GD) to find the centroid.</strong>  </p>
+<h5 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h5><p>根据损失函数<code>cost</code>，求出其在当前点<code>(x, y)</code>两个维度上的梯度<code>(dx, dy)</code>，梯度求解的公式如下：  </p>
+<div align="center"><br><img src="/images/grad_dist.png" width="60%" alt="grad"><br></div>     
+
+<p>其代码如下：  </p>
+<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">gradient_raw</span><span class="params">(c, points)</span>:</span>
+    <span class="string">'''</span>
+<span class="string">    params:</span>
+<span class="string">      c: (x,y) 表示待求的质心坐标</span>
+<span class="string">      points: 所有的点</span>
+<span class="string">    return:</span>
+<span class="string">      (dx, dy), 在c点时cost在两个维度方向的梯度</span>
+<span class="string">    '''</span>
+    x = points[:, <span class="number">0</span>]
+    y = points[:, <span class="number">1</span>]
+    dist = sum((c - points) ** <span class="number">2</span>, axis=<span class="number">1</span>) ** <span class="number">0.5</span>
+    dx = sum((c[<span class="number">0</span>] - x) / dist)  <span class="comment">#求x偏导数</span>
+    dy = sum((c[<span class="number">1</span>] - y) / dist)  <span class="comment">#求y偏导数</span>
+    <span class="keyword">return</span> np.asarray([dx, dy])
+</code></pre>
+<h5 id="GD"><a href="#GD" class="headerlink" title="GD"></a>GD</h5><p>这一步设置一些参数，编写好梯度下降函数。</p>
+<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent_raw</span><span class="params">(points, start=array<span class="params">([<span class="number">1</span>, <span class="number">1</span>])</span>, theta=<span class="number">0.01</span>, iterations=<span class="number">500</span>, eps=<span class="number">1e-6</span>)</span>:</span>
+    <span class="string">'''</span>
+<span class="string">    params:</span>
+<span class="string">      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点</span>
+<span class="string">      points: 所有采样点</span>
+<span class="string">      theta: 步长，即学习率，控制步长</span>
+<span class="string">      iterations: 迭代次数</span>
+<span class="string">      eps: 阈值，通过比较前后连续两次的cost差值控制迭代。</span>
+<span class="string">    return:</span>
+<span class="string">      x_route: centroid路径</span>
+<span class="string">      x: 收敛时的centroid</span>
+<span class="string">      i: end iteration, 退出迭代时已经迭代了多少次</span>
+<span class="string">    '''</span>
+    x = start
+    x_route = x
+    pre_cost = cost(x, points) <span class="comment"># 初始cost</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(iterations):
+        grad = gradient(x, points)
+        x_i = x - theta * grad
+        cur_cost = cost(x_i, points)
+        <span class="keyword">if</span> abs(pre_cost - cur_cost) &gt; eps: <span class="comment"># 前一个cost与当前cost的差大于阈值，可以继续迭代</span>
+            x = x_i
+            pre_cost = cur_cost
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> x_route, x, i+<span class="number">1</span>
+        x_route = vstack((x_route, x))
+    <span class="keyword">return</span> x_route, x, i+<span class="number">1</span>
+</code></pre>
+<h5 id="结果绘图与分析"><a href="#结果绘图与分析" class="headerlink" title="结果绘图与分析"></a>结果绘图与分析</h5><p>编写辅助函数与测试函数。  </p>
+<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">plotRoute</span><span class="params">(points, route, c, endIteration)</span>:</span>
+    plt.plot(points[:, <span class="number">0</span>], points[:, <span class="number">1</span>], <span class="string">'b,'</span>)
+    plt.plot(route[:, <span class="number">0</span>], route[:, <span class="number">1</span>], <span class="string">'r.'</span>)
+    plt.plot(route[:, <span class="number">0</span>], route[:, <span class="number">1</span>], <span class="string">'k-'</span>)
+    plt.xlabel(<span class="string">'c = (%.3f, %.3f), endAt = %d'</span> % (c[<span class="number">0</span>], c[<span class="number">1</span>], endIteration))
+    print(c)
+    plt.show()
+
+<span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span>
+    x_b, c, i = gradientDescent(points, theta=<span class="number">0.1</span>,, iterations=<span class="number">1000</span>, lr_decay=<span class="number">0.8</span>)
+    plotRoute(points, x_b, c, i)
+</code></pre>
+<p>运行上面的程序并绘图。</p>
+<div align="center"><br><img src="/images/gd_2errors.png" width="60%" alt="Error1"><br></div>     
+
+<p>结果分析：  </p>
+<p><strong>问题1：不收敛</strong><br>图示路径与最终得到的<code>centroid(x,y)</code>表明达到<strong>最大迭代次数后，没有收敛</strong>，尝试了增大迭代次数到10000，100000之后依然得到的是类似的结果。<br>观察发现路径不是一点一点慢慢向中心靠拢，而是在两边很夸张地跳跃，因此问题出在theta，也就是我们熟悉的学习率上。当某一步“跨”的过大，即本次迭代更新后的<code>cur_cost</code>比<code>pre_cost</code>要大的时候，说明我们不是朝着下降的方向在走，此时要调整我们的步伐，迈小一点的步子。因此我们更新我们的梯度下降函数如下。 </p>
+<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(points, start=array<span class="params">([<span class="number">1</span>, <span class="number">1</span>])</span>, theta=<span class="number">0.01</span>, iterations=<span class="number">500</span>, eps=<span class="number">1e-6</span>, lr_decay=<span class="number">0.5</span>)</span>:</span>
+    <span class="string">'''</span>
+<span class="string">    params:</span>
+<span class="string">      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点</span>
+<span class="string">      points: 所有采样点</span>
+<span class="string">      theta: 步长，即学习率，控制步长</span>
+<span class="string">      iterations: 迭代次数</span>
+<span class="string">      eps: 阈值，通过比较前后连续两次的cost差值控制迭代</span>
+<span class="string">      lr_decay: 步长衰减比例</span>
+<span class="string">    return:</span>
+<span class="string">      x_route: centroid路径</span>
+<span class="string">      x: 收敛时的centroid</span>
+<span class="string">      i: end iteration, 退出迭代时已经迭代了多少次</span>
+<span class="string">    '''</span>
+    x = start
+    x_route = x
+    pre_cost = cost(x, points) <span class="comment"># 初始cost</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(iterations):
+        grad = gradient(x, points)
+        x_i = x - theta * grad
+        cur_cost = cost(x_i, points)
+        <span class="keyword">if</span> pre_cost - cur_cost &gt; eps: <span class="comment"># 前一个cost与当前cost的差大于阈值，可以继续迭代</span>
+            x = x_i
+            pre_cost = cur_cost
+        <span class="keyword">elif</span> cur_cost - pre_cost &gt; eps: <span class="comment"># 这一步“跨”的过大，调小步长</span>
+            theta = theta * lr_decay
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> x_route, x, i+<span class="number">1</span>
+        x_route = vstack((x_route, x))
+    <span class="keyword">return</span> x_route, x, i+<span class="number">1</span>
+</code></pre>
+<p>再次运行结果绘图。  </p>
+<div align="center"><br><img src="/images/hw2_error1.png" width="60%" alt="Error2"><br></div>     
+
+<p>出现新的问题。<br><strong>问题2:第一步直接“跨”到中心位置附近</strong><br>在<code>gradient_raw</code>函数中，我们得到的梯度不仅包含方向，也包含了在该方向上的长度，这个长度数值可能较大，因此我们将其单位化，即<code>dx</code>和<code>dy</code>分别除以它们的欧式距离。因此更新我们的<code>gradient</code>函数如下。  </p>
+<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">gradient</span><span class="params">(c, points)</span>:</span>
+    <span class="string">'''</span>
+<span class="string">    params:</span>
+<span class="string">      c: (x,y) 表示待求的质心坐标</span>
+<span class="string">      points: 所有的点</span>
+<span class="string">    return:</span>
+<span class="string">      (dx, dy), 在c点时cost在两个维度方向的梯度</span>
+<span class="string">    '''</span>
+    x = points[:, <span class="number">0</span>]
+    y = points[:, <span class="number">1</span>]
+    dist = sum((c - points) ** <span class="number">2</span>, axis=<span class="number">1</span>) ** <span class="number">0.5</span>
+    dx = sum((c[<span class="number">0</span>] - x) / dist)  <span class="comment">#求x偏导数</span>
+    dy = sum((c[<span class="number">1</span>] - y) / dist)  <span class="comment">#求y偏导数</span>
+    s = (dx ** <span class="number">2</span> + dy ** <span class="number">2</span>) ** <span class="number">0.5</span> <span class="comment"># 欧式距离</span>
+    dx = dx/s
+    dy = dy/s
+    <span class="keyword">return</span> np.asarray([dx, dy])
+</code></pre>
+<p>运行结果绘图。  </p>
+<div align="center"><br><img src="/images/gd_good.png" width="60%" alt="GradientDescent"><br></div>     
+
+<p>图中红色的点(由于比较密集，看起来像线)，表示路径上的点，在稳步向中心靠拢，最终得到的质心也接近理想的质心。至此，完成本部分实验。  </p>
+<h4 id="Q4"><a href="#Q4" class="headerlink" title="Q4"></a>Q4</h4><p><strong>Apply stochastic gradient descent (SGD) to find the centroid. Can you say in simple words, what the algorithm is doing?</strong>    </p>
+<p>随机梯度下降和梯度下降的区别：  </p>
+<ol>
+<li>梯度下降需要所有点都参与梯度更新；随机梯度下降是每次迭代时，随机选取一个点计算梯度。  </li>
+<li>梯度下降最终的结果是一般是稳定的，即稳定收敛到某个点；随机梯度下降可能会陷入某个局部最小值。  </li>
+</ol>
+<p>修改<code>gradient</code>参数，使得迭代时随机选取一个点。  </p>
+<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">stochasticgradient</span><span class="params">(c, points)</span>:</span>
+    <span class="string">'''</span>
+<span class="string">    params:</span>
+<span class="string">      c: (x,y) 表示待求的质心坐标</span>
+<span class="string">      points: 所有的点</span>
+<span class="string">    return:</span>
+<span class="string">      (dx, dy), 在c点时cost在两个维度方向的梯度</span>
+<span class="string">    '''</span>
+    r = choice(points)
+    dx = (c[<span class="number">0</span>] - r[<span class="number">0</span>]) / sum((c - r) ** <span class="number">2</span>) ** <span class="number">0.5</span> <span class="comment"># x偏导</span>
+    dy = (c[<span class="number">1</span>] - r[<span class="number">1</span>]) / sum((c - r) ** <span class="number">2</span>) ** <span class="number">0.5</span>  <span class="comment"># y偏导</span>
+    s = (dx ** <span class="number">2</span> + dy ** <span class="number">2</span>) ** <span class="number">0.5</span>
+    dx = dx/s
+    dy = dy/s
+    <span class="keyword">return</span> array([dx, dy])
+</code></pre>
+<p>我们修改<code>gradientDescent</code>函数，在计算梯度的时候调用<code>stochasticgradient</code>方法，这样我们把计算梯度所用的函数作为一个参数，同样传递进去。修改后代码如下：  </p>
+<pre><code class="py"><span class="function"><span class="keyword">def</span> <span class="title">gd_final</span><span class="params">(points, gd_method=gradient,start=array<span class="params">([<span class="number">1</span>, <span class="number">1</span>])</span>, theta=<span class="number">0.01</span>, iterations=<span class="number">500</span>, eps=<span class="number">1e-6</span>, lr_decay=<span class="number">0.5</span>)</span>:</span>
+    <span class="string">'''</span>
+<span class="string">    params:</span>
+<span class="string">      gd_method: 迭代的方式，可以在(stochasticgradient, gradient)中选择</span>
+<span class="string">      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点</span>
+<span class="string">      points: 所有采样点</span>
+<span class="string">      theta: 步长，即学习率，控制步长</span>
+<span class="string">      iterations: 迭代次数</span>
+<span class="string">      eps: 阈值，通过比较前后连续两次的cost差值控制循环结束。</span>
+<span class="string">    return:</span>
+<span class="string">      x_route: centroid路径</span>
+<span class="string">      x: 收敛时的centroid</span>
+<span class="string">      i: end iteration, 退出迭代时已经迭代了多少次</span>
+<span class="string">    '''</span>
+    x = start
+    x_route = x
+    pre_cost = cost(x, points) <span class="comment"># 初始cost</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(iterations):
+        grad = gd_method(x, points)
+        x_i = x - theta * grad
+        cur_cost = cost(x_i, points)
+        <span class="keyword">if</span> pre_cost - cur_cost &gt; eps: <span class="comment"># 前一个cost与当前cost的差大于阈值，可以继续迭代</span>
+            x = x_i
+            pre_cost = cur_cost
+        <span class="keyword">elif</span> cur_cost - pre_cost &gt; eps: <span class="comment"># 这一步“跨”的过大，调小步长</span>
+            theta = theta * lr_decay
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> x_route, x, i+<span class="number">1</span>
+        x_route = vstack((x_route, x))
+    <span class="keyword">return</span> x_route, x, i+<span class="number">1</span>
+</code></pre>
+<p>最终得到下图：  </p>
+<div align="center"><br><img src="/images/sgd_good.png" width="60%" alt="SGD"><br></div>    
+
+<p>这张图是在多次调整参数多次运行之后得到结果相对较好的图。 下面两张则是陷入局部最小时的情况。  </p>
+<div align="center"><br><img src="/images/sgd_rand.png" width="60%" alt="SGD_rand"><br></div>    
+
+<p>可以看到，由于是随机选取的点，所以在找最优值的过程是曲折的。但是最终还是会收敛。  </p>
+
+                                                
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'xfeif';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+                                                    
+                                                        
+                            </footer>
+            </div>
+            
+                
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/08/你也想要重来吗/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">你也想要重来吗</div>
+    </a>
+  
+</nav>
+
+                    
+</article>
+
+<!-- Table of Contents -->
+
+    <aside id="toc-sidebar">
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            
+                <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验题目"><span class="nav-number">1.</span> <span class="nav-text">实验题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验要求"><span class="nav-number">2.</span> <span class="nav-text">实验要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验过程及代码"><span class="nav-number">3.</span> <span class="nav-text">实验过程及代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q1"><span class="nav-number">3.1.</span> <span class="nav-text">Q1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q2"><span class="nav-number">3.2.</span> <span class="nav-text">Q2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q3"><span class="nav-number">3.3.</span> <span class="nav-text">Q3</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#损失函数"><span class="nav-number">3.3.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GD"><span class="nav-number">3.3.2.</span> <span class="nav-text">GD</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结果绘图与分析"><span class="nav-number">3.3.3.</span> <span class="nav-text">结果绘图与分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q4"><span class="nav-number">3.4.</span> <span class="nav-text">Q4</span></a></li></ol></li></ol>
+                    
+        </div>
+    </aside>
+    </section>
+        
+      </div>
+      
+      <footer id="footer">
+    
+
+                <div class="container">
+                    <div class="row">
+                        <p>
+                            <!-- Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+                            <p id="copyRightEn"> &copy;
+                                2015 -
+                                    2018
+                                        <a href="http://blog.x-fei.me/">XFeiF(eva.aeolus@gmail.com)</a>
+                                        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+                        </p>
+
+                        <!-- 
+                                <p id="copyRightCn">
+                                    XFeiF hold copyright
+                                </p>
+                                 -->
+                    </div>
+
+
+                </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+        contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+        contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Blog</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/friends" class="mobile-nav-link">Friends</a>
+  
+</nav> -->
+    
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-97811913-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Make everyday count!
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 XFeiF All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
