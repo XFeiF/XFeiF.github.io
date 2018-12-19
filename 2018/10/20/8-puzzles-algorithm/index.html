@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://blog.x-fei.me/images/Greedy_run2.png">
 <meta property="og:image" content="http://blog.x-fei.me/images/AStar_run1.png">
 <meta property="og:image" content="http://blog.x-fei.me/images/AStar_run2.png">
-<meta property="og:updated_time" content="2018-10-20T01:44:00.770Z">
+<meta property="og:updated_time" content="2018-10-20T02:06:10.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="8-puzzles algorithm">
 <meta name="twitter:description" content="AIMA: 8-puzzles    topics: DFS, IDS, A*, Greedy, Informed Search 1    题目描述 8-puzzle problem Given any randomly generated start state and a goal state shown below, implement the IDS, greedy search and">
@@ -505,7 +505,7 @@ print(timeuse)
 <h4 id="不同启发式函数比较"><a href="#不同启发式函数比较" class="headerlink" title="不同启发式函数比较"></a>不同启发式函数比较</h4><p>本次实验用了两个启发式函数，分别是 <code>wrongPlace</code>（摆放位置错位的数字个数）、<code>distance_manhattan</code>（曼哈顿距离，计算元素当前位置到目标位置的曼哈顿距离之和）。分析可知，曼哈顿距离的度量包含了错误摆放度量的结果。因此，使用曼哈顿距离的算法表现应该相对较好。实验也证实了这一点，在<code>Greedy</code>算法中，<code>distance_manhattan</code>比<code>wrongPlace</code>执行快约7倍；在<code>A*</code>算法中，<code>distance_manhattan</code>比<code>wrongPlace</code>执行快约3倍。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>经过本次实验，我对经典的搜索算法有了深刻的认识，在编写Solution代码的时候，通过抽取公用代码，极大简化了代码并降低了最终的代码量。通过对比两个启发式函数，理解了一个“好的”启发式函数对问题求解的重要性。  </p>
 <p><strong><a href="">source code-&gt;github</a></strong>   </p>
-<div class="footnotes"><ol><br>    <li class="footnote" id="fn:1"><br>        <p><a href="">Source Code.  If you like it, please give a star!</a> <a href="#fnref:1" title="Source Code"> </a></p><p><br>    </p></li><br></ol></div> 
+<div class="footnotes"><ol><br>    <li class="footnote" id="fn:1"><br>        <p><a href="https://github.com/XFeiF/PRML-AIMA_Practice/tree/master/AIMA/8_puzzle_solution" target="_blank" rel="noopener">Source Code.  If you like it, please give a star!</a> <a href="#fnref:1" title="Source Code"> </a></p><p><br>    </p></li><br></ol></div> 
 
 
 <script type="text/javascript">
@@ -562,6 +562,15 @@ print(timeuse)
             
                 
 <nav id="article-nav">
+  
+    <a href="/2018/12/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️
+        
+      </div>
+    </a>
   
   
     <a href="/2018/10/16/argmax-function-and-its-usage/" id="article-nav-older" class="article-nav-link-wrap">
