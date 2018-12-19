@@ -216,6 +216,66 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Python-Caveat-About-List-Creation-shortcuts"  class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/12/18/Python-Caveat-About-List-Creation-shortcuts/">Python快速创建二维数组 [[0]*n]*n ？</a>
+    </h1>
+  
+
+                        </header>
+                        
+                            <div class="article-meta">
+                                
+	<a href="/2018/12/18/Python-Caveat-About-List-Creation-shortcuts/" class="article-date">
+	  <time datetime="2018-12-18T03:23:25.000Z" itemprop="datePublished">2018-12-18</time>
+	</a>
+
+                                    
+    <a class="article-category-link" href="/categories/python/">python</a>
+
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                    <p>早先在刷Leetcode的时候，遇到了一个莫名的<code>bug</code>，为什么二维数组的元素没有按自己的预期改变呢？<br>当我们这样定义一个二维数组的时候，</p>
+<pre><code class="python">n = <span class="number">3</span>
+res = [[<span class="number">0</span>] * n] * n
+</code></pre>
+<p>发生了什么？<br>
+                                        <!-- 早先在刷Leetcode的时候，遇到了一个莫名的bug，为什么二维数组的元素没有按自己的预期改变呢？当我们这样定义一个二维数组的时候，
+n = 3
+res = [[0] * n] * n
+
+发生了什么？[0] * n 创建了一个有n个0的list。[[0] * n] * n 创建了一个包含n个同一个list的reference。
+Explanation我们利用python的id方法查看对象在......  -->
+                                        <p class="article-more-link">
+                                            <a href="/2018/12/18/Python-Caveat-About-List-Creation-shortcuts/#more">
+                                                Read More
+                                            </a>
+                                        </p>
+                                        
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+                            </footer>
+            </div>
+            
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-LeetCode-Challenge-Dynamic-Programming-Problems-X-100"  class="article article-type-
         post" itemscope itemprop="blogPost" >
             <div id="articleInner" class="article-inner">
@@ -518,67 +578,11 @@ What objective does the centro......  -->
 <!-- Table of Contents -->
 
   
-    <article id="post-你也想要重来吗"  class="article article-type-
-        post" itemscope itemprop="blogPost" >
-            <div id="articleInner" class="article-inner">
-                
-                    
-                        <header class="article-header">
-                            
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/08/你也想要重来吗/">你也想要重来吗</a>
-    </h1>
-  
-
-                        </header>
-                        
-                            <div class="article-meta">
-                                
-	<a href="/2018/10/08/你也想要重来吗/" class="article-date">
-	  <time datetime="2018-10-08T04:27:38.000Z" itemprop="datePublished">2018-10-08</time>
-	</a>
-
-                                    
-    <a class="article-category-link" href="/categories/Fragments/">Fragments</a>
-
-                                        
-                            </div>
-                            <div class="article-entry" itemprop="articleBody">
-                                
-                                    <p>上了发条跟有节奏感是两码事  </p>
-<p>上发条是走固定模式<br>心已经在失控 行为看起来却没差  </p>
-<p>有节奏感是由身心掌控<br>有条不紊地 把握现在 感知未来  </p>
-                                        <!-- 上了发条跟有节奏感是两码事  
-上发条是走固定模式心已经在失控 行为看起来却没差  
-有节奏感是由身心掌控有条不紊地 把握现在 感知未来  
-...  -->
-                                        <p class="article-more-link">
-                                            <a href="/2018/10/08/你也想要重来吗/#more">
-                                                Read More
-                                            </a>
-                                        </p>
-                                        
-                            </div>
-                            <footer class="article-footer">
-                                
-                                            
-                                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/think/">think</a></li></ul>
-
-                            </footer>
-            </div>
-            
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
