@@ -6,7 +6,7 @@
     
         <title>
             
-                archives: 2017/9 |
+                paper notes[1]: rethinking imagenet pre-training |
                     
                         Make everyday count!
         </title>
@@ -17,16 +17,18 @@
                         
                                 
                                         
-                                                <meta name="description" content="I&apos;ll follow You Lord for all my days!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Make everyday count!">
-<meta property="og:url" content="http://blog.x-fei.me/archives/2017/09/index.html">
+                                                <meta name="description" content="Take Home Message  不大幅度修改模型结构也可以在目标任务上随机初始化参数进行训练。   随机初始化参数训练需要更多的迭代次数来充分收敛。   随机初始化参数训练可以达到和预训练相匹配的模型性能，即使是只有10k的COCO数据作训练集。   ImageNet的预训练加快了模型在新任务上的收敛速度。   排除数据集非常小的情况，ImageNet的预训练并不一定有助于减少过拟合现象的发">
+<meta name="keywords" content="Paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Notes[1]: Rethinking ImageNet Pre-training">
+<meta property="og:url" content="http://blog.x-fei.me/2018/12/11/RethinkingImageNetPretraining/index.html">
 <meta property="og:site_name" content="Make everyday count!">
-<meta property="og:description" content="I&apos;ll follow You Lord for all my days!">
+<meta property="og:description" content="Take Home Message  不大幅度修改模型结构也可以在目标任务上随机初始化参数进行训练。   随机初始化参数训练需要更多的迭代次数来充分收敛。   随机初始化参数训练可以达到和预训练相匹配的模型性能，即使是只有10k的COCO数据作训练集。   ImageNet的预训练加快了模型在新任务上的收敛速度。   排除数据集非常小的情况，ImageNet的预训练并不一定有助于减少过拟合现象的发">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-12-19T03:25:32.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Make everyday count!">
-<meta name="twitter:description" content="I&apos;ll follow You Lord for all my days!">
+<meta name="twitter:title" content="Paper Notes[1]: Rethinking ImageNet Pre-training">
+<meta name="twitter:description" content="Take Home Message  不大幅度修改模型结构也可以在目标任务上随机初始化参数进行训练。   随机初始化参数训练需要更多的迭代次数来充分收敛。   随机初始化参数训练可以达到和预训练相匹配的模型性能，即使是只有10k的COCO数据作训练集。   ImageNet的预训练加快了模型在新任务上的收敛速度。   排除数据集非常小的情况，ImageNet的预训练并不一定有助于减少过拟合现象的发">
                                                     
 
                                                             
@@ -90,15 +92,13 @@
                                                                                                                             
 
                                                                                                                                 
-                                                                                                                                    <link rel="stylesheet" href="/css/archive.css">
-                                                                                                                                    
 
                                                                                                                                         
 
 </head>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -120,7 +120,7 @@
 
                 
                     <a class="brand" style="
-                 border-width: 0px;  margin-top: 0px;"  >
+                 border-width: 0px;  margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
               </a>
                     
@@ -204,264 +204,123 @@
             
       <div id="content" class="outer">
         
-          <section id="main">
-  <div class="archives-tags-wrap"><blockquote><span>There are 24 posts in total till now.</span></blockquote>
-
-
-<!-- 分页显示 -->
-
-	
-	
-		
-		
-		  
-		  
-		  <section class="archives-wrap">
-		    <div class="archive-year-wrap">
-		      <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
-		    </div>
-		    <div class="archives">
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/26/Canton-Tower/" class="archive-article-date">
-	  <time datetime="2017-09-26T14:53:13.000Z" itemprop="datePublished">2017-09-26</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/26/Canton-Tower/">Canton Tower</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/20/武汉一行/" class="archive-article-date">
-	  <time datetime="2017-09-20T02:57:05.000Z" itemprop="datePublished">2017-09-20</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/武汉一行/">武汉一行</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/04/Swift-3-Algorithm-二叉搜索树/" class="archive-article-date">
-	  <time datetime="2017-09-04T07:02:56.000Z" itemprop="datePublished">2017-09-04</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/04/Swift-3-Algorithm-二叉搜索树/">Swift 3 Algorithm: 二叉搜索树</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/04/Swift-3-Fun-Algorithms-Filter-Map-Reduce-Higher-Order-Functions/" class="archive-article-date">
-	  <time datetime="2017-09-04T02:01:52.000Z" itemprop="datePublished">2017-09-04</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/04/Swift-3-Fun-Algorithms-Filter-Map-Reduce-Higher-Order-Functions/">Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/03/Swift-3-Fun-Algorithms-WrappingArray/" class="archive-article-date">
-	  <time datetime="2017-09-03T02:21:26.000Z" itemprop="datePublished">2017-09-03</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/Swift-3-Fun-Algorithms-WrappingArray/">Swift 3 Fun Algorithms:Wrapping Array</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2017/09/02/给Hexo添加Bigfoot/" class="archive-article-date">
-	  <time datetime="2017-09-02T15:08:52.000Z" itemprop="datePublished">2017-09-02</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2017/09/02/给Hexo添加Bigfoot/">给Hexo添加Bigfoot</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-	
-		</div></section>
-	
-
-	<!-- 页数指示器 -->
-	
-
-
-
-
-</section>
-          <aside id="sidebar" >
-        
-            
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/XFeiF" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://twitter.com/XFeiF" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://www.facebook.com/XFeiF" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:eva.aeolus@gmail.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
+          <section id="main" style="float:none;"><article id="post-RethinkingImageNetPretraining" style="width: 75%; float:left;"
+     class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
                 
+                    
+                        <header class="article-header">
+                            
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Paper Notes[1]: Rethinking ImageNet Pre-training
+    </h1>
+  
+
+                        </header>
+                        
+                            <div class="article-meta">
+                                
+	<a href="/2018/12/11/RethinkingImageNetPretraining/" class="article-date">
+	  <time datetime="2018-12-11T03:23:25.000Z" itemprop="datePublished">2018-12-11</time>
+	</a>
+
+                                    
+    <a class="article-category-link" href="/categories/Paper/">Paper</a>
+
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                            <h3 id="Take-Home-Message"><a href="#Take-Home-Message" class="headerlink" title="Take Home Message"></a>Take Home Message</h3><blockquote>
+<ol>
+<li>不大幅度修改模型结构也可以在目标任务上随机初始化参数进行训练。  </li>
+<li>随机初始化参数训练需要更多的迭代次数来充分收敛。  </li>
+<li>随机初始化参数训练可以达到和预训练相匹配的模型性能，即使是只有10k的COCO数据作训练集。  </li>
+<li>ImageNet的预训练加快了模型在新任务上的收敛速度。  </li>
+<li>排除数据集非常小的情况，ImageNet的预训练并不一定有助于减少过拟合现象的发生。  </li>
+<li>相较于分类，如果目标任务对定位更加敏感，那么ImageNet预训练对模型的帮助将变得更小。   </li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<h3 id="Personal-opinion"><a href="#Personal-opinion" class="headerlink" title="Personal opinion"></a>Personal opinion</h3><p>就这样的‘发现’而言，更多的是用实打实的验证过去几年里大家对于<code>pre-train</code>的一些直觉感受。</p>
+<p>文末的<strong>Rethink</strong>：<br>第一点是对未来的展望，如果有更多的目标数据和计算资源，不要忘记了针对目标任务训练，ImageNet预训练并不是必须的。言外之意，就是第二点，当下缺少这两个条件，ImageNet预训练是有用的，可以帮助更快收敛，训练成本低。<br>第三点，与第一点还是呼应的，需要大数据，为未来的到来做积累量。<br>第四点比较有意思，追求通用的模型性能。所有的模型都是想要学到数据的通用特征表征。所以我们更需要注意评估预训练的特征，预训练学习到的特征是不是和目标任务相契合，如果不契合，用随机初始化可能得到比预训练更出色的表现。   </p>
+<p>当下还是先跟紧‘潮流’，先造好自己的小船。<br>所以AI+医学图像，目前Pretrain标配的现状什么时候能结束？  ：）</p>
+
+                                                
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'xfeif';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+                                                    
+                                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paper/">Paper</a></li></ul>
+
+                            </footer>
+            </div>
             
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Fragments/">Fragments</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Geek/">Geek</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/">Paper</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Think/">Think</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
                 
+<nav id="article-nav">
+  
+    <a href="/2018/12/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/20/8-puzzles-algorithm/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">8-puzzles algorithm</div>
+    </a>
+  
+</nav>
+
+                    
+</article>
+
+<!-- Table of Contents -->
+
+    <aside id="toc-sidebar">
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
             
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CS/" style="font-size: 10px;">CS</a> <a href="/tags/Code/" style="font-size: 15px;">Code</a> <a href="/tags/HACKx/" style="font-size: 10px;">HACKx</a> <a href="/tags/Machine-Learning/" style="font-size: 15px;">Machine Learning</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/MindStorms/" style="font-size: 10px;">MindStorms</a> <a href="/tags/Paper/" style="font-size: 10px;">Paper</a> <a href="/tags/PyTorch/" style="font-size: 12.5px;">PyTorch</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/geek/" style="font-size: 17.5px;">geek</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/leetcode/" style="font-size: 12.5px;">leetcode</a> <a href="/tags/life/" style="font-size: 12.5px;">life</a> <a href="/tags/linear-regression/" style="font-size: 10px;">linear regression</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/swift/" style="font-size: 15px;">swift</a> <a href="/tags/think/" style="font-size: 17.5px;">think</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/trick/" style="font-size: 12.5px;">trick</a> <a href="/tags/出行/" style="font-size: 12.5px;">出行</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/感想/" style="font-size: 10px;">感想</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
-    </div>
-  </div>
-
-                
-            
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-                
-            
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/12/18/LeetCode-Challenge-Dynamic-Programming-Problems-X-100/">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/11/RethinkingImageNetPretraining/">Paper Notes[1]: Rethinking ImageNet Pre-training</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/20/8-puzzles-algorithm/">8-puzzles algorithm</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/16/argmax-function-and-its-usage/">axis and argmax function</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/10/GD-SGD-理解与二维模拟/">GD &amp; SGD 理解与二维模拟</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-                
-</aside>
+                <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Take-Home-Message"><span class="nav-number">1.</span> <span class="nav-text">Take Home Message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Personal-opinion"><span class="nav-number">2.</span> <span class="nav-text">Personal opinion</span></a></li></ol>
+                    
+        </div>
+    </aside>
+    </section>
         
       </div>
       
@@ -560,6 +419,8 @@
 
 
 
+  <script src="/js/dialog.js"></script>
+
 
 
 <!-- Google Analytics -->
@@ -649,6 +510,8 @@ ga('send', 'pageview');
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>

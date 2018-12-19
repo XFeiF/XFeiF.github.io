@@ -42,9 +42,40 @@
     
       <category term="algorithm" scheme="http://blog.x-fei.me/tags/algorithm/"/>
     
+      <category term="python" scheme="http://blog.x-fei.me/tags/python/"/>
+    
       <category term="dynamic programming" scheme="http://blog.x-fei.me/tags/dynamic-programming/"/>
     
-      <category term="python" scheme="http://blog.x-fei.me/tags/python/"/>
+  </entry>
+  
+  <entry>
+    <title>Paper Notes[1]: Rethinking ImageNet Pre-training</title>
+    <link href="http://blog.x-fei.me/2018/12/11/RethinkingImageNetPretraining/"/>
+    <id>http://blog.x-fei.me/2018/12/11/RethinkingImageNetPretraining/</id>
+    <published>2018-12-11T03:23:25.000Z</published>
+    <updated>2018-12-19T03:25:32.731Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Take-Home-Message"><a href="#Take-Home-Message" class="headerlink" title="Take Home Message"></a>Take Home Message</h3><blockquote><ol><li>不大幅度修改模型结构也可以在目标任务上随机初始化参数进行训练。  </li><li>随机初始化参数训练需要更多的迭代次数来充分收敛。  </li><li>随机初始化参数训练可以达到和预训练相匹配的模型性能，即使是只有10k的COCO数据作训练集。  </li><li>ImageNet的预训练加快了模型在新任务上的收敛速度。  </li><li>排除数据集非常小的情况，ImageNet的预训练并不一定有助于减少过拟合现象的发生。  </li><li>相较于分类，如果目标任务对定位更加敏感，那么ImageNet预训练对模型的帮助将变得更小。   </li></ol></blockquote><a id="more"></a><h3 id="Personal-opinion"><a href="#Personal-opinion" class="headerlink" title="Personal opinion"></a>Personal opinion</h3><p>就这样的‘发现’而言，更多的是用实打实的验证过去几年里大家对于<code>pre-train</code>的一些直觉感受。</p><p>文末的<strong>Rethink</strong>：<br>第一点是对未来的展望，如果有更多的目标数据和计算资源，不要忘记了针对目标任务训练，ImageNet预训练并不是必须的。言外之意，就是第二点，当下缺少这两个条件，ImageNet预训练是有用的，可以帮助更快收敛，训练成本低。<br>第三点，与第一点还是呼应的，需要大数据，为未来的到来做积累量。<br>第四点比较有意思，追求通用的模型性能。所有的模型都是想要学到数据的通用特征表征。所以我们更需要注意评估预训练的特征，预训练学习到的特征是不是和目标任务相契合，如果不契合，用随机初始化可能得到比预训练更出色的表现。   </p><p>当下还是先跟紧‘潮流’，先造好自己的小船。<br>所以AI+医学图像，目前Pretrain标配的现状什么时候能结束？  ：）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Take-Home-Message&quot;&gt;&lt;a href=&quot;#Take-Home-Message&quot; class=&quot;headerlink&quot; title=&quot;Take Home Message&quot;&gt;&lt;/a&gt;Take Home Message&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;不大幅度修改模型结构也可以在目标任务上随机初始化参数进行训练。  &lt;/li&gt;
+&lt;li&gt;随机初始化参数训练需要更多的迭代次数来充分收敛。  &lt;/li&gt;
+&lt;li&gt;随机初始化参数训练可以达到和预训练相匹配的模型性能，即使是只有10k的COCO数据作训练集。  &lt;/li&gt;
+&lt;li&gt;ImageNet的预训练加快了模型在新任务上的收敛速度。  &lt;/li&gt;
+&lt;li&gt;排除数据集非常小的情况，ImageNet的预训练并不一定有助于减少过拟合现象的发生。  &lt;/li&gt;
+&lt;li&gt;相较于分类，如果目标任务对定位更加敏感，那么ImageNet预训练对模型的帮助将变得更小。   &lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Paper" scheme="http://blog.x-fei.me/categories/Paper/"/>
+    
+    
+      <category term="Paper" scheme="http://blog.x-fei.me/tags/Paper/"/>
     
   </entry>
   
@@ -387,9 +418,9 @@ Given any randomly generated start state and a goal state shown below, implement
       <category term="Think" scheme="http://blog.x-fei.me/categories/Think/"/>
     
     
-      <category term="think" scheme="http://blog.x-fei.me/tags/think/"/>
-    
       <category term="summary" scheme="http://blog.x-fei.me/tags/summary/"/>
+    
+      <category term="think" scheme="http://blog.x-fei.me/tags/think/"/>
     
   </entry>
   
@@ -411,9 +442,9 @@ Given any randomly generated start state and a goal state shown below, implement
       <category term="Geek" scheme="http://blog.x-fei.me/categories/Geek/"/>
     
     
-      <category term="geek" scheme="http://blog.x-fei.me/tags/geek/"/>
-    
       <category term="出行" scheme="http://blog.x-fei.me/tags/%E5%87%BA%E8%A1%8C/"/>
+    
+      <category term="geek" scheme="http://blog.x-fei.me/tags/geek/"/>
     
       <category term="HACKx" scheme="http://blog.x-fei.me/tags/HACKx/"/>
     
@@ -504,33 +535,6 @@ Given any randomly generated start state and a goal state shown below, implement
 &lt;p&gt;&lt;em&gt;今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！&lt;/em&gt;&lt;br&gt;这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！  &lt;/p&gt;
 &lt;h3 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h3&gt;&lt;p&gt;打开XCode，新建Playground，创建searchBinaryTreeDemo。  &lt;/p&gt;
 &lt;h3 id=&quot;样例树&quot;&gt;&lt;a href=&quot;#样例树&quot; class=&quot;headerlink&quot; title=&quot;样例树&quot;&gt;&lt;/a&gt;样例树&lt;/h3&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 1.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//              9&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//            /   \&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//           6     10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//          / \     \&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//         5   7     11&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Algorithm" scheme="http://blog.x-fei.me/categories/Algorithm/"/>
-    
-    
-      <category term="algorithm" scheme="http://blog.x-fei.me/tags/algorithm/"/>
-    
-      <category term="swift" scheme="http://blog.x-fei.me/tags/swift/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</title>
-    <link href="http://blog.x-fei.me/2017/09/04/Swift-3-Fun-Algorithms-Filter-Map-Reduce-Higher-Order-Functions/"/>
-    <id>http://blog.x-fei.me/2017/09/04/Swift-3-Fun-Algorithms-Filter-Map-Reduce-Higher-Order-Functions/</id>
-    <published>2017-09-04T02:01:52.000Z</published>
-    <updated>2018-10-11T16:57:22.915Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>有趣的 <code>Swift 3</code> 算法。</p></blockquote><p>今天分享几个Swift Higher Order Functions 给大家。<br>主要是 <code>Filter</code>、<code>Map</code>、<code>Reduce</code>。<br><a id="more"></a></p><p>Higher Order Functions(高阶函数<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup>)。</p><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>打开XCode，新建Playground，创建WordsWithCharCountDemo。  </p><h3 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p><strong>[1, 2, 3, 4, 3, 3]  -&gt; (filter into)  [3, 3, 3]  or  -&gt; [2, 4]（偶数）</strong>  </p><h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>我们当然可以通过For循环来完成这样的功能<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a> </sup>，但是有的时候，我们想要得到的是<code>let</code> 的 不可变的数组，这个时候，我们可以借助<code>filter</code>函数。  </p><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> filtered = numbers.<span class="built_in">filter</span>(&#123; <span class="keyword">return</span> $<span class="number">0</span> == <span class="number">3</span>&#125;)</span><br><span class="line"></span><br><span class="line">filtered</span><br></pre></td></tr></table></figure><p>在filter函数中我们创建了一个<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html" target="_blank" rel="noopener">闭包表达式</a>，详细的闭包表达式知识就不在本文中多说了。该表达式完成的工作就是比较传递进来的参数和3的值，相等则返回<code>true</code>，而<code>filter</code>则根据判断返回合适的参数值。  </p><p>同样的，若想得到<code>[2,4]</code>的话，可以修改闭包表达式，<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> filtered = numbers.<span class="built_in">filter</span>(&#123;<span class="keyword">return</span> $<span class="number">0</span> % <span class="number">2</span> == <span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure></p><h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><h4 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h4><p><strong>用map转换[1, 2, 3, 4] -&gt; [2， 4， 6， 8]</strong>  </p><h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> transformed = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].<span class="built_in">map</span>(&#123;<span class="keyword">return</span> $<span class="number">0</span> * <span class="number">2</span>&#125;)</span><br><span class="line">transformed</span><br></pre></td></tr></table></figure><p>依然是利用简化的闭包表达式，返回参数*2。</p><h4 id="map-与-filter"><a href="#map-与-filter" class="headerlink" title="map 与 filter"></a>map 与 filter</h4><p>这里有必要提一下map与filter的区别。<br>map意为映射，就是将原有的参数通过某种方式映射成为另一个值；<br>而filter意为过滤，就是通过一定的条件，将满足该条件的值筛选出来。  </p><h3 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h3><h4 id="目标-2"><a href="#目标-2" class="headerlink" title="目标"></a>目标</h4><p><strong>用reduce实现累加数组 [1, 2, 3, 4]-&gt; 10</strong>  </p><h4 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].<span class="built_in">reduce</span>(<span class="number">0</span>, &#123;sum, number <span class="keyword">in</span> sum+number&#125;)</span><br><span class="line">sum</span><br></pre></td></tr></table></figure><p>这里<code>reduce</code>函数的<a href="https://developer.apple.com/documentation/swift/uint8.words/2926485-reduce" target="_blank" rel="noopener">官方定义</a>：  </p><pre><code class="swift"><span class="function"><span class="keyword">func</span> <span class="title">reduce</span>&lt;Result&gt;<span class="params">(<span class="number">_</span> initialResult: Result, <span class="number">_</span> nextPartialResult: <span class="params">(Result, UInt)</span></span></span> <span class="keyword">throws</span> -&gt; <span class="type">Result</span>) <span class="keyword">rethrows</span> -&gt; <span class="type">Result</span></code></pre><p>联系reduce的意思可以知道，该方法从一序列的数创造出一个单一的值。例如，获取数组中数的和、乘积等。<br><code>initialResult</code>是一个初始化的值，类似于用<code>for</code>循环时先初始化<code>sum = 0</code>或者<code>produce = 1</code>。  </p><p>闭包表达式中：<br>两个参数，<code>Result</code> 与 调用<code>reduce</code>的数组元素，抛出的则是结果，因此是 <code>sum + number</code>而不是<code>sum = sum + number</code>。  </p><h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>这三个函数在理解之后都不难，而且和<code>for循环</code>相比，相当简洁高效！<br>感谢看完本文！希望你有所收获！:)</p><div class="footnotes"><ol><br>    <li class="footnote" id="fn:1"><br>        <p>A higher-order functional language is one in which a function may be used as a value, just like an integer or a boolean. That is, the value of a variable may be a function, and a function may take a function as argument and may return a function as a result.<br>        一个高阶函数是指该函数可以被当作变量类型一样来使用。就是说变量可能是函数，一个函数可能会把另一个函数作为参数或者返回值是一个函数类型！ <a href="#fnref:1" title="Higher Order Functions"> </a></p><p><br>    </p></li><br>    <li class="footnote" id="fn:2"><br>        <p>For循环也可以完成下面要讲的map与reduce，下文就不再提及 <a href="#fnref:2" title="Powerful FOR LOOP "> </a></p><p><br>    </p></li><br></ol></div> <script type="text/javascript">    $.bigfoot();</script><script type="text/javascript">    var bigfoot = $.bigfoot({        deleteOnUnhover: false,        preventPageScroll: false,        hoverDelay: 250,        activateOnHover: true,    });</script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;今天分享几个Swift Higher Order Functions 给大家。&lt;br&gt;主要是 &lt;code&gt;Filter&lt;/code&gt;、&lt;code&gt;Map&lt;/code&gt;、&lt;code&gt;Reduce&lt;/code&gt;。&lt;br&gt;
     
     </summary>
     
