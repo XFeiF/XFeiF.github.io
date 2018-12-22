@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+        <title>
+            
+                svm(part i) |
+                    
+                        Make everyday count!
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+                <meta name="keywords" content="Swift, Python, ML, CV" />
+                
+                        
+                                
+                                        
+                                                <meta name="description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。 SVM简介Support Vector Machine（SVM），监督学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVM(Part I)">
+<meta property="og:url" content="http://blog.x-fei.me/2018/12/22/SVM/index.html">
+<meta property="og:site_name" content="Make everyday count!">
+<meta property="og:description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。 SVM简介Support Vector Machine（SVM），监督学习">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://blog.x-fei.me/images/multi_hps.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/idea_hp.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/idea_hp.png">
+<meta property="og:image" content="http://blog.x-fei.me/images/SVM_hand.png">
+<meta property="og:updated_time" content="2018-12-22T15:40:27.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVM(Part I)">
+<meta name="twitter:description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。 SVM简介Support Vector Machine（SVM），监督学习">
+<meta name="twitter:image" content="http://blog.x-fei.me/images/multi_hps.png">
+                                                    
+
+                                                            
+
+                                                                <link rel="icon" href="/css/images/mylogo.png">
+                                                                <link rel="apple-touch-icon" href="/css/images/mylogo.png">
+                                                                
+                                                                    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+                                                                    
+                                                                        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+                                                                        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+                                                                        <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+                                                                        <style type="text/css">
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");
+                                                                                font-weight: 500;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");
+                                                                                font-weight: 500;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");
+                                                                                font-weight: lighter;
+                                                                                font-style: normal;
+                                                                            }
+                                                                            
+                                                                            @font-face {
+                                                                                font-family: futura-pt;
+                                                                                src: url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");
+                                                                                font-weight: 400;
+                                                                                font-style: italic;
+                                                                            }
+                                                                        </style>
+                                                                        <link rel="stylesheet" href="/css/style.css">
+
+                                                                            <script src="/js/jquery-2.0.3.min.js"></script>
+                                                                                <script src="/js/bootstrap.js"></script>
+                                                                                    <script src="/js/bigfoot.min.js"></script>
+
+                                                                                        <!-- Bootstrap core CSS -->
+                                                                                        <link rel="stylesheet" href="/css/bootstrap.css">
+
+                                                                                        
+                                                                                                <link rel="stylesheet" href="/css/dialog.css">
+                                                                                                    <link rel="stylesheet" href="/css/bigfoot-default.css">
+                                                                                                        <link rel="stylesheet" href="/css/directory.css">
+                                                                                                            
+
+                                                                                                                
+
+                                                                                                                        
+                                                                                                                            <link rel="stylesheet" href="/css/header-post.css">
+                                                                                                                            
+
+                                                                                                                                
+
+                                                                                                                                        
+
+</head>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+
+            <div class="container">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+                
+                    <a class="brand" style="
+                 border-width: 0px;  margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.png">
+              </a>
+                    
+
+                            <div class="navbar-collapse collapse">
+                                <ul class="hnav navbar-nav">
+                                    
+                                        <li>
+                                            <a class="main-nav-link" href="/">
+                                                BLOG
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a class="main-nav-link" href="/archives">
+                                                ARCHIVES
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a class="main-nav-link" href="/friends">
+                                                FRIENDS
+                                            </a>
+                                        </li>
+                                        
+                                            <li>
+                                                <a id="beautifont" class="main-nav-link" target="_blank" href="http://x-fei.me">WHOAMI</a>
+                                                <!-- <a id="beautifont" class="main-nav-link" href="/Resume.pdf">RESUME</a> -->
+                                            </li>
+                                            <li>
+                                                <!-- <a id="beautifont" class="main-nav-link" href="/atom.xml">RSS</a> -->
+                                            </li>
+                                            <li>
+                                                <!-- <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div> -->
+                                            </li>
+                            </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-SVM" style="width: 75%; float:left;"
+     class="article article-type-
+        post" itemscope itemprop="blogPost" >
+            <div id="articleInner" class="article-inner">
+                
+                    
+                        <header class="article-header">
+                            
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      SVM(Part I)
+    </h1>
+  
+
+                        </header>
+                        
+                            <div class="article-meta">
+                                
+	<a href="/2018/12/22/SVM/" class="article-date">
+	  <time datetime="2018-12-22T10:26:49.000Z" itemprop="datePublished">2018-12-22</time>
+	</a>
+
+                                    
+                                        
+                            </div>
+                            <div class="article-entry" itemprop="articleBody">
+                                
+                                            <p>传送门： </p>
+<p><a href="">SVM_1</a>：</p>
+<p>简介与线性可分情况分析，最后附有详细推导过程与注解。</p>
+<p><a href="">SVM_2</a></p>
+<p>VC维，非线性可分情况分析，核技巧，软间隔，总结  </p>
+<p>About These  Articles：  </p>
+<p>SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。</p>
+<h2 id="SVM简介"><a href="#SVM简介" class="headerlink" title="SVM简介"></a>SVM简介</h2><p>Support Vector Machine（SVM），监督学习。</p>
+<p>流行于1998年NIST的手写数字识别。其优点有：  </p>
+<ol>
+<li>是当时已有的比神经网络更有效的算法，泛化性能好，和神经网络相比不存在局部极小值，不需要长时间的收敛。  </li>
+<li>在许多复杂的现实应用比如文字、图片分类等任务中有成功的应用</li>
+<li>在很多任务中，SVM是最好的选择  </li>
+</ol>
+<p>从以上我们知道，SVM是一种强大的算法，即时今天我们的神经网络已经发展出很多，有了很多优异的表现，但是这与了解SVM并不冲突，学习好SVM对于我们理解、求解一些问题依然很重要。</p>
+<h2 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h2><p>训练数据：$(x_1, y_1), (x_2, y_2), … , (x_n, y_n)$, 其中，$x_i$是m维的向量，每一个向量都属于$+1, -1$中的一类。    </p>
+<p>希望寻找到一个<strong>超平面</strong>： $w·x + b = 0$，可以将训练数据分到对应的类中，正类为1，负类为-1.</p>
+<p><img src="/images/multi_hps.png" alt="Posible HPs"></p>
+<p>如图，虽然有无数可能的超平面，但是我们希望寻找一个泛化性能好（所谓的泛化性能好，指的是模型对没有见过的新数据依然有不错的性能，即模型表征的是一般性的特征）超平面，即上图<strong>H3</strong>的情况。  </p>
+<p>假设选定的超平面<strong>H2</strong>是靠近训练数据$x_i$的，现在对于测试数据$x^{‘}$ ，它与$x_i$同类，但是用图中选定的超平面<strong>H2</strong>却误分类类。  </p>
+<p>所以直观上，超平面的选定规则有：  </p>
+<ul>
+<li>超平面应该尽可能远离所有的样本点</li>
+<li>靠近训练数据的新数据应该北正确分类  </li>
+</ul>
+<h2 id="线性可分SVM"><a href="#线性可分SVM" class="headerlink" title="线性可分SVM"></a>线性可分SVM</h2><p>在数据线性可分的情况下，SVM 的思想是最大化超平面与最接近的样本点间的距离。在理想最优超平面处：<strong>与最近的负样本点的距离 =  与最近的正样本点的距离</strong>。最优意味着有很好的泛化性能。  </p>
+<h3 id="Support-Vectors"><a href="#Support-Vectors" class="headerlink" title="Support Vectors"></a>Support Vectors</h3><p>Support Vectors支持向量指的是距离分离超平面最近的那些样本点。即如下图所示虚线上的蓝点和绿点：  </p>
+<p><img src="/images/idea_hp.png" alt="Idea HP"></p>
+<h3 id="距离"><a href="#距离" class="headerlink" title="距离"></a>距离</h3><p>假设决策边界表达式为：$w^{t}x + b = 0$ ，其中$w{\in}R^{m}, x{\in}R^{m}, b{\in}R $ 。   </p>
+<p>$\frac{w}{||w||}$ 和 决策边界垂直且长度为1。   </p>
+<p>令$\gamma_i$表示训练集中的样本点$x_i$与决策边界之间的距离。  </p>
+<p>令$x_i$为最接近决策边界的样本点集中的一个，$||w^{t}x_i + b = 1||$ ，可以 通过缩放$w,b$来满足1的条件。  </p>
+<p>此时$d = \frac{w^tx_i + b}{||w||} = \frac{1}{||w||}$  。所以此时间隔 $m = \frac{2}{||w||}$。    </p>
+<h3 id="寻找最优超平面"><a href="#寻找最优超平面" class="headerlink" title="寻找最优超平面"></a>寻找最优超平面</h3><p>SVM通过最大化间隔$m = \frac{2}{||w||}$ 以保证：</p>
+<p>For $y_i = +1, w^tx_i + b \geq 1$</p>
+<p>For $y_i = -1, w^tx_i + b \leq -1$</p>
+<p>以上的最大化问题可以等价转化为最小化$\frac{1}{2} \parallel w \parallel^2$  ，条件为$y_i(w^tx_i + b) \geq 1$ （1）。</p>
+<p>这样转化是最优化问题转化为了一个只有线性约束并且总有单一最小值的凸二次规划问题。</p>
+<h3 id="最优化问题"><a href="#最优化问题" class="headerlink" title="最优化问题"></a>最优化问题</h3><p>为了求解线性可分SVM的最优化问题（1），将它作为原始最优化问题，应用拉格朗日对偶性，通过求解对偶问题得到原始问题的最优解。</p>
+<p>这样做的优点，一是对偶问题往往更容易求解；二十自然引入<strong>核函数</strong>，进而推广到非线性分类问题。</p>
+<p>首先构建拉格朗日函数，对每一个不等式约束引进拉格朗日乘子 $\alpha_i \geq 0, i=1,2,…,N$ （2.1），定义拉格朗日函数：</p>
+<p>$L(w, b, \alpha)=$  $\frac{1}{2} \parallel w \parallel^2 - $$ \sum_{i=1}^{N}\alpha_i(y_i(w \cdot x_i+b) - 1 )$ （2.2），</p>
+<p>其中 $\alpha = (\alpha_1, \alpha_2, … , \alpha_N)^T$ 为拉格朗日乘子向量。  </p>
+<p>根据拉格朗日对偶性，原始问题的对偶问题是极大极小问题：  </p>
+<p>\$max<em>\alpha$  \$min</em>{w, b}$\$L(w, b ,\alpha)$  </p>
+<p>所以，为了得到对偶问题的解，需要先求$L(w, b, \alpha)$对$w, b$的极小，再求对$\alpha$的极大。  </p>
+<ol>
+<li><strong>求$min_{w,b}L(w, b, \alpha)$</strong> </li>
+</ol>
+<p>$\frac{\partial L}{\partial w} = 0  \Longrightarrow w = \sum_{i=1}^{n}\alpha_iy_ix_i  （3）$  </p>
+<p>$\frac{\partial L}{\partial b} = 0  \Longrightarrow \sum_{i=1}^{n}\alpha_iy_i = 0 （4）$  </p>
+<p>将$（3）$代入拉格朗日函数（2）中，并利用（4），可得：</p>
+<p>$min<em>{w,b}L(w, b, \alpha) = \sum</em>{i=1}^{N} \alpha<em> i -\frac{1}{2}\sum</em>{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j)$  </p>
+<ol>
+<li><strong>求对偶问题，即$min_{w,b}L(w, b, \alpha)$ 对 $\alpha$的极大</strong>：  </li>
+</ol>
+<p>$max<em>\alpha L(\alpha) = \sum</em>{i=1}^{N} \alpha<em> i -\frac{1}{2}\sum</em>{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j) $      (5) </p>
+<p> $s.t. \alpha<em>i \geq 0 $ and $\sum</em>{i=1}^{N}\alpha_iy_i=0$.  </p>
+<ol>
+<li><strong>原问题的解</strong>  </li>
+</ol>
+<p>设$\alpha^<em> = (\alpha_1^</em>, \alpha_2^<em>, … , \alpha_l^</em>)^T$是对偶最优化问题（2.1,2.2）的解，则存在下标$j$，使得$\alpha_j^{<em>} \gt 0$，并可按下式求得原始问题的解$w^</em>, b^*$：  </p>
+<p>$w^<em> = \sum_{i=1}^{N}\alpha_i^</em>y_ix_i$  </p>
+<p>$b^<em> = y<em>j - \sum</em>{i=1}^{N}\alpha_i^</em>y_i(x_i \cdot x_j)$  </p>
+<p>最终得到我们的决策函数：  </p>
+<p>$f(x) = sign({w^<em>}x + b^</em>)$</p>
+<h3 id="小结：线性可分SVM学习算法"><a href="#小结：线性可分SVM学习算法" class="headerlink" title="小结：线性可分SVM学习算法"></a>小结：线性可分SVM学习算法</h3><p><strong>输入：</strong>  线性可分训练集$T = {(x_1, y_1),  (x_2, y_2), …, (x_N, y_N)}$，其中$x_i\in R^n, y_i \in {+1, -1}, i=1, 2,…,N$  </p>
+<p><strong>输出：</strong> 分离超平面和分类决策函数</p>
+<p>(1) <strong>构造并求解约束最优化问题</strong> </p>
+<p>$min<em>\alpha \frac{1}{2} \sum</em>{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_i \cdot x<em>j) - \sum</em>{i=1}^{N}\alpha_i$  </p>
+<p>$s.t. \sum_{i=1}^{N}\alpha_iy_i = 0$</p>
+<p>$\alpha_i \ge 0, i = 1, 2,…,N$</p>
+<p>(2) <strong>计算</strong></p>
+<p>$w^<em> = \sum_{i=1}^{N}\alpha_i^</em>y_ix_i$  </p>
+<p><strong>并选择$\alpha^<em>$的一个正分量$\alpha_j^{</em>} \gt 0$，计算</strong></p>
+<p>$b^{*} = y<em>j - \sum</em>{i=1}^{N} \alpha_i^{*}y_i(x_i \cdot x_j)$  </p>
+<p>(3)<strong>求得分离超平面</strong></p>
+<p>$w^{*} \cdot x + b^{*} = 0$  </p>
+<p><strong>分离决策函数：</strong> </p>
+<p>$f(x)=$ $sign(w^{*}x+b^{*})$</p>
+<h3 id="附-手写推导过程"><a href="#附-手写推导过程" class="headerlink" title="附: 手写推导过程"></a>附: 手写推导过程</h3><p>结合本图：</p>
+<p><img src="/images/idea_hp.png" alt="Idea HP"></p>
+<p><img src="/images/SVM_hand.png" alt="SVM 手写推导"></p>
+
+                                                
+                            </div>
+                            <footer class="article-footer">
+                                
+                                            
+                                                
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'xfeif';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+                                                    
+                                                        
+                            </footer>
+            </div>
+            
+                
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/21/10-12月/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">10-12月</div>
+    </a>
+  
+</nav>
+
+                    
+</article>
+
+<!-- Table of Contents -->
+
+    <aside id="toc-sidebar">
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            
+                <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM简介"><span class="nav-number">1.</span> <span class="nav-text">SVM简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题定义"><span class="nav-number">2.</span> <span class="nav-text">问题定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分SVM"><span class="nav-number">3.</span> <span class="nav-text">线性可分SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-Vectors"><span class="nav-number">3.1.</span> <span class="nav-text">Support Vectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#距离"><span class="nav-number">3.2.</span> <span class="nav-text">距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找最优超平面"><span class="nav-number">3.3.</span> <span class="nav-text">寻找最优超平面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最优化问题"><span class="nav-number">3.4.</span> <span class="nav-text">最优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结：线性可分SVM学习算法"><span class="nav-number">3.5.</span> <span class="nav-text">小结：线性可分SVM学习算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附-手写推导过程"><span class="nav-number">3.6.</span> <span class="nav-text">附: 手写推导过程</span></a></li></ol></li></ol>
+                    
+        </div>
+    </aside>
+    </section>
+        
+      </div>
+      
+      <footer id="footer">
+    
+
+                <div class="container">
+                    <div class="row">
+                        <p>
+                            <!-- Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+                            <p id="copyRightEn"> &copy;
+                                2015 -
+                                    2018
+                                        <a href="http://x-fei.me/">🍉XFeiF</a>
+                                        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+                        </p>
+
+                        <!-- 
+                                <p id="copyRightCn">
+                                    XFeiF hold copyright
+                                </p>
+                                 -->
+                    </div>
+
+
+                </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+        contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+        contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Blog</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/friends" class="mobile-nav-link">Friends</a>
+  
+</nav> -->
+    
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-97811913-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Make everyday count!
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 XFeiF All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
