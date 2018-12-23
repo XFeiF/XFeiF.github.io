@@ -17,21 +17,21 @@
                         
                                 
                                         
-                                                <meta name="description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。 SVM简介Support Vector Machine（SVM），监督学习">
+                                                <meta name="description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。(由于Markdown和MathJax的兼容问题，很多公式没有渲染出来，可以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVM(Part I)">
-<meta property="og:url" content="http://blog.x-fei.me/2018/12/22/SVM/index.html">
+<meta property="og:url" content="http://blog.x-fei.me/2018/12/23/SVM/index.html">
 <meta property="og:site_name" content="Make everyday count!">
-<meta property="og:description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。 SVM简介Support Vector Machine（SVM），监督学习">
+<meta property="og:description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。(由于Markdown和MathJax的兼容问题，很多公式没有渲染出来，可以">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://blog.x-fei.me/images/multi_hps.png">
 <meta property="og:image" content="http://blog.x-fei.me/images/idea_hp.png">
 <meta property="og:image" content="http://blog.x-fei.me/images/idea_hp.png">
 <meta property="og:image" content="http://blog.x-fei.me/images/SVM_hand.png">
-<meta property="og:updated_time" content="2018-12-22T15:40:27.187Z">
+<meta property="og:updated_time" content="2018-12-23T02:42:08.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM(Part I)">
-<meta name="twitter:description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。 SVM简介Support Vector Machine（SVM），监督学习">
+<meta name="twitter:description" content="传送门：  SVM_1： 简介与线性可分情况分析，最后附有详细推导过程与注解。 SVM_2 VC维，非线性可分情况分析，核技巧，软间隔，总结   About These  Articles：   SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。(由于Markdown和MathJax的兼容问题，很多公式没有渲染出来，可以">
 <meta name="twitter:image" content="http://blog.x-fei.me/images/multi_hps.png">
                                                     
 
@@ -226,8 +226,8 @@
                         
                             <div class="article-meta">
                                 
-	<a href="/2018/12/22/SVM/" class="article-date">
-	  <time datetime="2018-12-22T10:26:49.000Z" itemprop="datePublished">2018-12-22</time>
+	<a href="/2018/12/23/SVM/" class="article-date">
+	  <time datetime="2018-12-22T16:21:34.000Z" itemprop="datePublished">2018-12-23</time>
 	</a>
 
                                     
@@ -241,7 +241,7 @@
 <p><a href="">SVM_2</a></p>
 <p>VC维，非线性可分情况分析，核技巧，软间隔，总结  </p>
 <p>About These  Articles：  </p>
-<p>SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。</p>
+<p>SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。(由于Markdown和MathJax的兼容问题，很多公式没有渲染出来，可以直接看手写推导过程。)</p>
 <h2 id="SVM简介"><a href="#SVM简介" class="headerlink" title="SVM简介"></a>SVM简介</h2><p>Support Vector Machine（SVM），监督学习。</p>
 <p>流行于1998年NIST的手写数字识别。其优点有：  </p>
 <ol>
@@ -292,25 +292,29 @@
 <li><strong>求对偶问题，即$min_{w,b}L(w, b, \alpha)$ 对 $\alpha$的极大</strong>：  </li>
 </ol>
 <p>$max<em>\alpha L(\alpha) = \sum</em>{i=1}^{N} \alpha<em> i -\frac{1}{2}\sum</em>{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j) $      (5) </p>
-<p> $s.t. \alpha<em>i \geq 0 $ and $\sum</em>{i=1}^{N}\alpha_iy_i=0$.  </p>
+<p> $s.t. \alpha_i \geq 0$<br>  and   </p>
+<p>  $\sum_{i=1}^{N}\alpha_iy_i=0$.  </p>
 <ol>
 <li><strong>原问题的解</strong>  </li>
 </ol>
-<p>设$\alpha^<em> = (\alpha_1^</em>, \alpha_2^<em>, … , \alpha_l^</em>)^T$是对偶最优化问题（2.1,2.2）的解，则存在下标$j$，使得$\alpha_j^{<em>} \gt 0$，并可按下式求得原始问题的解$w^</em>, b^*$：  </p>
-<p>$w^<em> = \sum_{i=1}^{N}\alpha_i^</em>y_ix_i$  </p>
-<p>$b^<em> = y<em>j - \sum</em>{i=1}^{N}\alpha_i^</em>y_i(x_i \cdot x_j)$  </p>
+<p>设$\alpha^{*} = (\alpha_1^{*}, \alpha_2^{*}, … , \alpha_l^{*})^T$是对偶最优化问题（2.1,2.2）的解，则存在下标$j$，使得$\alpha_j^{*} \gt 0$，并可按下式求得原始问题的解$w^{*}, b^{*}$：  </p>
+<p>$w^{*} = \sum_{i=1}^{N}\alpha_i^{*}y_ix_i$  </p>
+<p>$b^{*} = y_j -$  </p>
+<p>$\sum \limits_{i=1}^{N} \alpha_i^{*} y_i ( x_i \cdot x_j )$  </p>
 <p>最终得到我们的决策函数：  </p>
-<p>$f(x) = sign({w^<em>}x + b^</em>)$</p>
+<p>$f(x)=sign(w^{*}x+b^{*})$</p>
 <h3 id="小结：线性可分SVM学习算法"><a href="#小结：线性可分SVM学习算法" class="headerlink" title="小结：线性可分SVM学习算法"></a>小结：线性可分SVM学习算法</h3><p><strong>输入：</strong>  线性可分训练集$T = {(x_1, y_1),  (x_2, y_2), …, (x_N, y_N)}$，其中$x_i\in R^n, y_i \in {+1, -1}, i=1, 2,…,N$  </p>
 <p><strong>输出：</strong> 分离超平面和分类决策函数</p>
 <p>(1) <strong>构造并求解约束最优化问题</strong> </p>
+<p>$\underset{\alpha}{\text{min}} \frac{1}{2} \sum\limits_{i,j}^n \alpha_i \alpha_j y_i y_j (x_i \cdot x<em>j) - \sum\limits</em>{i=1}^{N} \alpha_i$</p>
 <p>$min<em>\alpha \frac{1}{2} \sum</em>{i=1}^{N}\sum_{j=1}^{N}\alpha_i\alpha_jy_iy_j(x_i \cdot x<em>j) - \sum</em>{i=1}^{N}\alpha_i$  </p>
 <p>$s.t. \sum_{i=1}^{N}\alpha_iy_i = 0$</p>
 <p>$\alpha_i \ge 0, i = 1, 2,…,N$</p>
 <p>(2) <strong>计算</strong></p>
-<p>$w^<em> = \sum_{i=1}^{N}\alpha_i^</em>y_ix_i$  </p>
-<p><strong>并选择$\alpha^<em>$的一个正分量$\alpha_j^{</em>} \gt 0$，计算</strong></p>
-<p>$b^{*} = y<em>j - \sum</em>{i=1}^{N} \alpha_i^{*}y_i(x_i \cdot x_j)$  </p>
+<p>$w^{*} = \sum_{i=1}^{N}\alpha_i^{*}y_ix_i$  </p>
+<p><strong>并选择$\alpha^{*}$的一个正分量$\alpha_j^{*} \gt 0$，计算</strong></p>
+<p>$b^{*}=y_j-$    </p>
+<p>$\sum_{i=1}^{N} \alpha_i^{*} y_i(x_i \cdot x_j)$</p>
 <p>(3)<strong>求得分离超平面</strong></p>
 <p>$w^{*} \cdot x + b^{*} = 0$  </p>
 <p><strong>分离决策函数：</strong> </p>
