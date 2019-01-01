@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.x-fei.me/"/>
-  <updated>2018-12-27T06:09:39.320Z</updated>
+  <updated>2019-01-01T16:41:54.643Z</updated>
   <id>http://blog.x-fei.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2018</title>
+    <link href="http://blog.x-fei.me/2019/01/02/2018/"/>
+    <id>http://blog.x-fei.me/2019/01/02/2018/</id>
+    <published>2019-01-01T16:41:29.000Z</published>
+    <updated>2019-01-01T16:41:54.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>2014年的现在应该紧张准备高考。<br>2014年的9月正式入学。<br>2018年的6月正式毕业。<br>2018年的9月再次入学。<br>转眼，2018年也过去了。  </p><a id="more"></a>  <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>我后来才慢慢认可，<strong>仪式感是一种很重要的东西</strong>。  </p><h2 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h2><p><strong>1月</strong>，1月的时候在学校待到很晚才回家，老宿舍冷冷的，我有好几天都懒在被窝里到下午。<br><strong>2月</strong>，寒假在家写了一个书签主页<a href="http://info.x-fei.me/opening/1" target="_blank" rel="noopener">info.x-fei.me</a>，基于Laravel5。<br><strong>3月</strong>，先回学校待了半个月，之后来SYSU，一边学习一边做毕设。<br><strong>4月</strong>，完成毕设，入坑tensorflow，准备Google Summer Code(准备太不充分，吹了)。<br><strong>5月</strong>，回CSU准备答辩，PUBG。<br><strong>6月</strong>，答辩，拍毕业照，毕业拨穗乌龙（反向给教授拨穗）。<br><strong>7月</strong>，在SYSU参加MICCAI2018年SKIN LESION的比赛，学习Deeplabv3+，成为Tensorflow的Contributor（只是更新了部分文档）。<br><strong>8月</strong>，因为太菜所以成绩不佳。回长沙，借住在海洋家一周，终于拿到驾照（感谢海洋🍻）。回家待了两周，开始刷题。<br><strong>9月</strong>，开学以及确定课题方向，刷了满满一个月的题。<br><strong>10月</strong>，月初的时候大圣来找我玩了几天。整个月都在实验、上课，和霖哥一起做了一个外包，写后端。<br><strong>11月</strong>，实验、上课，写外包，修复bug，重构代码，入坑Python爬虫，周末游戏。<br><strong>12月</strong>，准备投稿，“逃课”2周，17号在导师的帮助下，投出第一篇。之后有所懈怠。  </p><h2 id="Reward"><a href="#Reward" class="headerlink" title="Reward"></a>Reward</h2><h3 id="Diary"><a href="#Diary" class="headerlink" title="Diary"></a>Diary</h3><p>1月到3月的时候，开始写日记，坚持写了66天，都发在了公众号上。<br>问题是，我并不是一个合格的内容运营者，单纯的日记，也没有必要发在公众号上，缺少时间的积累、沉淀。  </p><h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a>Leetcode</h3><p>200道题，完整刷了9周，70天左右。主要在8月与9月的时候，之后由于懒且事多，且菜，所以停了。  </p><h3 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h3><p>下半年久坐在实验室当中，有时候事情虽然多，但是也想写写总结，于是下半年高产，预期19年一年依然高产。  </p><h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>研究生入学，受同门嘉鑫影响比较大，生活多了很多乐趣（喝了很多奶茶）。感谢我的同门以及师兄师姐师弟师妹。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2014年的现在应该紧张准备高考。&lt;br&gt;2014年的9月正式入学。&lt;br&gt;2018年的6月正式毕业。&lt;br&gt;2018年的9月再次入学。&lt;br&gt;转眼，2018年也过去了。  &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Fragments" scheme="http://blog.x-fei.me/categories/Fragments/"/>
+    
+    
+      <category term="think" scheme="http://blog.x-fei.me/tags/think/"/>
+    
+      <category term="life" scheme="http://blog.x-fei.me/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</title>
@@ -531,32 +555,6 @@ Given any randomly generated start state and a goal state shown below, implement
       <category term="think" scheme="http://blog.x-fei.me/tags/think/"/>
     
       <category term="summary" scheme="http://blog.x-fei.me/tags/summary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hackx上海</title>
-    <link href="http://blog.x-fei.me/2017/11/06/Hackx%E4%B8%8A%E6%B5%B7/"/>
-    <id>http://blog.x-fei.me/2017/11/06/Hackx上海/</id>
-    <published>2017-11-06T03:49:33.000Z</published>
-    <updated>2018-10-11T16:58:25.279Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="东方明珠"><a href="#东方明珠" class="headerlink" title="东方明珠"></a>东方明珠</h3><p><img src="/images/OrientalPearlTower.png" alt="The Oriental Pearl Tower">  </p><a id="more"></a><h3 id="HACKxFDU"><a href="#HACKxFDU" class="headerlink" title="HACKxFDU"></a>HACKxFDU</h3><p><img src="/images/HACKxFDU.png" alt="HACKxFDU"></p><blockquote><p>Idea很重要！做一个有力的C位很重要！  </p></blockquote><p>人和动物的根本区别是会不会制造和使用工具。<br>人是一支有思想的芦苇。  </p><p>周五NodeX四人乘高铁到了上海，在那里度过了一个值得吐槽的周末。<br>对我个人而言，有很多收获。  </p><h3 id="Idea"><a href="#Idea" class="headerlink" title="Idea"></a>Idea</h3><blockquote><p>人是一支有思想的芦苇。  </p></blockquote><p>这次去上海主要是参加 <em>2017 HACKx FDU</em> <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup> 。主题是人工智能、金融科技、云服务和物联网。我们去的四个人，两个前端，我一个客户端，天天全可以。做应用不存在什么问题，但是AI算法是短板了，没有可以做的。但是这是黑客松啊，我理解的黑客松是 <em>现场idea</em> + <em>已有或现学的技术</em> ，所以周五就准备好鸽了，周末出去玩。  </p><p>还是想聊聊关键，A good idea！  </p><p>Without an idea, you are nothing at all.这话是有些夸张的，就是想突出idea的重要性。是的，没有好的Idea，一切都是扯淡。技术是优势，但不是全部！  </p><p>去现场的时候，认识了Luv Letter，然后后面两天看也稍微帮助他们做了一些事情。最开始的时候，他们有了想法，后面实施的时候，现学的nodejs写了后端。实际上，我们这边前后端写起来就是分分钟的事情。但是我们没有想法。<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a> </sup>  </p><p>所以想法啊，真的很重要。人是一支有思想的芦苇，没有idea就是一台掌握了具体技术的机器。  </p><p>那么如何，有一个异于常人的新颖的想法？我也要去寻找答案。  </p><h3 id="打好C位，单C难赢"><a href="#打好C位，单C难赢" class="headerlink" title="打好C位，单C难赢"></a>打好C位，单C难赢</h3><blockquote><p>看新闻才知道S7总决赛SKT输了，Faker哭了，ADC Bang要背锅。</p></blockquote><p>SKT打兔子队的时候，1:2落后拿出瑞兹稳住Carry；打RNG的时候，拿出加里奥疯狂支援。一人扛起了一支队。但是打SSG的时候，Carry不动了，Bang失误太多。  </p><p>之前看一个主播xiaoxin玩《绝地求生大逃杀》的时候，带了三个队友，很菜的那种，最后加上他们共两支队伍6个人。xiaoxin不小心对枪死了，但是知道了对方的位置，然后指挥三个队友打。队友连枪都没对上，全跪了。  </p><p>打游戏的时候是这样的，想赢，别坑，该自己做的做好，Carry起来，一个人很难带的动的。<br>游戏之外也是这样。为什么说的是强强联合，而不是强弱联合？因为绝大多数的弱者没有合作的资格。从强者的角度来说，自然也是希望自己的合作对象是旗鼓相当的强者。（当然，互补是另外的说法，这里的强弱比较视具体情况看）  </p><p>所以，做好自己的C位，不是总有人来带你飞。  </p><h3 id="大道朝天"><a href="#大道朝天" class="headerlink" title="大道朝天"></a>大道朝天</h3><p>除了没有写自己的项目之外，在现场听到IBM，上汽，图森，高盛的人员和复旦教授谈AI。收获还是蛮大的。  </p><blockquote><p>核心的竞争力还是算法。只有掌握了道的本质和精髓才能永远游刃有余。  </p></blockquote><p>所以，更加坚定而且有了足够的鸡汤陪我走下一程了。</p><div class="footnotes"><ol><br>    <li class="footnote" id="fn:1"><br>        <p>第二届复旦大学创客马拉松 <a href="#fnref:1" title="hackx FDU"> </a></p><p><br>    </p></li><br>    <li class="footnote" id="fn:2"><br>        <p>然后周五晚上鸽了之后去吃海底捞的路上，我吐槽说，你们这些都是BAT的败类 🙃。 <a href="#fnref:2" title="hackx FDU"> </a></p><p><br>    </p></li><br></ol></div> <script type="text/javascript">    $.bigfoot();</script><script type="text/javascript">    var bigfoot = $.bigfoot({        deleteOnUnhover: false,        preventPageScroll: false,        hoverDelay: 250,    });</script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;东方明珠&quot;&gt;&lt;a href=&quot;#东方明珠&quot; class=&quot;headerlink&quot; title=&quot;东方明珠&quot;&gt;&lt;/a&gt;东方明珠&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/OrientalPearlTower.png&quot; alt=&quot;The Oriental Pearl Tower&quot;&gt;  &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Geek" scheme="http://blog.x-fei.me/categories/Geek/"/>
-    
-    
-      <category term="geek" scheme="http://blog.x-fei.me/tags/geek/"/>
-    
-      <category term="出行" scheme="http://blog.x-fei.me/tags/%E5%87%BA%E8%A1%8C/"/>
-    
-      <category term="HACKx" scheme="http://blog.x-fei.me/tags/HACKx/"/>
     
   </entry>
   
