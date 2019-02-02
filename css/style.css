@@ -1260,6 +1260,7 @@ section#timeline article:nth-child(5) div.inner h2:after {
 
 /* rocket */
 #rocket {
+  z-index: 999;
   position: fixed;
   right: 50px;
   bottom: 60px;
