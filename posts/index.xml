@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on </title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 02 Jan 2019 00:41:29 +0800</lastBuildDate>
+    
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2018</title>
+      <link>/posts/2018/</link>
+      <pubDate>Wed, 02 Jan 2019 00:41:29 +0800</pubDate>
+      
+      <guid>/posts/2018/</guid>
+      <description>&lt;p&gt;2014年的现在应该紧张准备高考。&lt;br /&gt;
+2014年的9月正式入学。&lt;br /&gt;
+2018年的6月正式毕业。&lt;br /&gt;
+2018年的9月再次入学。&lt;br /&gt;
+转眼，2018年也过去了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</title>
+      <link>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
+      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
+      
+      <guid>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
+      <description>&lt;h1 id=&#34;failure&#34;&gt;Failure&lt;/h1&gt;</description>
+    </item>
+    
+    <item>
+      <title>SVM(Part II)</title>
+      <link>/posts/svm2/</link>
+      <pubDate>Wed, 26 Dec 2018 00:47:04 +0800</pubDate>
+      
+      <guid>/posts/svm2/</guid>
+      <description>&lt;p&gt;About These  Articles：&lt;/p&gt;
+
+&lt;p&gt;SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SVM(Part I)</title>
+      <link>/posts/svm/</link>
+      <pubDate>Sun, 23 Dec 2018 00:21:34 +0800</pubDate>
+      
+      <guid>/posts/svm/</guid>
+      <description>&lt;p&gt;About These  Articles：&lt;/p&gt;
+
+&lt;p&gt;SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。(由于Markdown和MathJax的兼容问题，很多公式没有渲染出来，可以直接看手写推导过程。)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>10-12月</title>
+      <link>/posts/10-12%E6%9C%88/</link>
+      <pubDate>Fri, 21 Dec 2018 14:33:41 +0800</pubDate>
+      
+      <guid>/posts/10-12%E6%9C%88/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;钱钟书先生说：“似乎我们总是很容易忽略当下的生活，忽略许多美好的时光。而当所有的时光在被辜负被浪费后，才能从记忆里将某一段拎出，拍拍上面沉积的灰尘，感叹它是最好的。”&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python快速创建二维数组 [[0]*n]*n ？</title>
+      <link>/posts/python-caveat-about-list-creation-shortcuts/</link>
+      <pubDate>Tue, 18 Dec 2018 11:23:25 +0800</pubDate>
+      
+      <guid>/posts/python-caveat-about-list-creation-shortcuts/</guid>
+      <description>&lt;p&gt;早先在刷Leetcode的时候，遇到了一个莫名的&lt;code&gt;bug&lt;/code&gt;，为什么二维数组的元素没有按自己的预期改变呢？&lt;br /&gt;
+当我们这样定义一个二维数组的时候，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;n = 3
+res = [[0] * n] * n
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;发生了什么？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Paper Notes[1]: Rethinking ImageNet Pre-training</title>
+      <link>/posts/rethinkingimagenetpretraining/</link>
+      <pubDate>Tue, 11 Dec 2018 11:23:25 +0800</pubDate>
+      
+      <guid>/posts/rethinkingimagenetpretraining/</guid>
+      <description>&lt;p&gt;论文笔记：&lt;br /&gt;
+Rethinking ImageNet Pre-training&lt;/p&gt;
+
+&lt;h3 id=&#34;take-home-message&#34;&gt;Take Home Message&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>8-puzzles algorithm</title>
+      <link>/posts/8-puzzles-algorithm/</link>
+      <pubDate>Sat, 20 Oct 2018 09:09:29 +0800</pubDate>
+      
+      <guid>/posts/8-puzzles-algorithm/</guid>
+      <description>&lt;p&gt;&lt;center&gt;AIMA: 8-puzzles&lt;/center&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;题目描述&#34;&gt;题目描述&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;8-puzzle problem&lt;/strong&gt;&lt;br /&gt;
+Given any randomly generated start state and a goal state shown below, implement the IDS, greedy search and A* search algorithms, respectively, to find a sequence of actions that will transform the state from the start state to the goal state.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>axis and argmax function</title>
+      <link>/posts/argmax-function-and-its-usage/</link>
+      <pubDate>Tue, 16 Oct 2018 00:53:13 +0800</pubDate>
+      
+      <guid>/posts/argmax-function-and-its-usage/</guid>
+      <description>&lt;p&gt;简单讨论一下&lt;code&gt;argmax&lt;/code&gt;函数及其用法，由于其在&lt;code&gt;numpy&lt;/code&gt;和&lt;code&gt;PyTorch&lt;/code&gt;中都有出现，所以先在&lt;code&gt;numpy&lt;/code&gt;中讨论，然后补充介绍在&lt;code&gt;PyTorch&lt;/code&gt;中的用法。&lt;/p&gt;
+
+&lt;p&gt;同理我们可以理解&lt;code&gt;argmin&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GD &amp; SGD 理解与二维模拟</title>
+      <link>/posts/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
+      <pubDate>Wed, 10 Oct 2018 21:12:56 +0800</pubDate>
+      
+      <guid>/posts/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 2&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Generate n = 2,000 points uniformly at random in the two-dimensional unit square. Which point do you expect the centroid to be?&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;What objective does the centroid of the points optimize?&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Apply gradient descent (GD) to find the centroid.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Apply stochastic gradient descent (SGD) to find the centroid. Can you
+say in simple words, what the algorithm is doing?&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>你也想要重来吗</title>
+      <link>/posts/%E4%BD%A0%E4%B9%9F%E6%83%B3%E8%A6%81%E9%87%8D%E6%9D%A5%E5%90%97/</link>
+      <pubDate>Mon, 08 Oct 2018 12:27:38 +0800</pubDate>
+      
+      <guid>/posts/%E4%BD%A0%E4%B9%9F%E6%83%B3%E8%A6%81%E9%87%8D%E6%9D%A5%E5%90%97/</guid>
+      <description>&lt;p&gt;上了发条跟有节奏感是两码事&lt;/p&gt;
+
+&lt;p&gt;上发条是走固定模式&lt;br /&gt;
+心已经在失控 行为看起来却没差&lt;/p&gt;
+
+&lt;p&gt;有节奏感是由身心掌控&lt;br /&gt;
+有条不紊地 把握现在 感知未来&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>这辈子还有很多很丧的时候</title>
+      <link>/posts/%E8%BF%99%E8%BE%88%E5%AD%90%E8%BF%98%E6%9C%89%E5%BE%88%E5%A4%9A%E5%BE%88%E4%B8%A7%E7%9A%84%E6%97%B6%E5%80%99/</link>
+      <pubDate>Sat, 29 Sep 2018 21:53:13 +0800</pubDate>
+      
+      <guid>/posts/%E8%BF%99%E8%BE%88%E5%AD%90%E8%BF%98%E6%9C%89%E5%BE%88%E5%A4%9A%E5%BE%88%E4%B8%A7%E7%9A%84%E6%97%B6%E5%80%99/</guid>
+      <description>&lt;p&gt;总是不开心地太突然。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CS MindStorms</title>
+      <link>/posts/cs-mindstorms/</link>
+      <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
+      
+      <guid>/posts/cs-mindstorms/</guid>
+      <description>&lt;p&gt;&lt;center&gt;⚡️ MindStorms Collections ⚡️&lt;/center&gt;&lt;br /&gt;
+一些头脑风暴问题集锦。体验CS的一些乐趣～&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LeetCode-Contest 103,104</title>
+      <link>/posts/leetcode-contest_103-104/</link>
+      <pubDate>Mon, 24 Sep 2018 23:28:35 +0800</pubDate>
+      
+      <guid>/posts/leetcode-contest_103-104/</guid>
+      <description>Contests From Contest103 to Contest 104 ~ Contest104 914-M 914. X of a Kind in a Deck of Cards  In a deck of cards, each card has an integer written on it.
+Return true if and only if you can choose X &amp;gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:
+Each group has exactly X cards. All the cards in each group have the same integer.</description>
+    </item>
+    
+    <item>
+      <title>多项式拟合-线性回归</title>
+      <link>/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</link>
+      <pubDate>Mon, 24 Sep 2018 23:24:56 +0800</pubDate>
+      
+      <guid>/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 1&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;
+
+&lt;p&gt;编写程序:模拟仿真多项式回归
+参见 textbook p4-12(PRML)。完成以下任务:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>事故-SSL23_GET_SERVER_HELLO</title>
+      <link>/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</link>
+      <pubDate>Fri, 21 Sep 2018 10:27:28 +0800</pubDate>
+      
+      <guid>/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;fatal: unable to access &amp;lsquo;&lt;a href=&#34;https://github.com/xxx/yyyy.git/&#39;:&#34;&gt;https://github.com/xxx/yyyy.git/&#39;:&lt;/a&gt; error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>PyTorch Api Notes 📙</title>
+      <link>/posts/pytorch-notes/</link>
+      <pubDate>Thu, 13 Sep 2018 01:14:38 +0800</pubDate>
+      
+      <guid>/posts/pytorch-notes/</guid>
+      <description>&lt;p&gt;&lt;center&gt;Simple Api Notes ✍🏼 For Beginners！&lt;/center&gt;&lt;br /&gt;
+记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lazy Tricks🙈</title>
+      <link>/posts/lazy-tricks/</link>
+      <pubDate>Sun, 26 Aug 2018 13:43:31 +0800</pubDate>
+      
+      <guid>/posts/lazy-tricks/</guid>
+      <description>&lt;p&gt;🍻 高效率 &lt;del&gt;懒人&lt;/del&gt; 养成Tricks！🍻&lt;br /&gt;
+Ubuntu、Mac、Tools Collections～
+持续收集中～ 🛰&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>训练网络管理实验的科学探索💪🏼</title>
+      <link>/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</link>
+      <pubDate>Sun, 26 Aug 2018 11:26:49 +0800</pubDate>
+      
+      <guid>/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</guid>
+      <description>&lt;p&gt;👏🏼 Some tips about how to manage your experiments！👏🏼&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;无论是打比赛还是写论文，我们都需要做大量的实验。有人说深度调参是“玄学”，为了有效探索这门玄学，需要对模型的结构、参数、结果做全面详尽的记录，对实验结果、模型参数进行合理保存。这里，分享一些我以及我的师兄教给我的在训练网络并科学管理实验方面的一些心得体会。✍🏼&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Summary: MICCAI 2018 Skin Lesion Contest</title>
+      <link>/posts/summary-miccai-2018-skin-lesion-contest/</link>
+      <pubDate>Sun, 26 Aug 2018 01:31:37 +0800</pubDate>
+      
+      <guid>/posts/summary-miccai-2018-skin-lesion-contest/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Time：6.26-7.27&lt;br /&gt;
+Location: SYSU&lt;br /&gt;
+Contest: MICCAI 2018 SKIN Lesion Analysis Towards Melanoma Detection&lt;br /&gt;
+Task: Lesion Segmentation&lt;br /&gt;
+Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hackx上海</title>
+      <link>/posts/hackx%E4%B8%8A%E6%B5%B7/</link>
+      <pubDate>Mon, 06 Nov 2017 11:49:33 +0800</pubDate>
+      
+      <guid>/posts/hackx%E4%B8%8A%E6%B5%B7/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Idea很重要！做一个有力的C位很重要！&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;人和动物的根本区别是会不会制造和使用工具。&lt;br /&gt;
+人是一支有思想的芦苇。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>技术分为术和道两种</title>
+      <link>/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</link>
+      <pubDate>Sun, 01 Oct 2017 15:07:21 +0800</pubDate>
+      
+      <guid>/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</guid>
+      <description>&lt;p&gt;2017年9月回顾。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;技术分为术和道两种，具体的做事方法是术，做事的原理和原则是道。术会从独门绝技到普及再到落伍，追求术的人会很辛苦，只有掌握了道的本质和精髓才能永远游刃有余。 ​&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Canton Tower</title>
+      <link>/posts/canton-tower/</link>
+      <pubDate>Tue, 26 Sep 2017 22:53:13 +0800</pubDate>
+      
+      <guid>/posts/canton-tower/</guid>
+      <description>&lt;h3 id=&#34;初见-广州&#34;&gt;初见-广州&lt;/h3&gt;
+
+&lt;p&gt;23号去广州参加中山大学的研究生推免复试。之前请崔哥帮我把申请材料都寄过去了。但是没有参加夏令营，所以只能现在去参加复试。&lt;br /&gt;
+不过听同学介绍面试很水，而且我并没有做什么准备，所以也就随缘了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>武汉一行</title>
+      <link>/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</link>
+      <pubDate>Wed, 20 Sep 2017 10:57:05 +0800</pubDate>
+      
+      <guid>/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</guid>
+      <description>&lt;p&gt;9月17号，和宏伟去武汉工程大学流芳校区考PAT（Programming Ability Test），以及宏伟傍晚去百度的面试，然后赶晚上的火车，应该可以在18号凌晨回到寝室～。&lt;br /&gt;
+然而，计划始终赶不上变化。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Swift 3 Algorithm: 二叉搜索树</title>
+      <link>/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Mon, 04 Sep 2017 15:02:56 +0800</pubDate>
+      
+      <guid>/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！&lt;/em&gt;&lt;br /&gt;
+这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</title>
+      <link>/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</link>
+      <pubDate>Mon, 04 Sep 2017 10:01:52 +0800</pubDate>
+      
+      <guid>/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;今天分享几个Swift Higher Order Functions 给大家。
+主要是 &lt;code&gt;Filter&lt;/code&gt;、&lt;code&gt;Map&lt;/code&gt;、&lt;code&gt;Reduce&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Swift 3 Fun Algorithms:Wrapping Array</title>
+      <link>/posts/swift-3-fun-algorithms-wrappingarray/</link>
+      <pubDate>Sun, 03 Sep 2017 10:21:26 +0800</pubDate>
+      
+      <guid>/posts/swift-3-fun-algorithms-wrappingarray/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在&lt;code&gt;Youtube&lt;/code&gt;上看到Swift3 的一个小算法，觉得很有趣！介绍给大家～&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>给Hexo(Hugo)添加Bigfoot</title>
+      <link>/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</link>
+      <pubDate>Sat, 02 Sep 2017 23:08:52 +0800</pubDate>
+      
+      <guid>/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</guid>
+      <description>&lt;p&gt;我之前搭建Ghost博客的时候，在萌天的博客上有看到过Bigfoot，经过萌天介绍，认识了Bigfoot。现在将Bigfoot集成到我&lt;del&gt;目前在用的hexo博客hiker主题中&lt;/del&gt;Hugo博客Fx主题中。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Stay hungry, Stay Young</title>
+      <link>/posts/stay-hungry-stay-foolish/</link>
+      <pubDate>Tue, 29 Aug 2017 19:59:27 +0800</pubDate>
+      
+      <guid>/posts/stay-hungry-stay-foolish/</guid>
+      <description>&lt;p&gt;忘记第几次重新搭建博客了，之前重装系统、换笔记本或者服务器到期，（其实更关键的是博客更新太少了）。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>/posts/_about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0800</pubDate>
+      
+      <guid>/posts/_about/</guid>
+      <description>&lt;p&gt;What ever you want?&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

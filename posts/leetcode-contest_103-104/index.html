@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>LeetCode-Contest 103,104 &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/leetcode-contest.jpg);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">LeetCode-Contest 103,104</h1>
+                            
+                            
+                                <time datetime="2018-09-24">Sep 24, 2018</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
+    
+
+
+                            </span> - 4 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            
+
+<h2 id="contests">Contests</h2>
+
+<p>From Contest103 to Contest 104 ~
+<!-- more --></p>
+
+<h3 id="contest104">Contest104</h3>
+
+<h4 id="914-m">914-M</h4>
+
+<p><a href="https://leetcode.com/contest/weekly-contest-104/problems/x-of-a-kind-in-a-deck-of-cards/">914. X of a Kind in a Deck of Cards</a>
+<div>
+In a deck of cards, each card has an integer written on it.</p>
+
+<p>Return true if and only if you can choose X &gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:</p>
+
+<p>Each group has exactly X cards.
+All the cards in each group have the same integer.</p>
+
+<p>Example 1:
+Input: [1,2,3,4,4,3,2,1]
+Output: true
+Explanation: Possible partition [1,1],[2,2],[3,3],[4,4]</p>
+
+<p>Example 2:
+Input: [1,1,1,2,2,2,3,3]
+Output: false
+Explanation: No possible partition.</p>
+
+<p>Example 3:
+Input: [1]
+Output: false
+Explanation: No possible partition.</p>
+
+<p>Example 4:
+Input: [1,1]
+Output: true
+Explanation: Possible partition [1,1]</p>
+
+<p>Example 5:
+Input: [1,1,2,2,2,2]
+Output: true
+Explanation: Possible partition [1,1],[2,2],[2,2]</p>
+
+<p>Note:
+1 &lt;= deck.length &lt;= 10000
+0 &lt;= deck[i] &lt; 10000</p>
+
+<p>题目的意思是给一组数，把这组数分成若干小组，每小组包含的元素数目相同，至少为2，且组内的元素值相同。
+</div></p>
+
+<p><strong>Intuition:</strong><br />
+比较直观，如何找到最好的那个K。<br />
+我们先统计这组数中每个数出现的频次，比如例2({1:3, 2:3, 3:2})(python可以利用Counter函数完成)。<br />
+因为分成的小组内的元素值相同，因此只能把同一个数分成若干组，且组内元素个数相同，这样我们需要考虑出现次数最少的数，它‘能’以及
+需要分成多少组，假设出现次数最少的数的频次是min1，那么找一个刚好比它大的数，求二者的最大公约数res，这个公约数就是我们想要的K。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py"># 我的代码  
+def hasGroupsSizeX(self, deck):
+    def gcd(a, b):
+        while b: a, b = b, a % b
+        return a
+
+    if len(deck) &lt; 2: return False
+    values = list(collections.Counter(deck).values())
+    values.sort()
+
+    mina, maxa = values[0], values[-1]
+    if mina == maxa: return True
+
+    for i in range(1, len(values)):
+        if values[i] != mina:
+            maxa = values[i]
+            break
+    gg = gcd(mina, maxa)
+
+    if gg &lt; 2:
+        return False
+    for i in values:
+        if i % gg:
+            return False
+    return True
+
+# 大佬的代码
+def hasGroupsSizeX(self, deck):
+    def gcd(a, b):
+        while b: a, b = b, a % b
+        return a
+    count = collections.Counter(deck).values()
+    return reduce(gcd, count) &gt; 1
+</code></pre>
+
+<hr/>
+
+<h4 id="916-m">916-M</h4>
+
+<p><a href="https://leetcode.com/contest/weekly-contest-104/problems/word-subsets/">916. Word Subsets</a><br />
+<div>
+We are given two arrays A and B of words.  Each word is a string of lowercase letters.</p>
+
+<p>Now, say that word b is a subset of word a if every letter in b occurs in a, including multiplicity.  For example, &ldquo;wrr&rdquo; is a subset of &ldquo;warrior&rdquo;, but is not a subset of &ldquo;world&rdquo;.</p>
+
+<p>Now say a word a from A is universal if for every b in B, b is a subset of a.</p>
+
+<p>Return a list of all universal words in A.  You can return the words in any order.</p>
+
+<p>Example 1:
+Input: A = [&ldquo;amazon&rdquo;,&ldquo;apple&rdquo;,&ldquo;facebook&rdquo;,&ldquo;google&rdquo;,&ldquo;leetcode&rdquo;], B = [&ldquo;e&rdquo;,&ldquo;o&rdquo;]
+Output: [&ldquo;facebook&rdquo;,&ldquo;google&rdquo;,&ldquo;leetcode&rdquo;]</p>
+
+<p>Example 5:
+Input: A = [&ldquo;amazon&rdquo;,&ldquo;apple&rdquo;,&ldquo;facebook&rdquo;,&ldquo;google&rdquo;,&ldquo;leetcode&rdquo;], B = [&ldquo;ec&rdquo;,&ldquo;oc&rdquo;,&ldquo;ceo&rdquo;]
+Output: [&ldquo;facebook&rdquo;,&ldquo;leetcode&rdquo;]</p>
+
+<p>Note:
+1 1 &lt;= A.length, B.length &lt;= 10000
+2 1 &lt;= A[i].length, B[i].length &lt;= 10
+3 A[i] and B[i] consist only of lowercase letters.
+4 All words in A[i] are unique: there isn&rsquo;t i != j with A[i] == A[j].</p>
+
+<p>题目的意思就是说找出A中所有的word A[i]，它满足，B中每一个（所有）的word B[j]都是A[i]的子集。
+</div></p>
+
+<p><strong>Intuition:</strong><br />
+B中所有的word都是<code>A[i]</code>的子集的话，整个B就满足，它里面所有<code>word</code>可以的整合成一个具有所有<code>character</code>以及每个<code>word</code>中<code>character</code>出现的频次的哈希表，这个频次只记录最高频次，比如<code>app</code>和<code>bp</code>，它们整合起来，就是<code>{a:1, b:1, p:2}</code>。</p>
+
+<p>这样我们就把B缩减为了一个哈希表，遍历A是在所难免的了。</p>
+
+<p>这道题很锻炼<code>collections.Counter()</code>的运用。</p>
+
+<pre><code class="language-py">def wordSubsets(self, A, B):
+    uni = collections.Counter()
+    for b in B:
+        for c, n in collections.Counter(b).items():
+            uni[c] = max(uni[c], n)
+    res = []
+    for a in A:
+        count = collections.Counter(a)
+        if all(count[c] &gt;= uni[c] for c in uni):
+            res.append(a)
+    return res
+</code></pre>
+
+<hr/>
+
+<h3 id="contest103">Contest103</h3>
+
+<h4 id="910-m">910-M</h4>
+
+<p><a href="https://leetcode.com/problems/smallest-range-ii/description/">910. Smallest Range II</a></p>
+
+<div>
+Given an array A of integers, for each integer A[i] we need to choose either x = -K or x = K, and add x to A[i] (only once).
+
+After this process, we have some array B.
+
+Return the smallest possible difference between the maximum value of B and the minimum value of B.
+
+Example 1:
+Input: A = [0,10], K = 2
+Output: 6
+Explanation: B = [2,8]
+
+Example 2:
+Input: A = [1,3,6], K = 3
+Output: 3
+Explanation: B = [4,6,3]
+
+Note:
+1 <= A.length <= 10000
+0 <= A[i] <= 10000
+0 <= K <= 10000
+</div>   
+
+<p><em>参考lee215的解释</em></p>
+
+<p><strong>Intuition:</strong>
+For each integer A[i],<br />
+we may choose either x = -K or x = K.</p>
+
+<p>If we add K to all B[i], the result won&rsquo;t change.</p>
+
+<p>It&rsquo;s the same as:<br />
+For each integer A[i], we may choose either x = 0 or x = 2 * K.</p>
+
+<p><strong>Explanation:</strong>
+We sort the A first, and we choose to add x = 0 to all A[i].<br />
+Now we have <code>res = A[n - 1] - A[0]</code>.<br />
+Starting from the smallest of A, we add 2 * K to A[i],<br />
+hoping this process will reduce the difference.</p>
+
+<p>Update the new <code>mx = max(mx, A[i] + 2 * K)</code><br />
+Update the new <code>mn = min(A[i + 1], A[0] + 2 * K)</code><br />
+Update the <code>res = min(res, mx - mn)</code></p>
+
+<p><strong>Time Complexity:</strong>
+O(NlogN), in both of the worst and the best cases.</p>
+
+<p><strong>Remark:</strong>
+理解他的<code>update</code>操作很有意思。我想找一个数，它加上<code>2*K</code>之后比原来最大的数要大（意味着题目中，这个数加上K比原来最大的数减去K要大，那么此时它就是最大的；如果它加之后还没有最大的数减去K大，那原来最大的数还是最大的）。</p>
+
+<pre><code class="language-python"> def smallestRangeII(self, A, K):
+    A.sort()
+    res = A[-1] - A[0]
+    for i in range(len(A) - 1):
+        big = max(A[-1], A[i] + 2 * K)
+        small = min(A[i + 1], A[0] + 2 * K)
+        res = min(res, big - small)
+    return res
+</code></pre>
+
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/leetcode">leetcode</a>
+                            
+                                <a class="badge badge-primary" href="/tags/python">python</a>
+                            
+                                <a class="badge badge-primary" href="/tags/algorithm">algorithm</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/cs-mindstorms/"> &laquo; CS MindStorms</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/">多项式拟合-线性回归 &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

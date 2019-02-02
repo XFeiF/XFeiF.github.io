@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pytorch on </title>
+    <link>/tags/pytorch/</link>
+    <description>Recent content in Pytorch on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 16 Oct 2018 00:53:13 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>axis and argmax function</title>
+      <link>/posts/argmax-function-and-its-usage/</link>
+      <pubDate>Tue, 16 Oct 2018 00:53:13 +0800</pubDate>
+      
+      <guid>/posts/argmax-function-and-its-usage/</guid>
+      <description>&lt;p&gt;简单讨论一下&lt;code&gt;argmax&lt;/code&gt;函数及其用法，由于其在&lt;code&gt;numpy&lt;/code&gt;和&lt;code&gt;PyTorch&lt;/code&gt;中都有出现，所以先在&lt;code&gt;numpy&lt;/code&gt;中讨论，然后补充介绍在&lt;code&gt;PyTorch&lt;/code&gt;中的用法。&lt;/p&gt;
+
+&lt;p&gt;同理我们可以理解&lt;code&gt;argmin&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PyTorch Api Notes 📙</title>
+      <link>/posts/pytorch-notes/</link>
+      <pubDate>Thu, 13 Sep 2018 01:14:38 +0800</pubDate>
+      
+      <guid>/posts/pytorch-notes/</guid>
+      <description>&lt;p&gt;&lt;center&gt;Simple Api Notes ✍🏼 For Beginners！&lt;/center&gt;&lt;br /&gt;
+记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

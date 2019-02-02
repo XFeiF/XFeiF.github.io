@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Summary on </title>
+    <link>/tags/summary/</link>
+    <description>Recent content in Summary on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Aug 2018 01:31:37 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/summary/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Summary: MICCAI 2018 Skin Lesion Contest</title>
+      <link>/posts/summary-miccai-2018-skin-lesion-contest/</link>
+      <pubDate>Sun, 26 Aug 2018 01:31:37 +0800</pubDate>
+      
+      <guid>/posts/summary-miccai-2018-skin-lesion-contest/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Time：6.26-7.27&lt;br /&gt;
+Location: SYSU&lt;br /&gt;
+Contest: MICCAI 2018 SKIN Lesion Analysis Towards Melanoma Detection&lt;br /&gt;
+Task: Lesion Segmentation&lt;br /&gt;
+Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Python快速创建二维数组 [[0]*n]*n ？ &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/python-2d.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">Python快速创建二维数组 [[0]*n]*n ？</h1>
+                            
+                            
+                                <time datetime="2018-12-18">Dec 18, 2018</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/python">python</a>
+    
+
+
+                            </span> - 1 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p>早先在刷Leetcode的时候，遇到了一个莫名的<code>bug</code>，为什么二维数组的元素没有按自己的预期改变呢？<br />
+当我们这样定义一个二维数组的时候，</p>
+
+<pre><code class="language-python">n = 3
+res = [[0] * n] * n
+</code></pre>
+
+<p>发生了什么？</p>
+
+<p><code>[0] * n</code> 创建了一个有n个0的<code>list</code>。<br />
+<code>[[0] * n] * n</code> 创建了一个包含n个同一个<code>list</code>的<code>reference</code>。</p>
+
+<h3 id="explanation">Explanation</h3>
+
+<p>我们利用<code>python</code>的<code>id</code>方法查看对象在内存中的地址。</p>
+
+<h4 id="1d-array">1D Array</h4>
+
+<p>初始化一个指定大小的<code>list</code>很简单：</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; zeros = [0] * 3
+&gt;&gt;&gt; zeros
+[0, 0, 0]
+&gt;&gt;&gt; id(zeros)
+4602255816
+&gt;&gt;&gt; id(zeros[0])
+4559308816
+&gt;&gt;&gt; id(0)
+4559308816
+</code></pre>
+
+<p>可以看到这里创建一维数组<code>zeros</code>的时候，内部复制了3次0，所以其本身具有一个内存地址，元素的地址则和<code>0</code>的地址相同，和我们预期的一样。</p>
+
+<h4 id="2d-array-wrong">2D Array (Wrong)</h4>
+
+<p>利用<code>[[0]*n]*n</code> 创建一个二维数组。</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; zeros2d = [[0]*3]*3
+&gt;&gt;&gt; zeros2d
+[[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+&gt;&gt;&gt; zeros2d[0][1] = 1
+ [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
+</code></pre>
+
+<p>这??? 只改变一个元素的值，为什么变了三个，还是相同位置的？<br />
+我们看一下它们的地址。</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; id(zeros2d)
+4602725512
+&gt;&gt;&gt; print([id(ele) for ele in zeros2d])
+[4600869448, 4600869448, 4600869448]
+</code></pre>
+
+<p>内部的三个一维数组其实是<strong>一个</strong>。</p>
+
+<p><strong>警告：</strong><br />
+这里Python对外部的<code>list</code>用了相同的内部<code>list</code>的引用，即本文开篇提到的。<br />
+其实从元素的地址看来创建一维和二维都一样，都是复制内部对象的引用。</p>
+
+<h4 id="2d-array-right">2D Array (right)</h4>
+
+<p>知道了问题所在，那么正确的使用方式应该有如下形式：</p>
+
+<pre><code class="language-python">zeros2d = [[0] * 3 for _ in range(3)]
+</code></pre>
+
+<h3 id="references">References</h3>
+
+<p><a href="https://en.wikibooks.org/wiki/Python_Programming/Lists#List_creation_shortcuts">Wiki</a><br />
+<a href="https://www.quora.com/Whats-wrong-in-declaring-a-2d-list-in-python-like-this-0-%2An-%2An">Quora</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/code">code</a>
+                            
+                                <a class="badge badge-primary" href="/tags/python">python</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/10-12%E6%9C%88/"> &laquo; 10-12月</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/rethinkingimagenetpretraining/">Paper Notes[1]: Rethinking ImageNet Pre-training &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Swift 3 Algorithm: 二叉搜索树 &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/swift.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">Swift 3 Algorithm: 二叉搜索树</h1>
+                            
+                            
+                                <time datetime="2017-09-04">Sep 4, 2017</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
+    
+
+
+                            </span> - 2 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <blockquote>
+<p>有趣的 <code>Swift 3</code> 算法。</p>
+</blockquote>
+
+<p><em>今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！</em><br />
+这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！</p>
+
+<h3 id="准备">准备</h3>
+
+<p>打开XCode，新建Playground，创建searchBinaryTreeDemo。</p>
+
+<h3 id="样例树">样例树</h3>
+
+<pre><code class="language-swift">// 1.
+//
+//              9
+//            /   \
+//           6     10
+//          / \     \
+//         5   7     11
+//
+</code></pre>
+
+<!-- more -->
+
+<h3 id="创建结点">创建结点</h3>
+
+<pre><code class="language-swift">// 2.
+class Node {
+    let value: Int
+    var leftChild: Node?
+    var rightChild: Node?
+
+    init(value: Int, leftChild: Node?, rightChild:Node?) {
+        self.value = value
+        self.leftChild = leftChild
+        self.rightChild = rightChild
+    }
+}
+</code></pre>
+
+<p>子结点为可选类型！</p>
+
+<h3 id="构建样例树">构建样例树</h3>
+
+<p>下面利用上面的<code>Node</code>结构创建样例树</p>
+
+<pre><code class="language-swift">// left branch
+
+let fiveNode = Node(value: 5, leftChild: nil, rightChild: nil)
+let sevenNode = Node(value: 7, leftChild: nil, rightChild: nil)
+let sixNode = Node(value: 6, leftChild: fiveNode, rightChild: sevenNode)
+
+// right branch
+let elevenNode = Node(value: 11, leftChild: nil, rightChild: nil)
+
+let tenNode = Node(value: 10, leftChild: nil, rightChild: elevenNode)
+
+let nineRootNode = Node(value: 9, leftChild: sixNode, rightChild: tenNode)
+
+</code></pre>
+
+<h3 id="实现算法">实现算法</h3>
+
+<p>中序遍历～</p>
+
+<pre><code class="language-swift">//3 .
+// 实现算法，在这棵树中寻找一个特定的值。
+func search(_ node: Node?, _ searchValue: Int) -&gt; Bool {
+    if node == nil {
+        return false
+    }
+    if node?.value == searchValue {
+        return true;
+    } else if (node?.value)! &gt; searchValue {
+        return search(node?.leftChild, searchValue)
+    } else {
+        return search(node?.rightChild, searchValue)
+    }
+}
+</code></pre>
+
+<h3 id="结果">结果</h3>
+
+<p>我们分别调用</p>
+
+<pre><code class="language-swift">search(inieRootNode, 5)
+search(inieRootNode, 6)
+search(inieRootNode, 11)
+search(inieRootNode, 0)
+</code></pre>
+
+<p>可以观察到<code>playground</code>右侧面板中，函数的递归执行次数:<br />
+5-&gt;2次、6-&gt;1次、11-&gt;2次、0-&gt;3次。</p>
+
+<h3 id="分析">分析</h3>
+
+<p>我们知道二叉树搜索的效率是log(n)。
+可以通过在上述二叉搜索树的中序列表中搜索来比较。</p>
+
+<pre><code class="language-swift">// efficiency  
+let list = [5, 6, 7, 9, 10, 11]
+let index0 = list.index(where: {$0 == 0})
+let index5 = list.index(where: {$0 == 5})
+let index6 = list.index(where: {$0 == 6})
+let index11 = list.index(where: {$0 == 11})
+</code></pre>
+
+<p>可以在右侧面板中看到对于不存在的元素，二叉搜索树需要搜索三次，而for循环则需要7次。对于元素11，二叉搜索树需要搜索2次，for循环依然需要11次。</p>
+
+<p>本文除了帮助理解二叉搜索树，它的效率之外，还需要了解swift可选值的解析～</p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/swift">swift</a>
+                            
+                                <a class="badge badge-primary" href="/tags/algorithm">algorithm</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/"> &laquo; 武汉一行</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/">Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

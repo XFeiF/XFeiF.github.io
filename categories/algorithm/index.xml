@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithm on </title>
+    <link>/categories/algorithm/</link>
+    <description>Recent content in Algorithm on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 27 Dec 2018 12:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</title>
+      <link>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
+      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
+      
+      <guid>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
+      <description>&lt;h1 id=&#34;failure&#34;&gt;Failure&lt;/h1&gt;</description>
+    </item>
+    
+    <item>
+      <title>LeetCode-Contest 103,104</title>
+      <link>/posts/leetcode-contest_103-104/</link>
+      <pubDate>Mon, 24 Sep 2018 23:28:35 +0800</pubDate>
+      
+      <guid>/posts/leetcode-contest_103-104/</guid>
+      <description>Contests From Contest103 to Contest 104 ~ Contest104 914-M 914. X of a Kind in a Deck of Cards  In a deck of cards, each card has an integer written on it.
+Return true if and only if you can choose X &amp;gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:
+Each group has exactly X cards. All the cards in each group have the same integer.</description>
+    </item>
+    
+    <item>
+      <title>Swift 3 Algorithm: 二叉搜索树</title>
+      <link>/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Mon, 04 Sep 2017 15:02:56 +0800</pubDate>
+      
+      <guid>/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;今天分享用swift3实现在二叉搜索树中递归搜索某一个特定的值！&lt;/em&gt;&lt;br /&gt;
+这个算法没有什么难度，了解二叉搜索树的性质 + 递归搜索 + swift基础语法 即可完成！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</title>
+      <link>/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</link>
+      <pubDate>Mon, 04 Sep 2017 10:01:52 +0800</pubDate>
+      
+      <guid>/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;今天分享几个Swift Higher Order Functions 给大家。
+主要是 &lt;code&gt;Filter&lt;/code&gt;、&lt;code&gt;Map&lt;/code&gt;、&lt;code&gt;Reduce&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Swift 3 Fun Algorithms:Wrapping Array</title>
+      <link>/posts/swift-3-fun-algorithms-wrappingarray/</link>
+      <pubDate>Sun, 03 Sep 2017 10:21:26 +0800</pubDate>
+      
+      <guid>/posts/swift-3-fun-algorithms-wrappingarray/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在&lt;code&gt;Youtube&lt;/code&gt;上看到Swift3 的一个小算法，觉得很有趣！介绍给大家～&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

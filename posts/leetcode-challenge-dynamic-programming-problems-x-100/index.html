@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️ &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/reward.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</h1>
+                            
+                            
+                                <time datetime="2018-12-27">Dec 27, 2018</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
+    
+
+
+                            </span> - 20 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <h1 id="failure">Failure</h1>
+
+<p><center> LeetCode Challenge 🏆 </center>
+&gt; 挑战目标🎖: 100道DP题<br />
+ <span>&nbsp;&nbsp;&nbsp;</span>时间<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>🗓: <span>&nbsp;</span><del><sup>25</sup>&frasl;<sub>70</sub> （2018-09-13 👉🏻 2018-11-15）</del><br />
+ <span>&nbsp;&nbsp;&nbsp;</span>进度<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>🛴: <span>&nbsp;</span><sup>41</sup>&frasl;<sub>100</sub><br />
+ 成功奖励🍭: ██████████</p>
+
+<p>Solved: 🥈🥈🥈🥈🥉
+Log:<br />
+18-09-28: 取消每次记录天吧，只记录每周刷了多少道题，感觉时间分配不足了。<br />
+18-09-30: 决定50道题之后开个part2的记录，不然篇幅太长了，虽然已经很长了。
+18-10-01～18-12-17: Pause</p>
+
+<hr />
+
+<h2 id="week4">Week4:</h2>
+
+<h3 id="solved-7-problems">Solved 7 problems</h3>
+
+<h4 id="309-m">309-M</h4>
+
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">309. Best Time to Buy and Sell Stock with Cooldown</a><br />
+Difficulty: ★★★★☆<br />
+Beats: %<br />
+Time Complexity: O($n$)</p>
+
+<p>Code:</p>
+
+<pre><code class="language-python">def maxProfit(self, prices):
+    if len(prices) &lt; 2: return 0
+    sell, buy, prev_sell, prev_buy = 0, -prices[0], 0, 0
+    for price in prices:
+        prev_buy = buy
+        buy = max(prev_sell - price, prev_buy)
+        prev_sell = sell
+        sell = max(prev_buy + price, prev_sell)
+    return sell
+</code></pre>
+
+<h4 id="764-m">764-M</h4>
+
+<p><a href="https://leetcode.com/problems/largest-plus-sign/">764. Largest Plus Sign</a><br />
+Difficulty: ★★★☆☆<br />
+Beats: 22.64%<br />
+Time Complexity: O($n^2$)</p>
+
+<p>Code:</p>
+
+<pre><code class="language-python">def orderOfLargestPlusSign(self, N, mines):
+    matrix = [[1]*N for _ in range(N)]
+    dp = [[0] * (N+2) for _ in range(N+2)]
+    up = [[0] * (N+2) for _ in range(N+2)]
+    down = [[0] * (N+2) for _ in range(N+2)]
+    left = [[0] * (N+2) for _ in range(N+2)]
+    right = [[0] * (N+2) for _ in range(N+2)]
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            dp[i][j] = 1
+    for mine in mines:
+        x, y = mine
+        matrix[x][y] = 0
+        dp[x+1][y+1] = 0
+
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            if matrix[i-1][j-1]:
+                up[i][j] = up[i-1][j] + matrix[i-1][j-1]
+                left[i][j] = left[i][j-1] + matrix[i-1][j-1]
+            if matrix[i-1][N-j]:
+                right[i][N+1-j] = right[i][N+2-j] + matrix[i-1][N-j]
+            if matrix[N-i][j-1]:
+                down[N+1-i][j] = down[N+2-i][j] + matrix[N-i][j-1]
+    res = 0
+    for row in range(1, N+1):
+        for col in range(1, N+1):
+            if matrix[row-1][col-1] == 0:
+                dp[row][col] = 0
+            else:
+                dp[row][col] = min(up[row-1][col], down[row+1][col], left[row][col-1], right[row][col+1]) + 1
+            res = max(res, dp[row][col])
+    return res
+</code></pre>
+
+<h4 id="740-m">740-M</h4>
+
+<p><a href="https://leetcode.com/problems/delete-and-earn/">740. Delete and Earn</a><br />
+Difficulty: ★★★☆☆<br />
+Beats: 40.95%<br />
+Time Complexity: O($n$)</p>
+
+<p>Code:</p>
+
+<pre><code class="language-python">def deleteAndEarn(self, nums):
+    if not nums: return 0
+    counter = collections.defaultdict(int)
+    vis = collections.defaultdict(int)
+    for num in nums:
+        counter[num] += 1
+        vis[num] = 1
+    nums = sorted(list(set(nums)))
+    if len(nums) == 1: return nums[0]*counter[nums[0]]
+
+    dp = [0]*len(nums)
+
+    dp[0] = counter[nums[0]]*nums[0]
+    if nums[1] - 1 != nums[0]:
+        dp[1] = dp[0] + counter[nums[1]]*nums[1]
+    else:
+        dp[1] = max(dp[0], counter[nums[1]]*nums[1])
+    for i in range(2, len(nums)):
+        cur = nums[i]*counter[nums[i]]
+        if nums[i]-1 != nums[i-1]:
+            dp[i] = dp[i-1] + cur
+        else:
+            dp[i] = max(dp[i-1], dp[i-2] + cur)
+    return max(dp)
+</code></pre>
+
+<h4 id="377-m">377-M</h4>
+
+<p><a href="https://leetcode.com/problems/combination-sum-iv/">377. Combination Sum IV</a>
+Difficulty: ★★★☆☆<br />
+Beats: 16.16%<br />
+Time Complexity: O($n^2$)</p>
+
+<p>Code:</p>
+
+<pre><code class="language-python">def combinationSum4(self, nums, target):
+    nums = sorted([num for num in nums if num &lt;= target])
+    if not nums: return 0
+    res = [0] * (target+1)
+    res[0] = 1
+    for i in range(nums[0], target+1, 1):
+        smaller = list(num for num in nums if num &lt;= i)
+        for num in smaller:
+            res[i] += res[i-num]
+    return res[-1]
+</code></pre>
+
+<h4 id="962-m">962-M</h4>
+
+<p><a href="https://leetcode.com/problems/maximum-width-ramp/">962. Maximum Width Ramp</a><br />
+Difficulty: ★★★☆☆</p>
+
+<pre><code class="language-python">def maxWidthRamp(self, A):
+    n = len(A)
+    res = [0] * n
+    for i in range(1, n):
+        # if A[i] &gt;= A[i-1] and res[i-1] != 0:
+        #     res[i] = res[i-1] + 1
+        # else:
+        for j in range(0, i):
+            if A[i] &gt;= A[j]:
+                res[i] = i - j
+                break
+    return max(res)
+</code></pre>
+
+<h4 id="486-m">486-M</h4>
+
+<p><a href="https://leetcode.com/problems/predict-the-winner/">486. Predict the Winner</a><br />
+Difficulty: ★★★★★<br />
+Explanation: <a href="https://leetcode.com/problems/predict-the-winner/solution/">Solution</a><br />
+Remark: 有的时候就会陷入某一步定住，不知道怎么继续下去。想到分别计算Player1和Player2的最大和关系，sum1 &gt; sum2，却想不到深层或者说再底层的关系，怎么解？(其实还是要回归到DP问题，分析最优子结构、状态、状态转移)</p>
+
+<p>Approach #4:<br />
+最优子结构性质：<br />
+我们可以观察到，给定子数组<code>nums[x:y]</code>，对当前玩家而言的有效得分只依赖<code>nums</code>整个数组中<code>[x,y]</code>范围内的元素。<br />
+就看当前玩家本轮取的是<code>nums[x]</code>还是<code>nums[y]</code>，以及取完后另一个玩家用剩余元素可能达到的最高分数。<br />
+因此，当前有效得分不受<code>[x,y]</code>之外的元素影响。</p>
+
+<p>假设我们已知<code>nums[x+1: y]</code> 和 <code>nums[x:y-1]</code>的最大有效得分情况，那么我们就可以轻松得到<code>nums[x:y]</code>的有效的最高得分情况 <code>max(nums[x] - score[x+1][y], nums[y] - score[x][y-1]</code>。</p>
+
+<p>因此得到状态方程:<br />
+<code>dp[i, j] = nums[i] - dp[i+1][j], nums[j] - dp[i][j-1]</code>。</p>
+
+<h4 id="931-m">931-M</h4>
+
+<p><a href="https://leetcode.com/problems/minimum-falling-path-sum/">931. Minimum Falling Path Sum</a><br />
+Difficulty: ★★★☆☆<br />
+Beats: 45.24%<br />
+Time Complexity: O($n^2$)
+Remark: 最小问题，容易发现状态方程，需要注意边界条件的处理。</p>
+
+<p>Explanation:<br />
+这里定义状态为从顶层落到第<code>i</code>层，第<code>j</code>个元素位置处的最小和。<br />
+那么对于第<code>i+1</code>层非边界元素位置，其最小值取决于上一层的相邻三个元素<code>i-1</code>,<code>i</code>,<code>i+1</code>的最小值；边界元素只考虑两个相邻元素。<br />
+容易得到我们的状态方程： <code>res[i+1][j] = A[i+1][j] + min(res[i][j-1], res[i][j], res[i][j+1])</code>。<br />
+Code:</p>
+
+<pre><code class="language-python">def minFallingPathSum(self, A):
+    if not A:
+        return 0
+    if len(A) == 1:
+        return min(A[-1])
+    size = len(A)
+    res = [[0]*size for i in range(size)]
+    res[0] = A[0]
+    for row in range(1, size):
+        for col in range(size):
+            if col == 0:
+                res[row][col] = A[row][col] + min(res[row-1][col], res[row-1][col+1])
+            elif col == size - 1:
+                res[row][col] = A[row][col] + min(res[row-1][col-1], res[row-1][col])
+            else:
+                res[row][col] = A[row][col] + min(res[row-1][col-1], res[row-1][col], res[row-1][col+1])
+    return min(res[-1])
+</code></pre>
+
+<hr />
+
+<hr/>
+
+<h2 id="week3">Week3:</h2>
+
+<h3 id="solved-8-problems">Solved 8 problems</h3>
+
+<h4 id="139-m">139-M</h4>
+
+<p><a href="https://leetcode.com/problems/word-break/description/">139. Word Break</a><br />
+Difficulty：★★★☆☆<br />
+Beats: 81%<br />
+Time Complexity: O(nwd)<br />
+Remark: 思路清晰，DP.</p>
+
+<p>Explanation:<br />
+<div>
+The idea is the following:</p>
+
+<p>d is an array that contains booleans</p>
+
+<p>d[i] is True if there is a word in the dictionary that ends at ith index of s AND d is also True at the beginning of the word</p>
+
+<p>Example:</p>
+
+<p>s = &ldquo;leetcode&rdquo;</p>
+
+<p>words = [&ldquo;leet&rdquo;, &ldquo;code&rdquo;]</p>
+
+<p>d[3] is True because there is &ldquo;leet&rdquo; in the dictionary that ends at 3rd index of &ldquo;leetcode&rdquo;</p>
+
+<p>d[7] is True because there is &ldquo;code&rdquo; in the dictionary that ends at the 7th index of &ldquo;leetcode&rdquo; AND d[3] is True</p>
+
+<p>The result is the last index of d.
+</div></p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def wordBreak(self, s, wordDict):
+    n = len(s)
+    dp = [False] * n
+    for i in range(n):
+        for word in wordDict:
+            if word == s[i-len(word)+1 : i+1] and (dp[i-len(word)] or i - len(word) == -1):
+                dp[i] = True
+                break
+    return dp[-1]
+</code></pre>
+
+<hr/>
+
+<h4 id="464-m">464-M</h4>
+
+<p><a href="https://leetcode.com/problems/can-i-win/description/">464. Can I Win</a><br />
+&gt;Difficulty：★★★★★<br />
+Beats: 76%<br />
+Time Complexity: O(n^2)<br />
+Remark: 博弈论，以及移位操作表示数字是否用过的状态。不会。</p>
+
+<p><a href="https://www.liuchuo.net/archives/3155">liuchou的博客</a></p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def canIWin(self, M, T):
+    def win(M, T, m, state):
+        if T &lt;= 0: return False
+        if m[state] != 0: return m[state] == 1
+        for i in range(M):
+        if (state &amp; (1 &lt;&lt; i)) &gt; 0: continue
+        if not win(M, T - i - 1, m, state | (1 &lt;&lt; i)):
+            m[state] = 1
+            return True
+        m[state] = -1
+        return False
+
+    s = M * (M + 1) / 2
+    if s &lt; T: return False
+    if T &lt;= 0: return True
+    if s == T: return (M % 2) == 1
+
+    m = [0] * (1 &lt;&lt; M)
+    return win(M, T, m, 0)
+</code></pre>
+
+<hr/>
+
+<h4 id="650-m">650-M</h4>
+
+<p><a href="https://leetcode.com/problems/2-keys-keyboard/description/">650. 2 Keys Keyboard</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 100%<br />
+Time Complexity: O(n)<br />
+Remark: 多尝试几个n，就会发现其中蕴含的规律。</p>
+
+<p>Explanation:<br />
+什么时候复制、粘贴？<br />
+当剩余元素数目是当前已有元素数目的整数倍的时候，如果已复制长度小于已有元素数目，更新复制长度，操作+1，接着复制，反复这个过程，直至剩余元素为0。</p>
+
+<pre><code class="language-py">def minSteps(self, n):
+    res, cpl, ops = 2, 1, 2
+    if n == 1: return 0
+    if n == 2: return 2
+    rawn = n
+    n = n - res
+    while n&gt;0:
+        if n % res == 0:
+            # do copy
+            if cpl &lt; res:
+                cpl = res
+                ops += 1
+        # do paste
+        res += cpl
+        n -= cpl
+        ops += 1
+    return ops
+</code></pre>
+
+<hr/>
+
+<h4 id="838-m">838-M</h4>
+
+<p><a href="https://leetcode.com/problems/push-dominoes/description/">838. Push Dominoes</a><br />
+&gt;Difficulty：★★★★☆<br />
+Beats: 84.30%<br />
+Time Complexity: O(n)<br />
+Remark: 理解几种普遍的倒下的情况，O(n)可以做。</p>
+
+<p><strong>Intuition:</strong>
+Whether be pushed or not, depend on the shortest distance to &lsquo;L&rsquo; and &lsquo;R&rsquo;.<br />
+Also the direction matters.</p>
+
+<p>Here is another idea that focus on &lsquo;L&rsquo; and &lsquo;R&rsquo;.<br />
+&lsquo;R&hellip;&hellip;R&rsquo; =&gt; &lsquo;RRRRRRRR&rsquo;<br />
+&lsquo;R&hellip;&hellip;L&rsquo; =&gt; &lsquo;RRRRLLLL&rsquo; or &lsquo;RRRR.LLLL&rsquo;<br />
+&lsquo;L&hellip;&hellip;R&rsquo; =&gt; &lsquo;L&hellip;&hellip;R&rsquo;<br />
+&lsquo;L&hellip;&hellip;L&rsquo; =&gt; &lsquo;LLLLLLLL&rsquo;</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def pushDominoes(self, d):
+    d = 'L' + d + 'R'
+    res = []
+    i = 0
+    for j in range(1, len(d)):
+        if d[j] == '.': continue
+        middle = j - i - 1
+        if i: res.append(d[i])
+        if d[i] == d[j]: res.append(d[i] * middle)
+        elif d[i] == 'L' and d[j] == 'R': res.append('.' * middle)
+        else: res.append('R' * (middle / 2) + '.' * (middle % 2) + 'L' * (middle / 2))
+        i = j
+    return ''.join(res)
+</code></pre>
+
+<hr/>
+
+<h4 id="646-m">646-M</h4>
+
+<p><a href="https://leetcode.com/problems/maximum-length-of-pair-chain/description/">646. Maximum Length of Pair Chain</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 40.26%<br />
+Time Complexity: O(n^2)<br />
+Remark: 经常性拿到这种二元变量的题有些没思路，学会使用python的lambda；思路还是比较清晰的，用DP的一般步骤套，可以想到怎么做。</p>
+
+<p>Explanation:<br />
+首先判断是DP问题：要求最长的chain，符合重复子问题、最优子结构的性质。</p>
+
+<p>其次，它的状态，可以定义为到第<code>i</code>个元素时，以它结尾的和它前面的元素能组成的最长链。</p>
+
+<p>状态转移，如果<code>pairs[i]</code>能放在<code>pairs[i-1]</code>后面，那么它最长就是在前者基础上加1。<br />
+如果不能，我们就需要找到那个能放的，因此需要遍历<code>0...i-2</code>个元素，找到即可。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def findLongestChain(self, pairs):
+    pairs.sort(key=lambda r:r[0])
+    n = len(pairs)
+    dp = [0]*n
+    dp[0] = 1
+    if pairs[1][0] &gt; pairs[0][1]:
+        dp[1] = dp[0] + 1
+    else:
+        dp[1] = 1
+    for i in range(2, n):
+        if pairs[i][0] &gt; pairs[i-1][1]:
+            dp[i] = dp[i-1] + 1
+        else:
+            j = i - 2
+            while j &gt; -1:
+                if pairs[j][1] &lt; pairs[i][0]:
+                    break
+                j -= 1
+            dp[i] = dp[j] + 1
+    return dp[-1]
+</code></pre>
+
+<hr/>
+
+<h4 id="221-m">221-M</h4>
+
+<p><a href="https://leetcode.com/problems/maximal-square/description/">221. Maximal Square</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 67.54%<br />
+Time Complexity: O(nm)<br />
+Remark: 多举几个例子就能发现背后的状态方程了，不算难。</p>
+
+<p>Explanation:<br />
+假定状态是以<code>s[i][j]</code>作为右下角的符合条件的正方形的边长<code>dp[i][j]</code>，那么它由周围哪几个状态决定呢？<br />
+&gt;[[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;0&rdquo;],[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;],[&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;],[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;0&rdquo;]]
+[[&ldquo;1&rdquo;,&ldquo;0&rdquo;],[&ldquo;0&rdquo;,&ldquo;0&rdquo;]]
+[[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;0&rdquo;],[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;],[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;],[&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;]]
+[[&ldquo;0&rdquo;,&ldquo;0&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;],[&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;],[&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;],[&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;],[&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;]]</p>
+
+<p>给出上面4个例子，其结果是4，1，4，9。自己尝试推导一下。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def maximalSquare(self, matrix):
+    if not matrix: return 0
+    n = len(matrix)
+    m = len(matrix[0])
+    dp = [[0] * (m+1) for _ in range(n+1)]
+    res = 0
+    for i in range(1, n+1):
+        for j in range(1, m+1):
+            if matrix[i-1][j-1] == &quot;1&quot;:
+                dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
+                res = max(res, dp[i][j])
+    return res*res
+</code></pre>
+
+<hr/>
+
+<h4 id="091-m">091-M</h4>
+
+<p><a href="https://leetcode.com/problems/decode-ways/description/">91. Decode Ways</a><br />
+&gt;Difficulty：★★☆☆☆<br />
+Beats: 100%<br />
+Time Complexity: O(n)<br />
+Remark: 注意对‘0’进行特殊处理，简单DP。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def numDecodings(self, s):
+    d = [0]*(len(s)+1)
+    d[0] = 1
+
+    for i in range(1,len(d)):
+        if s[i-1] != '0':
+            d[i] += d[i-1]
+        if (i &gt; 1) and ('09' &lt; s[i-2:i] &lt; '27'):
+            d[i] += d[i-2]              
+    return d[-1]
+</code></pre>
+
+<hr/>
+
+<h4 id="152-m">152-M</h4>
+
+<p><a href="https://leetcode.com/problems/maximum-product-subarray/description/">152. Maximum Product Subarray</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 47.25%<br />
+Time Complexity: O(n)<br />
+Remark: 写了一段程序只有最后一个样例过不了，很长的一个数组，15000，超内存应该是其次，最主要还是算法不够好，而且优化的方向就在内存上，为什么会需要<code>n^2</code>的内存。以及，之前的最大和最小在当前数为负数时的转化，题目的思考还是不够深入。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def maxProduct(self, nums):
+    n = len(nums)
+    res = nums[0]
+    rx, rm = nums[0], nums[0]
+    for i in range(1, n):
+        if nums[i] &lt; 0:
+            tmp = rx
+            rx = rm
+            rm = tmp
+        rx = max(nums[i], nums[i]*rx)
+        rm = min(nums[i], nums[i]*rm)
+        res = max(res, rx)
+    return res
+</code></pre>
+
+<hr/>
+
+<h2 id="week2">Week2</h2>
+
+<p>中秋放假，就这么混吗？路那么长，多停一天，可能就走不完了。
+Solved 8 problems.</p>
+
+<h3 id="day14">Day14</h3>
+
+<p><strong>Date: 18-09-26</strong></p>
+
+<h4 id="718-m">718-M</h4>
+
+<p><a href="https://leetcode.com/problems/maximum-length-of-repeated-subarray/description/">718. Maximum Length of Repeated Subarray</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 63.52%<br />
+Time Complexity: O(mn)<br />
+Remark: 简单题。最长公共子串。</p>
+
+<p>Explanation:<br />
+尝试考虑以<code>B[i]</code>结尾的<code>B[:i+1]</code>子串和<code>A</code>串的关系，迭代<code>A</code>，若<code>A[j] == B[i]</code>，那么比较内部的串。<br />
+即状态方程：  <code>dp[i][j] = dp[i-1][j-1] + 1 if B[i] == A[j]</code></p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def findLength(self, A, B):
+    n1, n2 = len(A), len(B)
+    dp = [[0] * (n1+1) for _ in range(n2+1)]
+    res = 0
+    for i in range(1, n2+1):
+        for j in range(1, n1+1):
+            if B[i-1] == A[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+                res = max(res, dp[i][j])     
+    return res
+</code></pre>
+
+<hr/>
+
+<h3 id="day13">Day13</h3>
+
+<p><strong>Date: 18-09-25</strong></p>
+
+<h4 id="494-m">494-M</h4>
+
+<p><a href="https://leetcode.com/problems/target-sum/description/">494. Target Sum</a><br />
+&gt;Difficulty：★★★★☆<br />
+Beats: 49.57%<br />
+Time Complexity: ?<br />
+Remark: dp + dfs，这里的dp的自顶向下算法就是dfs，但是需要做memorization，否则会出现TLE。</p>
+
+<p>Explanation:<br />
+以第i位置，以及可能在这个位置出现的<code>和</code>，两个值的<code>tuple</code>作为key，节约时间空间。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def findTargetSumWays(self, nums, S):
+    def memoization(i, S):
+        if i == 0:
+            return 1 if S == 0 else 0
+        elif (i,S) in dic:
+            return dic[i, S]
+        res = memoization(i-1, S-nums[i-1]) + memoization(i-1, S+nums[i-1])
+        dic[i, S] = res
+        return res
+    dic = {}
+    return memoization(len(nums), S)
+</code></pre>
+
+<hr/>
+
+<h3 id="day12">Day12</h3>
+
+<p><strong>Date: 18-09-24</strong></p>
+
+<h4 id="516-m">516-M</h4>
+
+<p><a href="https://leetcode.com/problems/longest-palindromic-subsequence/description/">516. Longest Palindromic Subsequence</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: \<br />
+Time Complexity: O(n^2)<br />
+Space Complexity: O(n^2)<br />
+Remark: 要么就是python3的执行评判有问题，要么就是python3的执行是真的慢。算法的想法挺简单的，属于那种制表就可以完成的。</p>
+
+<p>Explanation:<br />
+我们假设从i位置开始，长度为<code>l</code>的子串<code>subs</code>（这里是子串，不是子序列），现在需要判断<code>subs</code>的最长回文子序列，先判断首尾是否相同：相同则首尾同时向内缩进1位，继续判断。
+自底向上的做法，需要我们将长度<code>l</code>从2一直迭代至<code>len(s)</code>。</p>
+
+<p><em>Formula</em>:<br />
+<code>T[i][j] = T[i+1][j-1] + 2 if s[i] == s[j] else max(T[i+1][j], T[i][j-1])</code></p>
+
+<p>Code:</p>
+
+<pre><code class="language-py"># submit this using python, not python3
+def longestPalindromeSubseq(self, s):
+    n = len(s)
+    dp = [[0]*n for _ in range(n)]
+    for i in range(n):
+        dp[i][i] = 1
+    for l in range(2, n+1):
+        for i in range(0, n - l + 1):
+            j = i + l - 1
+            if l == 2 and s[i] == s[j]:
+                dp[i][j] = 2
+            elif s[i] == s[j]:
+                dp[i][j] = dp[i+1][j-1] + 2
+            else:
+                dp[i][j] = max(dp[i+1][j], dp[i][j-1])
+    return dp[0][-1]
+</code></pre>
+
+<hr/>
+
+<h3 id="day11">Day11</h3>
+
+<p><strong>Date: 18-09-23</strong></p>
+
+<h4 id="120-m">120-M</h4>
+
+<p><a href="https://leetcode.com/problems/triangle/description/">120. Triangle</a>
+&gt;Difficulty：★★★☆☆<br />
+Beats: 72.33%<br />
+Time Complexity: O(n^2)<br />
+Space Complexity: O(n)<br />
+Remark: 标准DP问题。</p>
+
+<p>Explanation:<br />
+- <em>Step1: 判断</em><br />
+最小化问题，满足两个性质，可以用DP解。</p>
+
+<ul>
+<li><p><em>Step2: 状态</em><br />
+首先我们不可能从底向上，从最后一层最小的点往上找的。<br />
+这样的话，就会想知道，比如到第k层第i个元素，想知道到前k-1层第i/i-1个元素那里哪一个最小。<br />
+所以状态可以定义为到第k层第i个元素</p></li>
+
+<li><p><em>Step3: 状态方程</em>
+我们需要迭代整个n，去寻找<code>[start, end]</code>的分割位置k，在k位置的时候，计算它的最坏情况，即<code>max(dp[start, k-1], dp[k+1, end]) + k</code>，现在我们想要的最终结果就是所有这样的k中最小的。</p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em><br />
+有两种做法，一种是存储N个结果，另一种是直接修改原数组。</p>
+
+<pre><code class="language-py">def minimumTotal(self, triangle):
+# res = [0]*len(triangle)
+# res[0] = triangle[0][0]
+for i in range(1, len(triangle)):
+    # cur = [x for x in res]
+    for j in range(len(triangle[i])):
+        if j-1 &lt; 0:
+            upmin = triangle[i-1][j]
+        elif j &gt;= len(triangle[i-1]):
+            upmin = triangle[i-1][j-1]
+        else:
+            upmin = min(triangle[i-1][j], triangle[i-1][j-1])
+
+        triangle[i][j] += upmin
+    # print(res)
+return min(triangle[-1])
+</code></pre></li>
+</ul>
+
+<hr/>
+
+<h3 id="day10">Day10</h3>
+
+<p><strong>Date: 18-09-22</strong></p>
+
+<h4 id="375-m">375-M</h4>
+
+<p><a href="https://leetcode.com/problems/guess-number-higher-or-lower-ii/description/">375. Guess Number Higher or Lower II</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 15.63%<br />
+Time Complexity: O(n^2)<br />
+Remark: 题目表述有点晦涩。又是可以用两个数字表示字典key的一道题。</p>
+
+<p>Explanation:<strong>源: <a href="https://leetcode.com/problems/guess-number-higher-or-lower-ii/discuss/84766/Clarification-on-the-problem-description.-Problem-description-need-to-be-updated-!!!">xuehaohu</a></strong><br />
+- <em>Step1: 判断</em><br />
+最后我们需要找出<code>how much money you need to have to guarantee a win</code>，保证赢，至少需要多少钱，看起来像是需要最大化某个量又需要最小化另外某个量的问题。</p>
+
+<ul>
+<li><em>Step2: 状态</em><br />
+如果只有一个数，那么不用猜，代价是0；<br /></li>
+</ul>
+
+<p>如果有两个数，比如<code>[5, 6]</code>，最小的代价是5：我们有两种方法去猜，一是猜5，猜中代价为0，猜不中代价为5，这种情况下需要付出的代价是5（想一想为什么）；另一种是猜6，猜中代价为0，猜不中代价为6。综合两种情况，猜中的最小代价是5;</p>
+
+<p>如果有三个数，比如<code>[3, 4, 5]</code>，我们猜中的最小代价一定是4。</p>
+
+<p>以此类推，对于更大的范围，我们可以将其划分成多个小的范围，这就符合DP问题的定义了。
+我们可以定义状态为从<code>start</code>到<code>end</code>需要付出的最小代价。</p>
+
+<ul>
+<li><p><em>Step3: 状态方程</em>
+我们需要迭代整个n，去寻找<code>[start, end]</code>的分割位置k，在k位置的时候，计算它的最坏情况，即<code>max(dp[start, k-1], dp[k+1, end]) + k</code>，现在我们想要的最终结果就是所有这样的k中最小的。</p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em></p></li>
+</ul>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def getMoneyAmount(self, n):
+    dp = {}
+    def getMA(l, r):
+        if l &gt; r:
+            return 0
+        if (l, r) in dp:
+            return dp[l, r]
+        if r == l:
+            dp[l, r] = 0
+            return dp[l, r]
+        if r-l == 1:
+            dp[l, r] = l
+            return dp[l, r]
+        dp[l, r] = r*r
+        for i in range(l, r):
+            dp[l, r] = min(dp[l,r], i + max(getMA(l, i-1),getMA(i+1, r)))
+        return dp[l, r]
+    return getMA(1, n)
+</code></pre>
+
+<hr/>
+
+<h3 id="day9">Day9</h3>
+
+<p><strong>Date: 18-09-21</strong><br />
+数值分析上到今天终于跟不上了，看来假期需要补一补了，不然就真废了。今天的组会开的很不尽兴，各种事故。</p>
+
+<h4 id="712-m">712-M</h4>
+
+<p><a href="https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/description/">712. Minimum ASCII Delete Sum for Two Strings</a><br />
+&gt;Difficulty：★★★★☆<br />
+Beats: 11.11%<br />
+Time Complexity: O(n^2)<br />
+Remark: 思路较为简单。本题基于最长公共子序列的解法，只不过状态的内容由公共子序列的长度变成了需要删除字母的代价。<br />
+Explanation:<br />
+- <em>Step1: 判断</em><br />
+最小化删除的字母和，是DP问题</p>
+
+<ul>
+<li><p><em>Step2: 状态</em><br />
+匹配到<code>str1[j]</code>和<code>str2[i]</code>需要删除的代价，即<code>str1[:j]</code>和<code>str2[:i]</code>需要删除的字母ascii码和，设为<code>dp[i][j]</code>。</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+由状态之间的传递关系，如果<code>str1[j] == str2[i]</code> ，那么它们俩可以不用删除，需要考虑的是<code>str1[:j-1], str2[:i-1]</code>这两个串之间的关系，它们的关系由<code>dp[i-1][j-1]</code>给出；<br />
+如果<code>str1[j]</code>和<code>str2[i]</code>不同，直观想法是把这两个字符都删除了，但这样需要付出的代价无疑是
+最大的（<code>dp[i-1][j-1] + str2[i] + str1[j]</code>），考虑，如果只删除<code>str1[j]</code>，那么问题转化为<code>str1[:j-1]</code>和<code>str2[:i]</code>进行匹配，它们需要付出的代价就是<code>dp[i][j-1] + str1[j]</code>，同理，删除<code>str2[i]</code>需要付出的代价
+是<code>dp[i-1][j] + str2[i]</code>，二者取较小者即可。所以状态方程定义如下：<br />
+<code>if str1[j] == str2[i]: dp[i][j] = dp[i-1][j-1]</code><br />
+<code>if str1[j] != str2[i]: dp[i][j] = max(dp[i][j-1] + str1[j],dp[i-1][j] + str2[i])</code></p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em><br />
+实现的时候，为了计算方便，多增加一行一列。</p></li>
+</ul>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def minimumDeleteSum(self, s1, s2):
+    l1, l2 = len(s1), len(s2)
+    dp = [[0]*(l1 + 1) for _ in range(l2 + 1)]
+    for i in range(1, l1+1):
+        dp[0][i] += dp[0][i-1] + ord(s1[i-1])
+    for i in range(1, l2+1):
+        dp[i][0] += dp[i-1][0] + ord(s2[i-1])
+
+    for i in range(1, l2+1):
+        for j in range(1, l1+1):
+            if s2[i-1] == s1[j-1]:
+                dp[i][j] = dp[i-1][j-1]
+            else:
+                dp[i][j] = min(dp[i-1][j] + ord(s2[i-1]), dp[i][j-1] + ord(s1[j-1]))
+    return dp[l2][l1]
+</code></pre>
+
+<hr/>
+
+<h3 id="day8">Day8</h3>
+
+<p><strong>Date: 18-09-20</strong><br />
+失了智的一天，两道题没有一道想出来的。差评，菜🐶。这两道题属于同一类型的，值得再刷！</p>
+
+<h4 id="813-m">813-M</h4>
+
+<p><a href="https://leetcode.com/problems/largest-sum-of-averages/description/">813. Largest Sum of Averages</a><br />
+&gt;Difficulty：★★★★☆<br />
+Beats: &lt;20%<br />
+Time Complexity: O(Kn^2)<br />
+Remark: 如果没有直接思路，从笨方法入手深入理解题意，然后再想想哪里可以提升。</p>
+
+<p>Explanation:(参考lee215的题解)<br />
+<strong>如何寻找状态？</strong><br />
+我们有一个数组，至多可以分成K个连续的部分，然后对每个部分求平均再累加，求这个最大值。<br />
+K个连续的部分，如何分割呢，我们可以以每个部分最后一个元素的位置作为分割点（至于为什么这么想，因为标志位置就只有每部分的开头和结尾元素，二者选其一而已）。<br />
+现在假设我们分割了倒数一部分元素，那么整个数据集被我们分割成了最后一部分，以及前面k-1个部分，那么它的值便可以用下面的式子表达：<br />
+<code>dp[n,k] = max(dp[n, k], dp[i, k-1] + sum(A[i:n])/float(n-i)), i=n-1,...,0</code><br />
+由此可以用递归求解本题。<br />
+(PS: lee215是真的喜欢用set的key来保存状态（：).</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def largestSumOfAverages(self, A, K):
+    memo = {}
+    def search(n, k):
+        if (n, k) in memo: return memo[n, k]
+        if n &lt; k: return 0
+        if k == 1:
+            memo[n, k] = sum(A[:n]) / float(n)
+            return memo[n, k]
+        cur, memo[n, k] = 0, 0
+        for i in range(n - 1, 0, -1):
+            cur += A[i]
+            memo[n, k] = max(memo[n, k], search(i, k - 1) + cur / float(n - i))
+        return memo[n, k]
+    return search(len(A), K)
+</code></pre>
+
+<hr/>
+
+<h4 id="873-m">873-M</h4>
+
+<p><a href="https://leetcode.com/problems/length-of-longest-fibonacci-subsequence/description/">873. Length of Longest Fibonacci Subsequence</a><br />
+&gt;Difficulty：★★★★☆<br />
+Beats: 73.98%<br />
+Time Complexity: O(n^2)<br />
+Remark: 如果DP的掌握程度可以量化的话，我觉得我才走到25%，状态和状态转移方程真TM神奇，同时也明确提醒自己状态不一定连续。</p>
+
+<p>Explanation:(参考lee215的题解)<br />
+首先我们明确一点，<strong>已知类斐波那契数列的连续两个数之后，可以推导出规定范围内所有属于它的数。</strong><br />
+基于这一点，我们的状态可以基于<code>类斐波那契数列的连续两个数</code>来设置，即令<code>dp[a, b]</code>表示以数<code>(a, b)</code>为结尾的类斐波那契数列。<br />
+如此，我们的状态方程可以设置为：<code>dp[a, b] = (dp[b-a, a] + 1) or 2</code>。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">def lenLongestFibSubseq(self, A):
+    dp = collections.defaultdict(int)
+    s = set(A)
+    res = 0
+    for j in xrange(len(A)):
+        for i in xrange(j):
+            if A[j] - A[i] &lt; A[i] and A[j] - A[i] in s:
+                dp[A[i], A[j]] = dp.get((A[j] - A[i], A[i]), 2) + 1
+                res = max(res, dp[A[i], A[j]])
+    return max(dp.values() or [0])
+</code></pre>
+
+<hr />
+
+<h2 id="week1">Week1</h2>
+
+<p>Solved 18 problems.</p>
+
+<h3 id="day7">Day7</h3>
+
+<p><strong>Date: 18-09-19</strong></p>
+
+<h4 id="064-m">064-M</h4>
+
+<p><a href="https://leetcode.com/problems/minimum-path-sum/description/">64. Minimum Path Sum</a><br />
+&gt;Difficulty：★★☆☆☆<br />
+Beats: 48.92%<br />
+Time Complexity: O(n^2)<br />
+Remark: 属于比较简单的基础DP题，模拟一遍就知道状态方程了。</p>
+
+<p>Explanation:<br />
+状态定义为走到当前位置需要的最少步数<code>dp[i][j]</code>。<br />
+由规则可知，当前步往下一步走，只能向下或者向右，因此可以推得状态方程：<br />
+<code>dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]</code>。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">class Solution:
+    def minPathSum(self, grid):
+        &quot;&quot;&quot;
+        :type grid: List[List[int]]
+        :rtype: int
+        &quot;&quot;&quot;
+        n = len(grid)
+        m = len(grid[0])
+        dp = [[0]*m for _ in range(n)]
+        dp[0][0] = grid[0][0]
+        for i in range(1,m):
+            dp[0][i] = dp[0][i-1] + grid[0][i]
+        for i in range(1,n):
+            dp[i][0] = dp[i-1][0] + grid[i][0]
+        # print(dp)
+        for i in range(1, n):
+            for j in range(1, m):
+                dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]
+        # print(dp)
+        return dp[n-1][m-1]
+</code></pre>
+
+<hr/>
+
+<h4 id="300-m">300-M</h4>
+
+<p><a href="https://leetcode.com/problems/longest-increasing-subsequence/description/">300. Longest Increasing Subsequence</a><br />
+&gt;Difficulty：★★☆☆☆<br />
+Beats: 11.25%<br />
+Time Complexity: O(n^2)<br />
+Remark: 十分典型的DP题，求最长递增子序列。</p>
+
+<p>Explanation:<br />
+定义状态为在第<code>i</code>个元素时以它结尾的最长递增子序列的长度<code>T[i]</code>。<br />
+求解<code>T[i]</code>时，我们需要寻找前<code>i</code>个元素中比<code>nums[i]</code>小的最大<code>T[k]</code>。<br />
+则状态方程为：</p>
+
+<pre><code class="language-T[i]">
+Code:  
+```py
+class Solution:
+    def lengthOfLIS(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+        if not nums: return 0
+        n = len(nums)
+        res = [1]*n
+        for i in range(n):
+            tmp = res[i]
+            for j in range(i-1, -1, -1):
+                if nums[j] &lt; nums[i]:
+                    tmp = max(tmp, res[j] + 1)
+            res[i] = tmp
+        return max(res)
+</code></pre>
+
+<hr/>
+
+<h4 id="416-m">416-M</h4>
+
+<p><a href="https://leetcode.com/problems/partition-equal-subset-sum/description/">416. Partition Equal Subset Sum</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 0%<br />
+Time Complexity: O(n^2)<br />
+Remark: 我觉得这题python的判法有问题，同样的思路，复杂度，我递归和制表两种方法都试了，疯狂TLE，太真实了。</p>
+
+<p>Explanation:<br />
+这题的思路相对简单，要将数据集划分为两个和相等的的子数据集，那么和<code>sum</code>肯定是偶数，奇数和直接返回错。<br />
+这个时候问题转化为，求<code>subset sum</code>，指定<code>sum</code>，是否存在子集满足和等于它。</p>
+
+<p>对于<code>subset sum</code>这个问题，比较经典。<br />
+<pre>
+Let isSubSetSum(int set[], int n, int sum) be the function to find whether there is a
+subset of set[] with sum equal to sum. n is the number of elements in set[].</p>
+
+<p>The isSubsetSum problem can be divided into two subproblems
+…a) Include the last element, recur for n = n-1, sum = sum – set[n-1]
+…b) Exclude the last element, recur for n = n-1.
+If any of the above the above subproblems return true, then return true.
+</pre></p>
+
+<p>这题贴没AC的代码，看同样的思路改写成C++有没有问题🙃<br />
+Code:</p>
+
+<pre><code class="language-py">class Solution:
+    def canPartition(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: bool
+        &quot;&quot;&quot;
+        nsum = sum(nums)
+        if nsum % 2 == 1:
+            return False
+        n = len(nums)
+        half = int(nsum/2)
+
+        def subsetSum(target, ns):
+            if target == 0: return True
+            if not ns: return False
+            if ns[-1] &gt; target:
+                return subsetSum(target, ns[:-1])
+            return subsetSum(target-ns[-1], ns[:-1]) or subsetSum(target, ns[:-1])
+
+        return subsetSum(half, nums)
+
+        # dp = [[0]*(half+1) for _ in range(n)]
+        # for i in range(n):
+        #     dp[i][0] = 1
+        # for i in range(1, half+1):
+        #     if i == nums[0]:
+        #         dp[0][i] = 1
+        # for i in range(1, n):
+        #     for j in range(1, half+1):
+        #         if j &lt; nums[i]:
+        #             dp[i][j] = dp[i-1][j]
+        #         else:
+        #             dp[i][j] = dp[i-1][j] or dp[i-1][j-nums[i]]
+        # if dp[n-1][half]:
+        #     return True
+        # return False  
+</code></pre>
+
+<hr/>
+
+<h3 id="day6">Day6</h3>
+
+<p><strong>Date: 18-09-18</strong></p>
+
+<h4 id="343-m">343-M</h4>
+
+<p><a href="https://leetcode.com/problems/is-subsequence/description/">343. Integer Break</a><br />
+&gt;Difficulty：★★☆☆☆<br />
+Beats: 36.83%<br />
+Time Complexity: O(n^2)<br />
+Remark: 这道题属于容易推断的DP问题，多举几个例子就能自己发现了。</p>
+
+<p>Explanation：<br />
+通过枚举观察可以发现以下结果：<br />
+<pre>
+2: 1
+3: 1x2 = 2
+4: 2x2 = 4
+5: 2x3 = 6
+6: 3x3 = 9
+7: 3x4 = 12
+8: 2x(6) = 2x9 = 18
+9: 3x(6) = 3x9 = 27
+10: 2x(8) = 2x18 = 36
+</pre>
+所以它具有最优子结构以及重复子问题的性质。值得注意的是，2和3的结果并没有他们本身大，所以后续我们需要用到2或者3的时候，我们用的是它本身，而不是它break的结果。</p>
+
+<p>状态方程如下：<br />
+<code>T[n]=max(T[n], T[i]*T[n-i]) i = 1,...,n/2</code></p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">class Solution:
+    def integerBreak(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        if n &lt; 4:
+            return n-1
+        maxr = [0, 1, 2, 3]
+        for cur in range(4, n+1):
+            cm = 0
+            for i in range(1, int(cur/2) + 1):
+                cm = max(cm, maxr[i] * maxr[cur-i])
+            maxr.append(cm)
+        return maxr[n]
+</code></pre>
+
+<hr/>
+
+<h4 id="474-m">474-M</h4>
+
+<p><a href="https://leetcode.com/problems/ones-and-zeroes/description/">474. Ones and Zeroes</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 15.76%<br />
+Time Complexity: O(n)<br />
+Remark: 就题目本身而言，属于经典的0/1背包问题，而且属于二维费用的背包问题。同时这题揭露了LeetCode中python3和python评判的差异，同样的代码，python3用时更久。</p>
+
+<p>Explanation:<br />
+先Mark一下，状态方程很简单：<code>dp[i][j] = max(dp[i][j], dp[i-zeros][j-ones]+1)</code><br />
+留待背包问题做个总结。</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py"># 使用python，可AC；使用python3，TLE
+class Solution:
+    def findMaxForm(self, strs, m, n):
+        &quot;&quot;&quot;
+        :type strs: List[str]
+        :type m: int
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        dp = [[0] * (n+1) for _ in range(m+1) ]
+        for s in strs:
+            s0 = s.count('0')
+            s1 = len(s) - s0
+            for i in range(m, s0-1, -1):
+                for j in range(n, s1-1, -1):
+                    dp[i][j] = max(dp[i][j], dp[i-s0][j-s1]+1)
+
+        return dp[m][n]
+</code></pre>
+
+<hr/>
+
+<h4 id="392-m">392-M</h4>
+
+<p><a href="https://leetcode.com/problems/is-subsequence/description/">392. Is Subsequence</a>
+&gt;Difficulty：★★★☆☆<br />
+Beats: 62.02%<br />
+Time Complexity: O(nm)<br />
+Remark: 中规中矩的DP，但是构建状态矩阵的时候MLE了两次，之后改用了递归。</p>
+
+<p>Explanation:<br />
+- <em>Step1: 判断</em><br />
+满足重叠子问题、最优子结构性质。</p>
+
+<ul>
+<li><p><em>Step2: 状态</em><br />
+首先明确一点，如果一个串B是串A的子串，那么串B中字符出现的先后顺序在串A中也是一样的。想一想为什么？<br />
+在知道了上面一这点后，我们可以这样定义状态，若当前字符s[i]对应串A的A[j]，其状态为<code>true</code>。</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+那么s[i+1]在哪里找呢？我们需要在A[j+1:]里找，重复上面的过程。如果有一次s[k]没有找到对应字符，直接返回<code>false</code>。</p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em><br />
+这里我用的是自上而下的递归。</p></li>
+</ul>
+
+<p>Code:</p>
+
+<pre><code class="language-py">class Solution:
+    def isSubsequence(self, s, t):
+        &quot;&quot;&quot;
+        :type s: str
+        :type t: str
+        :rtype: bool
+        &quot;&quot;&quot;
+        def sub(s, t):
+            if not s: return True
+            if not t: return False
+            target = s[0]
+            idx = -1
+            for i in range(len(t)):
+                if target == t[i]:
+                    idx = i
+                    break
+            if idx &lt; 0:
+                return False
+            return sub(s[1:], t[idx+1:])
+        return sub(s, t)
+
+    # 利用Python自带函数  
+    def isSubsequence(self, s, t):
+        ind = -1
+        for i in s:
+            try: ind = t.index(i,ind+1)
+            except: return False
+        return True
+</code></pre>
+
+<hr/>
+
+<h3 id="day5">Day5</h3>
+
+<p><strong>Date: 18-09-17</strong></p>
+
+<h4 id="357-m">357-M</h4>
+
+<p><a href="https://leetcode.com/problems/count-numbers-with-unique-digits/description/">357. Count Numbers with Unique Digits</a></p>
+
+<blockquote>
+<p>Difficulty：★★☆☆☆<br />
+Beats: 69.17%<br />
+Time Complexity: O(n)<br />
+Remark: 简单题，可以总结为数学问题，这道题说明，状态不一定要直接解决我们的最终问题，它可以是最终答案的骨架。</p>
+</blockquote>
+
+<p>一看就懂，直接放代码。
+Code:</p>
+
+<pre><code class="language-py">#     n = 1 : 10
+#     n = 2 : 9 * 9      (1-9)|(0-9 except first Digit)
+#     n = 3 : 9 * 9 * 8  (1-9)|(0-9 except first Digit) | (0-9 except first Digit))
+#     ...   
+
+class Solution:
+    def countNumbersWithUniqueDigits(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        if n == 0: return 1
+        if n == 1: return 10
+        dp = [0]*(n+1)
+        dp[1] = 10
+        dp[2] = 9*9
+        for i in range(3, n+1):
+            dp[i] = dp[i-1] * (10-i+1)
+        return sum(dp)  
+</code></pre>
+
+<hr/>
+
+<h3 id="day4">Day4</h3>
+
+<p><strong>Date: 18-09-16</strong></p>
+
+<h4 id="714-m">714-M</h4>
+
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/">714. Best Time to Buy and Sell Stock with Transaction Fee</a></p>
+
+<blockquote>
+<p>Difficulty：★★★★☆<br />
+Beats: 44.97%<br />
+Time Complexity: O(n)<br />
+Remark: 比较难，什么状态，以及状态方程。我个人想不到需要两个状态方程来维护，所以看了很多题解。买卖这两个字很值得推敲。</p>
+</blockquote>
+
+<p>Explanation:<br />
+有两个题解写的比较好，推荐一下。<br />
+<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/136388">精简的解释</a><br />
+<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75928/">利用状态机，含图解，非本题</a><br />
+<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/">针对买卖股票系列，总结十分全面</a></p>
+
+<p>本题的关键就是要想清楚什么时候买、什么时候卖。这二者又取决于今天 买/卖 和明天 买/卖 有什么联系。</p>
+
+<p>买和卖之间的桥梁就是股票以及利润。</p>
+
+<p>以<code>1, 4, 2, 8, 4, 9</code>为例。<br />
+第0天，假设不买，则利润为<code>profit[0] = 0</code>；假设买了，持有<code>shares[0] = -1</code>。<br />
+第1天，根据第0天的两种状态：<br />
+今天卖还是不卖呢，可以卖手中持有的，如果卖，收益是 <code>tmp = shares[0] + nums[1] - fee</code>，这里结果是1，如果不卖，收益就是<code>profit[0]=0</code>，说明今天卖昨天买的可以有正收益，因此<code>profit[1] = max(tmp, profit[0])</code>；<br />
+那么今天适不适合买呢，如果买，就面临一个选择。因为要求不能持有多余一股，所以今天买了，昨天就不能买。因此，若今天买，需要付出<code>tmp = profits[0] - nums[1] = -4</code>，显然第0天买更划算，因此<code>shares[1] = max(tmp,  shares[0])</code>。<br />
+……<br />
+以此类推，可以理解为：<br />
+&gt;<code>dp[i][0]</code>: arrive i, no shares at hand.
+<code>dp[i][1]</code>: arrive i, shares at hand.
+<code>dp[i][1] = max(dp[i-1][0] - nums[i], dp[i-1][1])</code>: buy at nums[i] or do nothing.
+<code>dp[i][0] = max(dp[i-1][1] + nums[i] - fee, dp[i-1][0])</code>: sell at nums[i] or do nothing.</p>
+
+<p>Code:</p>
+
+<pre><code class="language-py">class Solution:
+    def maxProfit(self, prices, fee):
+        &quot;&quot;&quot;
+        :type prices: List[int]
+        :type fee: int
+        :rtype: int
+        &quot;&quot;&quot;
+        # dp = [[0 for _ in range(2)] for _ in range(len(prices))]
+        # dp[0][0] = 0
+        # dp[0][1] = -prices[0]
+        # for i in range(1, len(prices)):
+        #     dp[i][1] = max([dp[i - 1][0] - prices[i], dp[i - 1][1]])
+        #     dp[i][0] = max([dp[i - 1][1] + prices[i] - fee, dp[i - 1][0]])
+        # print(dp)
+        # return dp[-1][0]
+
+        profits = 0
+        shares = -prices[0]
+        for i in range(1, len(prices)):
+            tmp_shares = shares
+            shares = max(profits - prices[i], shares)
+            profits = max(tmp_shares + prices[i] - fee, profits)
+        return profits   
+</code></pre>
+
+<hr/>
+
+<h4 id="647-m">647-M</h4>
+
+<p><a href="https://leetcode.com/problems/palindromic-substrings/description/">647. Palindromic Substrings</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 29.16%<br />
+Time Complexity: O(n^2)<br />
+Remark: 关键还是要分析出相邻状态之间的关系。</p>
+
+<p>Explanation:<br />
+- <em>Step1: 判断</em><br />
+满足重叠子问题、最优子结构性质。考虑如果某个串是回文串，那么它所临近的串应该如何判断呢？</p>
+
+<ul>
+<li><p><em>Step2: 状态</em><br />
+直观一点，我们可以简单的认为状态是从<code>i</code>到<code>j</code>的子串是否是回文串，即<code>T[i][j]</code>是否是回文串。</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+假设现在<code>T[i][j]</code>是回文串，对于<code>s[j+1]</code>，基于回文串的性质，我们知道，如果在已有回文串的两边加上同样的字符，它依然是一个回文串，所以若<code>s[i-1]</code>和<code>s[j+1]</code>相等，就可以得出<code>T[i-1][j+1]</code>也是回文串。所以我们可以推导出状态方程：<br />
+<code>if s[i]==s[j]: T[i][j] = T[i+1][j-1]</code></p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em><br />
+本题我们的父问题需要多个子问题堆叠，比较简单的想法是自底向上，构建二维状态矩阵。</p></li>
+</ul>
+
+<p>Code</p>
+
+<pre><code class="language-py">class Solution:
+    def countSubstrings(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: int
+        &quot;&quot;&quot;
+        if not s:
+            return 0
+        n = len(s)
+        T = [[None] * n for _ in range(n)]
+        res = 0
+        for l in range(n):
+            for i in range(n):
+                j = i+l
+                if j &lt; n:
+                    if i == j:
+                        T[i][j] = 1
+                        res += 1
+                        continue
+                    if s[i] == s[j]:
+                        if j-1 &lt;= i+1 or T[i+1][j-1] == 1:
+                            T[i][j] = 1
+                            res += 1
+        return res
+</code></pre>
+
+<hr/>
+
+<h4 id="877-m">877-M</h4>
+
+<p><a href="https://leetcode.com/problems/stone-game/discuss/">877. Stone Game</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: %<br />
+Time Complexity: O(n)<br />
+Remark: 可以说没有意义。</p>
+
+<p>Alex永远不会输。</p>
+
+<hr/>
+
+<h3 id="day3">Day3</h3>
+
+<p><strong>Date: 180915</strong></p>
+
+<h4 id="413-m">413-M</h4>
+
+<p><a href="https://leetcode.com/problems/arithmetic-slices/description/">413. Arithmetic Slices</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 97.54%<br />
+Time Complexity: O(n)<br />
+Remark: 有几个点需要注意一下，按照DP的解题思路，想通了注意点就ok了。</p>
+
+<p>Explanation:<br />
+- <em>Step1: 判断</em><br />
+满足重叠子问题、最优子结构性质。即如果某个位置与之前连续的若干个元素满足题意，那么其下一个位置是否满足呢？</p>
+
+<ul>
+<li><p><em>Step2: 状态</em><br />
+假设<code>A[i]</code>与之前若干个连续元素满足arithmetic slices的性质 (i&gt;=2)，我们将之前的满足条件的连续元素存到数组中。<br />
+那么元素<code>A[i+1]</code>是否满足，只需要比较它和它之前的两个元素即可。<br />
+如果<code>A[i+1]</code>满足，会多出多少个满足条件的arithmetic slices呢？<br />
+如果<code>A[i+1]</code>不满足，又要怎么算呢？</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+接上面的状态分析。<br />
+举个简单的例子，<code>1,3,5,7</code>是满足性质的一个slice，判断元素<code>9</code>，<code>9-7==7-5</code>，
+那么对于<code>1,3,5,7,9</code>而言，因为它整体是满足条件的，所有以<code>9</code>结尾的所有至少3个连续元素都可以满足题目条件，
+即<code>3,5,7,9</code>，<code>5,7,9</code>均满足，整理一下：<br />
+<pre>
+1,3,5,7,9<br />
+3,5,7,9<br />
+5,7,9<br />
+</pre>
+所以当多出一个元素<code>9</code>满足条件的时候，就有多出<code>5-3+1</code>个元素。</p></li>
+</ul>
+
+<p>注意点，如果<code>A[i+1]</code>不满足，我们也不能从<code>A[i+1]</code>重新开始算，而是需要从<code>A[i]</code>开始重新算。</p>
+
+<ul>
+<li><em>Step4: Tabulation or Memorizatio</em><br /></li>
+</ul>
+
+<p>Code:</p>
+
+<pre><code class="language-py">class Solution:
+    def numberOfArithmeticSlices(self, A):
+        &quot;&quot;&quot;
+        :type A: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+        cur = []
+        res = 0
+        for i in range(len(A)):
+            if len(cur) &lt; 2:
+                cur.append(A[i])
+            else:
+                if A[i] - cur[-1] == cur[-1] - cur[-2]:
+                    cur.append(A[i])
+                    res += len(cur) - 3 + 1
+                else:
+                    tmp = cur[-1]
+                    cur = [tmp, A[i]]
+        return res
+</code></pre>
+
+<hr>
+
+<h3 id="day2">Day2</h3>
+
+<p><strong>Date: 18-09-14</strong></p>
+
+<h4 id="338-m">338-M</h4>
+
+<p><a href="https://leetcode.com/problems/counting-bits/description/">338. Counting Bits</a><br />
+&gt;Difficulty：★★★☆☆<br />
+Beats: 63.94%<br />
+Time Complexity: O(n)<br />
+Remark: 考察二进制的时候，多向左移右移的方向考虑。</p>
+
+<p>Explanation:<br />
+- <em>Step1: 判断</em><br />
+朝<code>O(n)</code>的时间复杂度方向考虑，肯定需要用到子问题的解，不然不太可能。</p>
+
+<ul>
+<li><p><em>Step2: 状态</em><br />
+状态自然是数<code>i</code>的二进制中包含1的个数<code>count[i]</code>。<br />
+难度是如何找寻它与子问题的关系。</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+<pre>
+0: 0000 0000   0
+1: 0000 0001   1
+2: 0000 0010   1
+3: 0000 0011   2
+4: 0000 0100   1
+5: 0000 0101   2
+6: 0000 0110   2
+7: 0000 0111   3
+8: 0000 1000   1
+</pre>
+观察<code>0-8</code>的二进制，会比较自然的朝左移右移的角度去想。一个数的二进制左移一位相当于翻倍，反之减小一般。奇数比较特别的地方在于左移的时候末尾补<code>0</code>，右移的时候原来末尾的<code>1</code>会丢失。基于这个想法，对于数<code>i</code>，在不考虑原本末位的情况下，我们不难想到右移后<code>i</code>与<code>i&gt;&gt;1</code>的二进制中含有相同个数的<code>1</code>。再加上末位可能有的<code>1</code>，就可以得到<code>i</code>中含有<code>1</code>的个数了。<br />
+得到状态方程：<code>count[i] = count[i&gt;&gt;1] + (i &amp; 1)</code></p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em><br />
+两种方法都可以。</p></li>
+</ul>
+
+<p>Code:</p>
+
+<pre><code class="language-python">class Solution:
+    def countBits(self, num):
+        &quot;&quot;&quot;
+        :type num: int
+        :rtype: List[int]
+        &quot;&quot;&quot;
+        array = [0]*(num+1)
+        for i in range(num+1):
+            array[i] = array[i&gt;&gt;1] + (i &amp; 1)
+        return array
+</code></pre>
+
+<hr>
+
+<h4 id="053-e">053-E</h4>
+
+<p><a href="https://leetcode.com/problems/maximum-subarray/description/">053 Maximum Subarray</a><br />
+&gt;Difficulty：★★☆☆☆<br />
+Beats: 99.53%<br />
+Time Complexity: O(n)<br />
+Remark: <code>O(n^2)</code>是不行的，从解DP问题的一般思路入手，一步一步来。同样的Beats存在问题，以后除了低于30%的就不写了，另外两个数比较大小，python的<code>max</code>函数比直接比较要慢。</p>
+
+<p>Explanation:<br />
+- <em>Step1: 判断</em><br />
+最大子串问题，属于DP问题。</p>
+
+<ul>
+<li><p><em>Step2: 状态</em><br />
+我们希望得到的<code>Maximum Subarray</code>，这个子串的最后一个元素可能在原数组中的任意位置，因此自然联想到用<strong>以<code>i</code>结尾的子串的最大和<code>res[i]</code></strong> 作为状态，当然，这个子串可能不是以<code>0</code>作为首元素。</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+探索<code>res</code>的前后序列关系，如果<code>res[i-1]</code>是前<code>i-1</code>个元素的最大和，那么在第<code>i</code>个元素的位置，我们需要计算以它结尾的最大和，如果<code>res[i-1] &lt; 0</code>，那就没有累加的必要，反之，累加。即状态方程为：<br />
+<code>res[i] = max(0, res[i-1]) + nums[i]</code><br />
+更新最大值。</p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em><br />
+两种方法都可以，为了节约空间，我们只使用常数数量的空间。</p></li>
+</ul>
+
+<p>Code:</p>
+
+<pre><code class="language-python">class Solution:
+    def maxSubArray(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+        res = cur = nums[0]
+        for i in range(1, len(nums)):
+            if cur &lt;= 0:
+                cur = nums[i]
+            else:
+                cur += nums[i]
+            if cur &gt; res:
+                res = cur
+        return res
+</code></pre>
+
+<hr>
+
+<h4 id="303-e">303-E</h4>
+
+<p><a href="https://leetcode.com/problems/range-sum-query-immutable/description/">303. Range Sum Query - Immutable</a><br />
+&gt;Difficulty：★☆☆☆☆<br />
+Beats: 87.5%<br />
+Time Complexity: O(n)<br />
+Remark: 简单题，基于一个简单的发现。同样的Beats存在问题。</p>
+
+<p>Explanation:<br />
+1. <em>Step1: 判断</em><br />
+求从位置i到位置j的值的和，i和j任意，具有重叠子问题、最优子结构两个性质。</p>
+
+<ol>
+<li><p><em>Step2: 状态</em><br />
+如果暴力把所有的i,j都算一遍，那么无论时间还是空间复杂度都会很高。<br />
+换个思路，我们算一下从0到1，两个数的和<code>sum[1]</code>是<code>nums[0]+nums[1]</code>，
+从0到2的和<code>sum[2]</code>是<code>nums[0] + nums[1] + nums[2]</code>，
+从0到3的和<code>sum[3]</code>是<code>nums[0] + nums[1] + nums[2] + nums[3]</code>。<br />
+我们发现从0开始，加到<code>i-1</code>的和是<code>sum[i-1]</code>，到<code>i</code>的时候，只需要在<code>sum[i-1]</code>的基础上加上<code>nums[i]</code>，
+在<code>sum[i-2]</code>的基础上加上<code>nums[i-1] + nums[i]</code>……</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+那么我们的状态就可以设置为从0到i的和是<code>sum[i]</code>。<br />
+从<code>i</code>到<code>j</code>的话，<code>sum[j]</code>就等于<code>sum[i] + nums[i+1] + ... + nums[j]</code>。<br />
+从而得到<code>res[i,j] = sum[j] - sum[i]</code>。</p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em><br />
+根据题目的设置，可以选用<code>list</code>或者<code>dict</code>。</p></li>
+</ol>
+
+<p>Code:</p>
+
+<pre><code class="language-python">class NumArray:
+
+    def __init__(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        &quot;&quot;&quot;
+        self.val = {-1:0}
+        for i in range(len(nums)):
+            self.val[i] = self.val[i-1] + nums[i]
+
+    def sumRange(self, i, j):
+        &quot;&quot;&quot;
+        :type i: int
+        :type j: int
+        :rtype: int
+        &quot;&quot;&quot;
+        return self.val[j] - self.val[i-1]
+</code></pre>
+
+<hr>  
+
+<h4 id="198-e">198-E</h4>
+
+<p><a href="https://leetcode.com/problems/house-robber/description/">198. House Robber</a><br />
+&gt;Difficulty：★☆☆☆☆<br />
+Beats: 50% ? 100%<br />
+Time Complexity: O(n)<br />
+Remark: 同样是Python，时间复杂度相同，常数空间复杂度的解居然也只有50%，对比了其他人的解法，感觉leetcode的评判有点问题。</p>
+
+<p>Explanation:<br />
+1. <em>Step1: 判断</em><br />
+最大化数值，是DP问题</p>
+
+<ol>
+<li><p><em>Step2: 状态</em><br />
+在第i家可以获得的最大利润P[i]，不一定要取nums[i]</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+P[i] 和同序列之前的数有什么关系呢？<br />
+我们知道为了在第i家的时候，有两种选择：</p>
+
+<ul>
+<li>一是偷取第i家，此时最大利润是<code>P[i-2] + nums[i]</code><br /></li>
+<li>二是不取第i家，此时最大利润就是<code>P[i-1]</code><br /></li>
+</ul></li>
+</ol>
+
+<p>为了使得在第i家时的利润最大，我们取二者较大的。因此可以求得状态方程：<br />
+<code>P[i] = max(P[i-1], P[i-2] + nums[i])</code>。</p>
+
+<ol>
+<li><em>Step4: Tabulation or Memorizatio</em><br />
+这里结合<code>746-E</code>里的做法，可以节约空间，只使用常数空间复杂度。</li>
+</ol>
+
+<p>Code:</p>
+
+<pre><code class="language-python">class Solution:    
+    def rob(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+        length = len(nums)
+        if not nums:
+            return 0
+        if length == 1:
+            return nums[0]
+
+        pre, cur = nums[0], max(nums[0], nums[1])
+        for i in range(2, length):
+            pre, cur = cur, max(cur, pre + nums[i])
+        return cur
+</code></pre>
+
+<hr>
+
+<h3 id="day1">Day1</h3>
+
+<p><strong>Date: 18-09-13</strong></p>
+
+<h4 id="746-e">746-E</h4>
+
+<p><a href="https://leetcode.com/problems/min-cost-climbing-stairs/description/">746. Min Cost Climbing Stairs</a><br />
+&gt;Difficulty：★☆☆☆☆<br />
+Beats: 52% / 100%<br />
+Time Complexity: O(n)<br />
+Remark: 简单题，斐波那契的拓展，但是同样是BottomUp，用了O(n)的空间，和O(1)的空间是不同的！</p>
+
+<p>Explanation:<br />
+参考070题，再加上cost的条件，注意要踏到最顶端，容易得出状态是<strong>迈上</strong>第i层的最小代价T[i]。<br />
+要踏上第<code>i</code>层，可能是从<code>i-1</code>或者<code>i-2</code>层上来的，要使得代价最小，那么二者取较小者。<br />
+因此有状态方程：<code>T[i] = min(T[i-1], T[i-2]) + cost[i]</code>。<br />
+时间复杂度都是<code>O(n)</code>，不难写出代码。下面分享的是两种用不同空间复杂度的代码。</p>
+
+<p><strong>空间复杂度 O(n)</strong> - 这是比较常规的做法</p>
+
+<pre><code class="language-python">class Solution:
+    def minCostClimbingStairs(self, cost):
+        &quot;&quot;&quot;
+        :type cost: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+        if not cost:
+            return 0
+        n = len(cost) + 2
+        T = [0]*n
+        T[0] = 0
+        T[1] = 0
+        for i in range(2, n):
+            T[i] = min(T[i-1], T[i-2]) + cost[i-2]
+        print(T)
+        return min(T[n-1], T[n-2])
+</code></pre>
+
+<p><strong>空间复杂度 O(1)</strong></p>
+
+<pre><code class="language-python">class Solution:
+    def minCostClimbingStairs(self, cost):
+        &quot;&quot;&quot;
+        :type cost: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+        if not cost:
+            return 0
+        pre, cur = cost[0], cost[1]
+        for i in range(2, len(cost)):
+            pre, cur = cur, min(pre, cur) + cost[i]
+        return min(pre,cur)
+</code></pre>
+
+<p>注意这里的<code>pre, cur = cur, min(pre, cur) + cost[i]</code>，其作用等价于：</p>
+
+<pre><code class="language-python">tmp = cur
+cur = min(pre, cur) + cost[i]
+pre = tmp
+</code></pre>
+
+<hr>
+
+<h4 id="121-e">121-E</h4>
+
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/">121. Best Time to Buy and Sell Stock</a><br />
+&gt;难易程度：★★☆☆☆<br />
+Beats: 73.94%<br />
+时间复杂度：O(n)<br />
+Remark: 简单题，有助于DP基本概念的理解。</p>
+
+<p>Explanation:<br />
+暴力：
+每一天都和前面所有天的股价计算差值，保留最大值，那么时间复杂度就是 n的平方。不出意外就是TLE了。</p>
+
+<p>问题在于如何确定哪天是股价最小的，再确定差价最高的。</p>
+
+<p><strong>DP Steps</strong><br />
+- <em>Step1: 判断</em><br />
+最大化利润，是DP问题</p>
+
+<ul>
+<li><p><em>Step2: 状态</em><br />
+第i天可以获得的最大利润P[i]（不一定是第[i]天卖出）</p></li>
+
+<li><p><em>Step3: 状态方程</em><br />
+P[i] 和 P[i-1]有什么关系呢？<br />
+如果s[i] 比s[i-1]小，那么P[i] = P[i-1]，同时这两天最小价格至少会是s[i]，更新minPrice；<br />
+如果s[i] 比s[i-1]大，那么第s[i] - minPrice 是要比s[i-1] - minPrice大的，因此更新当前差价，和最大差价比较，如果比最大差价大，那么P[i] = nowMax</p></li>
+
+<li><p><em>Step4: Tabulation or Memorizatio</em><br />
+Code:</p>
+
+<pre><code class="language-python">class Solution:
+def maxProfit(self, prices):
+    &quot;&quot;&quot;
+    :type prices: List[int]
+    :rtype: int
+    &quot;&quot;&quot;
+    if not prices:
+        return 0
+    n = len(prices)
+    T = [0]
+    minPrice = prices[0]
+    maxPrice = T[0]
+    for i in range(1, n):
+        if prices[i] &lt; prices[i-1]:
+            T.append(T[i-1])
+            minPrice = prices[i] if prices[i] &lt; minPrice else minPrice
+        else:
+            cur = prices[i] - minPrice
+            maxPrice = cur if cur &gt; maxPrice else maxPrice
+            T.append(maxPrice)
+    return T[n-1]
+</code></pre></li>
+</ul>
+
+<!-- <hr style="border:none; border-top:1px dashed ; height:1px"/> -->
+
+<hr/>
+
+<h4 id="070-e">070-E</h4>
+
+<p><a href="https://leetcode.com/problems/climbing-stairs/description/">070. Climbing Stairs</a><br />
+&gt;难易程度：★☆☆☆☆<br />
+TopDown Beats: 100%<br />
+BottomUp Beats: 45.20%
+时间复杂度：O(n)<br />
+Remark: 简单题，理解TopDown和BottomUp概念，<a href="https://www.geeksforgeeks.org/tabulation-vs-memoizatation/">区别</a>。</p>
+
+<p>DP问题中有一些典型的情况。<br />
+本题属于其中一种，即斐波那契数列。<br />
+那么不难想到状态方程<code>T[n] = T[n-1] + T[n-2]</code>。</p>
+
+<p>假设我们没看出这是一个斐波那契问题，我们来推理看看。</p>
+
+<p>(层数)：方式。解释<br />
+ (1)： 1。只有一种方式<br />
+ (2)： 2。两种方式，11，2。<br />
+ (3)： 3。111，12，21。<br />
+ (4)： 5。1111，112， 121，211，22。</p>
+
+<p>思考一下4层的情况，如果先迈出了一步，那么总的情况就是1(3)，括号里是剩下的总层数，3层的情况我们已经算过了，把3层的情况填到括号中，1(111)，1(12)，1(21)；同理如果先迈出两步，总的情况就是2(2)，(2)又有2种。那么(4)可以写成<code>(4) = 1(3) + 2(2)</code>。下面验证一下(5)。<br />
+(5) =&gt; 1(4)，2(3) =&gt; 1(1111，112， 121，211，22)，2(111，12，21)。</p>
+
+<p>这个时候我们就可以得出相同的结论了。</p>
+
+<p>这道题的价值在于练习<code>TopDown</code> 和 <code>BottomUp</code> 两种方式。</p>
+
+<p><strong>Top Down</strong></p>
+
+<pre><code class="language-python">class Solution:
+    def climbStairs(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        f = [0] * (n+1)
+        f[0] = f[1] = 1
+        for i in range(2, n+1):
+            f[i] = f[i-1] + f[i-2]
+        print(f)
+        return f[n]
+</code></pre>
+
+<p><strong>Bottom Up</strong></p>
+
+<pre><code class="language-python">class Solution:
+    def climbStairs(self, n):
+        &quot;&quot;&quot;
+        :type n: int
+        :rtype: int
+        &quot;&quot;&quot;
+        lookup = [None]*(n+1)
+
+        # Memoization -&gt; Bottom Up
+        def fib(n):
+            if n == 0 or n == 1:
+                lookup[n] = 1
+            if lookup[n] is None:
+                lookup[n] = fib(n-1) + fib(n-2)
+            return lookup[n]
+        res = fib(n)
+        # print(lookup)
+        return res
+</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/leetcode">leetcode</a>
+                            
+                                <a class="badge badge-primary" href="/tags/dynamic-programming">dynamic programming</a>
+                            
+                                <a class="badge badge-primary" href="/tags/python">python</a>
+                            
+                                <a class="badge badge-primary" href="/tags/algorithm">algorithm</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/2018/"> &laquo; 2018</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/svm2/">SVM(Part II) &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

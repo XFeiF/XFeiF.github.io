@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>给Hexo(Hugo)添加Bigfoot &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/bigfoot.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">给Hexo(Hugo)添加Bigfoot</h1>
+                            
+                            
+                                <time datetime="2017-09-02">Sep 2, 2017</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/geek">Geek</a>
+    
+
+
+                            </span> - 1 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p>我之前搭建Ghost博客的时候，在萌天的博客上有看到过Bigfoot，经过萌天介绍，认识了Bigfoot。现在将Bigfoot集成到我<del>目前在用的hexo博客hiker主题中</del>Hugo博客Fx主题中。</p>
+
+<p><a href="http://www.bigfootjs.com/">Bigfoot.js</a> 是一个很漂亮的footnote<a href="https://baike.baidu.com/item/%E8%84%9A%E6%B3%A8/17821082?fr=aladdin">脚注</a>插件。<br />
+效果就是右边这个小气泡按钮啦，萌不萌？ <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup></p>
+
+<p><em>下面就为Hexo博客添加Bigfoot支持吧！</em></p>
+
+<h3 id="下载所需文件">下载所需文件</h3>
+
+<p>Bigfoot依赖jquery，所以需要下载以下内容：<br />
+<a href="http://www.bigfootjs.com/download/bigfoot.zip">Bigfoot.js</a><br />
+<a href="http://www.jq22.com/jquery-info122">jquery</a><br />
+(这里jquery的版本要高于1.8，但是在用到高版本的jquery的时候，会出现bigfoot气泡样式不对的错误！)</p>
+
+<h3 id="移动文件">移动文件</h3>
+
+<p>Hexo的一般theme的目录结构：<br />
+<img src="/images/struct.png" alt="目录结构" /></p>
+
+<p>将下载得到的 <code>bigfoot.min.js</code> 和 <code>jquery-2.0.3</code> 放入 <code>hiker</code>主题下 <code>source/js</code> 文件夹；<br />
+将下载得到的 <code>bigfoot-default.css</code> 放入<code>css</code> 文件夹。</p>
+
+<h3 id="修改文件">修改文件</h3>
+
+<p>打开<code>主题名/layout/_partial/head.ejs</code> ，在适当的位置添加：</p>
+
+<pre><code>&lt;%- js('js/jquery-2.0.3.min.js') %&gt;
+&lt;%- js('js/bigfoot.min.js') %&gt;
+</code></pre>
+
+<p>然后打开根目录下面的<code>scaffolds</code>（模版文件夹）下的 <code>post.md</code> 文件，在最后添加：</p>
+
+<pre><code class="language-HTML">&lt;script type=&quot;text/javascript&quot;&gt;
+    $.bigfoot();
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var bigfoot = $.bigfoot({
+        deleteOnUnhover: false,
+        preventPageScroll: false,
+        hoverDelay: 250,
+    });
+&lt;/script&gt;  
+</code></pre>
+
+<p>这里我没有把这些加入<code>ejs</code>模版文件中，出于两方面考虑，一方面bigfoot对气泡有很多额外的设置可以在这里添加，另一方面加入到什么地方都让我觉得不太优美，暂时没有找到合适的地方。</p>
+
+<p>保存，<code>hexo generate、 hexo server</code> 看一下本地的效果，没有问题的话，<code>deploy</code>到服务器！</p>
+
+<h3 id="使用bigfoot">使用Bigfoot</h3>
+
+<p>Bigfoot 的使用时靠直接写HTML的，使用如下：
+在新的post当中：
+<strong>在文章需要显示气泡处</strong>，添加：<br />
+<code>
+&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt; &lt;/sup&gt;
+</code><br />
+其中数字1代表脚注序号。
+<strong>文章末尾处</strong>，添加：</p>
+
+<pre><code class="language-HTML">    &lt;div class=&quot;footnotes&quot;&gt;&lt;ol&gt;  
+        &lt;li class=&quot;footnote&quot; id=&quot;fn:1&quot;&gt;
+            &lt;p&gt;footnote 里面要显示的内容&lt;a href=&quot;#fnref:1&quot; title=&quot;footnote 在文末的标题&quot;&gt; ↩&lt;/a&gt;&lt;p&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;&lt;/div&gt;
+</code></pre>
+
+<p>序号要对应。</p>
+
+<p>好了，这个时候重新generate，应该会出现了！</p>
+
+<div class="footnotes"><ol>  
+    <li class="footnote" id="fn:1">
+        <p>footnote 里面要显示的内容，有什么问题欢迎留言交流～ <a href="#fnref:1" title="footnote 在文末的标题"> </a><p>
+    </li>
+</ol></div>
+
+<script type="text/javascript">
+    $.bigfoot();
+</script>
+<script type="text/javascript">
+    var bigfoot = $.bigfoot({
+        deleteOnUnhover: false,
+        preventPageScroll: false,
+        hoverDelay: 250,
+    });
+</script>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/web">Web</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/swift-3-fun-algorithms-wrappingarray/"> &laquo; Swift 3 Fun Algorithms:Wrapping Array</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/stay-hungry-stay-foolish/">Stay hungry, Stay Young &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

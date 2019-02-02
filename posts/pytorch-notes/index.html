@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>PyTorch Api Notes 📙 &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/pytorch.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">PyTorch Api Notes 📙</h1>
+                            
+                            
+                                <time datetime="2018-09-13">Sep 13, 2018</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                            </span> - 2 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p><center>Simple Api Notes ✍🏼 For Beginners！</center><br />
+记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。</p>
+
+<h1 id="torch">torch</h1>
+
+<h2 id="serialization">Serialization</h2>
+
+<h3 id="torch-save">torch.save</h3>
+
+<p><code>torch.save(obj, f, pickle_module=&lt;module ‘pickle’ from ‘/homes/alexandrov/.pyenv/versions/3.6.5/lib/python3.6/pickle.py’&gt;, pickle_protocol=2)</code> 存储对象到硬盘中。</p>
+
+<h3 id="torch-load">torch.load</h3>
+
+<p><code>torch.load(f,map_location=None,pickle_module=&lt;module ‘pickle’ from ‘/homes/alexandrov/.pyenv/versions/3.6.5/lib/python3.6/pickle.py’&gt;)</code><br />
+从文件中加载由<code>torch.save()</code>方法存储的对象。
+序列化存储调用。</p>
+
+<h3 id="transpose">transpose_</h3>
+
+<p><code>transpose_(dim0, dim1) → Tensor</code><br />
+转置dim0和dim1。</p>
+
+<hr />
+
+<h1 id="torch-autograd">torch.autograd</h1>
+
+<p><code>torch.autograd</code>提供了实现任意标量值函数自动区分的类和函数，它只需要对现有代码进行最小的更改：只需要在声明需要计算梯度的张量的时候，设置<code>requires_grad</code>关键字为<code>True</code>。</p>
+
+<h2 id="torch-tensor">torch.Tensor</h2>
+
+<h3 id="backward">backward</h3>
+
+<p><code>backward(gradient=None, retain_graph=None, create_graph=False)</code><br />
+计算当前张量的梯度。</p>
+
+<hr />
+
+<h1 id="torch-nn">torch.nn</h1>
+
+<h2 id="containers">Containers</h2>
+
+<h3 id="torch-nn-module">torch.nn.Module</h3>
+
+<p>所有网络模型的基类，即所有自定义的网络都要继承该类。<br />
+<code>Modules</code>可以包含其他<code>Modules</code>， 允许嵌套成树形结构。<br />
+当我们调用<code>xxmodel.cuda()</code>的时候，模型的参数也会转化为<code>cuda Tensor</code>。</p>
+
+<h4 id="cuda">cuda</h4>
+
+<p><code>cuda(device=None)</code><br />
+这个方法帮助我们把所有的模型参数和<code>buffers</code>转移到GPU。<br />
+注意，这会使得参数和<code>buffers</code>变成不同的对象（<code>cuda Tensor</code>）。所以如果
+优化时模型存在于GPU上时，本方法需要 <strong>在构造优化器之前被调用</strong>。</p>
+
+<p>与之对应的有个方法<code>cpu()</code>。</p>
+
+<h4 id="eval">eval</h4>
+
+<p><code>eval()</code><br />
+使模型处于<code>evaluation</code>模式。 对特定的模块(层)有效，比如<code>Dropout</code>,<code>BatchNorm</code>等，
+在遇到更具体的模块的时候注意它们的文档。</p>
+
+<h4 id="train">train</h4>
+
+<p><code>train()</code><br />
+使模型处于<code>training</code>模式，同<code>eval()</code>方法，对特点模块有效。</p>
+
+<h4 id="forward">forward</h4>
+
+<p><code>forward(*input)</code><br />
+定义每次调用时的计算过程。 <strong>所有的子类都需要覆盖这个方法</strong>。</p>
+
+<h4 id="to">to</h4>
+
+<p><code>to(*args, **kwargs)</code><br />
+移动或者映射所有的参数、<code>buffers</code>。</p>
+
+<p>可以这么调用:<br />
+- <code>to(device=None, dtype=None, non_blocking=False)</code><br />
+- <code>to(dtype, non_blocking=False)</code><br />
+- <code>to(tensor, non_blocking=False)</code></p>
+
+<p>这里的<code>dtype</code>是此模块中浮点参数和缓冲区的所需浮点类型.</p>
+
+<h4 id="modules">modules</h4>
+
+<p><code>modules()</code><br />
+返回可以迭代模型所有模块的迭代器(<code>yields</code>)。</p>
+
+<h4 id="load-state-dict">load_state_dict</h4>
+
+<p><code>load_state_dict(state_dict,strict=True)</code><br />
+从<code>state_dict</code>中拷贝参数和缓冲区。<br />
+如果<code>strict</code>为真，那么<code>state_dict</code>就必须和模型<code>state_dict()</code>方法返回的key完全匹配。<br />
+这个方法可以用来调用<code>pretrain</code>的model。</p>
+
+<h4 id="state-dict">state_dict</h4>
+
+<p><code>state_dict(destination=None,prefix='',keep_vars=False)</code><br />
+返回包含模块完整状态的词典。<br />
+所有的参数和缓冲区都被包含进去。key对应参数和缓冲区的名字。</p>
+
+<h4 id="named-modules">named_modules</h4>
+
+<p><code>named_modules(memo=None,prefix='')</code><br />
+返回网络中所有模块的迭代器<code>yields</code>，同时包含模块的名称以及模块本身。</p>
+
+<hr />
+
+<h3 id="torch-nn-modulelist-modules-none">torch.nn.ModuleList(modules=None)</h3>
+
+<p>在<code>list</code>中持有若干子模块。<br />
+可以像python自带的<code>list</code>一样，调用下标。但是它包含的模块均是正确注册
+过的，可以通过调用<code>modules</code>方法可视化。</p>
+
+<h4 id="append">append</h4>
+
+<p><code>append(module)</code><br />
+添加一个。</p>
+
+<h4 id="extend">extend</h4>
+
+<p><code>extend(modules)</code>
+添加多个。</p>
+
+<hr />
+
+<h3 id="torch-nn-sequential-args">torch.nn.Sequential(*args)</h3>
+
+<p>一个队列容器，模块传递进构造器的顺序就是它们添加到模型的顺序，因此一个有序的模块字典<code>OrderedDict</code>也可以传入构造器中。</p>
+
+<hr />
+
+<h2 id="pooling-layers">Pooling layers</h2>
+
+<h3 id="adaptivemaxpool2d">AdaptiveMaxPool2d</h3>
+
+<p><code>torch.nn.AdaptiveMaxPool2d(output_size,return_indices=False)</code><br />
+在由多个输入平面组成的输入信号上应用2D自适应最大池化。<br />
+对于任何输入尺寸，输出的大小为H x W. 输出特征的数量等于输入平面的数量。</p>
+
+<p>参数：<br />
+- <code>output_size</code>- 目标输出尺寸。可以是一个<code>tuple</code>，也可以是单个值（表示宽和高相同）。
+除了<code>int</code>也可以是<code>None</code>，代表输出和输入尺寸相同。<br />
+- <code>return_indices</code>- 默认<code>False</code>。如果是<code>True</code>，和输出一起返回切片。对<code>nn.MaxUnpool2d</code>有用。</p>
+
+<hr />
+
+<h2 id="normalization-layers">Normalization layers</h2>
+
+<h3 id="batchnorm2d">BatchNorm2d</h3>
+
+<p><code>BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)</code><br />
+未完。。</p>
+
+<hr />
+
+<h2 id="non-linear-activations">Non-linear activations</h2>
+
+<h3 id="relu">ReLU</h3>
+
+<ul>
+<li>Input: (N,∗) where * means, any number of additional dimensions</li>
+<li>Output: (N,∗), same shape as the input<br /></li>
+</ul>
+
+<hr />
+
+<h2 id="dropout-layers">Dropout layers</h2>
+
+<h3 id="dropout">Dropout</h3>
+
+<p><code>torch.nn.Dropout(p=0.5, inplace=False)</code><br />
+在训练期间，使用来自伯努利分布的样本以概率p随机地将输入张量的一些元素归零。 在每个前向传播中随机化零个元素。<br />
+此外，输出按1/(1-p)的比例缩放.<br />
+- p – probability of an element to be zeroed. Default: 0.5
+- inplace – If set to True, will do this operation in-place. Default: False</p>
+
+<hr />
+
+<h1 id="torch-nn-functional">torch.nn.functional</h1>
+
+<h2 id="convolution-functions">Convolution functions</h2>
+
+<h3 id="conv2d">conv2d</h3>
+
+<p><code>conv2d(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1) → Tensor</code><br />
+- input – 输入张量的形状 (minibatch×in_channels×iH×iW)<br />
+- weight – filters of shape (out_channels × (in_channels/groups) × kH × kW)<br />
+- bias – optional bias tensor of shape (out_channels). Default: None<br />
+- stride – 卷积核的步长. 可以是一个数，也可以是一个tuple (sH, sW). 默认为1<br />
+- padding – 输入边缘的隐式零填充，可以是一个数或者一个tuple (padH, padW). 默认为0<br />
+- dilation – 内核元素之间的间距. 可以是一个数或者一个tuple (dH, dW). 默认为1<br />
+- groups – split input into groups, in_channels should be divisible by the number of groups. Default: 1</p>
+
+<h2 id="pooling-functions">Pooling functions</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/pytorch">PyTorch</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/"> &laquo; 事故-SSL23_GET_SERVER_HELLO</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/lazy-tricks/">Lazy Tricks🙈 &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

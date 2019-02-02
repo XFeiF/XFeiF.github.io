@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Swift 3 Fun Algorithms:Wrapping Array &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/swift.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">Swift 3 Fun Algorithms:Wrapping Array</h1>
+                            
+                            
+                                <time datetime="2017-09-03">Sep 3, 2017</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
+    
+
+
+                            </span> - 1 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <blockquote>
+<p>有趣的 <code>Swift 3</code> 算法。</p>
+</blockquote>
+
+<p>在<code>Youtube</code>上看到Swift3 的一个小算法，觉得很有趣！介绍给大家～</p>
+
+<h4 id="应用场景">应用场景</h4>
+
+<p>现在打开网易云音乐，选取一个歌单打开，从中选取一首歌，点击播放。若是循环模式，那么播放歌曲的顺序应该是：当前这首歌 -&gt; 下面的所有歌 -&gt; 当前这首歌上面的歌。<br />
+抽象出来就是： 对于数组<code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</code>， 选取&rdquo;c&rdquo;，输出 <code>[ &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;a&quot;, &quot;b&quot;]</code> 。</p>
+
+<h4 id="实现1">实现1</h4>
+
+<p>新建Playground，GeneratePlayList</p>
+
+<pre><code class="language-swift">// 假设我们有一个歌单tracks
+let tracks = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+
+// 如果我们选择了&quot;d&quot;,算法应该返回下面这个播放列表  
+[&quot;d&quot;, &quot;e&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]  
+
+// 选中歌曲
+let selectedTrack = &quot;d&quot;
+
+// 新建播放列表
+var playList = [String]()  
+
+// 所选歌曲之前的歌曲列表
+var priorTracks = [String]()
+
+// for循环加入列表  
+for track in tracks {
+    print(track)
+    if track == selectedTrack || playlist.count &gt; 0{
+        playlist.append(track)
+    } else {
+        priorTracks.append(track)
+    }
+}
+
+playList
+priorTracks
+
+// 加在一起
+playList + priorTracks
+</code></pre>
+
+<h4 id="实现2">实现2</h4>
+
+<p>这次，不用<code>for循环</code>，利用Swift的<code>Array</code>的一些函数。<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a> </sup></p>
+
+<p>这里联系应用场景，我们可能需要用的函数包括，找一个元素的index，获得子序列</p>
+
+<pre><code class="language-swift">// 假设我们有一个歌单tracks
+let tracks = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+
+// 如果我们选择了&quot;d&quot;,算法应该返回下面这个播放列表  
+[&quot;d&quot;, &quot;e&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]  
+
+// 选中歌曲
+let selectedTrack = &quot;d&quot;
+
+// 这里可以用array的index的许多方法
+let index = tracks.index(where: {return $0 == selectedTrack})
+
+// 上面获得的index是可选值，因此需要强制解析
+// upTo 左闭右开
+let prefixArray = tracks.prefix(upTo: index!)
+let suffixArray = tracks.suffix(from: index!)
+
+// 最后注意组装的顺序
+let arr = suffixArray + prefixArray
+
+</code></pre>
+
+<p>这里的<a href="https://developer.apple.com/documentation/swift/array/1688966-index">index</a>函数，声明是这样的：</p>
+
+<pre><code class="language-swift">func index(where predicate: (Element) throws -&gt; Bool) rethrows -&gt; Int?
+</code></pre>
+
+<p>where后面是一个闭包，以<code>$0</code> 表示一个参数，预测参数和传入的元素是否匹配，匹配则返回<code>Int</code>，否则返回<code>nil</code>，所以最终的返回值是可选值 <code>Int?</code>。</p>
+
+<p>希望这个小的算法<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup> 可以运用到你的Application当中！</p>
+
+<div class="footnotes"><ol>  
+    <li class="footnote" id="fn:1">
+        <p>快速掌握一门语言，比如Swift，勤加练习算法无疑是最好的方式！<a href="#fnref:1" title="footnote 在文末的标题"> </a><p>
+    </li>
+    <li class="footnote" id="fn:2">
+        <p>在此之前，如果你不熟悉Array有哪些内置函数，不妨去看看
+        <a href="https://developer.apple.com/documentation/swift/array" target="_blank_">文档</a>
+        <a href="#fnref:2" title="footnote 在文末的标题"> </a><p>
+    </li>
+</ol></div>
+
+<script type="text/javascript">
+    $.bigfoot();
+</script>
+<script type="text/javascript">
+    var bigfoot = $.bigfoot({
+        deleteOnUnhover: false,
+        preventPageScroll: false,
+        hoverDelay: 250,
+        activateOnHover: true,
+    });
+</script>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/swift">swift</a>
+                            
+                                <a class="badge badge-primary" href="/tags/algorithm">algorithm</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/"> &laquo; Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/">给Hexo(Hugo)添加Bigfoot &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

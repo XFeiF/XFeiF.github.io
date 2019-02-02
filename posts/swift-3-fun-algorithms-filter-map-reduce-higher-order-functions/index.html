@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/swift.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</h1>
+                            
+                            
+                                <time datetime="2017-09-04">Sep 4, 2017</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
+    
+
+
+                            </span> - 2 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <blockquote>
+<p>有趣的 <code>Swift 3</code> 算法。</p>
+</blockquote>
+
+<p>今天分享几个Swift Higher Order Functions 给大家。
+主要是 <code>Filter</code>、<code>Map</code>、<code>Reduce</code>。</p>
+
+<p>Higher Order Functions(高阶函数<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup>)。</p>
+
+<h3 id="准备">准备</h3>
+
+<p>打开XCode，新建Playground，创建WordsWithCharCountDemo。</p>
+
+<h3 id="filter">Filter</h3>
+
+<h4 id="目标">目标</h4>
+
+<p><strong>[1, 2, 3, 4, 3, 3]  -&gt; (filter into)  [3, 3, 3]  or  -&gt; [2, 4]（偶数）</strong></p>
+
+<h4 id="实现">实现</h4>
+
+<p>我们当然可以通过For循环来完成这样的功能<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a> </sup>，但是有的时候，我们想要得到的是<code>let</code> 的 不可变的数组，这个时候，我们可以借助<code>filter</code>函数。</p>
+
+<pre><code class="language-swift">let numbers = [1, 2, 3, 4, 3, 3]
+
+let filtered = numbers.filter({ return $0 == 3})
+
+filtered
+</code></pre>
+
+<p>在filter函数中我们创建了一个<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html">闭包表达式</a>，详细的闭包表达式知识就不在本文中多说了。该表达式完成的工作就是比较传递进来的参数和3的值，相等则返回<code>true</code>，而<code>filter</code>则根据判断返回合适的参数值。</p>
+
+<p>同样的，若想得到<code>[2,4]</code>的话，可以修改闭包表达式，</p>
+
+<pre><code class="language-swift">let filtered = numbers.filter({return $0 % 2 == 0})
+</code></pre>
+
+<h3 id="map">Map</h3>
+
+<h4 id="目标-1">目标</h4>
+
+<p><strong>用map转换[1, 2, 3, 4] -&gt; [2， 4， 6， 8]</strong></p>
+
+<h4 id="实现-1">实现</h4>
+
+<pre><code class="language-swift">let transformed = [1,2,3,4].map({return $0 * 2})
+transformed
+</code></pre>
+
+<p>依然是利用简化的闭包表达式，返回参数*2。</p>
+
+<h4 id="map-与-filter">map 与 filter</h4>
+
+<p>这里有必要提一下map与filter的区别。<br />
+map意为映射，就是将原有的参数通过某种方式映射成为另一个值；<br />
+而filter意为过滤，就是通过一定的条件，将满足该条件的值筛选出来。</p>
+
+<h3 id="reduce">Reduce</h3>
+
+<h4 id="目标-2">目标</h4>
+
+<p><strong>用reduce实现累加数组 [1, 2, 3, 4]-&gt; 10</strong></p>
+
+<h4 id="实现-2">实现</h4>
+
+<pre><code class="language-swift">let sum = [1,2,3,4].reduce(0, {sum, number in sum+number})
+sum
+</code></pre>
+
+<p>这里<code>reduce</code>函数的<a href="https://developer.apple.com/documentation/swift/uint8.words/2926485-reduce">官方定义</a>：</p>
+
+<pre><code class="language-swift">func reduce&lt;Result&gt;(_ initialResult: Result, _ nextPartialResult: (Result, UInt) throws -&gt; Result) rethrows -&gt; Result
+</code></pre>
+
+<p>联系reduce的意思可以知道，该方法从一序列的数创造出一个单一的值。例如，获取数组中数的和、乘积等。<br />
+<code>initialResult</code>是一个初始化的值，类似于用<code>for</code>循环时先初始化<code>sum = 0</code>或者<code>produce = 1</code>。</p>
+
+<p>闭包表达式中：<br />
+两个参数，<code>Result</code> 与 调用<code>reduce</code>的数组元素，抛出的则是结果，因此是 <code>sum + number</code>而不是<code>sum = sum + number</code>。</p>
+
+<h3 id="结束语">结束语</h3>
+
+<p>这三个函数在理解之后都不难，而且和<code>for循环</code>相比，相当简洁高效！<br />
+感谢看完本文！希望你有所收获！:)</p>
+
+<div class="footnotes"><ol>  
+    <li class="footnote" id="fn:1">
+        <p>A higher-order functional language is one in which a function may be used as a value, just like an integer or a boolean. That is, the value of a variable may be a function, and a function may take a function as argument and may return a function as a result.
+        一个高阶函数是指该函数可以被当作变量类型一样来使用。就是说变量可能是函数，一个函数可能会把另一个函数作为参数或者返回值是一个函数类型！ <a href="#fnref:1" title="Higher Order Functions"> </a><p>
+    </li>
+    <li class="footnote" id="fn:2">
+        <p>For循环也可以完成下面要讲的map与reduce，下文就不再提及 <a href="#fnref:2" title="Powerful FOR LOOP "> </a><p>
+    </li>
+</ol></div>
+
+<script type="text/javascript">
+    $.bigfoot();
+</script>
+<script type="text/javascript">
+    var bigfoot = $.bigfoot({
+        deleteOnUnhover: false,
+        preventPageScroll: false,
+        hoverDelay: 250,
+        activateOnHover: true,
+    });
+</script>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/swift">swift</a>
+                            
+                                <a class="badge badge-primary" href="/tags/algorithm">algorithm</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"> &laquo; Swift 3 Algorithm: 二叉搜索树</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/swift-3-fun-algorithms-wrappingarray/">Swift 3 Fun Algorithms:Wrapping Array &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

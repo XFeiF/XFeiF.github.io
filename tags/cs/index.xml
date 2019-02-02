@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cs on </title>
+    <link>/tags/cs/</link>
+    <description>Recent content in Cs on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 25 Sep 2018 22:59:26 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/cs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CS MindStorms</title>
+      <link>/posts/cs-mindstorms/</link>
+      <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
+      
+      <guid>/posts/cs-mindstorms/</guid>
+      <description>&lt;p&gt;&lt;center&gt;⚡️ MindStorms Collections ⚡️&lt;/center&gt;&lt;br /&gt;
+一些头脑风暴问题集锦。体验CS的一些乐趣～&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

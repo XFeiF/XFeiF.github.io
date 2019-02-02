@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Lazy Tricks🙈 &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/tricks.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">Lazy Tricks🙈</h1>
+                            
+                            
+                                <time datetime="2018-08-26">Aug 26, 2018</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/geek">Geek</a>
+    
+
+
+                            </span> - 1 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p>🍻 高效率 <del>懒人</del> 养成Tricks！🍻<br />
+Ubuntu、Mac、Tools Collections～
+持续收集中～ 🛰</p>
+
+<p>抱歉，部分只提供建议，教程什么的，google不到算我输。</p>
+
+<h2 id="工具">工具 🔧</h2>
+
+<h3 id="ubuntu-desktop-with-openssh-server">ubuntu desktop with openssh-server</h3>
+
+<p>主力机还是自己的笔记本，实验室的 <del>laji</del> 主机怎么办？🐶<br />
+👇 👇 👇 👇<br />
+给你的Ubuntu桌面版主机安装<a href="https://help.ubuntu.com/lts/serverguide/openssh-server.html.en"><code>openssh-server</code></a>，像访问服务器那样访问自己的主机吧！</p>
+
+<h3 id="tmux">tmux</h3>
+
+<p>开启脚本的命令不能关！难道我的笔记本要一直放在实验室吗？🙊<br />
+怎么把命令挂在后台啊！太难了，学不会🙃<br />
+<a href="https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340"><code>tmux</code></a>你值得拥有！不关机，不kill，关掉命令行都可以！<br />
+配合<a href="https://help.ubuntu.com/lts/serverguide/openssh-server.html.en"><code>openssh-server</code></a>，主力机不动，ssh到ubuntu主机上，访问服务器，把脚本挂到tmux上。理论上可以随便玩。</p>
+
+<h2 id="tricks">Tricks 🚲</h2>
+
+<h3 id="shell脚本">shell脚本</h3>
+
+<p>训练CNNs的时候，最初的使用姿势可能是 <code>python cnn.py</code>。</p>
+
+<p>但是，要调整网络参数的时候怎么办，还需要到源码中找到然后一个一个修改吗？<strong>No!</strong></p>
+
+<p><code>pytorch</code>里有<code>argparse</code>，<code>tf</code>有<code>FLAGS</code>，我可以这样 <code>python cnn.py -g 0 -param1 val1 -param2 val2 -param3 val3 -param4 val4 -param5 val5 -param6...</code>，  想接多少就。。。接多少！👀 👀 👀</p>
+
+<p>推荐写入到shell脚本中，可以顺序执行多个py文件，一个实验一个shell做到底，不用盯着显卡了。</p>
+
+<p><img src="/images/shell-ml.png" width="50%" height="50%" title="Shell"></p>
+
+<h3 id="log的生成">log的生成</h3>
+
+<p>log生成配合shell脚本使用。</p>
+
+<pre><code class="language-bash">sh myscript.sh 2&gt;&amp;1 | tee logs/myscript.log
+</code></pre>
+
+<p>原理：<br />
+<img src="/images/output_redirect.png" alt="Output Redirect" /></p>
+
+<hr />
+
+<p><center><strong>持续收集中～ 🛰</center></strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/trick">trick</a>
+                            
+                                <a class="badge badge-primary" href="/tags/tool">tool</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/pytorch-notes/"> &laquo; PyTorch Api Notes 📙</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/">训练网络管理实验的科学探索💪🏼 &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

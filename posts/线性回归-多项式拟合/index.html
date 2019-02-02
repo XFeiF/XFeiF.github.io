@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>多项式拟合-线性回归 &middot; </title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="" class="left swing">
+        <img src="images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/paper-pen.jpg);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href=''> Home</a>
+            </li>
+            <li>
+                <a href='archives'>Archives</a>
+            </li>
+            <li>
+                <a href='timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='friends'>Friends</a>
+            </li>
+            <li>
+                <a href='about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">多项式拟合-线性回归</h1>
+                            
+                            
+                                <time datetime="2018-09-24">Sep 24, 2018</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                            </span> - 3 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p><strong><center>Machine Learning Exercise 1</center></strong></p>
+
+<h3 id="实验题目">实验题目</h3>
+
+<p>编写程序:模拟仿真多项式回归
+参见 textbook p4-12(PRML)。完成以下任务:</p>
+
+<p>1) 生成正弦序列 s(n);<br />
+2) 使用噪声函数对正弦序列加噪 x(n)=s(n)+w(n);<br />
+3) 使用多项式回归模型对 x(n)进行拟合，并分析过拟合和欠拟合情况</p>
+
+<p>注:参考误差函数式 1-2，带正则项的修正误差函数式 1-4，实验仿真生成图 1- 6、图 1-7，给出模型系数表。</p>
+
+<h3 id="实验过程及代码">实验过程及代码</h3>
+
+<p>实验过程按照题目要求可以拆解为4步完成。首先进行数据采样，添加噪声；接着定义损失函数，
+以及正则项；<br />
+之后采用梯度下降寻找局部最优解；再通过画图可视化实验结果。以下为具体描述：</p>
+
+<h4 id="数据生成">数据生成</h4>
+
+<p>利用<code>numpy</code>在<code>sin(2*pi*x)</code>的基础上生成点，并添加高斯噪声（其中均值设为0，方差设为0.3）。<br />
+为了方便后序的实验，我们在生成数据<code>x, y</code>的同时添加阶数，  每个<code>x</code>调整为形如<br />
+<code>x = [1, x, x^2, ..., x^M]</code>的形式。最前面的1对应目标函数的b。</p>
+
+<p>数据生成代码如下：</p>
+
+<pre><code class="language-py"># define gaussion noise function
+def noise(mu=0, sigma=0.3):
+    '''
+    dtype:
+        mu: default 0
+        sigma: default 0.3
+    rtype:
+        noise: float
+    '''
+    return np.random.normal(mu, sigma)
+
+
+def genTargetWithNoise(x, noise=noise):
+    ''' target = sin(2*pi*x) + noise
+    dtype:
+        x: float
+        noise: noise function  
+    rtype:
+        t: float
+    '''
+#     assert 0 &lt;= x &lt;= 1
+    t = np.sin(2*np.pi*x)
+    if noise:
+        t += noise()
+    return t
+
+def regenX(random, poly_degree):
+    xs = [[x ** i for i in range(1, poly_degree+1)] for x in random]
+    for x in xs:
+        x.insert(0, 1.)
+    return xs
+
+
+def genData(numPoints, noise, poly_degree):
+    '''Generate data.
+    '''
+    # random sample floats in the half-open interval [0.0, 1.0).
+    random = np.random.random_sample((numPoints,))
+
+    # generate targets for random
+    targets = list(map(genTargetWithNoise, random))
+
+    # remake data to ractangle form and add 1. to all x to correspond with b
+    xs = regenX(random, poly_degree)
+
+    return np.array(xs), np.array(targets)
+</code></pre>
+
+<h4 id="损失函数">损失函数</h4>
+
+<p>这里我们按照《PRML》中式<code>1-2, 1-3</code>的定义，使用平方误差与均方误差。同时添加正则项。<br />
+如式<code>1-4</code>。<br />
+<div align=center>
+<img src="/images/LSE.png" width="60%" alt="LSE" style="text-align:center">
+</div>
+<div align=center>
+<img src="/images/RMS.png" width="60%" alt="RMS" >
+</div>
+<div align=center>
+<img src="/images/loss_with_reg.png" width="60%" alt="loss_with_reg">
+</div></p>
+
+<p>代码如下：</p>
+
+<pre><code class="language-py"># define a polynomial
+def f(xs, theta):
+    xs = np.asarray(xs)
+#     print(xs.shape)
+    if xs.shape[0] &gt; 1:
+        return [x.T.dot(theta) for x in xs]
+    return xs.T.dot(theta)
+
+# define squares error
+def LSE_loss(y_true, y_hat, theta, penalization=0.1):
+    y_true = np.asarray(y_true)
+    y_hat = np.asarray(y_hat)
+
+    # set the regularizer  
+    regularizer = (penalization / 2) * (np.dot(theta.T, theta))
+
+    return (1/2) * np.square(y_hat - y_true).sum() + regularizer
+
+# define mean squares error loss
+def MSE_loss(y_true, y_hat, theta, penalization=0.1):
+    y_true = np.asarray(y_true)
+    y_hat = np.asarray(y_hat)
+
+    # set the regularizer  
+    regularizer = (penalization / 2) * (np.dot(theta.T, theta))
+
+    # compute mse
+    mse = np.sqrt(np.square(y_hat - y_true).sum()/len(y_hat)) + regularizer
+
+    return mse
+</code></pre>
+
+<h4 id="梯度下降">梯度下降</h4>
+
+<p>上面两步我们分别准备好了数据以及损失函数，这一步我们设置一些常用的参数，利用梯度下降法寻找<br />
+局部最优解。定义的多项式函数如下:<br />
+<div align=center>
+<img src="/images/def_func.png" width="60%" alt="Poly">
+</div></p>
+
+<p>这里我们的<code>theta0</code>设置为1，由于我们在准备数据的时候已经处理好了输入<code>x</code>，因此我们
+的<code>bias</code>项可以直接并入到<code>w</code>中，构成新的<code>theta</code>。</p>
+
+<p>对参数theta求导:<br />
+<div align=center>
+<img src="/images/theta_grad.png" width="30%" alt="theta_grad">
+</div><br />
+更新theta:<br />
+<div align=center>
+<img src="/images/theta_update.png" width="30%" alt="theta_update">
+</div></p>
+
+<p>代码如下：</p>
+
+<pre><code class="language-py"># gd
+def gradientDescent(x, y, x_val, y_val, theta, lr, sample_num, numIterations, loss_name='LSE', penalization=0):
+    xTrans = x.transpose()
+    record = []
+    freq = 100 if numIterations &lt; 10000 else 1000
+    for i in range(0, numIterations+1):
+        y_hat = f(x, theta)
+
+        if loss_name == 'LSE':
+            loss = LSE_loss(y, y_hat, theta, penalization)
+        elif loss_name == 'MSE':
+            loss = MSE_loss(y, y_hat, theta, penalization)
+
+        if i % freq == 0:
+            print(&quot;Iteration %d | %s loss: %f&quot; % (i, loss_name,  loss))
+            y_val_hat = f(x_val, theta)
+            if loss_name == 'LSE':
+                val_loss = LSE_loss(y_val, y_val_hat, theta)
+            elif loss_name == 'MSE':
+                val_loss = MSE_loss(y_val, y_val_hat, theta)
+            record.append([i, loss, val_loss])
+        # avg gradient per example
+        gradient = (x.T.dot(y_hat - y) / sample_num) + penalization*theta
+        # update
+        theta = theta - lr * gradient
+    return theta, record
+</code></pre>
+
+<h4 id="结果绘图">结果绘图</h4>
+
+<p>这一步我们通过在训练结果以及在训练中保存的结果分别绘制<code>train loss, val loss</code>对比图，
+与拟合结果图。<br />
+代码如下：</p>
+
+<pre><code class="language-py">def plotLoss(record):
+    x = [it[0] for it in record]
+    train_loss = [it[1] for it in record]
+    val_loss = [it[2] for it in record]
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(x, train_loss, label='$train-loss$', color='green', linewidth=0.5)
+    plt.plot(x, val_loss, label='$val-loss$', color='red', linewidth=0.5)
+
+    plt.plot(x, train_loss, 'go', markerfacecolor='none')
+    plt.plot(x, val_loss, 'ro', markerfacecolor='none')
+
+    plt.xlabel('Iterations')
+    plt.ylabel('Loss')
+    plt.title('Train vs Val')
+    plt.legend()
+    plt.show()
+
+def plotNow(x, y, target_func, cur_func, theta, poly_degree):
+    xrange = np.arange(0, 1, 0.01)
+    targetfunc = target_func(2*np.pi*xrange)
+    re_xrange = regenX(xrange, poly_degree)
+    curfunc = cur_func(re_xrange, theta)
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(xrange, targetfunc, label='$sin(2πx)$', color='green', linewidth=0.5)
+    plt.plot(xrange, curfunc, label='$Polynomial$', color='red', linewidth=0.5)
+
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Polynomial')
+    # plt.xlim(0,1)
+    plt.ylim(-2,2)
+    plt.legend()
+    plt.plot(x, y, 'bo', markerfacecolor='none')
+    plt.show()
+</code></pre>
+
+<p>效果图如下：<br />
+<div align=center>
+<img src="/images/1order2.png" width="50%" alt="example">
+</div></p>
+
+<h3 id="实验结果及分析">实验结果及分析</h3>
+
+<p>实验中，我们分别对了3大组主要的对比实验，分别是：1）对同一阶数的模型用不同的参数作对比实
+验；2）对不同阶数（模型复杂度）的模型作对比实验；3）对模型添加L2正则项。</p>
+
+<h4 id="同模型-不同参数">同模型-不同参数</h4>
+
+<p>这里我们选取<code>M=4</code>的模型，4阶模型复杂度适中。</p>
+
+<h5 id="迭代次数学习率">迭代次数学习率</h5>
+
+<p>学习率保持不变。迭代次数过少，有可能没有达到局部（全局）最小点的时候终止，导致模型本身欠拟
+合，需要增加迭代次数；迭代次数过多，模型可能对训练数据过拟合，在测试数据上的误差变大，泛化能力变差。<br />
+下面三图中，学习率设为0.1,迭代次数分别为1000，10000，20000。</p>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i1000.png"  width="350" height="400" alt="iter:1000"></div>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i10000.png" width="350" height="400"  alt="iter:10000"></div>
+
+<div align=center>
+<img src="/images/o4i20000.png" width="350px" alt="iter:10000">
+</div>    
+
+<p>迭代次数固定为10000，学习率分别设为0.1，0.01。观察到，迭代相同的次数时，<code>lr=0.1</code>时，测
+试集上的误差要小一些。<br />
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i10000l1.png"  width="350" height="400" alt="lr:0.1"></div></p>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i10000l2.png" width="350" height="400"  alt="lr:0.01"></div>
+
+<h5 id="不同评价指标">不同评价指标</h5>
+
+<p>保持其他条件一致，分别使用两种<code>Loss fucntion</code>做实验。</p>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i3000LSE.png"  width="350" height="400" alt="LSE"></div>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i3000MSE.png" width="350" height="400"  alt="MSE"></div>
+
+<p>对比发现，有时候单一的评价指标并不能反应模型的准确性能，换了MSE，过拟合了。</p>
+
+<h5 id="不同数据量">不同数据量</h5>
+
+<p>训练测试集数量分别采用<code>(50,50)，(100, 50)</code>。分别用50、100组输入作为训练，均用50组输入
+作为测试。为了方便对比，我们都将其训练至过拟合。</p>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i50000s50v50.png"  width="340" height="400" alt="train:50 val:50"></div>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4i50000s100v50.png" width="360" height="450"  alt="train:100 val:50"></div>  
+
+<p>对比观察可知，当训练数据增多时，模型的泛化能力相应增强。</p>
+
+<h4 id="不同模型-同参数">不同模型-同参数</h4>
+
+<p>通过<code>4.1</code>的实验，我们将参数固定为:
+ <code>(训练, 测试) = (100, 50), learning_rate = 0.1, iterations=5000</code>。</p>
+
+<p>M=1, 2, 3</p>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o1std.png"  width="230" alt="M=1"></div>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o2std.png" width="230"  alt="M=2"></div>  
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o3std.png" width="230"  alt="M=3"></div>  
+
+<p>M=4, 5, 6<br />
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o4std.png"  width="230" height="300" style="height: 230px !important;" alt="M=4"></div></p>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o5std.png" width="230"  alt="M=5"></div>  
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o6std.png" width="230"  alt="M=6"></div>  
+
+<p>M=7, 8, 9
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o7std.png"  width="230" alt="M=7" style="height: 230px !important;" ></div></p>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o8std.png" width="230"  alt="M=8"></div>  
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o9std.png" width="230"  alt="M=9"></div>  
+
+<p>这里我们没有训练到过拟合。观察输出的<code>Val loss</code>，当模型的复杂度上升的时候，模型的表达能力
+相应提高，因此泛化能力变好，val loss呈现出下降的趋势。同时我发现<code>M=1</code>时，模型训练到2000
+轮，就不再开始训练了，而更高阶的模型依然可以继续训练。</p>
+
+<p>一次实验中的模型系数表如下：<br />
+<div align=center>
+<img src="/images/params.png"  alt="模型系数表" >
+</div></p>
+
+<h4 id="添加正则项-过拟合-欠拟合分析">添加正则项(过拟合、欠拟合分析)</h4>
+
+<p>当我们的迭代次数设置少，或者学习率过低，或者模型过于简单的时候，都可能会出现欠拟合。比如只
+迭代1000次，学习率设为0.0001，只用<code>M=1</code>的模型。</p>
+
+<p>我们选取<code>M=4</code>的模型，先将其训练至过拟合。<br />
+<div align=center>
+<img src="/images/o9overfitting.png" width="50%" alt="过拟合" >
+</div></p>
+
+<p>设置lamda分别为<code>0.1, 0.25, 0.5, 1, 5</code>。</p>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o9lambda0_1.png"  width="340" height="400" alt="lambda=0.1"></div>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o9lambda0_25.png" width="360" height="450"  alt="lambda=0.25"></div>  
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o9lambda0_5.png"  width="340" height="400" alt="lambda=0.5"></div>
+
+<div style="float:left;border:solid 1px 000;margin:2px;"><img src="/images/o9lambda1.png" width="360" height="450"  alt="lambda=1"></div>  
+
+<p><div align=center>
+<img src="/images/o9lambda5.png" width="50%"  alt="lambda=5" >
+</div>
+观察可知，lambda越大，惩罚越大，模型泛化能力越好。</p>
+
+<h3 id="实验总结">实验总结</h3>
+
+<p>通过本次实验，在概念上，对多项式拟合有了更加全面深入的理解，能正确分析过拟合、欠拟合的
+情况，运用L2范数增加模型的鲁棒性；在实验呢实践上，给了一个以后做实验的参照物，学习了如
+何做对比实验、参数如何调整，更熟悉代码实现。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/code">code</a>
+                            
+                                <a class="badge badge-primary" href="/tags/machine-learning">Machine Learning</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/leetcode-contest_103-104/"> &laquo; LeetCode-Contest 103,104</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/">事故-SSL23_GET_SERVER_HELLO &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>
