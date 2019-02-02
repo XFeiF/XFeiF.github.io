@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Algorithm on </title>
-    <link>/categories/algorithm/</link>
+    <link>https://blog.x-fei.me/categories/algorithm/</link>
     <description>Recent content in Algorithm on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 27 Dec 2018 12:00:00 +0800</lastBuildDate>
     
-	<atom:link href="/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.x-fei.me/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</title>
-      <link>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
+      <link>https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
       <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
       
-      <guid>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
+      <guid>https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
       <description>&lt;h1 id=&#34;failure&#34;&gt;Failure&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>LeetCode-Contest 103,104</title>
-      <link>/posts/leetcode-contest_103-104/</link>
+      <link>https://blog.x-fei.me/posts/leetcode-contest_103-104/</link>
       <pubDate>Mon, 24 Sep 2018 23:28:35 +0800</pubDate>
       
-      <guid>/posts/leetcode-contest_103-104/</guid>
+      <guid>https://blog.x-fei.me/posts/leetcode-contest_103-104/</guid>
       <description>Contests From Contest103 to Contest 104 ~ Contest104 914-M 914. X of a Kind in a Deck of Cards  In a deck of cards, each card has an integer written on it.
 Return true if and only if you can choose X &amp;gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:
 Each group has exactly X cards. All the cards in each group have the same integer.</description>
@@ -32,10 +32,10 @@ Each group has exactly X cards. All the cards in each group have the same intege
     
     <item>
       <title>Swift 3 Algorithm: 二叉搜索树</title>
-      <link>/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://blog.x-fei.me/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Mon, 04 Sep 2017 15:02:56 +0800</pubDate>
       
-      <guid>/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://blog.x-fei.me/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -46,10 +46,10 @@ Each group has exactly X cards. All the cards in each group have the same intege
     
     <item>
       <title>Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</title>
-      <link>/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</link>
+      <link>https://blog.x-fei.me/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</link>
       <pubDate>Mon, 04 Sep 2017 10:01:52 +0800</pubDate>
       
-      <guid>/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</guid>
+      <guid>https://blog.x-fei.me/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -60,10 +60,10 @@ Each group has exactly X cards. All the cards in each group have the same intege
     
     <item>
       <title>Swift 3 Fun Algorithms:Wrapping Array</title>
-      <link>/posts/swift-3-fun-algorithms-wrappingarray/</link>
+      <link>https://blog.x-fei.me/posts/swift-3-fun-algorithms-wrappingarray/</link>
       <pubDate>Sun, 03 Sep 2017 10:21:26 +0800</pubDate>
       
-      <guid>/posts/swift-3-fun-algorithms-wrappingarray/</guid>
+      <guid>https://blog.x-fei.me/posts/swift-3-fun-algorithms-wrappingarray/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;

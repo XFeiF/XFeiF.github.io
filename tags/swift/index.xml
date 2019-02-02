@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Swift on </title>
-    <link>/tags/swift/</link>
+    <link>https://blog.x-fei.me/tags/swift/</link>
     <description>Recent content in Swift on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 04 Sep 2017 15:02:56 +0800</lastBuildDate>
     
-	<atom:link href="/tags/swift/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.x-fei.me/tags/swift/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Swift 3 Algorithm: 二叉搜索树</title>
-      <link>/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://blog.x-fei.me/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Mon, 04 Sep 2017 15:02:56 +0800</pubDate>
       
-      <guid>/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://blog.x-fei.me/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</title>
-      <link>/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</link>
+      <link>https://blog.x-fei.me/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</link>
       <pubDate>Mon, 04 Sep 2017 10:01:52 +0800</pubDate>
       
-      <guid>/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</guid>
+      <guid>https://blog.x-fei.me/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -40,10 +40,10 @@
     
     <item>
       <title>Swift 3 Fun Algorithms:Wrapping Array</title>
-      <link>/posts/swift-3-fun-algorithms-wrappingarray/</link>
+      <link>https://blog.x-fei.me/posts/swift-3-fun-algorithms-wrappingarray/</link>
       <pubDate>Sun, 03 Sep 2017 10:21:26 +0800</pubDate>
       
-      <guid>/posts/swift-3-fun-algorithms-wrappingarray/</guid>
+      <guid>https://blog.x-fei.me/posts/swift-3-fun-algorithms-wrappingarray/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;

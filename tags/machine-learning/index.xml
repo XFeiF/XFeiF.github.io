@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on </title>
-    <link>/tags/machine-learning/</link>
+    <link>https://blog.x-fei.me/tags/machine-learning/</link>
     <description>Recent content in Machine Learning on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 10 Oct 2018 21:12:56 +0800</lastBuildDate>
     
-	<atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.x-fei.me/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>GD &amp; SGD 理解与二维模拟</title>
-      <link>/posts/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
+      <link>https://blog.x-fei.me/posts/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
       <pubDate>Wed, 10 Oct 2018 21:12:56 +0800</pubDate>
       
-      <guid>/posts/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
+      <guid>https://blog.x-fei.me/posts/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
       <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 2&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;
@@ -31,10 +31,10 @@ say in simple words, what the algorithm is doing?&lt;br /&gt;&lt;/li&gt;
     
     <item>
       <title>多项式拟合-线性回归</title>
-      <link>/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</link>
+      <link>https://blog.x-fei.me/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</link>
       <pubDate>Mon, 24 Sep 2018 23:24:56 +0800</pubDate>
       
-      <guid>/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</guid>
+      <guid>https://blog.x-fei.me/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</guid>
       <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 1&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;
@@ -45,10 +45,10 @@ say in simple words, what the algorithm is doing?&lt;br /&gt;&lt;/li&gt;
     
     <item>
       <title>训练网络管理实验的科学探索💪🏼</title>
-      <link>/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</link>
+      <link>https://blog.x-fei.me/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</link>
       <pubDate>Sun, 26 Aug 2018 11:26:49 +0800</pubDate>
       
-      <guid>/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</guid>
+      <guid>https://blog.x-fei.me/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</guid>
       <description>&lt;p&gt;👏🏼 Some tips about how to manage your experiments！👏🏼&lt;/p&gt;
 
 &lt;blockquote&gt;

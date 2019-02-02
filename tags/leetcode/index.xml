@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Leetcode on </title>
-    <link>/tags/leetcode/</link>
+    <link>https://blog.x-fei.me/tags/leetcode/</link>
     <description>Recent content in Leetcode on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 27 Dec 2018 12:00:00 +0800</lastBuildDate>
     
-	<atom:link href="/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.x-fei.me/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</title>
-      <link>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
+      <link>https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
       <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
       
-      <guid>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
+      <guid>https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
       <description>&lt;h1 id=&#34;failure&#34;&gt;Failure&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>LeetCode-Contest 103,104</title>
-      <link>/posts/leetcode-contest_103-104/</link>
+      <link>https://blog.x-fei.me/posts/leetcode-contest_103-104/</link>
       <pubDate>Mon, 24 Sep 2018 23:28:35 +0800</pubDate>
       
-      <guid>/posts/leetcode-contest_103-104/</guid>
+      <guid>https://blog.x-fei.me/posts/leetcode-contest_103-104/</guid>
       <description>Contests From Contest103 to Contest 104 ~ Contest104 914-M 914. X of a Kind in a Deck of Cards  In a deck of cards, each card has an integer written on it.
 Return true if and only if you can choose X &amp;gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:
 Each group has exactly X cards. All the cards in each group have the same integer.</description>

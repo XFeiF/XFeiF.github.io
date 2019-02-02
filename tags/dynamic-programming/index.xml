@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dynamic Programming on </title>
-    <link>/tags/dynamic-programming/</link>
+    <link>https://blog.x-fei.me/tags/dynamic-programming/</link>
     <description>Recent content in Dynamic Programming on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 27 Dec 2018 12:00:00 +0800</lastBuildDate>
     
-	<atom:link href="/tags/dynamic-programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.x-fei.me/tags/dynamic-programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</title>
-      <link>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
+      <link>https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
       <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
       
-      <guid>/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
+      <guid>https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
       <description>&lt;h1 id=&#34;failure&#34;&gt;Failure&lt;/h1&gt;</description>
     </item>
     

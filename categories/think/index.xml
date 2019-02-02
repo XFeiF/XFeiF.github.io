@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Think on </title>
-    <link>/categories/think/</link>
+    <link>https://blog.x-fei.me/categories/think/</link>
     <description>Recent content in Think on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 26 Aug 2018 01:31:37 +0800</lastBuildDate>
     
-	<atom:link href="/categories/think/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.x-fei.me/categories/think/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Summary: MICCAI 2018 Skin Lesion Contest</title>
-      <link>/posts/summary-miccai-2018-skin-lesion-contest/</link>
+      <link>https://blog.x-fei.me/posts/summary-miccai-2018-skin-lesion-contest/</link>
       <pubDate>Sun, 26 Aug 2018 01:31:37 +0800</pubDate>
       
-      <guid>/posts/summary-miccai-2018-skin-lesion-contest/</guid>
+      <guid>https://blog.x-fei.me/posts/summary-miccai-2018-skin-lesion-contest/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Time：6.26-7.27&lt;br /&gt;
 Location: SYSU&lt;br /&gt;
@@ -27,10 +27,10 @@ Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
     
     <item>
       <title>技术分为术和道两种</title>
-      <link>/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</link>
+      <link>https://blog.x-fei.me/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</link>
       <pubDate>Sun, 01 Oct 2017 15:07:21 +0800</pubDate>
       
-      <guid>/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</guid>
+      <guid>https://blog.x-fei.me/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</guid>
       <description>&lt;p&gt;2017年9月回顾。&lt;/p&gt;
 
 &lt;blockquote&gt;

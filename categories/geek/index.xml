@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Geek on </title>
-    <link>/categories/geek/</link>
+    <link>https://blog.x-fei.me/categories/geek/</link>
     <description>Recent content in Geek on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 25 Sep 2018 22:59:26 +0800</lastBuildDate>
     
-	<atom:link href="/categories/geek/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.x-fei.me/categories/geek/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CS MindStorms</title>
-      <link>/posts/cs-mindstorms/</link>
+      <link>https://blog.x-fei.me/posts/cs-mindstorms/</link>
       <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
       
-      <guid>/posts/cs-mindstorms/</guid>
+      <guid>https://blog.x-fei.me/posts/cs-mindstorms/</guid>
       <description>&lt;p&gt;&lt;center&gt;⚡️ MindStorms Collections ⚡️&lt;/center&gt;&lt;br /&gt;
 一些头脑风暴问题集锦。体验CS的一些乐趣～&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>事故-SSL23_GET_SERVER_HELLO</title>
-      <link>/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</link>
+      <link>https://blog.x-fei.me/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</link>
       <pubDate>Fri, 21 Sep 2018 10:27:28 +0800</pubDate>
       
-      <guid>/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</guid>
+      <guid>https://blog.x-fei.me/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;fatal: unable to access &amp;lsquo;&lt;a href=&#34;https://github.com/xxx/yyyy.git/&#39;:&#34;&gt;https://github.com/xxx/yyyy.git/&#39;:&lt;/a&gt; error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -33,10 +33,10 @@
     
     <item>
       <title>Lazy Tricks🙈</title>
-      <link>/posts/lazy-tricks/</link>
+      <link>https://blog.x-fei.me/posts/lazy-tricks/</link>
       <pubDate>Sun, 26 Aug 2018 13:43:31 +0800</pubDate>
       
-      <guid>/posts/lazy-tricks/</guid>
+      <guid>https://blog.x-fei.me/posts/lazy-tricks/</guid>
       <description>&lt;p&gt;🍻 高效率 &lt;del&gt;懒人&lt;/del&gt; 养成Tricks！🍻&lt;br /&gt;
 Ubuntu、Mac、Tools Collections～
 持续收集中～ 🛰&lt;/p&gt;</description>
@@ -44,10 +44,10 @@ Ubuntu、Mac、Tools Collections～
     
     <item>
       <title>训练网络管理实验的科学探索💪🏼</title>
-      <link>/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</link>
+      <link>https://blog.x-fei.me/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</link>
       <pubDate>Sun, 26 Aug 2018 11:26:49 +0800</pubDate>
       
-      <guid>/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</guid>
+      <guid>https://blog.x-fei.me/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</guid>
       <description>&lt;p&gt;👏🏼 Some tips about how to manage your experiments！👏🏼&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -57,10 +57,10 @@ Ubuntu、Mac、Tools Collections～
     
     <item>
       <title>Hackx上海</title>
-      <link>/posts/hackx%E4%B8%8A%E6%B5%B7/</link>
+      <link>https://blog.x-fei.me/posts/hackx%E4%B8%8A%E6%B5%B7/</link>
       <pubDate>Mon, 06 Nov 2017 11:49:33 +0800</pubDate>
       
-      <guid>/posts/hackx%E4%B8%8A%E6%B5%B7/</guid>
+      <guid>https://blog.x-fei.me/posts/hackx%E4%B8%8A%E6%B5%B7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Idea很重要！做一个有力的C位很重要！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -71,10 +71,10 @@ Ubuntu、Mac、Tools Collections～
     
     <item>
       <title>给Hexo(Hugo)添加Bigfoot</title>
-      <link>/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</link>
+      <link>https://blog.x-fei.me/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</link>
       <pubDate>Sat, 02 Sep 2017 23:08:52 +0800</pubDate>
       
-      <guid>/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</guid>
+      <guid>https://blog.x-fei.me/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</guid>
       <description>&lt;p&gt;我之前搭建Ghost博客的时候，在萌天的博客上有看到过Bigfoot，经过萌天介绍，认识了Bigfoot。现在将Bigfoot集成到我&lt;del&gt;目前在用的hexo博客hiker主题中&lt;/del&gt;Hugo博客Fx主题中。&lt;/p&gt;</description>
     </item>
     

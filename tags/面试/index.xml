@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>面试 on </title>
-    <link>/tags/%E9%9D%A2%E8%AF%95/</link>
+    <link>https://blog.x-fei.me/tags/%E9%9D%A2%E8%AF%95/</link>
     <description>Recent content in 面试 on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 20 Sep 2017 10:57:05 +0800</lastBuildDate>
     
-	<atom:link href="/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.x-fei.me/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>武汉一行</title>
-      <link>/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</link>
+      <link>https://blog.x-fei.me/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</link>
       <pubDate>Wed, 20 Sep 2017 10:57:05 +0800</pubDate>
       
-      <guid>/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</guid>
+      <guid>https://blog.x-fei.me/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</guid>
       <description>&lt;p&gt;9月17号，和宏伟去武汉工程大学流芳校区考PAT（Programming Ability Test），以及宏伟傍晚去百度的面试，然后赶晚上的火车，应该可以在18号凌晨回到寝室～。&lt;br /&gt;
 然而，计划始终赶不上变化。&lt;/p&gt;</description>
     </item>
