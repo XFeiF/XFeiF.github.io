@@ -7,7 +7,7 @@
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
 		<meta name="generator" content="Hugo 0.53" />
-		<title>2018 &middot; </title>
+		<title>Lambda Function in Python &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
 		
@@ -79,7 +79,7 @@ code.has-jax {
 
 
 <header id="header" class="blog-background banner-mask lazy no-cover"
-style="display: table; background-image: url(/bg/ali.jpg);">
+style="display: table; background-image: url(/images/lambda.png);">
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
@@ -123,15 +123,15 @@ style="display: table; background-image: url(/bg/ali.jpg);">
                 <div class="post-container">
                     <div class="post-header">
                         <div class="meta">
-                            <h1 id="post-title">2018</h1>
+                            <h1 id="post-title">Lambda Function in Python</h1>
                             
                             
-                                <time datetime="2019-01-02">Jan 2, 2019</time>
+                                <time datetime="2019-03-01">Mar 1, 2019</time>
                             
                             <span class="categories">
                                  on 
     
-        <a class="badge badge-primary" href="/categories/fragments">Fragments</a>
+        <a class="badge badge-primary" href="/categories/python">python</a>
     
 
 
@@ -144,76 +144,123 @@ style="display: table; background-image: url(/bg/ali.jpg);">
 
                         </div>
                         <div class="inner-content">
-                            <p>2014年的现在应该紧张准备高考。<br />
-2014年的9月正式入学。<br />
-2018年的6月正式毕业。<br />
-2018年的9月再次入学。<br />
-转眼，2018年也过去了。</p>
+                            <p>匿名函数，就是我们需要一个函数，但是没有必要给它起一个名字，因为这个名字无关紧要，而且有时影响效率。<br />
+在Python中，<code>def</code>关键字是用来定义常规函数的，而<code>lambda</code>关键字则是用来创建匿名函数的。<br />
+那么我们常说的<code>lambda</code>表达式应该怎么写呢？<br />
+我们又可以用<code>lambda</code>表达式干什么事情呢？</p>
 
-<h2 id="preface">Preface</h2>
+<h3 id="concept">Concept</h3>
 
-<p>我后来才慢慢认可，<strong>仪式感是一种很重要的东西</strong>。</p>
+<p><code>Lambda</code>表达式语法如下：</p>
 
-<h2 id="flow">Flow</h2>
+<pre><code>lambda arguments: expression  
+</code></pre>
 
-<p><strong>1月</strong>，1月的时候在学校待到很晚才回家，老宿舍冷冷的，我有好几天都懒在被窝里到下午。<br />
-<strong>2月</strong>，寒假在家写了一个书签主页<a href="http://info.x-fei.me/opening/1">info.x-fei.me</a>，基于Laravel5。<br />
-<strong>3月</strong>，先回学校待了半个月，之后来SYSU，一边学习一边做毕设。<br />
-<strong>4月</strong>，完成毕设，入坑tensorflow，准备Google Summer Code(准备太不充分，吹了)。<br />
-<strong>5月</strong>，回CSU准备答辩，PUBG。<br />
-<strong>6月</strong>，答辩，拍毕业照，毕业拨穗乌龙（反向给教授拨穗）。<br />
-<strong>7月</strong>，在SYSU参加MICCAI2018年SKIN LESION的比赛，学习Deeplabv3+，成为Tensorflow的Contributor（只是更新了部分文档）。<br />
-<strong>8月</strong>，因为太菜所以成绩不佳。回长沙，借住在海洋家一周，终于拿到驾照（感谢海洋🍻）。回家待了两周，开始刷题。<br />
-<strong>9月</strong>，开学以及确定课题方向，刷了满满一个月的题。<br />
-<strong>10月</strong>，月初的时候大圣来找我玩了几天。整个月都在实验、上课，和霖哥一起做了一个外包，写后端。<br />
-<strong>11月</strong>，实验、上课，写外包，修复bug，重构代码，入坑Python爬虫，周末游戏。
-<strong>12月</strong>，准备投稿，“逃课”2周，17号在导师的帮助下，投出第一篇。之后有所懈怠。</p>
+<p>这个函数可以有任意数量的参数<code>arguments</code>，但是只有一个表达式<code>expression</code>，函数<strong>计算并返回</strong>这个表达式的值。<br />
+我们可以比较随意地使用<code>lambda</code>表达式，但是要牢记一点，就是它被严格限制只能有单一的表达式。</p>
 
-<h2 id="reward">Reward</h2>
+<h3 id="difference-between-def-and-lambda">Difference between <code>def</code> and <code>lambda</code></h3>
 
-<h3 id="diary">Diary</h3>
+<p>为了理解<code>def</code>定义的普通函数与<code>lambda</code>函数的区别，我们举个例子。<br />
+<strong>小目标</strong>：求给定数的三次方。<br />
+<strong>Implementation</strong>：</p>
 
-<p>1月到3月的时候，开始写日记，坚持写了66天，都发在了公众号上。<br />
-问题是，我并不是一个合格的内容运营者，单纯的日记，也没有必要发在公众号上，缺少时间的积累、沉淀。</p>
+<pre><code class="language-python">def cube(y): 
+    return y*y*y; 
+  
+g = lambda x: x*x*x 
+print(g(7))   
+print(cube(5)) 
+</code></pre>
 
-<h3 id="leetcode">Leetcode</h3>
+<p><strong>Output</strong>:</p>
 
-<p>200道题，完整刷了9周，70天左右。主要在8月与9月的时候，之后由于懒且事多，且菜，所以停了。</p>
+<pre><code>343
+125
+</code></pre>
 
-<h3 id="blog">Blog</h3>
+<p>使用<code>def</code>：首先，我们需要定一个名为<code>cube</code>的函数，并传递值给它。运算执行完后，我们还需要调用<code>return</code>返回计算结果给调用函数的地方。<br />
+使用<code>Lambda</code> ：<code>Lambda</code> 表达式不需要 <code>return</code> 语句，它只包含一个表达式，计算并返回。 理论上，在可以用函数的地方我们都可以用<code>lambda</code>。</p>
 
-<p>下半年久坐在实验室当中，有时候事情虽然多，但是也想写写总结，于是下半年高产，预期19年一年依然高产。</p>
+<h3 id="uses-of-lambda">Uses of Lambda</h3>
 
-<h2 id="memory">Memory</h2>
+<p>实际上，<code>Python</code>中<code>Lambda</code> 表达式的强大之处在于它可以和很多内置函数一起用。比如<code>filter()</code>，<code>map()</code>，<code>reduce()</code>。</p>
 
-<p>研究生入学，受同门嘉鑫影响比较大，生活多了很多乐趣（喝了很多奶茶）。感谢我的同门以及师兄师姐师弟师妹。</p>
+<h4 id="lambda-filter">lambda + filter</h4>
 
-<h2 id="更新最后的期末">更新最后的期末</h2>
+<p><code>filter()</code>函数的参数为一个<code>function</code>和一个<code>list</code>。提供了一种优雅的筛选元素的方法。通过传递列表中的每个元素到<code>function</code>中，判断是否满足条件，满足则返回<code>True</code>。例如：</p>
 
-<p>现在还不确定这是不是我人生的最后一个期末了。1月7号考完AI，就只有一门政治考试了。说起来，我这个学期下半个学期并没有怎么上课。上的课除了数值分析，其余上课的时候很少去听。是我个人问题，知识是有连贯性，当少听一节课了，如果不补上，等听不懂的时候，因为原始惰性的左右，也不再想赶紧补，恶性循环。另外，坐第一排也很重要。</p>
+<pre><code class="language-python">nums = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61] 
+odd = list(filter(lambda x: (x%2 != 0) , nums)) 
+print(odd)   
+# [5, 7, 97, 77, 23, 73, 61]
+</code></pre>
 
-<h2 id="b">B</h2>
+<h4 id="lambda-map">lambda + map</h4>
 
-<p>本学期上完研究生的所有课程，但这不是我人生的最后课堂。我越发觉得自己和现在的课堂格格不入了，幸运的是我有一套自己的学习方式，但是并没有好好地去总结它，因此，之后需要注意的就是总结自己的学习方式，调试它，最优化它。</p>
+<p><code>map()</code>函数的参数为一个<code>function</code>和一个<code>list</code>。通过<code>function</code>映射<code>list</code>中的每个元素，达到改变其值的目的。返回一个元素统一修改后的列表。例如：</p>
+
+<pre><code class="language-python">nums = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
+double = list(map(lambda x: x*2, nums))
+print(double)
+# [10, 14, 44, 194, 108, 124, 154, 46, 146, 122]
+</code></pre>
+
+<h4 id="lambda-reduce">lambda + reduce</h4>
+
+<p><code>reduce()</code>函数的参数为一个<code>function</code>和一个<code>list</code>。这是通过调用<code>lambda</code>函数，反复操作<code>list</code>里面的数对。<code>reduce()</code>是<code>functools</code>模块中的一个。</p>
+
+<pre><code class="language-python">from functools import reduce
+nums = [5, 8, 10, 20, 50, 100] 
+sum = reduce((lambda x, y: x + y), nums) 
+print (sum) 
+# 193  
+</code></pre>
+
+<p>这里前两个元素相加的结果会累加到下一个元素，如此迭代直到列表末尾。它执行起来类似这样<code>(((((5+8)+10)+20)+50)+100)</code>。</p>
+
+<h3 id="practice">Practice</h3>
+
+<p>给一个list<code>[1,2,3,2,2,2,5,4,2]</code>，我们已经遍历一边统计了每个数字出现的次数，得到一个dict<code>cout = {1: 1, 2: 5, 3: 1, 5: 1, 4: 1}</code>，现在我们想要里面出现次数最多那个数字。</p>
+
+<p><strong>A:</strong> Look Here-&gt;<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup>~</p>
+
+<h3 id="reference">Reference</h3>
+
+<p><a href="https://www.geeksforgeeks.org/python-lambda-anonymous-functions-filter-map-reduce/">GeeksForGeeks</a><br />
+<a href="https://www.zhihu.com/question/20125256">知乎</a></p>
+
+<div class="footnotes"><ol>  
+    <li class="footnote" id="fn:1">
+        <p>cd = sorted(cout.items(), key=lambda item: item[1], reverse=True)<a href="#fnref:1" title="answer"> </a><p>
+    </li>
+</ol></div>
+
+<script type="text/javascript">
+    $.bigfoot();
+</script>
+<script type="text/javascript">
+    var bigfoot = $.bigfoot({
+        deleteOnUnhover: false,
+        preventPageScroll: false,
+        hoverDelay: 250,
+    });
+</script>
                         </div>
                     </div>
                     
                     <div class="post-tags">
                         <span># Tags: </span>
                             
-                                <a class="badge badge-primary" href="/tags/life">life</a>
-                            
-                                <a class="badge badge-primary" href="/tags/think">think</a>
+                                <a class="badge badge-primary" href="/tags/python">python</a>
                             
                     </div>
                     
                     <nav class="post-related">
                             
 
-    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/lambda_function_in_python/"> &laquo; Lambda Function in Python</a>
 
-
-    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/leetcode-challenge-dynamic-programming-problems-x-100/">LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️ &raquo;</a>
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/2018/">2018 &raquo;</a>
 
 
                     </nav>

@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.x-fei.me/posts/lambda_function_in_python/</loc>
+    <lastmod>2019-03-01T09:34:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</loc>
+    <lastmod>2019-02-25T21:36:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/timelines/demo/</loc>
+    <lastmod>2019-01-31T22:16:50+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.x-fei.me/posts/2018/</loc>
     <lastmod>2019-01-02T00:41:29+08:00</lastmod>
   </url>
@@ -149,7 +164,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/</loc>
-    <lastmod>2019-01-02T00:41:29+08:00</lastmod>
+    <lastmod>2019-03-01T09:34:30+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -188,6 +203,12 @@
   <url>
     <loc>https://blog.x-fei.me/tags/cs/</loc>
     <lastmod>2018-09-25T22:59:26+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/drafts/</loc>
+    <lastmod>2019-02-25T21:36:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -275,19 +296,19 @@
   
   <url>
     <loc>https://blog.x-fei.me/posts/</loc>
-    <lastmod>2019-01-02T00:41:29+08:00</lastmod>
+    <lastmod>2019-03-01T09:34:30+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/tags/python/</loc>
-    <lastmod>2018-12-27T12:00:00+08:00</lastmod>
+    <lastmod>2019-03-01T09:34:30+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/categories/python/</loc>
-    <lastmod>2018-12-18T11:23:25+08:00</lastmod>
+    <lastmod>2019-03-01T09:34:30+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -324,6 +345,18 @@
   <url>
     <loc>https://blog.x-fei.me/categories/think/</loc>
     <lastmod>2018-08-26T01:31:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/categories/timeline/</loc>
+    <lastmod>2019-01-31T22:16:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/timelines/</loc>
+    <lastmod>2019-01-31T22:16:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   

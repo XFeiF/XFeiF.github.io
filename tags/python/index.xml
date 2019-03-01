@@ -5,10 +5,38 @@
     <link>https://blog.x-fei.me/tags/python/</link>
     <description>Recent content in Python on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 27 Dec 2018 12:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 09:34:30 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lambda Function in Python</title>
+      <link>https://blog.x-fei.me/posts/lambda_function_in_python/</link>
+      <pubDate>Fri, 01 Mar 2019 09:34:30 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/lambda_function_in_python/</guid>
+      <description>&lt;p&gt;匿名函数，就是我们需要一个函数，但是没有必要给它起一个名字，因为这个名字无关紧要，而且有时影响效率。&lt;br /&gt;
+在Python中，&lt;code&gt;def&lt;/code&gt;关键字是用来定义常规函数的，而&lt;code&gt;lambda&lt;/code&gt;关键字则是用来创建匿名函数的。&lt;br /&gt;
+那么我们常说的&lt;code&gt;lambda&lt;/code&gt;表达式应该怎么写呢？&lt;br /&gt;
+我们又可以用&lt;code&gt;lambda&lt;/code&gt;表达式干什么事情呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>深度解析Python Super</title>
+      <link>https://blog.x-fei.me/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</link>
+      <pubDate>Mon, 25 Feb 2019 21:36:57 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</guid>
+      <description>&lt;p&gt;为什么&lt;code&gt;pytorch&lt;/code&gt;里面的网络初始化的时候都调用了&lt;code&gt;super&lt;/code&gt;函数，并且第一个参数名是类名呢？&lt;br /&gt;
+即为什么&lt;code&gt;python&lt;/code&gt;定义类的时候是这样设置的？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class C(B):
+	def __init__(self):
+		super(C, self).__init__()
+		print(&#39;B&#39;)
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</title>
