@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Convolution&#39;s Numpy and Pytorch implementation &middot; </title>
+		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
+		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="https://blog.x-fei.me/" class="left swing">
+        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/conv.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="https://blog.x-fei.me/">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href='https://blog.x-fei.me/'> Home</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/archives'>Archives</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/friends'>Friends</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">Convolution&#39;s Numpy and Pytorch implementation</h1>
+                            
+                            
+                                <time datetime="2019-03-03">Mar 3, 2019</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                            </span> - 3 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p>初学CNN的时候，比较疑惑输入的维度是<code>(BatchSize, Channels, Height, Width)</code>的<code>feature map</code>经过size是k的卷积核后变成了输出是什么？以及它是怎么实现的？
+本文主要讲解并探究卷积实现。<br />
+首先简单聊一下卷积操作，介绍<code>Pytorch</code>中卷积的<code>API</code>；<br />
+接着我们自己用<code>python</code>实现简单卷积，并与<code>API</code>调用结果进行对比；<br />
+之后我们进一步去了解<code>Pytorch</code>中卷积的实现源码。</p>
+
+<h3 id="brief-introduction">Brief Introduction</h3>
+
+<p>卷积是当下流行的计算机视觉模型架构的最基础的构造单元，从分类模型（如ResNet）到对抗生成网络（如DC-GAN），再到目标检测架构（以Mask R-CNN为代表）以及其他的大大小小的模型，卷积操作可以完成大部分计算繁琐的工作。</p>
+
+<p>对与卷积的理解与解释有很多已有的优秀博文，附上<strong>传送门</strong>，本文不多追述。<br />
+- <a href="https://www.wikiwand.com/en/Convolution">Wiki: https://www.wikiwand.com/en/Convolution</a><br />
+- <a href="https://zhuanlan.zhihu.com/p/30994790">什么是卷积 https://www.zhihu.com/question/22298352/answer/228543288</a><br />
+- <a href="http://cs231n.github.io/convolutional-networks/#conv">CS231n http://cs231n.github.io/convolutional-networks/#conv</a></p>
+
+<p>卷积运算表面上看就是，<strong>在滤波器和输入数据的局部区域间做点积</strong>，下面的GIF用滑窗的方式表明了其是如何操作的<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup>。
+<div align=center>
+<img src="https://mlnotebook.github.io/img/CNN/convSobel.gif" width="40%" alt="https://mlnotebook.github.io/post/CNN1/" style="text-align:center; padding:5px auto;">
+<img src="http://ww1.sinaimg.cn/mw690/005O8ntygy1g0qvl5dc5sj30ps0ceq7o.jpg" width="80%"/>
+</div></p>
+
+<h3 id="params">Params</h3>
+
+<p>CNN中当卷积核size确定之后，控制输出<code>feature_maps</code>的<code>shape</code>的有三个超参数，分别是<code>depth</code>，<code>stide</code>，<code>zero-padding</code>:<br />
+1. 输出<code>feature_maps</code>的<code>depth</code>: 它对应我们想要使用的卷积核的数量，每个卷积核都在输入中学习寻找不同的特征。例如，如果第一卷积层将原始图像作为输入，则沿着深度维度的不同神经元可以在存在各种定向边缘或颜色、斑点的情况下激活。<br />
+2. 滑动卷积核的步幅<code>stride</code>: 当<code>stride=1</code>时，每次移动卷积核一个像素；当<code>stride=2</code>时，一次跳跃2个像素（实践中很少用<code>stride&gt;=3</code>，会丢失信息），这会导致输出的size变小。<br />
+3. <code>zero-padding</code>：有时在边界周围用零填充会很方便，它允许我们控制输出<code>feature_map</code>的空间大小，最常见的是，我们需要保持输出和输入的大小一样。就像上面第二张图中的那样，在输入的<code>feature_map</code>四周补上0。通常，当步幅<code>stride=1</code>时，将零填充设置为<code>P = (F-1)/2</code>，例如<code>(F,P)=(3,1),(5,2),(7,3)</code>。</p>
+
+<h3 id="pytorch-api">Pytorch API</h3>
+
+<p>这里以<a href="https://pytorch.org/docs/stable/nn.html#conv2d"><code>torch.nn.Conv2d</code></a>为例。</p>
+
+<pre><code class="language-python">class torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)
+</code></pre>
+
+<p>当输入是$(N, C_{in}, H, W)$时，输出$(N, C_{out}, H_{out}, W_{out})$可以用以下公式计算得到。
+<img src="http://ww1.sinaimg.cn/mw690/005O8ntygy1g0qvr3wnscj30r403p3yu.jpg" alt="Conv_Opt" /><br />
+其中 ★ 表示相关卷积操作，$N$表示 batch size, $C$ 表示channels（通道）数量，即<code>feature_map</code> 的数量，$H, W$表示<code>feature_map</code>的像素高度和宽度。</p>
+
+<p>在理解了上小节的Params后，我们就不难理解API中参数的含义了。这篇<a href="https://www.aiuai.cn/aifarm618.html">文章</a>将API解读得很详细（尤其是对<code>group</code>参数的解释）。</p>
+
+<p>值得一提的是API中<code>kernel_size</code>,<code>stride</code>,<code>padding</code>参数既可以是一个单一的整数（表示横行和纵向移动相同的单位长度），也可以是由两个整数构成的<code>tuple</code>对象。如果是两个整数，那么运算的时候，横向步长为第一个参数，第二个参数是纵向步长。</p>
+
+<p>现在回到文章最开头提的问题，输入的形状是$(N, C_{in}, H, W)$，输出的形状是$(N, C_{out}, H_{out}, W_{out})$，它们之间的关系可以由<code>kernel_size</code>,<code>stride</code>,<code>padding</code>表达。假设我们不考虑<code>PyTorch</code>文档中的<code>dilation</code>参数，我们可以得到如下的关系式：<br />
+$$ H_{out} = [\frac{H_{in} + 2 \times padding[0] - (\text{kernel_size}[0] - 1) - 1}{stride[0]} + 1] $$
+$$ W_{out} = [\frac{W_{in} + 2 \times padding[1] - (\text{kernel_size}[1] - 1) - 1}{stride[1]} + 1] $$<br />
+看到这个公式，我们就不难理解上面的如何保持$H_{out},H_{in}$尺寸相同了。一般情况下，我们设置<code>stride=1</code>，那么就有：<br />
+$$ 2 \times padding[0] = \text{kernel_size}[0] - 1 $$
+所以，以后就可以根据这个公式灵活得到与<code>kernel_size</code>对应的<code>padding</code>了。常用的组合有$(k,p) = (3, 1), (5, 2), (7, 3)$。</p>
+
+<p>我们查看</p>
+
+<h3 id="numpy-implementation">Numpy Implementation</h3>
+
+<p>本小结，我们尝试使用<code>Numpy</code>来实现卷积运算，实现上面图中的运算，并将结果和调用<code>PyTorch</code>的<code>API</code>的结果进行对比验证。</p>
+
+<h4 id="simple-convolution">Simple Convolution</h4>
+
+<p>首先，实现一个最基本的卷积过程，这个卷积运算是单通道输入、单通道输出的，用作卷积的最基础的运算模块。为了方便起见，这里我们设定<code>stride=1</code>。</p>
+
+<pre><code class="language-python">import numpy as np
+def baseConv(feature_map, kernel):
+    '''
+    Args:
+        feature_map: [H, W]
+        kernel: [k, k]
+    Returns:
+        out: [H, W]
+    '''
+    h, w = feature_map.shape
+    k, _ = kernel.shape
+    # padding
+    p = int(k / 2)
+    # add zeors padding
+    feature_map_padding = np.zeros([h + p * 2, w + p * 2])
+    feature_map_padding[p:h + p, p:w + p] = feature_map
+
+    result = np.zeros([h, w])
+    for i in range(h):
+        for j in range(w):
+            # region of interest
+            roi = feature_map_padding[i:i + k, j:j + k]
+            result[i][j] = np.sum(roi * kernel)
+    return result
+</code></pre>
+
+<h4 id="conv2d">Conv2d</h4>
+
+<p>以上只是最简单版本的单通道输入、单通道输出的卷积过程。然而，我们在实际运算的过程中用到的都是多通道输入、多通道输入的卷积。在上述模块的基础上，我们可以很容易地实现多通道输入多通道输入的卷积运算过程。只需要使用两个for循环，遍历每一个通道的输入和每一个通道的输出即可。如下所示。</p>
+
+<pre><code class="language-python">def conv2d(input, weights):
+    '''
+    Args:
+        input: [C_in, H, W]
+        weights: [C_out, K, K]
+    Returns:
+        out: [C_out, H, W]
+    '''
+    in_channel, h, w = input.shape
+    out_channel, *_  = weights.shape
+    
+    output = np.zeros( [out_channel, h, w] )
+    for i in range(out_channel):
+        weight = weights[i]
+        for j in range(in_channel):
+            feature_map = input[j]
+            kernel      = weight[j]
+            output[i]  += baseConv(feature_map, kernel)
+    return output
+</code></pre>
+
+<h4 id="test">Test</h4>
+
+<p>写好函数后，我们使用上面图片里的数据来验证一下程序运算结果的正确性。</p>
+
+<pre><code class="language-python">input_data=[   [[1,0,1,2,1],
+               [0,2,1,0,1],
+               [1,1,0,2,0],
+               [2,2,1,1,0],
+               [2,0,1,2,0]],
+               [[2,0,2,1,1],
+                [0,1,0,0,2],
+                [1,0,0,2,1],
+                [1,1,2,1,0],
+                [1,0,1,1,1]],]
+weights_data=[[ [[ 1, 0, 1],
+                 [-1, 1, 0],
+                 [ 0,-1, 0]],
+                [[-1, 0, 1],
+                 [ 0, 0, 1],
+                 [ 1, 1, 1]] 
+           ]]
+# change list into numpy array
+input   = np.array(input_data)
+weights = np.array(weights_data)
+# show the result
+print(conv2d(input, weights))
+
+#[[[ 2.  0.  2.  4.  0.]
+#  [ 1.  4.  4.  3.  5.]
+#  [ 4.  3.  5.  9. -1.]
+#  [ 3.  4.  6.  2.  1.]
+#  [ 5.  3.  5.  1. -2.]]]
+</code></pre>
+
+<p>下面我们再用<code>Pytorch</code>里面的<a href="https://pytorch.org/docs/stable/nn.html#id21"><code>torch.nn.functional.conv2d</code></a>来验证一下。</p>
+
+<pre><code class="language-python">import torch.nn.functional as F
+input = torch.tensor(input_data).unsqueeze(0).float()
+weights = torch.tensor(weights_data).float()
+result = F.conv2d(input, weights, padding=1)
+# tensor([[[[ 2.,  0.,  2.,  4.,  0.],
+#          [ 1.,  4.,  4.,  3.,  5.],
+#          [ 4.,  3.,  5.,  9., -1.],
+#          [ 3.,  4.,  6.,  2.,  1.],
+#          [ 5.,  3.,  5.,  1., -2.]]]])
+</code></pre>
+
+<p>验证完毕。</p>
+
+<h3 id="pytorch-source-code">PyTorch Source Code</h3>
+
+<p>现在我们来追本溯源，看看<code>PyTorch</code>中是如何实现<code>conv</code>操作的。<br />
+当我们在<code>PyCharm</code>中追也只能看到<code>nn.Conv2d</code>调用了<code>nn.functional.conv2d</code>，再往下就没有了。<br />
+<a href="https://stackoverflow.com/questions/53927358/pytorch-where-is-conv1d-implemented">Stackoverflow</a>的这个回答提醒了我。<br />
+<img src="http://ww1.sinaimg.cn/large/005O8ntygy1g0r7izbm4bj30kk074tb0.jpg"/><br />
+我们如果是依赖于GPU，那么要去<code>cudnn</code>里找，但是<code>cudnn</code>是闭源的，看不到底层的实现。但是对于CPU版本，我们知道它的底层还是用<code>C,C++</code>来实现的，所以从这方面着手，找了<code>Github</code>里<code>pytorch.torch.csrc</code>，依然没有哦。<br />
+所幸的是，我找到了这个<a href="https://github.com/pytorch/pytorch/tree/master/aten/src"><code>aten</code></a>。<code>src</code>里的说明文件表明这是<code>PyTorch</code>的底层<code>tensor</code>库。我们要找CPU版本的，所以直接在<code>TH=TorcH</code>里寻找，终于找到了<a href="https://github.com/pytorch/pytorch/blob/master/aten/src/TH/generic/THTensorConv.cpp">这份实现</a>。我们截取部分代码分析一下：</p>
+
+<pre><code class="language-cpp">/*
+  2D Input, 2D kernel  : convolve given image with the given kernel.
+*/
+void THTensor_(validXCorr2Dptr)(scalar_t *r_,
+                                       scalar_t alpha,
+                                       scalar_t *t_, int64_t ir, int64_t ic,
+                                       scalar_t *k_, int64_t kr, int64_t kc,
+                                       int64_t sr, int64_t sc)
+{
+  int64_t or_ = (ir - kr) / sr + 1;
+  int64_t oc = (ic - kc) / sc + 1;
+
+  int64_t xx, yy, kx, ky;
+
+  if ((sc != 1) || (oc &lt; 4))  {
+    /* regular convolution */
+    for(yy = 0; yy &lt; or_; yy++) {
+      for(xx = 0; xx &lt; oc; xx++) {
+        /* Dot product in two dimensions... (between input image and the mask) */
+        scalar_t *pi_ = t_ + yy*sr*ic + xx*sc;
+        scalar_t *pw_ = k_;
+        scalar_t sum = 0;
+        for(ky = 0; ky &lt; kr; ky++) {
+          for(kx = 0; kx &lt; kc; kx++) {
+            sum += pi_[kx]*pw_[kx];
+          }
+          pi_ += ic; /* next input line */
+          pw_ += kc; /* next mask line */
+        }
+        /* Update output */
+        *r_++ += alpha*sum;
+      }
+    }
+
+  } else {
+    /* SSE-based convolution */
+    ...
+  }
+}
+</code></pre>
+
+<p>首先它的数据类型，都是在<code>C++</code>数据类型后面加了<code>_t</code>，应该是表示这个<code>Tensor</code>类型基本类型。<br />
+接着是他的参数，<code>ir, ic</code>表示输入的<code>row</code>和<code>col</code>，同理<code>kr, kc</code>，<code>sr, sc</code>分别表示<code>kernel</code>和<code>stride</code>的像素长度。<br />
+函数体前两行先定义了输出的<code>row</code>和<code>col</code>；接下来对<code>sc</code>和<code>oc</code>的判断是为了使用<a href="https://www.wikiwand.com/en/Streaming_SIMD_Extensions"><code>SSE-based convolution</code></a>，我们选择忽略，直接看<code>if</code>的代码块内容，发现外层两个循环和我们上面实现的<code>baseConv</code>里的循环<code>h,w</code>一样，为了计算输出的每个像素点的最终值；而内层的两个循环则是做卷积操作得到新的像素值，我们则是利用了<code>numpy</code>的计算便利性；<code>*r_++ += alpha*sum</code>左边<code>*r</code>表示的是返回数据的引用，通过自增改变对应地址的元素，右边的<code>alpha</code>应该是卷积的权重。</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>至此，我们发现我们的实现和<code>PyTorch</code>的底层实现其实是相同的。</p>
+
+<p><br></p>
+
+<div class="footnotes"><ol>  
+    <li class="footnote" id="fn:1">
+        <p>多种卷积动图请见--> <a href="https://github.com/vdumoulin/conv_arithmetic" target="_blank">Github</a><a href="#fnref:1" title="answer"> </a><p>
+    </li>
+</ol></div>
+
+<script type="text/javascript">
+    $.bigfoot();
+</script>
+<script type="text/javascript">
+    var bigfoot = $.bigfoot({
+        deleteOnUnhover: false,
+        preventPageScroll: false,
+        hoverDelay: 250,
+    });
+</script>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/python">python</a>
+                            
+                                <a class="badge badge-primary" href="/tags/pytorch">pytorch</a>
+                            
+                                <a class="badge badge-primary" href="/tags/code">code</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/lambda_function_in_python/">Lambda Function in Python &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

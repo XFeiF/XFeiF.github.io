@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.x-fei.me/posts/ml/convolution_in_pytorch/</loc>
+    <lastmod>2019-03-03T19:42:33+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.x-fei.me/posts/lambda_function_in_python/</loc>
     <lastmod>2019-03-01T09:34:30+08:00</lastmod>
   </url>
@@ -164,7 +169,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/</loc>
-    <lastmod>2019-03-01T09:34:30+08:00</lastmod>
+    <lastmod>2019-03-03T19:42:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -196,7 +201,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/tags/code/</loc>
-    <lastmod>2018-12-18T11:23:25+08:00</lastmod>
+    <lastmod>2019-03-03T19:42:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -266,7 +271,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/categories/machine-learning/</loc>
-    <lastmod>2018-12-26T00:47:04+08:00</lastmod>
+    <lastmod>2019-03-03T19:42:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -296,13 +301,13 @@
   
   <url>
     <loc>https://blog.x-fei.me/posts/</loc>
-    <lastmod>2019-03-01T09:34:30+08:00</lastmod>
+    <lastmod>2019-03-03T19:42:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/tags/python/</loc>
-    <lastmod>2019-03-01T09:34:30+08:00</lastmod>
+    <lastmod>2019-03-03T19:42:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -314,7 +319,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/tags/pytorch/</loc>
-    <lastmod>2018-10-16T00:53:13+08:00</lastmod>
+    <lastmod>2019-03-03T19:42:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
