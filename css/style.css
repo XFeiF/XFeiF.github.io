@@ -967,6 +967,10 @@ pre {
     background: rgba(208, 211, 248, 0.15);
 }
 
+.inner-content ul {
+    font-size: 1.3rem;
+}
+
 .archive-outer .archive-main {
     display: inline;
     float: left;

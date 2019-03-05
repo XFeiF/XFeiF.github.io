@@ -97,10 +97,10 @@
     
     <item>
       <title>SVM(Part II)</title>
-      <link>https://blog.x-fei.me/posts/svm2/</link>
+      <link>https://blog.x-fei.me/posts/ml/svm2/</link>
       <pubDate>Wed, 26 Dec 2018 00:47:04 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/svm2/</guid>
+      <guid>https://blog.x-fei.me/posts/ml/svm2/</guid>
       <description>&lt;p&gt;About These  Articles：&lt;/p&gt;
 
 &lt;p&gt;SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。&lt;/p&gt;</description>
@@ -108,10 +108,10 @@
     
     <item>
       <title>SVM(Part I)</title>
-      <link>https://blog.x-fei.me/posts/svm/</link>
+      <link>https://blog.x-fei.me/posts/ml/svm/</link>
       <pubDate>Sun, 23 Dec 2018 00:21:34 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/svm/</guid>
+      <guid>https://blog.x-fei.me/posts/ml/svm/</guid>
       <description>&lt;p&gt;About These  Articles：&lt;/p&gt;
 
 &lt;p&gt;SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。(由于Markdown和MathJax的兼容问题，很多公式没有渲染出来，可以直接看手写推导过程。)&lt;/p&gt;</description>
