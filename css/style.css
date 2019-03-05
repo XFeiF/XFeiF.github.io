@@ -1415,7 +1415,7 @@ section#timeline article:nth-child(5) div.inner h2:after {
         display: none;
     }
     .post-card .post-container {
-        padding: 20px 30px;
+        padding: 20px 10px;
     }
     section#timeline {
         width: 100%;
@@ -1442,7 +1442,10 @@ section#timeline article:nth-child(5) div.inner h2:after {
         margin: 0 2rem;
     }
     .post-card {
-        margin: 0 -60px;
+        margin: 0;
+    }
+    #main {
+        margin: -10px 40px auto;
     }
 }
 
