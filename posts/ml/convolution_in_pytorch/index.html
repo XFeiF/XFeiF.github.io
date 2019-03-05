@@ -23,42 +23,67 @@
 		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
-		<script type="text/javascript"
-        async
-        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[\[','\]\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-});
+		<script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            displayMath: [
+                ['$$', '$$'],
+                ['\[\[', '\]\]']
+            ],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
 
-MathJax.Hub.Queue(function() {
-    
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(),
+            i;
+        for (i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    MathJax.Hub.Config({
+        CommonHTML: {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+    });
 </script>
 
 <style>
-code.has-jax {
-    font: inherit;
-    font-size: 100%;
-    background: inherit;
-    border: inherit;
-    color: #515151;
-}
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
 </style>
-
 	</head>
 
 <script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
@@ -155,9 +180,9 @@ style="display: table; background-image: url(/bg/conv.png);">
 <p>卷积是当下流行的计算机视觉模型架构的最基础的构造单元，从分类模型（如ResNet）到对抗生成网络（如DC-GAN），再到目标检测架构（以Mask R-CNN为代表）以及其他的大大小小的模型，卷积操作可以完成大部分计算繁琐的工作。</p>
 
 <p>对与卷积的理解与解释有很多已有的优秀博文，附上<strong>传送门</strong>，本文不多追述。<br />
-- <a href="https://www.wikiwand.com/en/Convolution">Wiki: https://www.wikiwand.com/en/Convolution</a><br />
-- <a href="https://zhuanlan.zhihu.com/p/30994790">什么是卷积 https://www.zhihu.com/question/22298352/answer/228543288</a><br />
-- <a href="http://cs231n.github.io/convolutional-networks/#conv">CS231n http://cs231n.github.io/convolutional-networks/#conv</a></p>
+- <a href="https://www.wikiwand.com/en/Convolution">Wiki</a><br />
+- <a href="https://zhuanlan.zhihu.com/p/30994790">什么是卷积</a><br />
+- <a href="http://cs231n.github.io/convolutional-networks/#conv">CS231n</a></p>
 
 <p>卷积运算表面上看就是，<strong>在滤波器和输入数据的局部区域间做点积</strong>，下面的GIF用滑窗的方式表明了其是如何操作的<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup>。
 <div align=center>

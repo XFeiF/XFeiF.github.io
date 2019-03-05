@@ -1442,10 +1442,14 @@ section#timeline article:nth-child(5) div.inner h2:after {
         margin: 0 2rem;
     }
     .post-card {
-        margin: 0 -60px;
+        margin: 0 auto;
     }
     #main {
         margin: -10px 0 auto;
+    }
+    #rocket {
+        right: 12px;
+        bottom: 20px;
     }
 }
 
