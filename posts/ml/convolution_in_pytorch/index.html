@@ -194,8 +194,6 @@ $$ W_{out} = [\frac{W_{in} + 2 \times padding[1] - (\text{kernel_size}[1] - 1) -
 $$ 2 \times padding[0] = \text{kernel_size}[0] - 1 $$
 所以，以后就可以根据这个公式灵活得到与<code>kernel_size</code>对应的<code>padding</code>了。常用的组合有$(k,p) = (3, 1), (5, 2), (7, 3)$。</p>
 
-<p>我们查看</p>
-
 <h3 id="numpy-implementation">Numpy Implementation</h3>
 
 <p>本小结，我们尝试使用<code>Numpy</code>来实现卷积运算，实现上面图中的运算，并将结果和调用<code>PyTorch</code>的<code>API</code>的结果进行对比验证。</p>
