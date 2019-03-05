@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.x-fei.me/timelines/180%E6%97%A9%E8%B5%B7%E6%89%93%E5%8D%A1/</loc>
+    <lastmod>2019-03-05T09:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.x-fei.me/posts/ml/convolution_in_pytorch/</loc>
     <lastmod>2019-03-03T19:42:33+08:00</lastmod>
   </url>
@@ -169,7 +174,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/</loc>
-    <lastmod>2019-03-03T19:42:33+08:00</lastmod>
+    <lastmod>2019-03-05T09:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -355,13 +360,13 @@
   
   <url>
     <loc>https://blog.x-fei.me/categories/timeline/</loc>
-    <lastmod>2019-01-31T22:16:50+08:00</lastmod>
+    <lastmod>2019-03-05T09:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/timelines/</loc>
-    <lastmod>2019-01-31T22:16:50+08:00</lastmod>
+    <lastmod>2019-03-05T09:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

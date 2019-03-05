@@ -5,10 +5,21 @@
     <link>https://blog.x-fei.me/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 03 Mar 2019 19:42:33 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 Mar 2019 09:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>180天早起打卡</title>
+      <link>https://blog.x-fei.me/timelines/180%E6%97%A9%E8%B5%B7%E6%89%93%E5%8D%A1/</link>
+      <pubDate>Tue, 05 Mar 2019 09:00:00 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/timelines/180%E6%97%A9%E8%B5%B7%E6%89%93%E5%8D%A1/</guid>
+      <description> 180天早起打卡，即6-8点之间起床！ 每周日下午汇总更新一次～ 
+ 5th Mar 2019  坚持5天了！ 一个好的开始！以及，有了更多自己的时间可以支配！
+   </description>
+    </item>
     
     <item>
       <title>Convolution&#39;s Numpy and Pytorch implementation</title>
