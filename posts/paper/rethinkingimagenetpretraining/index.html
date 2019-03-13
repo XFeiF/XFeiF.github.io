@@ -7,7 +7,7 @@
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
 		<meta name="generator" content="Hugo 0.53" />
-		<title>Python快速创建二维数组 [[0]*n]*n ？ &middot; </title>
+		<title>Paper Notes[1]: Rethinking ImageNet Pre-training &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
 		
@@ -104,7 +104,7 @@
 
 
 <header id="header" class="blog-background banner-mask lazy no-cover"
-style="display: table; background-image: url(/bg/python-2d.png);">
+style="display: table; background-image: url(/bg/rethinkImageNetPretraining.png);">
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
@@ -148,15 +148,15 @@ style="display: table; background-image: url(/bg/python-2d.png);">
                 <div class="post-container">
                     <div class="post-header">
                         <div class="meta">
-                            <h1 id="post-title">Python快速创建二维数组 [[0]*n]*n ？</h1>
+                            <h1 id="post-title">Paper Notes[1]: Rethinking ImageNet Pre-training</h1>
                             
                             
-                                <time datetime="2018-12-18">Dec 18, 2018</time>
+                                <time datetime="2018-12-11">Dec 11, 2018</time>
                             
                             <span class="categories">
                                  on 
     
-        <a class="badge badge-primary" href="/categories/python">python</a>
+        <a class="badge badge-primary" href="/categories/paper">Paper</a>
     
 
 
@@ -169,95 +169,50 @@ style="display: table; background-image: url(/bg/python-2d.png);">
 
                         </div>
                         <div class="inner-content">
-                            <p>早先在刷Leetcode的时候，遇到了一个莫名的<code>bug</code>，为什么二维数组的元素没有按自己的预期改变呢？<br />
-当我们这样定义一个二维数组的时候，</p>
+                            <p>论文笔记：<br />
+Rethinking ImageNet Pre-training</p>
 
-<pre><code class="language-python">n = 3
-res = [[0] * n] * n
-</code></pre>
+<h3 id="take-home-message">Take Home Message</h3>
 
-<p>发生了什么？</p>
+<blockquote>
+<ol>
+<li>不大幅度修改模型结构也可以在目标任务上随机初始化参数进行训练。<br /></li>
+<li>随机初始化参数训练需要更多的迭代次数来充分收敛。<br /></li>
+<li>随机初始化参数训练可以达到和预训练相匹配的模型性能，即使是只有10k的COCO数据作训练集。<br /></li>
+<li>ImageNet的预训练加快了模型在新任务上的收敛速度。<br /></li>
+<li>排除数据集非常小的情况，ImageNet的预训练并不一定有助于减少过拟合现象的发生。<br /></li>
+<li>相较于分类，如果目标任务对定位更加敏感，那么ImageNet预训练对模型的帮助将变得更小。<br /></li>
+</ol>
+</blockquote>
 
-<p><code>[0] * n</code> 创建了一个有n个0的<code>list</code>。<br />
-<code>[[0] * n] * n</code> 创建了一个包含n个同一个<code>list</code>的<code>reference</code>。</p>
+<h3 id="personal-opinion">Personal opinion</h3>
 
-<h3 id="explanation">Explanation</h3>
+<p>就这样的‘发现’而言，更多的是用实打实的验证过去几年里大家对于<code>pre-train</code>的一些直觉感受。</p>
 
-<p>我们利用<code>python</code>的<code>id</code>方法查看对象在内存中的地址。</p>
+<p>文末的<strong>Rethink</strong>：<br />
+第一点是对未来的展望，如果有更多的目标数据和计算资源，不要忘记了针对目标任务训练，ImageNet预训练并不是必须的。言外之意，就是第二点，当下缺少这两个条件，ImageNet预训练是有用的，可以帮助更快收敛，训练成本低。<br />
+第三点，与第一点还是呼应的，需要大数据，为未来的到来做积累量。<br />
+第四点比较有意思，追求通用的模型性能。所有的模型都是想要学到数据的通用特征表征。所以我们更需要注意评估预训练的特征，预训练学习到的特征是不是和目标任务相契合，如果不契合，用随机初始化可能得到比预训练更出色的表现。</p>
 
-<h4 id="1d-array">1D Array</h4>
-
-<p>初始化一个指定大小的<code>list</code>很简单：</p>
-
-<pre><code class="language-python">&gt;&gt;&gt; zeros = [0] * 3
-&gt;&gt;&gt; zeros
-[0, 0, 0]
-&gt;&gt;&gt; id(zeros)
-4602255816
-&gt;&gt;&gt; id(zeros[0])
-4559308816
-&gt;&gt;&gt; id(0)
-4559308816
-</code></pre>
-
-<p>可以看到这里创建一维数组<code>zeros</code>的时候，内部复制了3次0，所以其本身具有一个内存地址，元素的地址则和<code>0</code>的地址相同，和我们预期的一样。</p>
-
-<h4 id="2d-array-wrong">2D Array (Wrong)</h4>
-
-<p>利用<code>[[0]*n]*n</code> 创建一个二维数组。</p>
-
-<pre><code class="language-python">&gt;&gt;&gt; zeros2d = [[0]*3]*3
-&gt;&gt;&gt; zeros2d
-[[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-&gt;&gt;&gt; zeros2d[0][1] = 1
- [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
-</code></pre>
-
-<p>这??? 只改变一个元素的值，为什么变了三个，还是相同位置的？<br />
-我们看一下它们的地址。</p>
-
-<pre><code class="language-python">&gt;&gt;&gt; id(zeros2d)
-4602725512
-&gt;&gt;&gt; print([id(ele) for ele in zeros2d])
-[4600869448, 4600869448, 4600869448]
-</code></pre>
-
-<p>内部的三个一维数组其实是<strong>一个</strong>。</p>
-
-<p><strong>警告：</strong><br />
-这里Python对外部的<code>list</code>用了相同的内部<code>list</code>的引用，即本文开篇提到的。<br />
-其实从元素的地址看来创建一维和二维都一样，都是复制内部对象的引用。</p>
-
-<h4 id="2d-array-right">2D Array (right)</h4>
-
-<p>知道了问题所在，那么正确的使用方式应该有如下形式：</p>
-
-<pre><code class="language-python">zeros2d = [[0] * 3 for _ in range(3)]
-</code></pre>
-
-<h3 id="references">References</h3>
-
-<p><a href="https://en.wikibooks.org/wiki/Python_Programming/Lists#List_creation_shortcuts">Wiki</a><br />
-<a href="https://www.quora.com/Whats-wrong-in-declaring-a-2d-list-in-python-like-this-0-%2An-%2An">Quora</a></p>
+<p>当下还是先跟紧‘潮流’，先造好自己的小船。
+所以AI+医学图像，目前Pretrain标配的现状什么时候能结束？  ：）</p>
                         </div>
                     </div>
                     
                     <div class="post-tags">
                         <span># Tags: </span>
                             
-                                <a class="badge badge-primary" href="/tags/code">code</a>
-                            
-                                <a class="badge badge-primary" href="/tags/python">python</a>
+                                <a class="badge badge-primary" href="/tags/paper">Paper</a>
                             
                     </div>
                     
                     <nav class="post-related">
                             
 
-    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/10-12%E6%9C%88/"> &laquo; 10-12月</a>
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/python-caveat-about-list-creation-shortcuts/"> &laquo; Python快速创建二维数组 [[0]*n]*n ？</a>
 
 
-    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/paper/rethinkingimagenetpretraining/">Paper Notes[1]: Rethinking ImageNet Pre-training &raquo;</a>
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/8-puzzles-algorithm/">8-puzzles algorithm &raquo;</a>
 
 
                     </nav>

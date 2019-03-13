@@ -5,10 +5,21 @@
     <link>https://blog.x-fei.me/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 05 Mar 2019 09:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 Mar 2019 10:49:24 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Paper Notes[2]: ResNet</title>
+      <link>https://blog.x-fei.me/posts/paper/resnet/</link>
+      <pubDate>Wed, 06 Mar 2019 10:49:24 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/paper/resnet/</guid>
+      <description>&lt;p&gt;ResNet的提出是为了解决梯度消失问题吗？&lt;br /&gt;
+残差思想是什么？&lt;br /&gt;
+本文简单回顾一下&lt;code&gt;ResNet&lt;/code&gt;，重点理解其中的残差学习思想。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>180天早起打卡</title>
@@ -31,7 +42,8 @@
 本文主要讲解并探究卷积实现。&lt;br /&gt;
 首先简单聊一下卷积操作，介绍&lt;code&gt;Pytorch&lt;/code&gt;中卷积的&lt;code&gt;API&lt;/code&gt;；&lt;br /&gt;
 接着我们自己用&lt;code&gt;python&lt;/code&gt;实现简单卷积，并与&lt;code&gt;API&lt;/code&gt;调用结果进行对比；&lt;br /&gt;
-之后我们进一步去了解&lt;code&gt;Pytorch&lt;/code&gt;中卷积的实现源码。&lt;/p&gt;</description>
+之后我们进一步去了解&lt;code&gt;Pytorch&lt;/code&gt;中卷积的实现源码。&lt;br /&gt;
+「更新」，&lt;code&gt;element-width&lt;/code&gt;卷积的实现。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -146,10 +158,10 @@ res = [[0] * n] * n
     
     <item>
       <title>Paper Notes[1]: Rethinking ImageNet Pre-training</title>
-      <link>https://blog.x-fei.me/posts/rethinkingimagenetpretraining/</link>
+      <link>https://blog.x-fei.me/posts/paper/rethinkingimagenetpretraining/</link>
       <pubDate>Tue, 11 Dec 2018 11:23:25 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/rethinkingimagenetpretraining/</guid>
+      <guid>https://blog.x-fei.me/posts/paper/rethinkingimagenetpretraining/</guid>
       <description>&lt;p&gt;论文笔记：&lt;br /&gt;
 Rethinking ImageNet Pre-training&lt;/p&gt;
 
@@ -183,10 +195,10 @@ Given any randomly generated start state and a goal state shown below, implement
     
     <item>
       <title>GD &amp; SGD 理解与二维模拟</title>
-      <link>https://blog.x-fei.me/posts/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
+      <link>https://blog.x-fei.me/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
       <pubDate>Wed, 10 Oct 2018 21:12:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
+      <guid>https://blog.x-fei.me/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
       <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 2&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;

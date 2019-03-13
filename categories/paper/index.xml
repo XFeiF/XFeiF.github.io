@@ -5,17 +5,28 @@
     <link>https://blog.x-fei.me/categories/paper/</link>
     <description>Recent content in Paper on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 11 Dec 2018 11:23:25 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 Mar 2019 10:49:24 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/categories/paper/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Paper Notes[2]: ResNet</title>
+      <link>https://blog.x-fei.me/posts/paper/resnet/</link>
+      <pubDate>Wed, 06 Mar 2019 10:49:24 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/paper/resnet/</guid>
+      <description>&lt;p&gt;ResNet的提出是为了解决梯度消失问题吗？&lt;br /&gt;
+残差思想是什么？&lt;br /&gt;
+本文简单回顾一下&lt;code&gt;ResNet&lt;/code&gt;，重点理解其中的残差学习思想。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Paper Notes[1]: Rethinking ImageNet Pre-training</title>
-      <link>https://blog.x-fei.me/posts/rethinkingimagenetpretraining/</link>
+      <link>https://blog.x-fei.me/posts/paper/rethinkingimagenetpretraining/</link>
       <pubDate>Tue, 11 Dec 2018 11:23:25 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/rethinkingimagenetpretraining/</guid>
+      <guid>https://blog.x-fei.me/posts/paper/rethinkingimagenetpretraining/</guid>
       <description>&lt;p&gt;论文笔记：&lt;br /&gt;
 Rethinking ImageNet Pre-training&lt;/p&gt;
 

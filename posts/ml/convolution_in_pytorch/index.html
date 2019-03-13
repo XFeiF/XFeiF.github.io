@@ -160,7 +160,7 @@ style="display: table; background-image: url(/bg/conv.png);">
     
 
 
-                            </span> - 3 min read.
+                            </span> - 4 min read.
 
                         </div>
                     </div>
@@ -173,7 +173,8 @@ style="display: table; background-image: url(/bg/conv.png);">
 本文主要讲解并探究卷积实现。<br />
 首先简单聊一下卷积操作，介绍<code>Pytorch</code>中卷积的<code>API</code>；<br />
 接着我们自己用<code>python</code>实现简单卷积，并与<code>API</code>调用结果进行对比；<br />
-之后我们进一步去了解<code>Pytorch</code>中卷积的实现源码。</p>
+之后我们进一步去了解<code>Pytorch</code>中卷积的实现源码。<br />
+「更新」，<code>element-width</code>卷积的实现。</p>
 
 <h3 id="brief-introduction">Brief Introduction</h3>
 
@@ -381,6 +382,19 @@ void THTensor_(validXCorr2Dptr)(scalar_t *r_,
 接着是他的参数，<code>ir, ic</code>表示输入的<code>row</code>和<code>col</code>，同理<code>kr, kc</code>，<code>sr, sc</code>分别表示<code>kernel</code>和<code>stride</code>的像素长度。<br />
 函数体前两行先定义了输出的<code>row</code>和<code>col</code>；接下来对<code>sc</code>和<code>oc</code>的判断是为了使用<a href="https://www.wikiwand.com/en/Streaming_SIMD_Extensions"><code>SSE-based convolution</code></a>，我们选择忽略，直接看<code>if</code>的代码块内容，发现外层两个循环和我们上面实现的<code>baseConv</code>里的循环<code>h,w</code>一样，为了计算输出的每个像素点的最终值；而内层的两个循环则是做卷积操作得到新的像素值，我们则是利用了<code>numpy</code>的计算便利性；<code>*r_++ += alpha*sum</code>左边<code>*r</code>表示的是返回数据的引用，通过自增改变对应地址的元素，右边的<code>alpha</code>应该是卷积的权重。</p>
 
+<h3 id="element-width-convolution">Element Width Convolution</h3>
+
+<p>【2019年3月12日更新】<br />
+上面的讨论中一直忽略了<code>groups</code>这个参数，这个参数的功能还是相当强大的。<br />
+目前我们了解到的卷积都是<code>cross-related</code>的，就是说下一层的每个神经元都有前一层所有神经元的贡献，贡献多少就是需要学习的权值。<br />
+现在有两种情况：<br />
+- 1 假设有些神经元无关，下一层不想要它贡献，即使可以设置其权值为0，但是无法单个冻结。<br />
+- 2 假设我们自定义了一个操作，它实现的是对上一层（<code>[B,C,H,W]</code>）每个<code>feature map</code>（即C个），都分别做操作，做完之后再传到下一层。当然这个操作是不影响反向传播的。<br />
+类似这个时候，我们就可以利用<code>groups</code>参数。它控制着输入和输出之前的连接，隐含条件是输入和输出的通道数量要能被<code>groups</code>整除。<br />
+- 当<code>groups=1</code>时，所有的输入都经过卷积到输出。<br />
+- 当<code>groups=2</code>时，该操作变得等同于并排具有两个卷积层，每个卷积输入通道的一半，并且产生输出通道的一半，并且随后连接。
+- 当<code>groups=in_channels</code>时，每个输入只和它对应的一组卷积（共 $\frac{C_{out}}{C_{in}}$ 个）进行卷积。</p>
+
 <h3 id="summary">Summary</h3>
 
 <p>至此，我们发现我们的实现和<code>PyTorch</code>的底层实现其实是相同的。<br />
@@ -420,6 +434,8 @@ void THTensor_(validXCorr2Dptr)(scalar_t *r_,
                     
                     <nav class="post-related">
                             
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/paper/resnet/"> &laquo; Paper Notes[2]: ResNet</a>
 
 
     <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/lambda_function_in_python/">Lambda Function in Python &raquo;</a>

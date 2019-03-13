@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>GD &amp; SGD 理解与二维模拟 &middot; </title>
+		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
+		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            displayMath: [
+                ['$$', '$$'],
+                ['\[\[', '\]\]']
+            ],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(),
+            i;
+        for (i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    MathJax.Hub.Config({
+        CommonHTML: {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+    });
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="https://blog.x-fei.me/" class="left swing">
+        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+
+
+
+<header id="header" class="blog-background banner-mask lazy no-cover"
+style="display: table; background-image: url(/bg/sgd_good.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="https://blog.x-fei.me/">
+            <h2>凡间 · 角落</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href='https://blog.x-fei.me/'> Home</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/archives'>Archives</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/friends'>Friends</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+
+
+
+
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">GD &amp; SGD 理解与二维模拟</h1>
+                            
+                            
+                                <time datetime="2018-10-10">Oct 10, 2018</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                            </span> - 4 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p><strong><center>Machine Learning Exercise 2</center></strong></p>
+
+<h3 id="实验题目">实验题目</h3>
+
+<ol>
+<li>Generate n = 2,000 points uniformly at random in the two-dimensional unit square. Which point do you expect the centroid to be?<br /></li>
+<li>What objective does the centroid of the points optimize?<br /></li>
+<li>Apply gradient descent (GD) to find the centroid.<br /></li>
+<li>Apply stochastic gradient descent (SGD) to find the centroid. Can you
+say in simple words, what the algorithm is doing?<br /></li>
+</ol>
+
+<h3 id="实验要求">实验要求</h3>
+
+<p>1)编程语言不限。<br />
+2)作业包含一份报告(word 或 pdf 格式)及代码加注释，并打包到.zip，其中 zip 文件的命名格式为学号_姓名。<br />
+3)不允许使用梯度下降相关的库函数。<br />
+4)禁止抄袭。</p>
+
+<h3 id="实验过程及代码">实验过程及代码</h3>
+
+<h4 id="q1">Q1</h4>
+
+<p><strong>Generate n = 2,000 points uniformly at random in the two-dimensional unit square. Which point do you expect the centroid to be?</strong><br />
+在数学和物理学中，平面图形的质心或几何中心是图中所有点的算术平均值；在几何学中，重心时质心的同义词；在天体物理学和天文学中，重心是两个或多个轨道相互环绕的物质的质心。如果物理对象具有均匀的密度，则其质心与其形状的质心相同。<br />
+首先生成2000个分布在0~1范围之间的随机散点，从统计学的角度理解，它们具有均匀的密度，质心是最能代表这群点的点，它到所有点距离之和最小。由于点的生成是随机的，所以期望的点是<code>(0.5, 0.5)</code>。</p>
+
+<p>我们利用如下的代码生成2000个分布在0~1范围之间的随机散点，用蓝色点标出，同时用红点标注我们期望的质心。</p>
+
+<pre><code class="language-py">import numpy as np
+import matplotlib.pyplot as plt  
+
+Sample_num = 2000
+x = np.random.random_sample((Sample_num, ))
+y = np.random.random_sample((Sample_num, ))
+
+plt.figure(figsize=(8, 8))
+plt.plot(x, y, 'b.')
+plt.plot(0.5, 0.5, 'ro')
+</code></pre>
+
+<div align=center>
+<img src="/images/hw2_points.png" width="60%" alt="Sample">
+</div>   
+
+<h4 id="q2">Q2</h4>
+
+<p><strong>What objective does the centroid of the points optimize?</strong><br />
+在*Q1*中我们分析得到，质心是一群点中到其他所有点距离和最小的点，所以我们的目标就是最小化距离之和。<br />
+假设当前点为:<code>C(x,y)</code>，与其他所有点的距离为<code>dist(x,y)</code>。所以优化的目标是：<br />
+<div align=center>
+<img src="/images/dist_func.png" width="60%" alt="optimize_func">
+</div></p>
+
+<p>此时我们可以定义损失函数如下：</p>
+
+<pre><code class="language-py">def cost(c, points):
+    '''
+    params:
+      c: (x,y) 表示待求的质心坐标
+      points: 所有的点
+    return:
+      dist: c到所有点的距离之和
+    '''
+    return sum(sum((c - points) ** 2, axis=1) ** 0.5)
+</code></pre>
+
+<h4 id="q3">Q3</h4>
+
+<p><strong>Apply gradient descent (GD) to find the centroid.</strong></p>
+
+<h5 id="损失函数">损失函数</h5>
+
+<p>根据损失函数<code>cost</code>，求出其在当前点<code>(x, y)</code>两个维度上的梯度<code>(dx, dy)</code>，梯度求解的公式如下：<br />
+<div align=center>
+<img src="/images/grad_dist.png" width="60%" alt="grad">
+</div></p>
+
+<p>其代码如下：</p>
+
+<pre><code class="language-py">def gradient_raw(c, points):
+    '''
+    params:
+      c: (x,y) 表示待求的质心坐标
+      points: 所有的点
+    return:
+      (dx, dy), 在c点时cost在两个维度方向的梯度
+    '''
+    x = points[:, 0]
+    y = points[:, 1]
+    dist = sum((c - points) ** 2, axis=1) ** 0.5
+    dx = sum((c[0] - x) / dist)  #求x偏导数
+    dy = sum((c[1] - y) / dist)  #求y偏导数
+    return np.asarray([dx, dy])
+</code></pre>
+
+<h5 id="gd">GD</h5>
+
+<p>这一步设置一些参数，编写好梯度下降函数。</p>
+
+<pre><code class="language-py">def gradientDescent_raw(points, start=array([1, 1]), theta=0.01, iterations=500, eps=1e-6):
+    '''
+    params:
+      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
+      points: 所有采样点
+      theta: 步长，即学习率，控制步长
+      iterations: 迭代次数
+      eps: 阈值，通过比较前后连续两次的cost差值控制迭代。
+    return:
+      x_route: centroid路径
+      x: 收敛时的centroid
+      i: end iteration, 退出迭代时已经迭代了多少次
+    '''
+    x = start
+    x_route = x
+    pre_cost = cost(x, points) # 初始cost
+    for i in range(iterations):
+        grad = gradient(x, points)
+        x_i = x - theta * grad
+        cur_cost = cost(x_i, points)
+        if abs(pre_cost - cur_cost) &gt; eps: # 前一个cost与当前cost的差大于阈值，可以继续迭代
+            x = x_i
+            pre_cost = cur_cost
+        else:
+            return x_route, x, i+1
+        x_route = vstack((x_route, x))
+    return x_route, x, i+1
+</code></pre>
+
+<h5 id="结果绘图与分析">结果绘图与分析</h5>
+
+<p>编写辅助函数与测试函数。</p>
+
+<pre><code class="language-py">def plotRoute(points, route, c, endIteration):
+    plt.plot(points[:, 0], points[:, 1], 'b,')
+    plt.plot(route[:, 0], route[:, 1], 'r.')
+    plt.plot(route[:, 0], route[:, 1], 'k-')
+    plt.xlabel('c = (%.3f, %.3f), endAt = %d' % (c[0], c[1], endIteration))
+    print(c)
+    plt.show()
+
+def test():
+    x_b, c, i = gradientDescent(points, theta=0.1,, iterations=1000, lr_decay=0.8)
+    plotRoute(points, x_b, c, i)
+</code></pre>
+
+<p>运行上面的程序并绘图。
+<div align=center>
+<img src="/images/gd_2errors.png" width="60%" alt="Error1">
+</div></p>
+
+<p>结果分析：</p>
+
+<p><strong>问题1：不收敛</strong>
+图示路径与最终得到的<code>centroid(x,y)</code>表明达到<strong>最大迭代次数后，没有收敛</strong>，尝试了增大迭代次数到10000，100000之后依然得到的是类似的结果。<br />
+观察发现路径不是一点一点慢慢向中心靠拢，而是在两边很夸张地跳跃，因此问题出在theta，也就是我们熟悉的学习率上。当某一步“跨”的过大，即本次迭代更新后的<code>cur_cost</code>比<code>pre_cost</code>要大的时候，说明我们不是朝着下降的方向在走，此时要调整我们的步伐，迈小一点的步子。因此我们更新我们的梯度下降函数如下。</p>
+
+<pre><code class="language-py">def gradientDescent(points, start=array([1, 1]), theta=0.01, iterations=500, eps=1e-6, lr_decay=0.5):
+    '''
+    params:
+      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
+      points: 所有采样点
+      theta: 步长，即学习率，控制步长
+      iterations: 迭代次数
+      eps: 阈值，通过比较前后连续两次的cost差值控制迭代
+      lr_decay: 步长衰减比例
+    return:
+      x_route: centroid路径
+      x: 收敛时的centroid
+      i: end iteration, 退出迭代时已经迭代了多少次
+    '''
+    x = start
+    x_route = x
+    pre_cost = cost(x, points) # 初始cost
+    for i in range(iterations):
+        grad = gradient(x, points)
+        x_i = x - theta * grad
+        cur_cost = cost(x_i, points)
+        if pre_cost - cur_cost &gt; eps: # 前一个cost与当前cost的差大于阈值，可以继续迭代
+            x = x_i
+            pre_cost = cur_cost
+        elif cur_cost - pre_cost &gt; eps: # 这一步“跨”的过大，调小步长
+            theta = theta * lr_decay
+        else:
+            return x_route, x, i+1
+        x_route = vstack((x_route, x))
+    return x_route, x, i+1
+</code></pre>
+
+<p>再次运行结果绘图。<br />
+<div align=center>
+<img src="/images/hw2_error1.png" width="60%" alt="Error2">
+</div></p>
+
+<p>出现新的问题。
+<strong>问题2:第一步直接“跨”到中心位置附近</strong>
+在<code>gradient_raw</code>函数中，我们得到的梯度不仅包含方向，也包含了在该方向上的长度，这个长度数值可能较大，因此我们将其单位化，即<code>dx</code>和<code>dy</code>分别除以它们的欧式距离。因此更新我们的<code>gradient</code>函数如下。</p>
+
+<pre><code class="language-py">def gradient(c, points):
+    '''
+    params:
+      c: (x,y) 表示待求的质心坐标
+      points: 所有的点
+    return:
+      (dx, dy), 在c点时cost在两个维度方向的梯度
+    '''
+    x = points[:, 0]
+    y = points[:, 1]
+    dist = sum((c - points) ** 2, axis=1) ** 0.5
+    dx = sum((c[0] - x) / dist)  #求x偏导数
+    dy = sum((c[1] - y) / dist)  #求y偏导数
+    s = (dx ** 2 + dy ** 2) ** 0.5 # 欧式距离
+    dx = dx/s
+    dy = dy/s
+    return np.asarray([dx, dy])
+</code></pre>
+
+<p>运行结果绘图。<br />
+<div align=center>
+<img src="/images/gd_good.png" width="60%" alt="GradientDescent">
+</div></p>
+
+<p>图中红色的点(由于比较密集，看起来像线)，表示路径上的点，在稳步向中心靠拢，最终得到的质心也接近理想的质心。至此，完成本部分实验。</p>
+
+<h4 id="q4">Q4</h4>
+
+<p><strong>Apply stochastic gradient descent (SGD) to find the centroid. Can you say in simple words, what the algorithm is doing?</strong></p>
+
+<p>随机梯度下降和梯度下降的区别：<br />
+1. 梯度下降需要所有点都参与梯度更新；随机梯度下降是每次迭代时，随机选取一个点计算梯度。<br />
+2. 梯度下降最终的结果是一般是稳定的，即稳定收敛到某个点；随机梯度下降可能会陷入某个局部最小值。</p>
+
+<p>修改<code>gradient</code>参数，使得迭代时随机选取一个点。</p>
+
+<pre><code class="language-py">def stochasticgradient(c, points):
+    '''
+    params:
+      c: (x,y) 表示待求的质心坐标
+      points: 所有的点
+    return:
+      (dx, dy), 在c点时cost在两个维度方向的梯度
+    '''
+    r = choice(points)
+    dx = (c[0] - r[0]) / sum((c - r) ** 2) ** 0.5 # x偏导
+    dy = (c[1] - r[1]) / sum((c - r) ** 2) ** 0.5  # y偏导
+    s = (dx ** 2 + dy ** 2) ** 0.5
+    dx = dx/s
+    dy = dy/s
+    return array([dx, dy])
+</code></pre>
+
+<p>我们修改<code>gradientDescent</code>函数，在计算梯度的时候调用<code>stochasticgradient</code>方法，这样我们把计算梯度所用的函数作为一个参数，同样传递进去。修改后代码如下：</p>
+
+<pre><code class="language-py">def gd_final(points, gd_method=gradient,start=array([1, 1]), theta=0.01, iterations=500, eps=1e-6, lr_decay=0.5):
+    '''
+    params:
+      gd_method: 迭代的方式，可以在(stochasticgradient, gradient)中选择
+      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
+      points: 所有采样点
+      theta: 步长，即学习率，控制步长
+      iterations: 迭代次数
+      eps: 阈值，通过比较前后连续两次的cost差值控制循环结束。
+    return:
+      x_route: centroid路径
+      x: 收敛时的centroid
+      i: end iteration, 退出迭代时已经迭代了多少次
+    '''
+    x = start
+    x_route = x
+    pre_cost = cost(x, points) # 初始cost
+    for i in range(iterations):
+        grad = gd_method(x, points)
+        x_i = x - theta * grad
+        cur_cost = cost(x_i, points)
+        if pre_cost - cur_cost &gt; eps: # 前一个cost与当前cost的差大于阈值，可以继续迭代
+            x = x_i
+            pre_cost = cur_cost
+        elif cur_cost - pre_cost &gt; eps: # 这一步“跨”的过大，调小步长
+            theta = theta * lr_decay
+        else:
+            return x_route, x, i+1
+        x_route = vstack((x_route, x))
+    return x_route, x, i+1
+</code></pre>
+
+<p>最终得到下图：<br />
+<div align=center>
+<img src="/images/sgd_good.png" width="60%" alt="SGD">
+</div></p>
+
+<p>这张图是在多次调整参数多次运行之后得到结果相对较好的图。 下面两张则是陷入局部最小时的情况。<br />
+<div align=center>
+<img src="/images/sgd_rand.png" width="60%" alt="SGD_rand">
+</div></p>
+
+<p>可以看到，由于是随机选取的点，所以在找最优值的过程是曲折的。但是最终还是会收敛。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/machine-learning">Machine Learning</a>
+                            
+                                <a class="badge badge-primary" href="/tags/code">Code</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/argmax-function-and-its-usage/"> &laquo; axis and argmax function</a>
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/%E4%BD%A0%E4%B9%9F%E6%83%B3%E8%A6%81%E9%87%8D%E6%9D%A5%E5%90%97/">你也想要重来吗 &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>
