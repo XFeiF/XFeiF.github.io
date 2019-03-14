@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>1x1卷积的作用 &middot; </title>
+		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
+		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            displayMath: [
+                ['$$', '$$'],
+                ['\[\[', '\]\]']
+            ],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(),
+            i;
+        for (i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    MathJax.Hub.Config({
+        CommonHTML: {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+    });
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+	</head>
+
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.bootcss.com/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="https://blog.x-fei.me/" class="left swing">
+        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+ 
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://ws1.sinaimg.cn/mw690/005O8ntygy1g1296upb29j30tg0h2ju9.jpg);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="https://blog.x-fei.me/">
+            <h2>F(x) = ?</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href='https://blog.x-fei.me/'> Home</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/archives'>Archives</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/friends'>Friends</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+ 
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">1x1卷积的作用</h1>
+                            
+                            
+                                <time datetime="2019-03-13">Mar 13, 2019</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                            </span> - 1 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p>我们在<code>ResNet</code>深层结构以及<code>Inception</code>中都见过<code>1x1</code>卷积层，或者说<code>bottleneck layer</code>，为什么我们会需要<code>1x1</code>的卷积核呢？<br />
+总的来说<code>1x1</code>卷积可以用作升降维度、减少参数量和计算量、增加非线性特征的作用。</p>
+
+<h3 id="升降维">升降维</h3>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g128nxdc1mj30ko0a53z9.jpg" alt="Conv1x1" /><br />
+如上图所示，<code>feature_map</code>经过<code>1x1</code>卷积后尺度不变，意味着它保存了空间信息。<br />
+同时，输入<code>feature_map</code>有64个，经过32个<code>1x1</code>卷积之后，只有32个了。从这个角度来看，<code>1x1</code>卷积可以用来做降维处理。反之，则可以用来做升维处理。</p>
+
+<h3 id="减少参数量-计算量">减少参数量、计算量</h3>
+
+<p>在CS231n中有关<code>GoogLeNet</code>的内容中，讲到<code>Inception v1</code>的结构。其和<code>naive inception</code>最大的不同就在于其灵活运用了<code>1x1</code>卷积层。</p>
+
+<blockquote>
+<p>前面所说的降维，其实也是减少了参数量、计算量，因为特征图少了，参数也自然跟着就减少，相当于在特征图的通道数上进行卷积，压缩特征图，二次提取特征，使得新特征图的特征表达更佳。</p>
+</blockquote>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g1296uohgoj30wm0d340b.jpg" alt="" /></p>
+
+<p>这个结构存在什么问题呢？就如下图所示，这个结构需要的计算量是非常大的。我们可以来计算一下。（假设我们这里做的卷积都加上了相应的<code>zero-padding</code>，保持尺寸，也便于后续<code>concat</code>）。以<code>3x3</code>卷积为例：输入<code>feature_map</code>的深度为256，大小为<code>28x28</code>，经过192个<code>3x3</code>的卷积，对于单个卷积核而言，它需要滑过所有256个<code>feature_map</code>，需要计算<code>28x28x256x3x3</code>次运算，共192个核，所以结果再乘上192，就得到<code>28x28x256x3x3x192</code>。最后<code>concat</code>到一起，需要<code>854M</code>的计算量，相当大了。</p>
+
+<p><img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g1296uza9yj31430g5jvb.jpg" alt="" /></p>
+
+<p>那引入<code>1x1</code>卷积之后呢，同样的方式，我们计算得到下图：<br />
+<img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g1296uoh0ij312m0g0adv.jpg" alt="" /><br />
+计算量从<code>854M</code>降到了<code>358M</code>。</p>
+
+<h3 id="增加非线性特征">增加非线性特征</h3>
+
+<p>为什么<code>inception</code>结构采用不同大小的卷积核，其实不同大小的卷积核就意味着不同大小的感受野，可以感受到更多的信息，最后拼接意味着不同尺度特征的融合。<br />
+回到最开始的那幅降维的图。
+&gt; 原来的64个channels就可以理解为跨通道线性组合变成了32channels，这就是通道间的信息交互。因为<code>1x1</code>卷积核，可以在保持<code>feature map</code>尺度不变的（即不损失分辨率）的前提下大幅增加非线性特性（利用后接的非线性激活函数），把网络做的很deep，增加非线性特性。</p>
+
+<p><br></p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/machine-learning">Machine Learning</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/paper/resnet/">Paper Notes[2]: ResNet &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>
