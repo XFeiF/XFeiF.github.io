@@ -3,8 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</loc>
+    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.x-fei.me/posts/ml/1x1_convolution/</loc>
-    <lastmod>2019-03-13T17:49:58+08:00</lastmod>
+    <lastmod>2019-03-14T17:49:58+08:00</lastmod>
   </url>
   
   <url>
@@ -184,7 +189,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/</loc>
-    <lastmod>2019-03-13T17:49:58+08:00</lastmod>
+    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -280,13 +285,13 @@
   
   <url>
     <loc>https://blog.x-fei.me/tags/machine-learning/</loc>
-    <lastmod>2019-03-13T17:49:58+08:00</lastmod>
+    <lastmod>2019-03-14T17:49:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/categories/machine-learning/</loc>
-    <lastmod>2019-03-13T17:49:58+08:00</lastmod>
+    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -316,7 +321,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/posts/</loc>
-    <lastmod>2019-03-13T17:49:58+08:00</lastmod>
+    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -334,7 +339,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/tags/pytorch/</loc>
-    <lastmod>2019-03-12T15:42:33+08:00</lastmod>
+    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   

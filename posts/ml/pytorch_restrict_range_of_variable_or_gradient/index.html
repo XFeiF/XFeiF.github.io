@@ -7,7 +7,7 @@
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
 		<meta name="generator" content="Hugo 0.53" />
-		<title>1x1卷积的作用 &middot; </title>
+		<title>PyTorch: Restrict range of variable or gradient during gradient descent &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
 		
@@ -101,7 +101,7 @@
 </div>
 
  
-<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://ws1.sinaimg.cn/mw690/005O8ntygy1g1296upb29j30tg0h2ju9.jpg);">
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://ws1.sinaimg.cn/large/005O8ntygy1g119vk7joqj30ke07cdfo.jpg);">
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
@@ -142,10 +142,10 @@
                 <div class="post-container">
                     <div class="post-header">
                         <div class="meta">
-                            <h1 id="post-title">1x1卷积的作用</h1>
+                            <h1 id="post-title">PyTorch: Restrict range of variable or gradient during gradient descent</h1>
                             
                             
-                                <time datetime="2019-03-14">Mar 14, 2019</time>
+                                <time datetime="2019-03-16">Mar 16, 2019</time>
                             
                             <span class="categories">
                                  on 
@@ -163,43 +163,96 @@
 
                         </div>
                         <div class="inner-content">
-                            <p>我们在<code>ResNet</code>深层结构以及<code>Inception</code>中都见过<code>1x1</code>卷积层，或者说<code>bottleneck layer</code>，为什么我们会需要<code>1x1</code>的卷积核呢？<br />
-总的来说<code>1x1</code>卷积可以用作升降维度、减少参数量和计算量、增加非线性特征的作用。</p>
+                            <p>一般来说，我们对卷积或者全连接层的<code>weights</code>是没有限制的，但是如果我们自定义层的话，有可能会需要对权重或者梯度值进行限制。</p>
 
-<h3 id="升降维">升降维</h3>
+<p>那么在PyTorch里怎么操作呢？</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g128nxdc1mj30ko0a53z9.jpg" alt="Conv1x1" /><br />
-如上图所示，<code>feature_map</code>经过<code>1x1</code>卷积后尺度不变，意味着它保存了空间信息。<br />
-同时，输入<code>feature_map</code>有64个，经过32个<code>1x1</code>卷积之后，只有32个了。从这个角度来看，<code>1x1</code>卷积可以用来做降维处理。反之，则可以用来做升维处理。</p>
+<h3 id="限制gradient">限制Gradient</h3>
 
-<h3 id="减少参数量-计算量">减少参数量、计算量</h3>
+<p>参考<a href="https://stackoverflow.com/questions/54716377/how-to-properly-do-gradient-clipping-in-pytorch">Stackoverflow</a>。<br />
+对<code>Gradient</code>的限制分为限制其范数与限制其值的范围两种，在<a href="https://pytorch.org/docs/stable/_modules/torch/nn/utils/clip_grad.html"><code>PyTorch</code>文档</a>里有详细的描述。</p>
 
-<p>在CS231n中有关<code>GoogLeNet</code>的内容中，讲到<code>Inception v1</code>的结构。其和<code>naive inception</code>最大的不同就在于其灵活运用了<code>1x1</code>卷积层。</p>
+<h4 id="限制范数">限制范数</h4>
 
 <blockquote>
-<p>前面所说的降维，其实也是减少了参数量、计算量，因为特征图少了，参数也自然跟着就减少，相当于在特征图的通道数上进行卷积，压缩特征图，二次提取特征，使得新特征图的特征表达更佳。</p>
+<p>torch.nn.utils.clip_grad<em>norm</em>(parameters, max_norm, norm_type=2)</p>
 </blockquote>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g1296uohgoj30wm0d340b.jpg" alt="" /></p>
+<p>这个方法用于剪切可迭代参数的梯度范数。
+在所有梯度上一起计算范数，就好像它们被连接成单个矢量一样。 梯度是<code>in_place</code>就地修改的。<br />
+参数<code>parameters</code>可以是单一的<code>tensor</code>，也可以是可迭代的<code>Tensors</code>。<br />
+<code>max_norm</code>用来指定其最大范数。<code>norm_type</code>表示<code>p_norm</code>的类型，可以是<code>inf</code>表示无穷范数。</p>
 
-<p>这个结构存在什么问题呢？就如下图所示，这个结构需要的计算量是非常大的。我们可以来计算一下。（假设我们这里做的卷积都加上了相应的<code>zero-padding</code>，保持尺寸，也便于后续<code>concat</code>）。以<code>3x3</code>卷积为例：输入<code>feature_map</code>的深度为256，大小为<code>28x28</code>，经过192个<code>3x3</code>的卷积，对于单个卷积核而言，它需要滑过所有256个<code>feature_map</code>，需要计算<code>28x28x256x3x3</code>次运算，共192个核，所以结果再乘上192，就得到<code>28x28x256x3x3x192</code>。最后<code>concat</code>到一起，需要<code>854M</code>的计算量，相当大了。</p>
+<p><strong>Example</strong><br />
+<a href="https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/02-intermediate/language_model/main.py#L81">Github</a></p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g1296uza9yj31430g5jvb.jpg" alt="" /></p>
+<pre><code class="language-python">...
+# Backward and optimize
+model.zero_grad()
+loss.backward()
+clip_grad_norm_(model.parameters(), 0.5)
+optimizer.step()
+...
+</code></pre>
 
-<p>那引入<code>1x1</code>卷积之后呢，同样的方式，我们计算得到下图：<br />
-<img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g1296uoh0ij312m0g0adv.jpg" alt="" /><br />
-计算量从<code>854M</code>降到了<code>358M</code>。</p>
+<p>在<code>backward</code>之后，<code>step</code>之前，对<code>model</code>的参数的梯度做范数限制。</p>
 
-<h3 id="增加非线性特征">增加非线性特征</h3>
+<p>这里对参数梯度的限制还有一种更灵活的实现方式，即通过对参数注册<code>钩子(hook)</code>函数，在<code>backward</code>的时候就对其<code>grad</code>用<a href="https://pytorch.org/docs/0.3.0/torch.html?highlight=clamp#torch.clamp"><code>clamp</code>函数</a>进行限制。例如：</p>
 
-<p>为什么<code>inception</code>结构采用不同大小的卷积核，其实不同大小的卷积核就意味着不同大小的感受野，可以感受到更多的信息，最后拼接意味着不同尺度特征的融合。<br />
-回到最开始的那幅降维的图。
-&gt; 原来的64个channels就可以理解为跨通道线性组合变成了32channels，这就是通道间的信息交互。因为<code>1x1</code>卷积核，可以在保持<code>feature map</code>尺度不变的（即不损失分辨率）的前提下大幅增加非线性特性（利用后接的非线性激活函数），把网络做的很deep，增加非线性特性。</p>
+<pre><code class="language-python">for p in model.parameters():
+    p.register_hook(lambda grad: torch.clamp(grad, -clip_value, clip_value))
+</code></pre>
 
-<h3 id="references">References</h3>
+<p>这里的运用就相对灵活，只要我们在定义<code>Model</code>的时候，为参数注册<code>hook</code>函数即可。不需要在<code>backward</code>后再做限制。<br />
+同时，使用<code>clamp</code>方法，也使得我们可以更加灵活限制<code>grad</code>的范围，比如<code>0.1~0.9</code>，而不是在正负范围之间。</p>
 
-<p><a href="http://cs231n.stanford.edu/">CS231n</a><br />
-<a href="https://zhuanlan.zhihu.com/p/37910136">知乎</a></p>
+<p>上述的<code>model.parameters()</code>都可以参照<code>nn.Module</code>中<code>parameters()</code>方法的实现，把想要限制的层提取出来即可。例如：</p>
+
+<pre><code class="language-python"># Define model  
+class SimpleNet(nn.Module):
+    def __init__(self, **args):
+        super(SimpleNet, self).__init__()
+        self.features = nn.Sequential([...])
+        self.classifier = nn.Sequential([...])
+    ...
+...
+model = SimpleNet(...)
+loss.backward()
+clip_grad_norm_(model.classifier.parameters(), 0.5)
+optimizer.step()
+...
+</code></pre>
+
+<h4 id="限制范围">限制范围</h4>
+
+<blockquote>
+<p>torch.nn.utils.clip_grad<em>value</em>(parameters, clip_value)</p>
+</blockquote>
+
+<p>这里范围的限制中<code>clip_value</code>限定了<code>gradient</code>允许的最大值。<code>gradient</code>值被剪切到<code>[-clip_value, clip_value]</code>之间。<br />
+其他和上述限制范数的同理。</p>
+
+<h3 id="限制weights">限制weights</h3>
+
+<p>当我们自定义层的时候，对自定义层的<code>weights</code>有一些要求，比如限制其始终非负，或限制其在某个范围内等。<br />
+对<code>weights</code>的限定与对<code>weights.grad</code>的限制类似。<br />
+例如，这里我们限制<code>weights</code>范围在<code>[_min, _max]</code>之间：</p>
+
+<pre><code class="language-python">...
+# Backward and optimize
+model.zero_grad()
+loss.backward()
+optimizer.step()
+for p in model.parameters():
+    p.data.clamp_(_min, _max)
+...
+</code></pre>
+
+<p>这里<code>clamp</code>操作要放在<code>step()</code>之后，因为这个时候更新完<code>weights</code>了，限制之后再进入下一个<code>batch</code>，达到限制的目的。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>总的来说运用<code>torch.nn.utils.clip_grad_value_</code>,<code>torch.nn.utils.clip_grad_norm_</code>以及钩子函数配合<code>torch.clamp_</code>函数，在适当的位置更新，就可以达到限制范围的目的了。</p>
 
 <p><br></p>
                         </div>
@@ -208,17 +261,15 @@
                     <div class="post-tags">
                         <span># Tags: </span>
                             
-                                <a class="badge badge-primary" href="/tags/machine-learning">Machine Learning</a>
+                                <a class="badge badge-primary" href="/tags/pytorch">PyTorch</a>
                             
                     </div>
                     
                     <nav class="post-related">
                             
 
-    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/ml/pytorch_restrict_range_of_variable_or_gradient/"> &laquo; PyTorch: Restrict range of variable or gradient during gradient descent</a>
 
-
-    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/paper/resnet/">Paper Notes[2]: ResNet &raquo;</a>
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/ml/1x1_convolution/">1x1卷积的作用 &raquo;</a>
 
 
                     </nav>

@@ -5,15 +5,24 @@
     <link>https://blog.x-fei.me/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 13 Mar 2019 17:49:58 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Mar 2019 09:45:03 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>PyTorch: Restrict range of variable or gradient during gradient descent</title>
+      <link>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</link>
+      <pubDate>Sat, 16 Mar 2019 09:45:03 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</guid>
+      <description>&lt;p&gt;一般来说，我们对卷积或者全连接层的&lt;code&gt;weights&lt;/code&gt;是没有限制的，但是如果我们自定义层的话，有可能会需要对权重或者梯度值进行限制。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>1x1卷积的作用</title>
       <link>https://blog.x-fei.me/posts/ml/1x1_convolution/</link>
-      <pubDate>Wed, 13 Mar 2019 17:49:58 +0800</pubDate>
+      <pubDate>Thu, 14 Mar 2019 17:49:58 +0800</pubDate>
       
       <guid>https://blog.x-fei.me/posts/ml/1x1_convolution/</guid>
       <description>&lt;p&gt;我们在&lt;code&gt;ResNet&lt;/code&gt;深层结构以及&lt;code&gt;Inception&lt;/code&gt;中都见过&lt;code&gt;1x1&lt;/code&gt;卷积层，或者说&lt;code&gt;bottleneck layer&lt;/code&gt;，为什么我们会需要&lt;code&gt;1x1&lt;/code&gt;的卷积核呢？&lt;br /&gt;
