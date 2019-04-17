@@ -7,7 +7,7 @@
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
 		<meta name="generator" content="Hugo 0.53" />
-		<title>PyTorch: Restrict range of variable or gradient during gradient descent &middot; </title>
+		<title>VALSE 2019 &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
 		
@@ -103,7 +103,7 @@
 </div>
 
  
-<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://ws1.sinaimg.cn/large/005O8ntygy1g119vk7joqj30ke07cdfo.jpg);">
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://ws1.sinaimg.cn/large/005O8ntygy1g25c5gay1vj33402c0npg.jpg);">
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
@@ -144,15 +144,15 @@
                 <div class="post-container">
                     <div class="post-header">
                         <div class="meta">
-                            <h1 id="post-title">PyTorch: Restrict range of variable or gradient during gradient descent</h1>
+                            <h1 id="post-title">VALSE 2019</h1>
                             
                             
-                                <time datetime="2019-03-16">Mar 16, 2019</time>
+                                <time datetime="2019-04-16">Apr 16, 2019</time>
                             
                             <span class="categories">
                                  on 
     
-        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+        <a class="badge badge-primary" href="/categories/activity">Activity</a>
     
 
 
@@ -165,115 +165,74 @@
 
                         </div>
                         <div class="inner-content">
-                            <p>一般来说，我们对卷积或者全连接层的<code>weights</code>是没有限制的，但是如果我们自定义层的话，有可能会需要对权重或者梯度值进行限制。</p>
+                            <p>初次体验研讨会，感觉其意义大致在于拓宽视界、开拓思路、结交同行，附带有一些大大小小的企业在招聘，可谓是领域学术界和工业界的一次「盛会」了。简单回顾一下。</p>
 
-<p>那么在PyTorch里怎么操作呢？</p>
+<p>肝MICCAI的时候，今年的VALSE (Vision And Learning SEminar，视觉与学习青年学者研讨会) 网上申请入口开放，比较幸运报上了名。等到4月11日，正式动身前往合肥。</p>
 
-<h3 id="限制gradient">限制Gradient</h3>
+<h3 id="valse2019">VALSE2019</h3>
 
-<p>参考<a href="https://stackoverflow.com/questions/54716377/how-to-properly-do-gradient-clipping-in-pytorch">Stackoverflow</a>。<br />
-对<code>Gradient</code>的限制分为限制其范数与限制其值的范围两种，在<a href="https://pytorch.org/docs/stable/_modules/torch/nn/utils/clip_grad.html"><code>PyTorch</code>文档</a>里有详细的描述。</p>
+<p>研讨会持续三天，第一天以Workshop和Tutorial为主，可以选择自己感兴趣的听，后两天则是主题式的宣讲以及Poster Spotlight。值的一提的是每个Workshop最后都有一个座谈会环节，演讲大咖嘉宾会就某一些热点话题发表各自的意见，可以听到这些学术界内该领域的大佬对某些问题的具体看法。有的时候，我们问不出很有价值的问题，或者没有机会向这么多的大咖同时发问，这个环节就很有价值了。 大会的总体行程如下图：</p>
 
-<h4 id="限制范数">限制范数</h4>
+<p><img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g25c7czroxj32yo3y84qr.jpg" style="zoom:60%;"  /></p>
 
-<blockquote>
-<p>torch.nn.utils.clip_grad<em>norm</em>(parameters, max_norm, norm_type=2)</p>
-</blockquote>
+<p>特意去听了杰出学生论文奖，前三个里面有两个是清华的学生，最让我感叹的是他们即使做还是「黑盒」的神经网络，依然有很强的数学推导与解释能力，这是我现阶段所欠缺比较多的。</p>
 
-<p>这个方法用于剪切可迭代参数的梯度范数。
-在所有梯度上一起计算范数，就好像它们被连接成单个矢量一样。 梯度是<code>in_place</code>就地修改的。<br />
-参数<code>parameters</code>可以是单一的<code>tensor</code>，也可以是可迭代的<code>Tensors</code>。<br />
-<code>max_norm</code>用来指定其最大范数。<code>norm_type</code>表示<code>p_norm</code>的类型，可以是<code>inf</code>表示无穷范数。</p>
+<h3 id="关于神经网络安全性">关于神经网络安全性</h3>
 
-<p><strong>Example</strong><br />
-<a href="https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/02-intermediate/language_model/main.py#L81">Github</a></p>
+<p>因为是导师组内第一个做神经网络安全性问题的，又没有高年级的师兄可以提供学术上的建议，所以做了半年感觉进步并不大。很多细节，和一些Poster讨论后，才有了融会贯通的感觉。接触到清华大学朱军老师团队的两个成员：<code>Yinpeng Dong</code>和<code>Tianyu Pang</code>，他们团队做神经网络安全性有几年的积累了。这里聊几点关于攻防的收获。</p>
 
-<pre><code class="language-python">...
-# Backward and optimize
-model.zero_grad()
-loss.backward()
-clip_grad_norm_(model.parameters(), 0.5)
-optimizer.step()
-...
-</code></pre>
+<h4 id="detection">Detection</h4>
 
-<p>在<code>backward</code>之后，<code>step</code>之前，对<code>model</code>的参数的梯度做范数限制。</p>
+<p>Tianyu Pang在NIPS2018年上发表了一篇用作对抗样本检测的论文，出发点很<code>清奇</code>。<br />
+<img src="https://ws1.sinaimg.cn/large/005O8ntygy1g25co1i4p5j33y82yo7wj.jpg" alt="" /><br />
+现有的分类神经网络可以可以大致分为两个阶段：<br />
+- 第一阶段是特征提取，一般由卷积操作堆叠，这是一个非线性的过程，非线性主要由激活函数提供。<br />
+- 第二阶段是分类器，一般由全连接层即Linear层组成，这是一个线性的过程，主要起到将学到的“分布式特征表示”映射到样本标记空间的作用。<br />
+这两个阶段中，我们一般不对<code>features</code>进行交互，而是通过分类器得到的<code>logits</code>，再通过<code>loss</code>操作进行反向传播。</p>
 
-<p>这里对参数梯度的限制还有一种更灵活的实现方式，即通过对参数注册<code>钩子(hook)</code>函数，在<code>backward</code>的时候就对其<code>grad</code>用<a href="https://pytorch.org/docs/0.3.0/torch.html?highlight=clamp#torch.clamp"><code>clamp</code>函数</a>进行限制。例如：</p>
+<p>我们熟悉的交叉熵损失函数<code>CE(Cross Entropy)</code>中，对<code>target</code>的设置是<code>one-hot</code>类型的，正确的类设为1，其他类设为0，这样做有什么缺点呢？这样其实我们在<code>backward</code>的时候，丢失了其他类之间的约束关系，因为我们只关注正确的类，只更新和它相关的参数，而其他类特征之间是不是存在一定的约束关系呢，这样的信息是不是有用呢？总之，这部分的信息，我们一般处理是丢失的。</p>
 
-<pre><code class="language-python">for p in model.parameters():
-    p.register_hook(lambda grad: torch.clamp(grad, -clip_value, clip_value))
-</code></pre>
+<p>所以就想到对<code>CE</code>进行改进-&gt; <code>RCE(Reverse Cross Entropy)</code>。 将原本的<code>one-hot</code>的<code>target</code>进行修改，正确类设为0，其他类设为<code>1/L</code>，<code>L</code>表示类别数目。</p>
 
-<p>这里的运用就相对灵活，只要我们在定义<code>Model</code>的时候，为参数注册<code>hook</code>函数即可。不需要在<code>backward</code>后再做限制。<br />
-同时，使用<code>clamp</code>方法，也使得我们可以更加灵活限制<code>grad</code>的范围，比如<code>0.1~0.9</code>，而不是在正负范围之间。</p>
+<p>文章内容这里不再细说。聊一下这篇文章让我触动比较大的地方。首先是对神经网络与损失函数的理解；其次是其对特征分布的理解，不仅有抽象，还有理论的解释；最后则是实验的一些设计。</p>
 
-<p>上述的<code>model.parameters()</code>都可以参照<code>nn.Module</code>中<code>parameters()</code>方法的实现，把想要限制的层提取出来即可。例如：</p>
+<h4 id="attack">Attack</h4>
 
-<pre><code class="language-python"># Define model  
-class SimpleNet(nn.Module):
-    def __init__(self, **args):
-        super(SimpleNet, self).__init__()
-        self.features = nn.Sequential([...])
-        self.classifier = nn.Sequential([...])
-    ...
-...
-model = SimpleNet(...)
-loss.backward()
-clip_grad_norm_(model.classifier.parameters(), 0.5)
-optimizer.step()
-...
-</code></pre>
+<p><code>Yinpeng Dong</code>应该可以称得上参与这届研讨会的学生的巅峰了吧。他做的工作主要是关于神经网络安全性中的攻击。2018年高产，中了3篇顶会，其中一篇Oral。这里简单提一篇他做的迁移变换的攻击方法。<br />
+<img src="https://ws1.sinaimg.cn/large/005O8ntygy1g25cn9wswoj33y82yoqv7.jpg" alt="" /><br />
+文章的出发点在于现阶段的梯度攻击（以FGSM和I-FGSM为主），其攻击都依赖于梯度，迁移变换的想法是，将梯度进行领域内的迁移变换。文章也通过公式理论推导，将作用于单个像素领域的问题转换为作用于整个<code>feature map</code>的变换函数。最后辅以大量的实验作证。</p>
 
-<h4 id="限制范围">限制范围</h4>
+<h3 id="关于其他poster">关于其他Poster</h3>
 
-<blockquote>
-<p>torch.nn.utils.clip_grad<em>value</em>(parameters, clip_value)</p>
-</blockquote>
+<p>纵观全场，发现Poster最多的主题是人脸三维重建。其次也有很多的图网络相关内容。也有很多团队提出一些新颖的架构，比如欧阳万里老师所在团队提出的<code>FishNet</code>。这些结构上的变动，往往给人一种<code>还可以这样做</code>的启发。我就在想，这些结构既然具有这样那样的性质，应用到神经网络安全性上是不是也会有作用呢？</p>
 
-<p>这里范围的限制中<code>clip_value</code>限定了<code>gradient</code>允许的最大值。<code>gradient</code>值被剪切到<code>[-clip_value, clip_value]</code>之间。<br />
-其他和上述限制范数的同理。</p>
+<p><strong>还有一些收获呢，需要再精读论文进行消化。</strong></p>
 
-<h3 id="限制weights">限制weights</h3>
+<h3 id="关于合肥">关于合肥</h3>
 
-<p>当我们自定义层的时候，对自定义层的<code>weights</code>有一些要求，比如限制其始终非负，或限制其在某个范围内等。<br />
-对<code>weights</code>的限定与对<code>weights.grad</code>的限制类似。<br />
-例如，这里我们限制<code>weights</code>范围在<code>[_min, _max]</code>之间：</p>
+<p>物价水平和广州比起来，真的是便宜太多了！痛痛快快吃了一顿地锅鸡，最后半天逛了徽园。</p>
 
-<pre><code class="language-python">...
-# Backward and optimize
-model.zero_grad()
-loss.backward()
-optimizer.step()
-for p in model.parameters():
-    p.data.clamp_(_min, _max)
-...
-</code></pre>
+<hr>
 
-<p>这里<code>clamp</code>操作要放在<code>step()</code>之后，因为这个时候更新完<code>weights</code>了，限制之后再进入下一个<code>batch</code>，达到限制的目的。</p>
-
-<h3 id="总结">总结</h3>
-
-<p>总的来说运用<code>torch.nn.utils.clip_grad_value_</code>,<code>torch.nn.utils.clip_grad_norm_</code>以及钩子函数配合<code>torch.clamp_</code>函数，在适当的位置更新，就可以达到限制范围的目的了。</p>
-
-<p><br></p>
+<p>最后合影留念：<br />
+<img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g25c8600i0j33402c04qt.jpg" alt="" /></p>
                         </div>
                     </div>
                     
                     <div class="post-tags">
                         <span># Tags: </span>
                             
-                                <a class="badge badge-primary" href="/tags/pytorch">PyTorch</a>
+                                <a class="badge badge-primary" href="/tags/think">think</a>
                             
                     </div>
                     
                     <nav class="post-related">
                             
 
-    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/world/valse_2019/"> &laquo; VALSE 2019</a>
+    <a rel="prev" id="prev-btn" class="btn hvr-grow" href="/posts/paper/inceptions/"> &laquo; Inceptions</a>
 
 
-    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/ml/1x1_convolution/">1x1卷积的作用 &raquo;</a>
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/ml/pytorch_restrict_range_of_variable_or_gradient/">PyTorch: Restrict range of variable or gradient during gradient descent &raquo;</a>
 
 
                     </nav>

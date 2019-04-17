@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.x-fei.me/posts/paper/inceptions/</loc>
+    <lastmod>2019-04-16T20:48:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/posts/world/valse_2019/</loc>
+    <lastmod>2019-04-16T20:44:23+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</loc>
     <lastmod>2019-03-16T09:45:03+08:00</lastmod>
   </url>
@@ -189,7 +199,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/</loc>
-    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
+    <lastmod>2019-04-16T20:48:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -198,8 +208,8 @@
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/tags/algorithm/</loc>
-    <lastmod>2018-12-27T12:00:00+08:00</lastmod>
+    <loc>https://blog.x-fei.me/categories/activity/</loc>
+    <lastmod>2019-04-16T20:44:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -210,12 +220,18 @@
   </url>
   
   <url>
+    <loc>https://blog.x-fei.me/tags/algorithm/</loc>
+    <lastmod>2018-12-27T12:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.x-fei.me/archives/</loc>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/categories/</loc>
-    <lastmod>2018-12-27T12:00:00+08:00</lastmod>
+    <lastmod>2019-04-16T20:44:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -284,14 +300,14 @@
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/tags/machine-learning/</loc>
-    <lastmod>2019-03-14T17:49:58+08:00</lastmod>
+    <loc>https://blog.x-fei.me/categories/machine-learning/</loc>
+    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/categories/machine-learning/</loc>
-    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
+    <loc>https://blog.x-fei.me/tags/machine-learning/</loc>
+    <lastmod>2019-03-14T17:49:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -308,32 +324,32 @@
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/tags/paper/</loc>
-    <lastmod>2019-03-06T10:49:24+08:00</lastmod>
+    <loc>https://blog.x-fei.me/categories/paper/</loc>
+    <lastmod>2019-04-16T20:48:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/categories/paper/</loc>
-    <lastmod>2019-03-06T10:49:24+08:00</lastmod>
+    <loc>https://blog.x-fei.me/tags/paper/</loc>
+    <lastmod>2019-04-16T20:48:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/posts/</loc>
-    <lastmod>2019-03-16T09:45:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.x-fei.me/tags/python/</loc>
-    <lastmod>2019-03-12T15:42:33+08:00</lastmod>
+    <lastmod>2019-04-16T20:48:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/categories/python/</loc>
     <lastmod>2019-03-01T09:34:30+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/tags/python/</loc>
+    <lastmod>2019-03-12T15:42:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -362,14 +378,14 @@
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/tags/think/</loc>
-    <lastmod>2019-01-02T00:41:29+08:00</lastmod>
+    <loc>https://blog.x-fei.me/categories/think/</loc>
+    <lastmod>2018-08-26T01:31:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/categories/think/</loc>
-    <lastmod>2018-08-26T01:31:37+08:00</lastmod>
+    <loc>https://blog.x-fei.me/tags/think/</loc>
+    <lastmod>2019-04-16T20:44:23+08:00</lastmod>
     <priority>0</priority>
   </url>
   
