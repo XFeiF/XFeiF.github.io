@@ -103,7 +103,7 @@
 </div>
 
  
-<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://ws1.sinaimg.cn/large/005O8ntygy1g119vkg74cj30z20bsmyg.jpg);">
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://wx3.sinaimg.cn/large/005O8ntygy1g119vkg74cj30z20bsmyg.jpg);">
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
@@ -189,7 +189,7 @@ $$ F(x) = f_n(&hellip;f_3(f_2(f_1(x)*\theta_1 + b) * \theta_2 +b)) $$<br />
 从经验来看，网络的深度对模型的性能至关重要，当增加网络层数后，网络可以进行更加复杂的特征模式的提取，所以当模型更深时理论上可以取得更好的结果，或许之前我们还会讨论更深的网络其性能一定会更好吗？</p>
 
 <p>首先讲网络的退化问题与过拟合问题区分开来，这个现象可以在下图中直观看出来：56层的网络比20层网络效果还要差。观察到56层网络的训练误差同样高，所以这不会是过拟合问题。
-<img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g10216xwgjj30ys0cbmzj.jpg" alt="" /></p>
+<img src="https://wx3.sinaimg.cn/mw690/005O8ntygy1g10216xwgjj30ys0cbmzj.jpg" alt="" /></p>
 
 <p>实验发现深度网络出现了退化问题（<code>Degradation problem</code>）：网络深度增加时，网络准确度出现饱和，甚至出现下降。<br />
 我们知道深层网络存在着梯度消失或者爆炸的问题，这使得深度学习模型很难训练。但是现在已经存在一些技术手段如BatchNorm来缓解这个问题。但也只是缓解，并不能完全或者说更进一步解决这个问题。</p>
@@ -207,7 +207,7 @@ $$ F(x) = f_n(&hellip;f_3(f_2(f_1(x)*\theta_1 + b) * \theta_2 +b)) $$<br />
 <p>对于一个堆积层结构（几层堆积而成）当输入为 $x$ 时，其学习到的特征记为$H(x)$，这是一个直接从输入 $x$ 到输出的映射，使其可以被这几层堆积结构所拟合。假设多个非线性层可以逐渐逼近复杂函数，则相当于它们可以逐渐逼近残差函数。所以，与其希望直接拟合到 $H(x)$，不如现在我们希望其可以学习到残差 $F(x) = H(x) - x$，这样其实原始的学习特征是 $H(x) = F(x) + x$。</p>
 
 <p><strong>虽然两种形式都应该能够逐渐逼近所需的函数，但学习的难易程度可能会有所不同</strong><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup>。当残差为0时，此时堆积层仅仅做了恒等映射，至少网络性能不会下降，实际上残差不会为0，这也会使得堆积层在输入特征基础上学习到新的特征，从而拥有更好的性能。残差学习的结构如图4所示。这有点类似与电路中的“短路”，所以是一种短路连接（shortcut connection）。
-<img src="https://ws1.sinaimg.cn/large/005O8ntygy1g116bz7j7vj30mr0bqdh2.jpg"style="width:300px"/></p>
+<img src="https://wx3.sinaimg.cn/large/005O8ntygy1g116bz7j7vj30mr0bqdh2.jpg"style="width:300px"/></p>
 
 <p>为什么残差学习相对更容易，从直观上看残差学习需要学习的内容少，因为残差一般会比较小，学习难度小点。在<a href="https://arxiv.org/abs/1603.05027">Identity Mappings in Deep Residual Networks</a>  中，何博士从数学的角度来分析这个问题，首先残差单元可以表示为：<br />
 $$ y_l = h(X_l) + F(X_l, W_l),  X_{l+1} = f(y_l)$$<br />
@@ -223,12 +223,12 @@ $$ X_L = X_l + \sum\limits_{i=l}^{L-1}F(X_i, W_i) $$</p>
 <h3 id="network-architectures">Network Architectures</h3>
 
 <p>ResNet网络结构是参考了VGG19网络，在其基础上进行了修改，并通过短路机制加入了残差单元，如下图所示。主要的变化体现在ResNet直接使用<code>stride=2</code>的卷积做下采样，并且最后使用<code>global average pooling</code>代替了全连接层。<br />
-<img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g118bq78tpj30he13w78u.jpg"style="width:450px;"/>
+<img src="https://wx3.sinaimg.cn/mw690/005O8ntygy1g118bq78tpj30he13w78u.jpg"style="width:450px;"/>
 ResNet的一个重要的设计原则是：<strong>当<code>feature map</code>大小降低一半时，<code>feature map</code>的数量增加一倍</strong>，这就保持了网络层的复杂度。从上图可以看出，ResNet相比普通网络每两层之间增加了短路机制，这就形成了残差学习。其中虚线表示<code>feature map</code>数量发生了变化。</p>
 
-<p><img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g118j0atdmj31750is7az.jpg" alt="" /><br />
+<p><img src="https://wx3.sinaimg.cn/mw690/005O8ntygy1g118j0atdmj31750is7az.jpg" alt="" /><br />
 我们可以根据上表构建更深的网络。对于<code>18-layer</code>和<code>34-layer</code>的ResNet，其进行的是两层间的残差学习，当网络更深时，其进行的是三层间的残差学习。三层卷积核分别是<code>1x1,3x3,1x1</code>。<br />
-<img src="https://ws1.sinaimg.cn/mw690/005O8ntygy1g10216xfrgj30z20bsmyg.jpg" alt="" /><br />
+<img src="https://wx3.sinaimg.cn/mw690/005O8ntygy1g10216xfrgj30z20bsmyg.jpg" alt="" /><br />
 上图为ResNet使用的两种残差单元。对于短路连接，浅层输入输出维度一致，可以直接相加；深层维度不一致，不能直接相加，有两种策略：（1）采用zero-padding增加维度，此时一般要先做一个downsamp，可以采用strde=2的pooling，这样不会增加参数；（2）采用新的映射（projection shortcut），一般采用1x1的卷积，这样会增加参数，也会增加计算量。短路连接除了直接使用恒等映射，当然都可以采用projection shortcut 。</p>
 
 <h3 id="summary">Summary</h3>
