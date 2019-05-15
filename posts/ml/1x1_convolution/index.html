@@ -103,7 +103,7 @@
 </div>
 
  
-<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://wx3.sinaimg.cn/mw690/005O8ntygy1g1296upb29j30tg0h2ju9.jpg);">
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/bg_1x1Conv.jpg);">
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
@@ -170,7 +170,7 @@
 
 <h3 id="升降维">升降维</h3>
 
-<p><img src="https://wx3.sinaimg.cn/mw690/005O8ntygy1g128nxdc1mj30ko0a53z9.jpg" alt="Conv1x1" /><br />
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/1x1Conv_Sample.jpg" alt="Conv1x1" /><br />
 如上图所示，<code>feature_map</code>经过<code>1x1</code>卷积后尺度不变，意味着它保存了空间信息。<br />
 同时，输入<code>feature_map</code>有64个，经过32个<code>1x1</code>卷积之后，只有32个了。从这个角度来看，<code>1x1</code>卷积可以用来做降维处理。反之，则可以用来做升维处理。</p>
 
@@ -182,14 +182,14 @@
 <p>前面所说的降维，其实也是减少了参数量、计算量，因为特征图少了，参数也自然跟着就减少，相当于在特征图的通道数上进行卷积，压缩特征图，二次提取特征，使得新特征图的特征表达更佳。</p>
 </blockquote>
 
-<p><img src="https://wx3.sinaimg.cn/mw690/005O8ntygy1g1296uohgoj30wm0d340b.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/1x1Conv_nCal.jpg" alt="" /></p>
 
 <p>这个结构存在什么问题呢？就如下图所示，这个结构需要的计算量是非常大的。我们可以来计算一下。（假设我们这里做的卷积都加上了相应的<code>zero-padding</code>，保持尺寸，也便于后续<code>concat</code>）。以<code>3x3</code>卷积为例：输入<code>feature_map</code>的深度为256，大小为<code>28x28</code>，经过192个<code>3x3</code>的卷积，对于单个卷积核而言，它需要滑过所有256个<code>feature_map</code>，需要计算<code>28x28x256x3x3</code>次运算，共192个核，所以结果再乘上192，就得到<code>28x28x256x3x3x192</code>。最后<code>concat</code>到一起，需要<code>854M</code>的计算量，相当大了。</p>
 
-<p><img src="https://wx3.sinaimg.cn/mw690/005O8ntygy1g1296uza9yj31430g5jvb.jpg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/1x1Conv_nCal_out.jpg" alt="" /></p>
 
 <p>那引入<code>1x1</code>卷积之后呢，同样的方式，我们计算得到下图：<br />
-<img src="https://wx3.sinaimg.cn/mw690/005O8ntygy1g1296uoh0ij312m0g0adv.jpg" alt="" /><br />
+<img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/1x1Conv_Cal.jpg" alt="" /><br />
 计算量从<code>854M</code>降到了<code>358M</code>。</p>
 
 <h3 id="增加非线性特征">增加非线性特征</h3>
