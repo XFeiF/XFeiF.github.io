@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>闲聊Activation Functions &middot; </title>
+		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
+		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            displayMath: [
+                ['$$', '$$'],
+                ['\[\[', '\]\]']
+            ],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(),
+            i;
+        for (i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    MathJax.Hub.Config({
+        CommonHTML: {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+    });
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+<script src="https://cdn.staticfile.org/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.staticfile.org/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+	</head>
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="https://blog.x-fei.me/" class="left swing">
+        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+ 
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/neuron_work.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="https://blog.x-fei.me/">
+            <h2>F(x) = ?</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href='https://blog.x-fei.me/'> Home</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/archives'>Archives</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/friends'>Friends</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+ 
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">闲聊Activation Functions</h1>
+                            
+                            
+                                <time datetime="2019-06-14">Jun 14, 2019</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                            </span> - 1 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p>最近学习突然想到一些基本的问题，比如“为什么有那么多的激活函数？”，“这些激活函数背后的原理分别是什么？”，以及“什么时候用哪个激活函数效果更好？或者更能达到我们预期想要的结果。” “激活函数里面都是硬核的数学知识吗？”针对这些问题，重新把激活函数相关的内容学习了一下。<br />
+希望本文也可以帮助到对上面这些问题感到困惑、想不全、有些地方不太理解的小伙伴。</p>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/activation_functions_guide.png" width="80%"/></p>
+
+<h3 id="activation-functions">Activation Functions</h3>
+
+<p>神经网络的基本单元-神经元完成什么工作呢？简单地说，就是对输入求加权(w)和，再加上一个偏置(b)。</p>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/neuron_cal.png" width="40%"/></p>
+
+<p>上式中，<code>Y</code>的取值范围可以是从负无穷到正无穷的整个实数域，神经元不知道这个值的边界，又怎么决定它是否被激活呢？<br />
+如何决定激活，是由激活函数来完成的。它检查神经元计算得到的<code>Y</code>**`的值，然后决定它是否被激活。激活函数充当了一个数学上“门”的作用，它沟通当前神经元的输入和它的输出（下一层的输入）。</p>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/neuron_work.png" width="80%"/></p>
+
+<h3 id="3-types-of-activation-functions">3 Types of Activation Functions</h3>
+
+<h4 id="binary-step-function">Binary Step Function</h4>
+
+<p>决定激活还是不激活，最直观的，就是基于阈值的激活函数。如果<code>Y</code>高于阈值，就认为它被激活了；否则未被激活。功能上符合要求。<br />
+上面说的这种函数是“step function”，如下图：<br />
+<img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_step.png" width="40%"/></p>
+
+<p>当value&gt;0(threshold)的时候，输出是1（被激活），否则输出0（未被激活）。<br />
+尽管功能上符合要求，但是它有一定的缺点。对于二分类问题，<code>step function</code>能为我们提供的“1(yes)”或“0(no)”的选择。但是当面对多分类问题的时候，由于其只能输出<code>0,1</code>，当有多个1出现的时候，我们就不知道该激活哪一个了。<br />
+这个时候，我们需要类似中间激活值的东西，而不是直接告诉我们激活还是不激活（binary）。</p>
+
+<p>我们从能想到的最简单的入手，线性函数。</p>
+
+<h4 id="linear-function">Linear Function</h4>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_linear.png" width="40%"/></p>
+
+<p>$$A = cx$$<br />
+一个简单的线性函数，激活和输入成比例，此时的激活值就不再是二元的，而是有一个范围。这样，我们可以把几个神经元连接在一起，如果超过1个激活，我们可以采用<code>max</code>（或<code>softmax</code>）来决定，所以这么做也符合功能需求。<br />
+它的问题是什么呢？<br />
+1. 无法利用<code>Backpropagation</code>（<code>gradient descent</code>）来训练模型：这个函数的导数是一个常量，和输入没有任何关系。这就意味着它反向传播的时候 ，输入对权重没有任何增益。<br />
+2. 整个网络的表达式坍塌成一个：线性函数的嵌套还是线性函数，所以不管网络有多少层，最后都变成一层。</p>
+
+<p>一个使用线性激活函数的网络其实就是一个简单的线性回归模型。它限制了网络对于输入数据复杂多变参数的表达能力。</p>
+
+<h4 id="non-linear-activation-functions">Non-linear Activation Functions</h4>
+
+<p>现在我们所使用的神经网络都使用非线性激活函数。它们允许模型在输入和输出之间创建更加复杂的映射，即有很强的表达能力，这对模型来说很重要，因为数据可能很复杂，比如图像、视频、音频以及哪些非线性或者高维的数据集。<br />
+当我们使用非线性激活函数的时候，在神经网络中几乎所有可能想象到的过程都可以一个函数计算来表达。<br />
+非线性函数解决了上述线性激活函数的问题：<br />
+1. 非线性允许反向传播，因为导数依赖于输入。<br />
+2. 允许堆叠层来构建一个深层神经网络。需要多个隐层神经元高准确率地学习复杂数据集。</p>
+
+<p>下面介绍几种常见的非线性激活函数。</p>
+
+<h3 id="several-common-nonlinear-activation-functions">Several Common Nonlinear Activation Functions</h3>
+
+<h4 id="sigmoid-logistic">Sigmoid/Logistic</h4>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_sigmoid.png" width="40%"/></p>
+
+<p><strong>Advantages</strong><br />
+- 它的<strong>梯度是平滑的</strong>，防止了输出值的“跳跃”。<br />
+- 输出值范围<code>(0, 1)</code>，和线性函数的<code>(-inf, inf)</code>相比，避免了激活值爆炸。也规范化了每个神经元的输出。<br />
+- 预测清晰，当输入在<code>[-2,2]</code>之外时倾向于将<code>Y</code>值push到曲线的边缘，很接近1或0，使得预测变得更清晰。</p>
+
+<p><strong>Disadvantages</strong><br />
+- 梯度消失：当输入<code>X</code>非常小或者非常大的时候，即梯度改变非常小，这将导致梯度消失问题，使得网络难以继续再学习下去。<br />
+- 输出不是以0为中心。<br />
+- 很消耗算力。</p>
+
+<h4 id="tanh">Tanh</h4>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_tanh.png" width="40%"/></p>
+
+<p><code>Tanh</code>函数和<code>Sigmoid</code>相近，只多了一个优点——<strong>以0为中心</strong>：使得具有强烈的负、中性和强正值的输入更容易建模。</p>
+
+<h4 id="relu-rectified-linear-unit">ReLU(Rectified Linear Unit)</h4>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_ReLU.png" width="80%"/></p>
+
+<p><strong>Advantages</strong><br />
+- 计算高效：允许网络快速收敛<br />
+- 非线性：尽管这个函数看上去像是线性函数，但是<code>ReLU</code>的导数支持反向传播。</p>
+
+<p><strong>Disadvantages</strong><br />
+- <code>Dying ReLU</code>问题——当输入接近0或负值时，梯度变为0，网络就不能进行反向传播与学习了。</p>
+
+<h4 id="leaky-relu">Leaky ReLU</h4>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_leakyrelu.png" width="40%"/></p>
+
+<p><strong>Advantages</strong><br />
+- 阻止了<code>Dying ReLU</code>问题——作为<code>ReLU</code>的变种，它在输入为负值时，有一个小的正斜率，使得网络可以在输入负值的情况下反向传播。<br />
+- 其他类似<code>ReLU</code></p>
+
+<p><strong>Disadvantages</strong><br />
+- 结果不一致——<code>Leaky ReLU</code>对于负值不提供一致的预测。</p>
+
+<h4 id="parametric-relu">Parametric ReLU</h4>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_PReLU.jpeg" width="80%"/></p>
+
+<p><strong>Advantages</strong><br />
+- 输入是负值时，允许学习斜率。不同于<code>Leaky ReLU</code>，本方法将输入是负值时，函数的斜率作为参数，可进行学习。即有可能找到最适合的<code>alpha</code>。<br />
+- 其他类似<code>ReLU</code></p>
+
+<p><strong>Disadvantages</strong><br />
+- 对不同的问题可能有不同的表现。</p>
+
+<h3 id="why-derivative-differentiation-is-used">Why derivative/differentiation is used?</h3>
+
+<p>反向传播时，我们需要知道更新方向以及步长，二者依赖于激活函数曲线的斜率，即导数。所以激活函数<strong>可微</strong>在机器学习中非常重要。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>在这篇博客里，简单回顾了一下神经网络中的激活函数。要点有二：一是为什么用非线性激活函数；二是各个非线性激活函数的优缺点。掌握了这两点，基本上对于什么时候用哪个激活函数都游刃有余了。</p>
+
+<h4 id="附录a-激活函数图表">附录A-激活函数图表</h4>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_all.png" width="80%"/></p>
+
+<h4 id="附录b-激活函数导数">附录B-激活函数导数</h4>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/acf_derivative.png" width="80%"/></p>
+
+<h3 id="references">References</h3>
+
+<p><a href="https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0">Understanding Activation Functions in Neural Networks</a><br />
+<a href="https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6">Activation Functions in Neural Networks</a><br />
+<a href="https://missinglink.ai/guides/neural-network-concepts/7-types-neural-network-activation-functions-right/">7 Types of Neural Network Activation Functions</a>
+<br></p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/math">math</a>
+                            
+                                <a class="badge badge-primary" href="/tags/machine-learning">Machine Learning</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/f_think/ten-days-reflect/">~&#34;圣徒的几日游&#34; &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

@@ -5,10 +5,20 @@
     <link>https://blog.x-fei.me/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 May 2019 23:03:42 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 14 Jun 2019 21:21:56 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>闲聊Activation Functions</title>
+      <link>https://blog.x-fei.me/posts/ml/activationfunctions/</link>
+      <pubDate>Fri, 14 Jun 2019 21:21:56 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/ml/activationfunctions/</guid>
+      <description>&lt;p&gt;最近学习突然想到一些基本的问题，比如“为什么有那么多的激活函数？”，“这些激活函数背后的原理分别是什么？”，以及“什么时候用哪个激活函数效果更好？或者更能达到我们预期想要的结果。” “激活函数里面都是硬核的数学知识吗？”针对这些问题，重新把激活函数相关的内容学习了一下。&lt;br /&gt;
+希望本文也可以帮助到对上面这些问题感到困惑、想不全、有些地方不太理解的小伙伴。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>~&#34;圣徒的几日游&#34;</title>
