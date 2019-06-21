@@ -5,10 +5,19 @@
     <link>https://blog.x-fei.me/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 14 Jun 2019 21:21:56 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Jun 2019 09:57:42 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Elastic:Improving CNNs with Dynamic Scaling Policies</title>
+      <link>https://blog.x-fei.me/posts/paper/elastic_improvingcnnswithdynamicscalingpolic/</link>
+      <pubDate>Fri, 21 Jun 2019 09:57:42 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/paper/elastic_improvingcnnswithdynamicscalingpolic/</guid>
+      <description>&lt;p&gt;这篇文章给我最大的感受是，虽然核心操作很简单，但是对背后的原理阐述十分清晰，实验也做的非常漂亮，值得学习。另外论文Related Work这段总结的也相当好。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>闲聊Activation Functions</title>

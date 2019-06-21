@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>Elastic:Improving CNNs with Dynamic Scaling Policies &middot; </title>
+		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
+		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            displayMath: [
+                ['$$', '$$'],
+                ['\[\[', '\]\]']
+            ],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(),
+            i;
+        for (i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    MathJax.Hub.Config({
+        CommonHTML: {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+    });
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+<script src="https://cdn.staticfile.org/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.staticfile.org/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+	</head>
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="https://blog.x-fei.me/" class="left swing">
+        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+ 
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://prior.allenai.org/assets/project-content/elastic/multi-scale.png);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="https://blog.x-fei.me/">
+            <h2>F(x) = ?</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href='https://blog.x-fei.me/'> Home</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/archives'>Archives</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/friends'>Friends</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+ 
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">Elastic:Improving CNNs with Dynamic Scaling Policies</h1>
+                            
+                            
+                                <time datetime="2019-06-21">Jun 21, 2019</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/paper">Paper</a>
+    
+
+
+                            </span> - 1 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p>这篇文章给我最大的感受是，虽然核心操作很简单，但是对背后的原理阐述十分清晰，实验也做的非常漂亮，值得学习。另外论文Related Work这段总结的也相当好。</p>
+
+<p>论文笔记：<br />
+<a href="https://arxiv.org/abs/1812.05262">ELASTIC: Improving CNNs with Dynamic Scaling Policies</a> (CVPR 2019, Oral)</p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>尺度变化是CV模型的一个很大的挑战，同一个数据集中，物体占据整张图片的比例可能差别很大：有的背景简单，物体占据主体；有的物体只占据整个图片很少一部分，比如草地上的高尔夫球。<br />
+目前关于尺度变化问题的解决方案比较统一，都是一些直观的人为设计的通用的、固定的规则，比如SIFT，feature pyramid。<br />
+本文作者团队任务，尺度规则应该从数据中学习到。因此，作者团队提出了<code>ELASTIC</code>，中文意思是松紧、松紧带。它可以有效地从数据中学习到动态缩放规则。这个缩放规则可以看作是模型中的一个非线性函数，它具有四个优点:<br />
+1. 它从数据中学习<br />
+2. 特定于实例（根据实例动态变化）<br />
+3. 不会增加额外计算量<br />
+4. 可以应用于任何网络结构</p>
+
+<h3 id="related-work">Related Work</h3>
+
+<p><img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/guide_multi-scale.png" width="60%"/></p>
+
+<p><img src="https://prior.allenai.org/assets/project-content/elastic/multi-scale.png" width="100%"/></p>
+
+<p>前面的结构我们大多比较熟悉，简单说一下：<br />
+- (a) <code>Signle scale</code>: 对应原始网络<br />
+- (b) <code>Image pyramid</code>: 图像金字塔是说，同一张图像用不同分辨率输入模型，对最终输出做一个集成。<br />
+- &copy; <code>Loss pyramid</code>: 这种方法集成不同分辨率下的损失函数。<br />
+- (d) <code>Feature pyramid</code>: 最常用的方法。混合(<code>concat</code>,<code>sum</code>)来自不同分辨率的<code>feature map</code>。
+- (e) <code>Filter pyramid</code>: 每一层分成多个分支，这些分支的<code>filter size</code>不同。典型的就是<code>Inception</code>系列。</p>
+
+<h3 id="core">Core</h3>
+
+<p>模块的核心操作，在于理解上图的f——<code>Elastic Layer</code>，这一层做的工作非常简单。如何集成<code>Feature pyramid</code>和<code>Filter pyramid</code>呢？<code>parallel branches of compution</code> + <code>fuse information from different scales</code>，即多分支使用不同的<code>filter size</code>，加上，令这些分支处理不同分辨率的信息，最后混合。<br />
+下面这幅图，用<code>Elastic</code>的思想，改造<code>ResNeXt</code>.<code>DLA-X</code>和<code>DenseNet</code>，对比图详细说明了如何在已有网络中嵌入<code>Elastic</code>.<br />
+<img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/elastic_modified.png" width="80%"/></p>
+
+<h4 id="为什么有效果">为什么有效果？</h4>
+
+<p>这一点，论文第三章节通过理论对<code>CNN blocks</code>与<code>Elastic</code>中的<code>Scale policy</code>进行比较。<br />
+形式上，<code>CNN</code>中的一层可以表示为:</p>
+
+<p>$$\mathcal{F}(x) = \sigma(\sum_{i=1}^{q}\mathcal{T}_{i}(x)) $$</p>
+
+<p>其中<code>q</code>是之后被聚合的分支的数量，$\mathcal{T}_{i}(x)$可以是任一函数（一般是卷积、BN和激活函数的集合体），$\sigma$表示非线性。一系列的$\mathcal{F}(x)$堆叠处理一种空间分辨率形成一步，分辨率递减的多步堆叠成为一个金字塔形的缩放规则网络结构。一个网络可以被表示为：</p>
+
+<p>$$\mathcal{N} = \mathcal{F}_{32} \circ \mathcal{F}_{31} \circ \mathcal{D}_{r2} \circ \mathcal{F}_{22} \circ \mathcal{F}_{21} \circ \mathcal{D}_{r1} \circ \mathcal{F}_{12} \circ \mathcal{F}_{11}$$</p>
+
+<p>其中$\mathcal{D}_{r_i}$表示经过一些层后图像的分辨率缩小1倍以上。通过调整每层的输入分辨率和参数数量，可以在网络中定义一个缩放规则。找到一个最佳的缩放规则（在分辨率和参数量之间权衡）是值得尝试的。之前大部分做法（Related Work）做的还不够。</p>
+
+<p>论文里提出的<code>ELASTIC</code>结构的单层以及整个网络公式表示为：<br />
+$$\mathcal{F}(x) = \sigma(\sum_{i=1}^{q}\mathcal{U}_{r_i}(\mathcal{T}_{i}(\mathcal{D}_{r_i}(x)))) $$</p>
+
+<p>$$\mathcal{N} = \mathcal{F}_{32} \circ \mathcal{F}_{31} \circ \mathcal{F}_{22} \circ \mathcal{F}_{21} \circ \mathcal{F}_{12} \circ \mathcal{F}_{11}$$</p>
+
+<p>这里的$\mathcal{D}_{r_i}(x)$和$\mathcal{U}_{r_i}(x)$分别表示下采样和上采样，改变一层中特征的空间分辨率。和传统<code>CNN</code>相比，主流程里面没有了下采样。</p>
+
+<p>注意，这里学习到的放缩规则是可以针对特定实例的，即：对于不同的图像实例，网络可能会在每一层激活不同的分辨率分支。</p>
+
+<p>对于含有复杂模式的图像，网络需要特征 高分辨率中的特征 来分类正确，那么网络靠后的层中，高分辨率分支就更可能被激活（论文第四部分验证）。<br />
+对于含有简单模式的图像，网络在低分辨率的时候就可以正确分类了，那么在网络比较靠前的层中，低分辨率分支被激活。</p>
+
+<p>每一层都有不同的分辨率选择，实际上整个网络就提供了指数级的放缩可能路径。</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>思想： 在网络的每一层，都考虑来自不同分辨率的信息。叠加起来，Elastic在各层之间提供了指数级的缩放路径，同时保持计算复杂的与基本模型相同（甚至更少）。</p>
+
+<p>核心操作：信息总是存在于高分辨率图中，每一层或者每个分支处理低分辨率或者同分辨率的图像。</p>
+
+<h3 id="收获">收获</h3>
+
+<ol>
+<li>思想简单，但背后的<strong>原理</strong>讲的很透彻，多个角度解释，从和其他方法的对比，以及与传统方式相比，公式表达的变化 </li>
+<li>实验做的特别漂亮，多种图表结合。包括模型图、方法对比图（折线图、柱状图）、方法对比表、自定义规则、tsne图</li>
+<li>Related Work这段整理的特别漂亮</li>
+</ol>
+
+<p><br></p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/paper">Paper</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/ml/activationfunctions/">闲聊Activation Functions &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>
