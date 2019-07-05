@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.x-fei.me/posts/f_think/meditation/</loc>
+    <lastmod>2019-07-05T00:41:31+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.x-fei.me/posts/paper/elastic_improvingcnnswithdynamicscalingpolic/</loc>
     <lastmod>2019-06-21T09:57:42+08:00</lastmod>
   </url>
@@ -214,7 +219,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/</loc>
-    <lastmod>2019-06-21T09:57:42+08:00</lastmod>
+    <lastmod>2019-07-05T00:41:31+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -276,7 +281,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/categories/fragments/</loc>
-    <lastmod>2019-05-06T23:03:42+08:00</lastmod>
+    <lastmod>2019-07-05T00:41:31+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -352,7 +357,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/posts/</loc>
-    <lastmod>2019-06-21T09:57:42+08:00</lastmod>
+    <lastmod>2019-07-05T00:41:31+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -394,7 +399,7 @@
   
   <url>
     <loc>https://blog.x-fei.me/tags/think/</loc>
-    <lastmod>2019-05-06T23:03:42+08:00</lastmod>
+    <lastmod>2019-07-05T00:41:31+08:00</lastmod>
     <priority>0</priority>
   </url>
   
