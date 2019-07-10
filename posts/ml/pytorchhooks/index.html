@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.53" />
+		<title>理解PyTorch Hooks &middot; </title>
+		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
+		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            displayMath: [
+                ['$$', '$$'],
+                ['\[\[', '\]\]']
+            ],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(),
+            i;
+        for (i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    MathJax.Hub.Config({
+        CommonHTML: {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+    });
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+<script src="https://cdn.staticfile.org/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.staticfile.org/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+
+	</head>
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="https://blog.x-fei.me/" class="left swing">
+        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+ 
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/pytorch.jpg);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="https://blog.x-fei.me/">
+            <h2>F(x) = ?</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href='https://blog.x-fei.me/'> Home</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/archives'>Archives</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/friends'>Friends</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+ 
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">理解PyTorch Hooks</h1>
+                            
+                            
+                                <time datetime="2019-07-10">Jul 10, 2019</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                            </span> - 1 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p><code>hook</code>函数可以在你不修改模型代码的同时，帮助你提取（或修改）中间层的参数或者特征图。</p>
+
+<p>最近在更新<a href="https://github.com/XFeiF/PAF">PAF</a>的时候，添加了<a href="https://projector.tensorflow.org/">Projector</a> (文档<a href="https://www.tensorflow.org/guide/embedding">Embedding</a>)功能，需要将网络靠近输出的一维特征取出来做PCA/tsne分析（辅助分析虽然看起来好像没什么用，但是用来装13挺合适的）。问题在于取出对应层embedding的方法。因为训练测试需要完整将输入通过网络得到输出，尽管我可以在网络定义的类中重新写一个函数使得输入只执行到我想要的那层，然后返回给我embedding。这是个笨方法，而且效率很低。所以想起Grad-CAM实现的时候，用到的Hook函数。</p>
+
+<h3 id="什么是hook">什么是Hook</h3>
+
+<p>字面上是“钩子”的意思。通俗地讲就是插件，在不用修改主体代码的条件下，可以实现一些额外的功能。把这些额外实现的功能“钩”在主代码上，所以叫钩子。</p>
+
+<p>对于我的需求，就可以通过先定义一个Hook类，然后对应层注册一下，输入执行到该层的时候hook一下，把输出给保存下来，就避免了二次执行了。</p>
+
+<p>更通俗一点的需求呢？在<a href="https://www.zhihu.com/question/61044004">知乎</a>看到李斌的高赞回答里举出例子就非常好。可以移步看一下。</p>
+
+<p>我对他这个例子的总结是，基于PyTorch的<code>autograd</code>机制，它构建的图中，一旦完成<code>backward</code>的使命，图就自动回收了。因此如果想取出中间变量的梯度，或者对中间变量的梯度进行限制，就可以通过定义一个中间变量的hook，打印grad的值或者修改等。</p>
+
+<h3 id="pytorch-相关hook函数解读">PyTorch 相关Hook函数解读</h3>
+
+<p>PyTorch中与<code>hook</code>相关的函数有（可以直接看官方文档解释，也可以留在这里看，我们一起讨论）：</p>
+
+<ol>
+<li><a href="https://pytorch.org/docs/stable/tensors.html?highlight=hook#torch.Tensor.register_hook"><code>torch.Tensor.register_hook</code></a></li>
+<li><a href="https://pytorch.org/docs/stable/nn.html?highlight=hook#torch.nn.Module.register_forward_hook"><code>torch.nn.Module.register_forward_hook</code></a></li>
+<li><a href="https://pytorch.org/docs/stable/nn.html?highlight=hook#torch.nn.Module.register_backward_hook"><code>torch.nn.Module.register_backward_hook</code></a></li>
+<li><a href="https://pytorch.org/docs/stable/nn.html?highlight=hook#torch.nn.Module.register_forward_pre_hook"><code>torch.nn.Module.register_forward_pre_hook</code></a><br /></li>
+</ol>
+
+<p>先声明一下，这些注册函数的共同点是：<strong>都会返回一个<code>handle</code>手柄（类似开关），它有<code>handle.remoev()</code>方法，可以将<code>hook</code>移除</strong>。</p>
+
+<h4 id="torch-tensor-register-hook"><code>torch.Tensor.register_hook</code></h4>
+
+<p>针对<code>torch.Tensor</code>，注册一个<strong><code>backward</code></strong>的钩子，每次计算这个Tensor的梯度的时候，都会触发钩子，调用钩子函数。</p>
+
+<p>这个<code>hook</code>函数长这个样子：</p>
+
+<pre><code class="language-python">hook(grad) -&gt; Tensor or None
+</code></pre>
+
+<p><code>hook</code>函数不应该改变它的参数<code>grad</code>，但可以选择返回一个新的参数来替换原来的<code>grad</code>，也达到修改的目的。</p>
+
+<p>下面这个例子在官方的例子上进行了一点修改。</p>
+
+<pre><code class="language-python"># double the grad
+def hook(grad):
+    return grad*2
+
+v = torch.tensor([0., 0., 0.], requires_grad=True) # set requires_grad to True
+h = v.register_hook(hook) # remember h is a handle
+v.backward(torch.tensor([1., 2., 3.])) # torch.Tensor.backward(gradient=None, ...)  
+v.grad  # tensor([2., 4., 6.])  
+
+h.remove()  # remove the hook
+</code></pre>
+
+<p>可以自己修改<code>hook</code>函数体会一下。</p>
+
+<h4 id="torch-nn-module-register-forward-hook"><code>torch.nn.Module.register_forward_hook</code></h4>
+
+<p>在<code>torch.nn.Module</code>上挂一个前向传播的钩子函数。</p>
+
+<p>每次<code>forward()</code>计算得到输出<strong>之后</strong>就会调用<code>hook</code>，它的形式定义如下：</p>
+
+<pre><code class="language-python">hook(module, input, output) -&gt; None
+</code></pre>
+
+<p>这里的hook不会对输入或者输出做改变，<strong>只取不改</strong>。</p>
+
+<h4 id="torch-nn-module-register-backward-hook"><code>torch.nn.Module.register_backward_hook</code></h4>
+
+<p>针对<code>torch.nn.Module</code>，在它上面注册一个钩子函数。在<code>module</code>计算完成的时候，调用钩子函数。</p>
+
+<p><code>hook</code>函数的形式定义：</p>
+
+<pre><code class="language-python">hook(module, input, output) -&gt; Tensor or None
+</code></pre>
+
+<p>注意点：</p>
+
+<ol>
+<li>因为<code>backward</code>是<strong>从后到前</strong>的，它的参数顺序和前向传播的相比应该是倒过来的。</li>
+<li>对于前向传播，<code>layer2</code>的前一层是<code>layer1</code>；对于后向传播，<code>layer2</code>的前一层是<strong><code>layer3</code></strong>。</li>
+<li>模型的<code>output</code>是前向最后一层的<code>output</code><br /></li>
+</ol>
+
+<p>所以文档里说明如果有返回值，替换的是上述定义中的<code>input</code>。</p>
+
+<p>这一点有些混乱，我们明确一个问题，如果修改返回值应该“修改”谁。</p>
+
+<p>将<code>hook</code>换个表达：</p>
+
+<pre><code class="language-python">hook(module, grad_out, grad_in) -&gt; Tensor or None
+</code></pre>
+
+<ul>
+<li>grad_in: 模型输出对于对应层输出的梯度 # 和forward pass统一
+
+<ul>
+<li><strong>等于</strong>一个表示当前层每一个神经元<code>error</code>的<code>tensor</code> （等于模型输出对于层输出的梯度 or 等于它应该提升多大程度）</li>
+<li>对于最后一层，例如<code>[1,1] &lt;=&gt;</code>模型输出对于它本身的梯度</li>
+<li>同样可以被当作是一个<code>weight map</code>，比如 <code>[1, 0]</code> 关掉了第二个梯度，<code>[2,1]</code>在第一个梯度上放了双倍的权重<br /></li>
+</ul></li>
+<li>grad_out: grad_in * (模型输出对于输出的梯度)
+
+<ul>
+<li><strong>等于</strong>下一层的error (链式法则)<br /></li>
+</ul></li>
+</ul>
+
+<p>所以如果有返回的话，返回的是下一层的<code>error</code>，对应我下面这里的<code>grad_out</code>。</p>
+
+<p>例子建议去<a href="https://www.kaggle.com/sironghuang/understanding-pytorch-hooks/notebook">Understanding Pytorch hooks</a>  查看，需要投入时间。</p>
+
+<h4 id="torch-nn-module-register-forward-pre-hook"><code>torch.nn.Module.register_forward_pre_hook</code></h4>
+
+<p>在<code>torch.nn.Module</code>上注册一个前向传播的<strong>预先</strong>钩函数。</p>
+
+<p>和<code>register_forward_hook</code>相比，它是每次<code>forward()</code>计算<strong>之前</strong>就被调用，它的形式定义如下：</p>
+
+<pre><code class="language-python">hook(module, input) -&gt; None
+</code></pre>
+
+<p>看返回值就知道，它也不能对<code>input</code>进行修改。</p>
+
+<h3 id="总结">总结</h3>
+
+<ul>
+<li>Hook函数不改变传递进来的gradients</li>
+<li>但是一旦调用<code>return</code>，返回的值将作为输出梯度。</li>
+</ul>
+
+<h3 id="references">References</h3>
+
+<p><a href="https://www.kaggle.com/sironghuang/understanding-pytorch-hooks/notebook">强推 Understanding Pytorch hooks</a></p>
+
+<p><a href="https://www.zhihu.com/question/61044004">知乎</a></p>
+
+<p><a href="https://oldpan.me/archives/pytorch-autograd-hook">Oldpan博客</a></p>
+
+<p><a href="https://ptorch.com/news/172.html">ptorch</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/pytorch">PyTorch</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/f_think/meditation/">Meditation &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>

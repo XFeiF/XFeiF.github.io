@@ -5,10 +5,19 @@
     <link>https://blog.x-fei.me/categories/machine-learning/</link>
     <description>Recent content in Machine Learning on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 14 Jun 2019 21:21:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jul 2019 10:15:11 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>理解PyTorch Hooks</title>
+      <link>https://blog.x-fei.me/posts/ml/pytorchhooks/</link>
+      <pubDate>Wed, 10 Jul 2019 10:15:11 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/ml/pytorchhooks/</guid>
+      <description>&lt;p&gt;&lt;code&gt;hook&lt;/code&gt;函数可以在你不修改模型代码的同时，帮助你提取（或修改）中间层的参数或者特征图。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>闲聊Activation Functions</title>
