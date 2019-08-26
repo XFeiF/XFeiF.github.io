@@ -5,25 +5,38 @@
     <link>https://blog.x-fei.me/timelines/</link>
     <description>Recent content in Timelines on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 05 Mar 2019 09:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 22:04:06 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/timelines/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>180天早起打卡</title>
+      <title>2019 Weekly Algorithms</title>
+      <link>https://blog.x-fei.me/timelines/2019weeklyalgo/</link>
+      <pubDate>Mon, 26 Aug 2019 22:04:06 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/timelines/2019weeklyalgo/</guid>
+      <description> 每周几道算法题！ 千里之行，始于足下。每周几道，总结更新，老咸鱼的翻身之路。 
+ 25th Aug 2019  第34周  查询范围
+约瑟夫问题
+最大在线人数
+1000支药剂中1支有毒    20th Aug 2019  第33周  最少的硬币组合出1到m之间的任意值
+最少的硬币组合出值m    14th Aug 2019  第32周  某数字在排序数组中出现的次数
+天平最少砝码设计    </description>
+    </item>
+    
+    <item>
+      <title>180天早起打卡[Done]</title>
       <link>https://blog.x-fei.me/timelines/180%E6%97%A9%E8%B5%B7%E6%89%93%E5%8D%A1/</link>
       <pubDate>Tue, 05 Mar 2019 09:00:00 +0800</pubDate>
       
       <guid>https://blog.x-fei.me/timelines/180%E6%97%A9%E8%B5%B7%E6%89%93%E5%8D%A1/</guid>
-      <description> 180天早起打卡，即6-8点之间起床！ 每周日下午汇总更新一次～ 随机更新 
- 10th July 2019  133天打卡！ 第二次对自己workflow构建的尝试告败。准备动身去苏州参加MICS！兴奋！状态调整好了很多。上周去学习游泳，身体有些僵硬，需要多锻炼！
+      <description>180天早起打卡，即6-8点之间起床！ 每周日下午汇总更新一次～ 随机更新 打卡完成。 Some words for myself: If you do enjoy your life, just try to find or make interesting things as more as you can! 
+ 26th Aug 2019  180天打卡！ 大概有30+天放水了，但是总体而言，生活作息改善很多。下一阶段继续调整。
+   10th July 2019  133天打卡！ 第二次对自己workflow构建的尝试告败。准备动身去苏州参加MICS！兴奋！状态调整好了很多。上周去学习游泳，身体有些僵硬，需要多锻炼！
    21th June 2019  114天打卡！ 很久没更新，但早睡早起的习惯还是养成了。中间试了每日总结，但是很难坚持下去。但是我觉得还是有必要的。依然处于选择的路口。
    6th May 2019  68天打卡！ 早睡早起，但是效率依然存在问题。需要对每天进行总结，以及第二天的计划安排。五一这段时间休息了很久，看了一些书、电影，想了一些事。
-   31th Mar 2019  30天打卡！ 可以说早起已经成习惯了？肝在实验室里的日子，996.iCU都不算什么了，187.Lab了解一下，时间很重要，效率更关键。
-   14th Mar 2019  2周打卡！ 早起感觉很好，但是感觉时间依然很紧张，有些难以把握哪些是属于我自己的时间？
-   5th Mar 2019  坚持5天了！ 一个好的开始！以及，有了更多自己的时间可以支配！
-   </description>
+   31th Mar 2019  30天打卡！ 可以说早起已经成习惯了？肝在实验室里的日子，996.</description>
     </item>
     
     <item>

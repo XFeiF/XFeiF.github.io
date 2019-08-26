@@ -1336,6 +1336,70 @@ section#timeline article:nth-child(5) div.inner h2:after {
     background: #9b59b6;
 }
 
+section#timeline article:nth-child(6) div.inner h2 {
+    background: #9151bb;
+}
+
+section#timeline article:nth-child(6) div.inner h2:after {
+    background: #9151bb;
+}
+
+section#timeline article:nth-child(7) div.inner h2 {
+    background: #cd5c5c;
+}
+
+section#timeline article:nth-child(7) div.inner h2:after {
+    background: #cd5c5c;
+}
+
+section#timeline article:nth-child(8) div.inner h2:after {
+    background: #fa8072;
+}
+
+section#timeline article:nth-child(8) div.inner h2 {
+    background: #fa8072;
+}
+
+section#timeline article:nth-child(9) div.inner h2:after {
+    background: #db7093;
+}
+
+section#timeline article:nth-child(9) div.inner h2 {
+    background: #db7093;
+}
+
+section#timeline article:nth-child(10) div.inner h2:after {
+    background: #ff69b4;
+}
+
+section#timeline article:nth-child(10) div.inner h2 {
+    background: #ff69b4;
+}
+
+section#timeline article:nth-child(11) div.inner h2:after {
+    background: #32cd32;
+}
+
+section#timeline article:nth-child(11) div.inner h2 {
+    background: #32cd32;
+}
+
+section#timeline article:nth-child(12) div.inner h2:after {
+    background: #008000;
+}
+
+section#timeline article:nth-child(12) div.inner h2 {
+    background: #008000;
+}
+
+section#timeline article:nth-child(13) div.inner h2:after {
+    background: #20b2aa;
+}
+
+section#timeline article:nth-child(13) div.inner h2 {
+    background: #20b2aa;
+}
+
 @-webkit-keyframes swing {
     15% {
         -webkit-transform: translateX(5px);
