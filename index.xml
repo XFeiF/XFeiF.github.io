@@ -11,11 +11,11 @@
     
     
     <item>
-      <title>Python中的线程进程问题</title>
-      <link>https://blog.x-fei.me/posts/py/pythonprocessandthread/</link>
+      <title>GIL in Python</title>
+      <link>https://blog.x-fei.me/posts/py/gil_in_python/</link>
       <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/py/pythonprocessandthread/</guid>
+      <guid>https://blog.x-fei.me/posts/py/gil_in_python/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Python下多线程是鸡肋，推荐使用多进程！&lt;/p&gt;
 &lt;/blockquote&gt;
