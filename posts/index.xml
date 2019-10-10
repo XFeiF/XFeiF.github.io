@@ -5,10 +5,25 @@
     <link>https://blog.x-fei.me/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 10 Jul 2019 10:15:11 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 16:22:52 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python中的线程进程问题</title>
+      <link>https://blog.x-fei.me/posts/py/pythonprocessandthread/</link>
+      <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/py/pythonprocessandthread/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Python下多线程是鸡肋，推荐使用多进程！&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;？？？&lt;/p&gt;
+
+&lt;p&gt;？？？&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>理解PyTorch Hooks</title>
