@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>Swift 3 Algorithm: 二叉搜索树 &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -177,86 +178,70 @@
 <p>打开XCode，新建Playground，创建searchBinaryTreeDemo。</p>
 
 <h3 id="样例树">样例树</h3>
-
-<pre><code class="language-swift">// 1.
-//
-//              9
-//            /   \
-//           6     10
-//          / \     \
-//         5   7     11
-//
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 1.</span>
+<span style="color:#75715e">//</span>
+<span style="color:#75715e">//              9</span>
+<span style="color:#75715e">//            /   \</span>
+<span style="color:#75715e">//           6     10</span>
+<span style="color:#75715e">//          / \     \</span>
+<span style="color:#75715e">//         5   7     11</span>
+<span style="color:#75715e">//</span></code></pre></div>
 <!-- more -->
 
 <h3 id="创建结点">创建结点</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 2.</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Node</span> {
+    <span style="color:#66d9ef">let</span> value: Int
+    <span style="color:#66d9ef">var</span> leftChild: Node?
+    <span style="color:#66d9ef">var</span> rightChild: Node?
 
-<pre><code class="language-swift">// 2.
-class Node {
-    let value: Int
-    var leftChild: Node?
-    var rightChild: Node?
-
-    init(value: Int, leftChild: Node?, rightChild:Node?) {
-        self.value = value
-        self.leftChild = leftChild
-        self.rightChild = rightChild
+    <span style="color:#66d9ef">init</span>(value: Int, leftChild: Node?, rightChild:Node?) {
+        <span style="color:#66d9ef">self</span>.value = value
+        <span style="color:#66d9ef">self</span>.leftChild = leftChild
+        <span style="color:#66d9ef">self</span>.rightChild = rightChild
     }
-}
-</code></pre>
-
+}</code></pre></div>
 <p>子结点为可选类型！</p>
 
 <h3 id="构建样例树">构建样例树</h3>
 
 <p>下面利用上面的<code>Node</code>结构创建样例树</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// left branch</span>
 
-<pre><code class="language-swift">// left branch
+<span style="color:#66d9ef">let</span> fiveNode = Node(value: <span style="color:#ae81ff">5</span>, leftChild: <span style="color:#66d9ef">nil</span>, rightChild: <span style="color:#66d9ef">nil</span>)
+<span style="color:#66d9ef">let</span> sevenNode = Node(value: <span style="color:#ae81ff">7</span>, leftChild: <span style="color:#66d9ef">nil</span>, rightChild: <span style="color:#66d9ef">nil</span>)
+<span style="color:#66d9ef">let</span> sixNode = Node(value: <span style="color:#ae81ff">6</span>, leftChild: fiveNode, rightChild: sevenNode)
 
-let fiveNode = Node(value: 5, leftChild: nil, rightChild: nil)
-let sevenNode = Node(value: 7, leftChild: nil, rightChild: nil)
-let sixNode = Node(value: 6, leftChild: fiveNode, rightChild: sevenNode)
+<span style="color:#75715e">// right branch</span>
+<span style="color:#66d9ef">let</span> elevenNode = Node(value: <span style="color:#ae81ff">11</span>, leftChild: <span style="color:#66d9ef">nil</span>, rightChild: <span style="color:#66d9ef">nil</span>)
 
-// right branch
-let elevenNode = Node(value: 11, leftChild: nil, rightChild: nil)
+<span style="color:#66d9ef">let</span> tenNode = Node(value: <span style="color:#ae81ff">10</span>, leftChild: <span style="color:#66d9ef">nil</span>, rightChild: elevenNode)
 
-let tenNode = Node(value: 10, leftChild: nil, rightChild: elevenNode)
-
-let nineRootNode = Node(value: 9, leftChild: sixNode, rightChild: tenNode)
-
-</code></pre>
-
+<span style="color:#66d9ef">let</span> nineRootNode = Node(value: <span style="color:#ae81ff">9</span>, leftChild: sixNode, rightChild: tenNode)</code></pre></div>
 <h3 id="实现算法">实现算法</h3>
 
 <p>中序遍历～</p>
-
-<pre><code class="language-swift">//3 .
-// 实现算法，在这棵树中寻找一个特定的值。
-func search(_ node: Node?, _ searchValue: Int) -&gt; Bool {
-    if node == nil {
-        return false
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//3 .</span>
+<span style="color:#75715e">// 实现算法，在这棵树中寻找一个特定的值。</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">search</span>(<span style="color:#66d9ef">_</span> node: Node?, <span style="color:#66d9ef">_</span> searchValue: Int) -&gt; Bool {
+    <span style="color:#66d9ef">if</span> node == <span style="color:#66d9ef">nil</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
     }
-    if node?.value == searchValue {
-        return true;
-    } else if (node?.value)! &gt; searchValue {
-        return search(node?.leftChild, searchValue)
-    } else {
-        return search(node?.rightChild, searchValue)
+    <span style="color:#66d9ef">if</span> node?.value == searchValue {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (node?.value)<span style="color:#f92672">!</span> <span style="color:#f92672">&gt;</span> searchValue {
+        <span style="color:#66d9ef">return</span> search(node?.leftChild, searchValue)
+    } <span style="color:#66d9ef">else</span> {
+        <span style="color:#66d9ef">return</span> search(node?.rightChild, searchValue)
     }
-}
-</code></pre>
-
+}</code></pre></div>
 <h3 id="结果">结果</h3>
 
 <p>我们分别调用</p>
-
-<pre><code class="language-swift">search(inieRootNode, 5)
-search(inieRootNode, 6)
-search(inieRootNode, 11)
-search(inieRootNode, 0)
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">search(inieRootNode, <span style="color:#ae81ff">5</span>)
+search(inieRootNode, <span style="color:#ae81ff">6</span>)
+search(inieRootNode, <span style="color:#ae81ff">11</span>)
+search(inieRootNode, <span style="color:#ae81ff">0</span>)</code></pre></div>
 <p>可以观察到<code>playground</code>右侧面板中，函数的递归执行次数:<br />
 5-&gt;2次、6-&gt;1次、11-&gt;2次、0-&gt;3次。</p>
 
@@ -264,15 +249,12 @@ search(inieRootNode, 0)
 
 <p>我们知道二叉树搜索的效率是log(n)。
 可以通过在上述二叉搜索树的中序列表中搜索来比较。</p>
-
-<pre><code class="language-swift">// efficiency  
-let list = [5, 6, 7, 9, 10, 11]
-let index0 = list.index(where: {$0 == 0})
-let index5 = list.index(where: {$0 == 5})
-let index6 = list.index(where: {$0 == 6})
-let index11 = list.index(where: {$0 == 11})
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// efficiency  </span>
+<span style="color:#66d9ef">let</span> list = [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">11</span>]
+<span style="color:#66d9ef">let</span> index0 = list.index(<span style="color:#66d9ef">where</span>: {$0 == <span style="color:#ae81ff">0</span>})
+<span style="color:#66d9ef">let</span> index5 = list.index(<span style="color:#66d9ef">where</span>: {$0 == <span style="color:#ae81ff">5</span>})
+<span style="color:#66d9ef">let</span> index6 = list.index(<span style="color:#66d9ef">where</span>: {$0 == <span style="color:#ae81ff">6</span>})
+<span style="color:#66d9ef">let</span> index11 = list.index(<span style="color:#66d9ef">where</span>: {$0 == <span style="color:#ae81ff">11</span>})</code></pre></div>
 <p>可以在右侧面板中看到对于不存在的元素，二叉搜索树需要搜索三次，而for循环则需要7次。对于元素11，二叉搜索树需要搜索2次，for循环依然需要11次。</p>
 
 <p>本文除了帮助理解二叉搜索树，它的效率之外，还需要了解swift可选值的解析～</p>
@@ -331,7 +313,7 @@ let index11 = list.index(where: {$0 == 11})
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

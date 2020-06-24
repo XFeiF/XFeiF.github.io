@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>理解PyTorch Hooks &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -197,26 +198,20 @@
 <p>针对<code>torch.Tensor</code>，注册一个<strong><code>backward</code></strong>的钩子，每次计算这个Tensor的梯度的时候，都会触发钩子，调用钩子函数。</p>
 
 <p>这个<code>hook</code>函数长这个样子：</p>
-
-<pre><code class="language-python">hook(grad) -&gt; Tensor or None
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">hook(grad) <span style="color:#f92672">-&gt;</span> Tensor <span style="color:#f92672">or</span> None</code></pre></div>
 <p><code>hook</code>函数不应该改变它的参数<code>grad</code>，但可以选择返回一个新的参数来替换原来的<code>grad</code>，也达到修改的目的。</p>
 
 <p>下面这个例子在官方的例子上进行了一点修改。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># double the grad</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hook</span>(grad):
+    <span style="color:#66d9ef">return</span> grad<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
 
-<pre><code class="language-python"># double the grad
-def hook(grad):
-    return grad*2
+v <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">0.</span>, <span style="color:#ae81ff">0.</span>, <span style="color:#ae81ff">0.</span>], requires_grad<span style="color:#f92672">=</span>True) <span style="color:#75715e"># set requires_grad to True</span>
+h <span style="color:#f92672">=</span> v<span style="color:#f92672">.</span>register_hook(hook) <span style="color:#75715e"># remember h is a handle</span>
+v<span style="color:#f92672">.</span>backward(torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">1.</span>, <span style="color:#ae81ff">2.</span>, <span style="color:#ae81ff">3.</span>])) <span style="color:#75715e"># torch.Tensor.backward(gradient=None, ...)  </span>
+v<span style="color:#f92672">.</span>grad  <span style="color:#75715e"># tensor([2., 4., 6.])  </span>
 
-v = torch.tensor([0., 0., 0.], requires_grad=True) # set requires_grad to True
-h = v.register_hook(hook) # remember h is a handle
-v.backward(torch.tensor([1., 2., 3.])) # torch.Tensor.backward(gradient=None, ...)  
-v.grad  # tensor([2., 4., 6.])  
-
-h.remove()  # remove the hook
-</code></pre>
-
+h<span style="color:#f92672">.</span>remove()  <span style="color:#75715e"># remove the hook</span></code></pre></div>
 <p>可以自己修改<code>hook</code>函数体会一下。</p>
 
 <h4 id="torch-nn-module-register-forward-hook"><code>torch.nn.Module.register_forward_hook</code></h4>
@@ -224,10 +219,7 @@ h.remove()  # remove the hook
 <p>在<code>torch.nn.Module</code>上挂一个前向传播的钩子函数。</p>
 
 <p>每次<code>forward()</code>计算得到输出<strong>之后</strong>就会调用<code>hook</code>，它的形式定义如下：</p>
-
-<pre><code class="language-python">hook(module, input, output) -&gt; None
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">hook(module, input, output) <span style="color:#f92672">-&gt;</span> None</code></pre></div>
 <p>这里的hook不会对输入或者输出做改变，<strong>只取不改</strong>。</p>
 
 <h4 id="torch-nn-module-register-backward-hook"><code>torch.nn.Module.register_backward_hook</code></h4>
@@ -235,10 +227,7 @@ h.remove()  # remove the hook
 <p>针对<code>torch.nn.Module</code>，在它上面注册一个钩子函数。在<code>module</code>计算完成的时候，调用钩子函数。</p>
 
 <p><code>hook</code>函数的形式定义：</p>
-
-<pre><code class="language-python">hook(module, input, output) -&gt; Tensor or None
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">hook(module, input, output) <span style="color:#f92672">-&gt;</span> Tensor <span style="color:#f92672">or</span> None</code></pre></div>
 <p>注意点：</p>
 
 <ol>
@@ -252,10 +241,7 @@ h.remove()  # remove the hook
 <p>这一点有些混乱，我们明确一个问题，如果修改返回值应该“修改”谁。</p>
 
 <p>将<code>hook</code>换个表达：</p>
-
-<pre><code class="language-python">hook(module, grad_out, grad_in) -&gt; Tensor or None
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">hook(module, grad_out, grad_in) <span style="color:#f92672">-&gt;</span> Tensor <span style="color:#f92672">or</span> None</code></pre></div>
 <ul>
 <li>grad_in: 模型输出对于对应层输出的梯度 # 和forward pass统一
 
@@ -280,10 +266,7 @@ h.remove()  # remove the hook
 <p>在<code>torch.nn.Module</code>上注册一个前向传播的<strong>预先</strong>钩函数。</p>
 
 <p>和<code>register_forward_hook</code>相比，它是每次<code>forward()</code>计算<strong>之前</strong>就被调用，它的形式定义如下：</p>
-
-<pre><code class="language-python">hook(module, input) -&gt; None
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">hook(module, input) <span style="color:#f92672">-&gt;</span> None</code></pre></div>
 <p>看返回值就知道，它也不能对<code>input</code>进行修改。</p>
 
 <h3 id="总结">总结</h3>
@@ -355,7 +338,7 @@ h.remove()  # remove the hook
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

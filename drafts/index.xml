@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Drafts on </title>
@@ -18,12 +18,10 @@
       <guid>https://blog.x-fei.me/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</guid>
       <description>&lt;p&gt;为什么&lt;code&gt;pytorch&lt;/code&gt;里面的网络初始化的时候都调用了&lt;code&gt;super&lt;/code&gt;函数，并且第一个参数名是类名呢？&lt;br /&gt;
 即为什么&lt;code&gt;python&lt;/code&gt;定义类的时候是这样设置的？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class C(B):
-	def __init__(self):
-		super(C, self).__init__()
-		print(&#39;B&#39;)
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;(B):
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; __init__(self):
+		super(C, self)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__init__()
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;B&amp;#39;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

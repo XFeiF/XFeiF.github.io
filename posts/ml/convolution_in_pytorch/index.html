@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>Convolution&#39;s Numpy and Pytorch implementation &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -198,10 +199,7 @@
 <h3 id="pytorch-api">Pytorch API</h3>
 
 <p>这里以<a href="https://pytorch.org/docs/stable/nn.html#conv2d"><code>torch.nn.Conv2d</code></a>为例。</p>
-
-<pre><code class="language-python">class torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True)
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">torch</span><span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Conv2d(in_channels, out_channels, kernel_size, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, dilation<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, groups<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, bias<span style="color:#f92672">=</span>True)</code></pre></div>
 <p>当输入是$(N, C_{in}, H, W)$时，输出$(N, C_{out}, H_{out}, W_{out})$可以用以下公式计算得到。
 <img src="https://raw.githubusercontent.com/XFeiF/Photos/master/blog/conv_opt.jpg" alt="Conv_Opt" /><br />
 其中 ★ 表示相关卷积操作，$N$表示 batch size, $C$ 表示channels（通道）数量，即<code>feature_map</code> 的数量，$H, W$表示<code>feature_map</code>的像素高度和宽度。</p>
@@ -224,105 +222,93 @@ $$ 2 \times padding[0] = \text{kernel_size}[0] - 1 $$
 <h4 id="simple-convolution">Simple Convolution</h4>
 
 <p>首先，实现一个最基本的卷积过程，这个卷积运算是单通道输入、单通道输出的，用作卷积的最基础的运算模块。为了方便起见，这里我们设定<code>stride=1</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">baseConv</span>(feature_map, kernel):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">        feature_map: [H, W]
+</span><span style="color:#e6db74">        kernel: [k, k]
+</span><span style="color:#e6db74">    Returns:
+</span><span style="color:#e6db74">        out: [H, W]
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    h, w <span style="color:#f92672">=</span> feature_map<span style="color:#f92672">.</span>shape
+    k, _ <span style="color:#f92672">=</span> kernel<span style="color:#f92672">.</span>shape
+    <span style="color:#75715e"># padding</span>
+    p <span style="color:#f92672">=</span> int(k <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+    <span style="color:#75715e"># add zeors padding</span>
+    feature_map_padding <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros([h <span style="color:#f92672">+</span> p <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>, w <span style="color:#f92672">+</span> p <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>])
+    feature_map_padding[p:h <span style="color:#f92672">+</span> p, p:w <span style="color:#f92672">+</span> p] <span style="color:#f92672">=</span> feature_map
 
-<pre><code class="language-python">import numpy as np
-def baseConv(feature_map, kernel):
-    '''
-    Args:
-        feature_map: [H, W]
-        kernel: [k, k]
-    Returns:
-        out: [H, W]
-    '''
-    h, w = feature_map.shape
-    k, _ = kernel.shape
-    # padding
-    p = int(k / 2)
-    # add zeors padding
-    feature_map_padding = np.zeros([h + p * 2, w + p * 2])
-    feature_map_padding[p:h + p, p:w + p] = feature_map
-
-    result = np.zeros([h, w])
-    for i in range(h):
-        for j in range(w):
-            # region of interest
-            roi = feature_map_padding[i:i + k, j:j + k]
-            result[i][j] = np.sum(roi * kernel)
-    return result
-</code></pre>
-
+    result <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros([h, w])
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(h):
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(w):
+            <span style="color:#75715e"># region of interest</span>
+            roi <span style="color:#f92672">=</span> feature_map_padding[i:i <span style="color:#f92672">+</span> k, j:j <span style="color:#f92672">+</span> k]
+            result[i][j] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(roi <span style="color:#f92672">*</span> kernel)
+    <span style="color:#66d9ef">return</span> result</code></pre></div>
 <h4 id="conv2d">Conv2d</h4>
 
 <p>以上只是最简单版本的单通道输入、单通道输出的卷积过程。然而，我们在实际运算的过程中用到的都是多通道输入、多通道输入的卷积。在上述模块的基础上，我们可以很容易地实现多通道输入多通道输入的卷积运算过程。只需要使用两个for循环，遍历每一个通道的输入和每一个通道的输出即可。如下所示。</p>
-
-<pre><code class="language-python">def conv2d(input, weights):
-    '''
-    Args:
-        input: [C_in, H, W]
-        weights: [C_out, K, K]
-    Returns:
-        out: [C_out, H, W]
-    '''
-    in_channel, h, w = input.shape
-    out_channel, *_  = weights.shape
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">conv2d</span>(input, weights):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">        input: [C_in, H, W]
+</span><span style="color:#e6db74">        weights: [C_out, K, K]
+</span><span style="color:#e6db74">    Returns:
+</span><span style="color:#e6db74">        out: [C_out, H, W]
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    in_channel, h, w <span style="color:#f92672">=</span> input<span style="color:#f92672">.</span>shape
+    out_channel, <span style="color:#f92672">*</span>_  <span style="color:#f92672">=</span> weights<span style="color:#f92672">.</span>shape
     
-    output = np.zeros( [out_channel, h, w] )
-    for i in range(out_channel):
-        weight = weights[i]
-        for j in range(in_channel):
-            feature_map = input[j]
-            kernel      = weight[j]
-            output[i]  += baseConv(feature_map, kernel)
-    return output
-</code></pre>
-
+    output <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros( [out_channel, h, w] )
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(out_channel):
+        weight <span style="color:#f92672">=</span> weights[i]
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(in_channel):
+            feature_map <span style="color:#f92672">=</span> input[j]
+            kernel      <span style="color:#f92672">=</span> weight[j]
+            output[i]  <span style="color:#f92672">+=</span> baseConv(feature_map, kernel)
+    <span style="color:#66d9ef">return</span> output</code></pre></div>
 <h4 id="test">Test</h4>
 
 <p>写好函数后，我们使用上面图片里的数据来验证一下程序运算结果的正确性。</p>
-
-<pre><code class="language-python">input_data=[   [[1,0,1,2,1],
-               [0,2,1,0,1],
-               [1,1,0,2,0],
-               [2,2,1,1,0],
-               [2,0,1,2,0]],
-               [[2,0,2,1,1],
-                [0,1,0,0,2],
-                [1,0,0,2,1],
-                [1,1,2,1,0],
-                [1,0,1,1,1]],]
-weights_data=[[ [[ 1, 0, 1],
-                 [-1, 1, 0],
-                 [ 0,-1, 0]],
-                [[-1, 0, 1],
-                 [ 0, 0, 1],
-                 [ 1, 1, 1]] 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">input_data<span style="color:#f92672">=</span>[   [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>],
+               [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>],
+               [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>],
+               [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>],
+               [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>]],
+               [[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>],
+                [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>],
+                [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>],
+                [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>],
+                [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]],]
+weights_data<span style="color:#f92672">=</span>[[ [[ <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
+                 [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>],
+                 [ <span style="color:#ae81ff">0</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]],
+                [[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
+                 [ <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
+                 [ <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]] 
            ]]
-# change list into numpy array
-input   = np.array(input_data)
-weights = np.array(weights_data)
-# show the result
-print(conv2d(input, weights))
+<span style="color:#75715e"># change list into numpy array</span>
+input   <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(input_data)
+weights <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(weights_data)
+<span style="color:#75715e"># show the result</span>
+<span style="color:#66d9ef">print</span>(conv2d(input, weights))
 
-#[[[ 2.  0.  2.  4.  0.]
-#  [ 1.  4.  4.  3.  5.]
-#  [ 4.  3.  5.  9. -1.]
-#  [ 3.  4.  6.  2.  1.]
-#  [ 5.  3.  5.  1. -2.]]]
-</code></pre>
-
+<span style="color:#75715e">#[[[ 2.  0.  2.  4.  0.]</span>
+<span style="color:#75715e">#  [ 1.  4.  4.  3.  5.]</span>
+<span style="color:#75715e">#  [ 4.  3.  5.  9. -1.]</span>
+<span style="color:#75715e">#  [ 3.  4.  6.  2.  1.]</span>
+<span style="color:#75715e">#  [ 5.  3.  5.  1. -2.]]]</span></code></pre></div>
 <p>下面我们再用<code>Pytorch</code>里面的<a href="https://pytorch.org/docs/stable/nn.html#id21"><code>torch.nn.functional.conv2d</code></a>来验证一下。</p>
-
-<pre><code class="language-python">import torch.nn.functional as F
-input = torch.tensor(input_data).unsqueeze(0).float()
-weights = torch.tensor(weights_data).float()
-result = F.conv2d(input, weights, padding=1)
-# tensor([[[[ 2.,  0.,  2.,  4.,  0.],
-#          [ 1.,  4.,  4.,  3.,  5.],
-#          [ 4.,  3.,  5.,  9., -1.],
-#          [ 3.,  4.,  6.,  2.,  1.],
-#          [ 5.,  3.,  5.,  1., -2.]]]])
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torch.nn.functional <span style="color:#f92672">as</span> F
+input <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(input_data)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>float()
+weights <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(weights_data)<span style="color:#f92672">.</span>float()
+result <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>conv2d(input, weights, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># tensor([[[[ 2.,  0.,  2.,  4.,  0.],</span>
+<span style="color:#75715e">#          [ 1.,  4.,  4.,  3.,  5.],</span>
+<span style="color:#75715e">#          [ 4.,  3.,  5.,  9., -1.],</span>
+<span style="color:#75715e">#          [ 3.,  4.,  6.,  2.,  1.],</span>
+<span style="color:#75715e">#          [ 5.,  3.,  5.,  1., -2.]]]])</span></code></pre></div>
 <p>验证完毕。</p>
 
 <h3 id="pytorch-source-code">PyTorch Source Code</h3>
@@ -333,48 +319,46 @@ result = F.conv2d(input, weights, padding=1)
 <img src="http://ww1.sinaimg.cn/large/005O8ntygy1g0r7izbm4bj30kk074tb0.jpg"/><br />
 我们如果是依赖于GPU，那么要去<code>cudnn</code>里找，但是<code>cudnn</code>是闭源的，看不到底层的实现。但是对于CPU版本，我们知道它的底层还是用<code>C,C++</code>来实现的，所以从这方面着手，找了<code>Github</code>里<code>pytorch.torch.csrc</code>，依然没有哦。<br />
 所幸的是，我找到了这个<a href="https://github.com/pytorch/pytorch/tree/master/aten/src"><code>aten</code></a>。<code>src</code>里的说明文件表明这是<code>PyTorch</code>的底层<code>tensor</code>库。我们要找CPU版本的，所以直接在<code>TH=TorcH</code>里寻找，终于找到了<a href="https://github.com/pytorch/pytorch/blob/master/aten/src/TH/generic/THTensorConv.cpp">这份实现</a>。我们截取部分代码分析一下：</p>
-
-<pre><code class="language-cpp">/*
-  2D Input, 2D kernel  : convolve given image with the given kernel.
-*/
-void THTensor_(validXCorr2Dptr)(scalar_t *r_,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">/*
+</span><span style="color:#75715e">  2D Input, 2D kernel  : convolve given image with the given kernel.
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">THTensor_</span>(validXCorr2Dptr)(scalar_t <span style="color:#f92672">*</span>r_,
                                        scalar_t alpha,
-                                       scalar_t *t_, int64_t ir, int64_t ic,
-                                       scalar_t *k_, int64_t kr, int64_t kc,
-                                       int64_t sr, int64_t sc)
+                                       scalar_t <span style="color:#f92672">*</span>t_, <span style="color:#66d9ef">int64_t</span> ir, <span style="color:#66d9ef">int64_t</span> ic,
+                                       scalar_t <span style="color:#f92672">*</span>k_, <span style="color:#66d9ef">int64_t</span> kr, <span style="color:#66d9ef">int64_t</span> kc,
+                                       <span style="color:#66d9ef">int64_t</span> sr, <span style="color:#66d9ef">int64_t</span> sc)
 {
-  int64_t or_ = (ir - kr) / sr + 1;
-  int64_t oc = (ic - kc) / sc + 1;
+  <span style="color:#66d9ef">int64_t</span> or_ <span style="color:#f92672">=</span> (ir <span style="color:#f92672">-</span> kr) <span style="color:#f92672">/</span> sr <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">int64_t</span> oc <span style="color:#f92672">=</span> (ic <span style="color:#f92672">-</span> kc) <span style="color:#f92672">/</span> sc <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
 
-  int64_t xx, yy, kx, ky;
+  <span style="color:#66d9ef">int64_t</span> xx, yy, kx, ky;
 
-  if ((sc != 1) || (oc &lt; 4))  {
-    /* regular convolution */
-    for(yy = 0; yy &lt; or_; yy++) {
-      for(xx = 0; xx &lt; oc; xx++) {
-        /* Dot product in two dimensions... (between input image and the mask) */
-        scalar_t *pi_ = t_ + yy*sr*ic + xx*sc;
-        scalar_t *pw_ = k_;
-        scalar_t sum = 0;
-        for(ky = 0; ky &lt; kr; ky++) {
-          for(kx = 0; kx &lt; kc; kx++) {
-            sum += pi_[kx]*pw_[kx];
+  <span style="color:#66d9ef">if</span> ((sc <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">||</span> (oc <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>))  {
+    <span style="color:#75715e">/* regular convolution */</span>
+    <span style="color:#66d9ef">for</span>(yy <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; yy <span style="color:#f92672">&lt;</span> or_; yy<span style="color:#f92672">++</span>) {
+      <span style="color:#66d9ef">for</span>(xx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; xx <span style="color:#f92672">&lt;</span> oc; xx<span style="color:#f92672">++</span>) {
+        <span style="color:#75715e">/* Dot product in two dimensions... (between input image and the mask) */</span>
+        scalar_t <span style="color:#f92672">*</span>pi_ <span style="color:#f92672">=</span> t_ <span style="color:#f92672">+</span> yy<span style="color:#f92672">*</span>sr<span style="color:#f92672">*</span>ic <span style="color:#f92672">+</span> xx<span style="color:#f92672">*</span>sc;
+        scalar_t <span style="color:#f92672">*</span>pw_ <span style="color:#f92672">=</span> k_;
+        scalar_t sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">for</span>(ky <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; ky <span style="color:#f92672">&lt;</span> kr; ky<span style="color:#f92672">++</span>) {
+          <span style="color:#66d9ef">for</span>(kx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; kx <span style="color:#f92672">&lt;</span> kc; kx<span style="color:#f92672">++</span>) {
+            sum <span style="color:#f92672">+=</span> pi_[kx]<span style="color:#f92672">*</span>pw_[kx];
           }
-          pi_ += ic; /* next input line */
-          pw_ += kc; /* next mask line */
+          pi_ <span style="color:#f92672">+=</span> ic; <span style="color:#75715e">/* next input line */</span>
+          pw_ <span style="color:#f92672">+=</span> kc; <span style="color:#75715e">/* next mask line */</span>
         }
-        /* Update output */
-        *r_++ += alpha*sum;
+        <span style="color:#75715e">/* Update output */</span>
+        <span style="color:#f92672">*</span>r_<span style="color:#f92672">++</span> <span style="color:#f92672">+=</span> alpha<span style="color:#f92672">*</span>sum;
       }
     }
 
-  } else {
-    /* SSE-based convolution */
+  } <span style="color:#66d9ef">else</span> {
+    <span style="color:#75715e">/* SSE-based convolution */</span>
     ...
   }
 }
-</code></pre>
-
+</code></pre></div>
 <p>首先它的数据类型，都是在<code>C++</code>数据类型后面加了<code>_t</code>，应该是表示这个<code>Tensor</code>类型基本类型。<br />
 接着是他的参数，<code>ir, ic</code>表示输入的<code>row</code>和<code>col</code>，同理<code>kr, kc</code>，<code>sr, sc</code>分别表示<code>kernel</code>和<code>stride</code>的像素长度。<br />
 函数体前两行先定义了输出的<code>row</code>和<code>col</code>；接下来对<code>sc</code>和<code>oc</code>的判断是为了使用<a href="https://www.wikiwand.com/en/Streaming_SIMD_Extensions"><code>SSE-based convolution</code></a>，我们选择忽略，直接看<code>if</code>的代码块内容，发现外层两个循环和我们上面实现的<code>baseConv</code>里的循环<code>h,w</code>一样，为了计算输出的每个像素点的最终值；而内层的两个循环则是做卷积操作得到新的像素值，我们则是利用了<code>numpy</code>的计算便利性；<code>*r_++ += alpha*sum</code>左边<code>*r</code>表示的是返回数据的引用，通过自增改变对应地址的元素，右边的<code>alpha</code>应该是卷积的权重。</p>
@@ -472,7 +456,7 @@ void THTensor_(validXCorr2Dptr)(scalar_t *r_,
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

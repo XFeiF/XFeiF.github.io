@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title></title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 <body>
@@ -106,7 +107,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -142,8 +143,80 @@
         <div class="page-template page-index container-wrapper">
     
     <ol id="masonry" class="posts">
+         <li class="card">
+    <div class="card-container">
+        <div class="card-body">
+            <a href="https://blog.x-fei.me/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/" title="link to Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions" >
+                <div class="material-cover" style="background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/swift.jpg)"></div>
+                <div class="card-content">
+                    <h2>Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</h2>
+                    <div class="description">
+                        <blockquote>
+<p>有趣的 <code>Swift 3</code> 算法。</p>
+</blockquote>
+
+<p>今天分享几个Swift Higher Order Functions 给大家。
+主要是 <code>Filter</code>、<code>Map</code>、<code>Reduce</code>。</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="card-footer">
+            <div class="meta">
+                
+                
+                    <time datetime="2017-09-04">Sep 4, 2017</time>
+                
+                <span class="categories">
+                     on 
     
-        <li class="card">
+        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
+    
+
+
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</li>
+  <li class="card">
+    <div class="card-container">
+        <div class="card-body">
+            <a href="https://blog.x-fei.me/posts/swift-3-fun-algorithms-wrappingarray/" title="link to Swift 3 Fun Algorithms:Wrapping Array" >
+                <div class="material-cover" style="background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/swift.jpg)"></div>
+                <div class="card-content">
+                    <h2>Swift 3 Fun Algorithms:Wrapping Array</h2>
+                    <div class="description">
+                        <blockquote>
+<p>有趣的 <code>Swift 3</code> 算法。</p>
+</blockquote>
+
+<p>在<code>Youtube</code>上看到Swift3 的一个小算法，觉得很有趣！介绍给大家～</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="card-footer">
+            <div class="meta">
+                
+                
+                    <time datetime="2017-09-03">Sep 3, 2017</time>
+                
+                <span class="categories">
+                     on 
+    
+        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
+    
+
+
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</li>
+  <li class="card">
     <div class="card-container">
         <div class="card-body">
             <a href="https://blog.x-fei.me/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/" title="link to 给Hexo(Hugo)添加Bigfoot" >
@@ -175,9 +248,7 @@
         </div>
     </div>
 </li>
-
-    
-        <li class="card">
+  <li class="card">
     <div class="card-container">
         <div class="card-body">
             <a href="https://blog.x-fei.me/posts/stay-hungry-stay-foolish/" title="link to Stay hungry, Stay Young" >
@@ -209,9 +280,7 @@
         </div>
     </div>
 </li>
-
-    
-        <li class="card">
+  <li class="card">
     <div class="card-container">
         <div class="card-body">
             <a href="https://blog.x-fei.me/posts/_about/" title="link to Welcome" >
@@ -243,8 +312,7 @@
         </div>
     </div>
 </li>
-
-    
+ 
     </ol>
     <nav id="post-nav" class="pagination nav-fillpath">
     
@@ -269,21 +337,19 @@
 </div>
 
 <script type="text/javascript">
-  
- var $grid = $('.posts').masonry({
-   itemSelector: '.card',
-   percentPosition: true,
-   columnWidth: '.card',
-   isAnimated: true,
-   gutterWidth : 20,
- });
- 
- $grid.imagesLoaded().progress( function() {
-   $grid.masonry();
- });
-
+    
+    var $grid = $('.posts').masonry({
+        itemSelector: '.card',
+        percentPosition: true,
+        columnWidth: '.card',
+        isAnimated: true,
+        gutterWidth: 20,
+    });
+    
+    $grid.imagesLoaded().progress(function() {
+        $grid.masonry();
+    });
 </script>
-
     </section>
     <a id="rocket" href="#top" class=""></a>
 <script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
@@ -291,7 +357,7 @@
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

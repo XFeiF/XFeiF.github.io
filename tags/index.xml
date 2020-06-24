@@ -1,84 +1,48 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on </title>
     <link>https://blog.x-fei.me/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 27 Dec 2018 12:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2020 20:43:34 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Algorithm</title>
-      <link>https://blog.x-fei.me/tags/algorithm/</link>
-      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
+      <title>think</title>
+      <link>https://blog.x-fei.me/tags/think/</link>
+      <pubDate>Wed, 24 Jun 2020 20:43:34 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/algorithm/</guid>
+      <guid>https://blog.x-fei.me/tags/think/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Code</title>
-      <link>https://blog.x-fei.me/tags/code/</link>
-      <pubDate>Sun, 03 Mar 2019 19:42:33 +0800</pubDate>
+      <title>python</title>
+      <link>https://blog.x-fei.me/tags/python/</link>
+      <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/code/</guid>
+      <guid>https://blog.x-fei.me/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Cs</title>
-      <link>https://blog.x-fei.me/tags/cs/</link>
-      <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
+      <title>PyTorch</title>
+      <link>https://blog.x-fei.me/tags/pytorch/</link>
+      <pubDate>Wed, 10 Jul 2019 10:15:11 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/cs/</guid>
+      <guid>https://blog.x-fei.me/tags/pytorch/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Dynamic Programming</title>
-      <link>https://blog.x-fei.me/tags/dynamic-programming/</link>
-      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
+      <title>Paper</title>
+      <link>https://blog.x-fei.me/tags/paper/</link>
+      <pubDate>Fri, 21 Jun 2019 09:57:42 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/dynamic-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Git</title>
-      <link>https://blog.x-fei.me/tags/git/</link>
-      <pubDate>Fri, 21 Sep 2018 10:27:28 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hackx</title>
-      <link>https://blog.x-fei.me/tags/hackx/</link>
-      <pubDate>Mon, 06 Nov 2017 11:49:33 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/hackx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Leetcode</title>
-      <link>https://blog.x-fei.me/tags/leetcode/</link>
-      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/leetcode/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Life</title>
-      <link>https://blog.x-fei.me/tags/life/</link>
-      <pubDate>Mon, 06 May 2019 23:03:42 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/life/</guid>
+      <guid>https://blog.x-fei.me/tags/paper/</guid>
       <description></description>
     </item>
     
@@ -101,7 +65,61 @@
     </item>
     
     <item>
-      <title>Mindstorms</title>
+      <title>life</title>
+      <link>https://blog.x-fei.me/tags/life/</link>
+      <pubDate>Mon, 06 May 2019 23:03:42 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code</title>
+      <link>https://blog.x-fei.me/tags/code/</link>
+      <pubDate>Sun, 03 Mar 2019 19:42:33 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>algorithm</title>
+      <link>https://blog.x-fei.me/tags/algorithm/</link>
+      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dynamic programming</title>
+      <link>https://blog.x-fei.me/tags/dynamic-programming/</link>
+      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/dynamic-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leetcode</title>
+      <link>https://blog.x-fei.me/tags/leetcode/</link>
+      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/leetcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CS</title>
+      <link>https://blog.x-fei.me/tags/cs/</link>
+      <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/cs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MindStorms</title>
       <link>https://blog.x-fei.me/tags/mindstorms/</link>
       <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
       
@@ -110,61 +128,16 @@
     </item>
     
     <item>
-      <title>Paper</title>
-      <link>https://blog.x-fei.me/tags/paper/</link>
-      <pubDate>Fri, 21 Jun 2019 09:57:42 +0800</pubDate>
+      <title>git</title>
+      <link>https://blog.x-fei.me/tags/git/</link>
+      <pubDate>Fri, 21 Sep 2018 10:27:28 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/paper/</guid>
+      <guid>https://blog.x-fei.me/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Python</title>
-      <link>https://blog.x-fei.me/tags/python/</link>
-      <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pytorch</title>
-      <link>https://blog.x-fei.me/tags/pytorch/</link>
-      <pubDate>Wed, 10 Jul 2019 10:15:11 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/pytorch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Summary</title>
-      <link>https://blog.x-fei.me/tags/summary/</link>
-      <pubDate>Sun, 26 Aug 2018 01:31:37 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/summary/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Swift</title>
-      <link>https://blog.x-fei.me/tags/swift/</link>
-      <pubDate>Mon, 04 Sep 2017 15:02:56 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/swift/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Think</title>
-      <link>https://blog.x-fei.me/tags/think/</link>
-      <pubDate>Mon, 04 Nov 2019 15:21:50 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/think/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tool</title>
+      <title>tool</title>
       <link>https://blog.x-fei.me/tags/tool/</link>
       <pubDate>Sun, 26 Aug 2018 13:43:31 +0800</pubDate>
       
@@ -173,7 +146,7 @@
     </item>
     
     <item>
-      <title>Trick</title>
+      <title>trick</title>
       <link>https://blog.x-fei.me/tags/trick/</link>
       <pubDate>Sun, 26 Aug 2018 13:43:31 +0800</pubDate>
       
@@ -182,11 +155,20 @@
     </item>
     
     <item>
-      <title>Web</title>
-      <link>https://blog.x-fei.me/tags/web/</link>
-      <pubDate>Sat, 02 Sep 2017 23:08:52 +0800</pubDate>
+      <title>summary</title>
+      <link>https://blog.x-fei.me/tags/summary/</link>
+      <pubDate>Sun, 26 Aug 2018 01:31:37 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/web/</guid>
+      <guid>https://blog.x-fei.me/tags/summary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HACKx</title>
+      <link>https://blog.x-fei.me/tags/hackx/</link>
+      <pubDate>Mon, 06 Nov 2017 11:49:33 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/hackx/</guid>
       <description></description>
     </item>
     
@@ -205,6 +187,24 @@
       <pubDate>Wed, 20 Sep 2017 10:57:05 +0800</pubDate>
       
       <guid>https://blog.x-fei.me/tags/%E9%9D%A2%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>swift</title>
+      <link>https://blog.x-fei.me/tags/swift/</link>
+      <pubDate>Mon, 04 Sep 2017 15:02:56 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/swift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://blog.x-fei.me/tags/web/</link>
+      <pubDate>Sat, 02 Sep 2017 23:08:52 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/web/</guid>
       <description></description>
     </item>
     

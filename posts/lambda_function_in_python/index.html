@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>Lambda Function in Python &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -174,10 +175,7 @@
 <h3 id="concept">Concept</h3>
 
 <p><code>Lambda</code>表达式语法如下：</p>
-
-<pre><code>lambda arguments: expression  
-</code></pre>
-
+<pre><code>lambda arguments: expression  </code></pre>
 <p>这个函数可以有任意数量的参数<code>arguments</code>，但是只有一个表达式<code>expression</code>，函数<strong>计算并返回</strong>这个表达式的值。<br />
 我们可以比较随意地使用<code>lambda</code>表达式，但是要牢记一点，就是它被严格限制只能有单一的表达式。</p>
 
@@ -186,21 +184,15 @@
 <p>为了理解<code>def</code>定义的普通函数与<code>lambda</code>函数的区别，我们举个例子。<br />
 <strong>小目标</strong>：求给定数的三次方。<br />
 <strong>Implementation</strong>：</p>
-
-<pre><code class="language-python">def cube(y): 
-    return y*y*y; 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cube</span>(y): 
+    <span style="color:#66d9ef">return</span> y<span style="color:#f92672">*</span>y<span style="color:#f92672">*</span>y; 
   
-g = lambda x: x*x*x 
-print(g(7))   
-print(cube(5)) 
-</code></pre>
-
+g <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">*</span>x<span style="color:#f92672">*</span>x 
+<span style="color:#66d9ef">print</span>(g(<span style="color:#ae81ff">7</span>))   
+<span style="color:#66d9ef">print</span>(cube(<span style="color:#ae81ff">5</span>)) </code></pre></div>
 <p><strong>Output</strong>:</p>
-
 <pre><code>343
-125
-</code></pre>
-
+125</code></pre>
 <p>使用<code>def</code>：首先，我们需要定一个名为<code>cube</code>的函数，并传递值给它。运算执行完后，我们还需要调用<code>return</code>返回计算结果给调用函数的地方。<br />
 使用<code>Lambda</code> ：<code>Lambda</code> 表达式不需要 <code>return</code> 语句，它只包含一个表达式，计算并返回。 理论上，在可以用函数的地方我们都可以用<code>lambda</code>。</p>
 
@@ -211,34 +203,25 @@ print(cube(5))
 <h4 id="lambda-filter">lambda + filter</h4>
 
 <p><code>filter()</code>函数的参数为一个<code>function</code>和一个<code>list</code>。提供了一种优雅的筛选元素的方法。通过传递列表中的每个元素到<code>function</code>中，判断是否满足条件，满足则返回<code>True</code>。例如：</p>
-
-<pre><code class="language-python">nums = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61] 
-odd = list(filter(lambda x: (x%2 != 0) , nums)) 
-print(odd)   
-# [5, 7, 97, 77, 23, 73, 61]
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nums <span style="color:#f92672">=</span> [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">97</span>, <span style="color:#ae81ff">54</span>, <span style="color:#ae81ff">62</span>, <span style="color:#ae81ff">77</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">73</span>, <span style="color:#ae81ff">61</span>] 
+odd <span style="color:#f92672">=</span> list(filter(<span style="color:#66d9ef">lambda</span> x: (x<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) , nums)) 
+<span style="color:#66d9ef">print</span>(odd)   
+<span style="color:#75715e"># [5, 7, 97, 77, 23, 73, 61]</span></code></pre></div>
 <h4 id="lambda-map">lambda + map</h4>
 
 <p><code>map()</code>函数的参数为一个<code>function</code>和一个<code>list</code>。通过<code>function</code>映射<code>list</code>中的每个元素，达到改变其值的目的。返回一个元素统一修改后的列表。例如：</p>
-
-<pre><code class="language-python">nums = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
-double = list(map(lambda x: x*2, nums))
-print(double)
-# [10, 14, 44, 194, 108, 124, 154, 46, 146, 122]
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nums <span style="color:#f92672">=</span> [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">97</span>, <span style="color:#ae81ff">54</span>, <span style="color:#ae81ff">62</span>, <span style="color:#ae81ff">77</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">73</span>, <span style="color:#ae81ff">61</span>]
+double <span style="color:#f92672">=</span> list(map(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>, nums))
+<span style="color:#66d9ef">print</span>(double)
+<span style="color:#75715e"># [10, 14, 44, 194, 108, 124, 154, 46, 146, 122]</span></code></pre></div>
 <h4 id="lambda-reduce">lambda + reduce</h4>
 
 <p><code>reduce()</code>函数的参数为一个<code>function</code>和一个<code>list</code>。这是通过调用<code>lambda</code>函数，反复操作<code>list</code>里面的数对。<code>reduce()</code>是<code>functools</code>模块中的一个。</p>
-
-<pre><code class="language-python">from functools import reduce
-nums = [5, 8, 10, 20, 50, 100] 
-sum = reduce((lambda x, y: x + y), nums) 
-print (sum) 
-# 193  
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
+nums <span style="color:#f92672">=</span> [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>] 
+sum <span style="color:#f92672">=</span> reduce((<span style="color:#66d9ef">lambda</span> x, y: x <span style="color:#f92672">+</span> y), nums) 
+<span style="color:#66d9ef">print</span> (sum) 
+<span style="color:#75715e"># 193  </span></code></pre></div>
 <p>这里前两个元素相加的结果会累加到下一个元素，如此迭代直到列表末尾。它执行起来类似这样<code>(((((5+8)+10)+20)+50)+100)</code>。</p>
 
 <h3 id="practice">Practice</h3>
@@ -321,7 +304,7 @@ print (sum)
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

@@ -1,14 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
     <link>https://blog.x-fei.me/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 04 Nov 2019 15:21:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2020 20:43:34 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>6月乱七八糟</title>
+      <link>https://blog.x-fei.me/posts/f_think/202006/</link>
+      <pubDate>Wed, 24 Jun 2020 20:43:34 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/f_think/202006/</guid>
+      <description>&lt;p&gt;2020年6月，我……硕士毕业了。
+没有毕业典礼，自己也没有拍毕业照，我就这样在疫情中匆匆毕业了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Life And Rock</title>
+      <link>https://blog.x-fei.me/posts/f_think/lifeandrock/</link>
+      <pubDate>Sun, 17 Nov 2019 20:21:36 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/f_think/lifeandrock/</guid>
+      <description>&lt;p&gt;尽管我对摇滚的认识并不足，但我确信自己从未像这一刻一样，热爱摇滚。&lt;br /&gt;
+它给予我的不仅仅是那种 &lt;code&gt;Hey bro，you&#39;re not lonely&lt;/code&gt; 的感觉，它还具有那种让人捏紧拳头挥动，继续同当下、未来的种种obstacles抗争下去的信心。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>The Song For You</title>
@@ -38,7 +58,7 @@
     </item>
     
     <item>
-      <title>2019 Weekly Algorithms</title>
+      <title>[DEPRECATED]2019 Weekly Algorithms</title>
       <link>https://blog.x-fei.me/timelines/2019weeklyalgo/</link>
       <pubDate>Mon, 26 Aug 2019 22:04:06 +0800</pubDate>
       
@@ -193,12 +213,10 @@
       <guid>https://blog.x-fei.me/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</guid>
       <description>&lt;p&gt;为什么&lt;code&gt;pytorch&lt;/code&gt;里面的网络初始化的时候都调用了&lt;code&gt;super&lt;/code&gt;函数，并且第一个参数名是类名呢？&lt;br /&gt;
 即为什么&lt;code&gt;python&lt;/code&gt;定义类的时候是这样设置的？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class C(B):
-	def __init__(self):
-		super(C, self).__init__()
-		print(&#39;B&#39;)
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;(B):
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; __init__(self):
+		super(C, self)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__init__()
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;B&amp;#39;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -275,11 +293,8 @@
       <guid>https://blog.x-fei.me/posts/python-caveat-about-list-creation-shortcuts/</guid>
       <description>&lt;p&gt;早先在刷Leetcode的时候，遇到了一个莫名的&lt;code&gt;bug&lt;/code&gt;，为什么二维数组的元素没有按自己的预期改变呢？&lt;br /&gt;
 当我们这样定义一个二维数组的时候，&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;n = 3
-res = [[0] * n] * n
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; n] &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; n&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;发生了什么？&lt;/p&gt;</description>
     </item>
     
@@ -580,12 +595,14 @@ CV |
 因为一直换VPS，懒得弄Ghost了，而静态博客又有Hexo、Jeklly、Hugo这些选择，用了一年的Hexo，和Hugo感觉起来，Hexo的编译速度简直无法忍受。于是干脆就使用Hugo来写了，当然，在写之前，我把所有可能用到的技术都调研了一遍，确实可行之后才确定的Hugo。
 断断续续写博客也有4年了，深感一个好的内容制造者远比内容展示技巧重要。即，当你可以产出高质量的文章的时候，你就无须过多在意自己是发布在自己精心搭建的个人博客还是公开的平台上，比如简书、Medium、微信公众号等。
 因为不需要转化为商业用途，只是单纯的个人技术分享、一些感想吐槽等，但是在互联网世界，拥有一个自己的小角落总是让人感到一丝欣喜的。
-博客的取名来自我最喜欢的电台节目《凡间角落》  ，相关微信公众号文章：《每个人都有一个凡间角落》。
+博客的曾经的取名来自我最喜欢的电台节目《凡间角落》  ，相关微信公众号文章：《每个人都有一个凡间角落》。
  第一种「凡间角落」，代表一个物理意义上的庇护所，同时也是适合收听这档播客的那些场合；
 第二种「凡间角落」，代表一个精神意义上的庇护所，换言之是希望这档播客能启发听众拥有自己的独立而成熟的人格；
 第三种「凡间角落」指向的是：在这种独处之中会诞生无数的创造，盛放它们的容器往往就是一个虚构出来的凡间角落。
 
-更新日志 【2019-05-15】将博客相关全部迁移到GitHub了，其实之前就用的GitHub，不过国内访问速度实在是太慢了，所以换了第三方写的微博图床，但是最近微博开始限制外链了。所以很不幸，微博图床的图片都加载不出。白piao一时爽。改了一个多小时，才改回GitHub。总之，为了加快访问速度，对图片做了压缩，不管怎么弄，这样做的用户体验就是差很多了（。</description>
+更新日志 【2019-05-15】将博客相关全部迁移到GitHub了，其实之前就用的GitHub，不过国内访问速度实在是太慢了，所以换了第三方写的微博图床，但是最近微博开始限制外链了。所以很不幸，微博图床的图片都加载不出。白piao一时爽。改了一个多小时，才改回GitHub。总之，为了加快访问速度，对图片做了压缩，不管怎么弄，这样做的用户体验就是差很多了（。
+【2019-8-12】博客更名了（Ferry dimmed in moonlight，月迷津渡）。缅怀F小姐的「凡间角落」播客。她的播客因为网易云音乐版权问题，很多背景配乐不能使用，之前大部分节目遭受重创。挺心疼F的，四年辛辛苦苦搭建，一朝「凡间角落」就被打得破碎。希望能继续听到F的「声音」。
+【2018-11-12】再更名，「Do not go gentle into that good night」。</description>
     </item>
     
     <item>

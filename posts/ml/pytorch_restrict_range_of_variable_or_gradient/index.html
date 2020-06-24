@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>PyTorch: Restrict range of variable or gradient during gradient descent &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -187,44 +188,35 @@
 
 <p><strong>Example</strong><br />
 <a href="https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/02-intermediate/language_model/main.py#L81">Github</a></p>
-
-<pre><code class="language-python">...
-# Backward and optimize
-model.zero_grad()
-loss.backward()
-clip_grad_norm_(model.parameters(), 0.5)
-optimizer.step()
-...
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">...</span>
+<span style="color:#75715e"># Backward and optimize</span>
+model<span style="color:#f92672">.</span>zero_grad()
+loss<span style="color:#f92672">.</span>backward()
+clip_grad_norm_(model<span style="color:#f92672">.</span>parameters(), <span style="color:#ae81ff">0.5</span>)
+optimizer<span style="color:#f92672">.</span>step()
+<span style="color:#f92672">...</span></code></pre></div>
 <p>在<code>backward</code>之后，<code>step</code>之前，对<code>model</code>的参数的梯度做范数限制。</p>
 
 <p>这里对参数梯度的限制还有一种更灵活的实现方式，即通过对参数注册<code>钩子(hook)</code>函数，在<code>backward</code>的时候就对其<code>grad</code>用<a href="https://pytorch.org/docs/0.3.0/torch.html?highlight=clamp#torch.clamp"><code>clamp</code>函数</a>进行限制。例如：</p>
-
-<pre><code class="language-python">for p in model.parameters():
-    p.register_hook(lambda grad: torch.clamp(grad, -clip_value, clip_value))
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>parameters():
+    p<span style="color:#f92672">.</span>register_hook(<span style="color:#66d9ef">lambda</span> grad: torch<span style="color:#f92672">.</span>clamp(grad, <span style="color:#f92672">-</span>clip_value, clip_value))</code></pre></div>
 <p>这里的运用就相对灵活，只要我们在定义<code>Model</code>的时候，为参数注册<code>hook</code>函数即可。不需要在<code>backward</code>后再做限制。<br />
 同时，使用<code>clamp</code>方法，也使得我们可以更加灵活限制<code>grad</code>的范围，比如<code>0.1~0.9</code>，而不是在正负范围之间。</p>
 
 <p>上述的<code>model.parameters()</code>都可以参照<code>nn.Module</code>中<code>parameters()</code>方法的实现，把想要限制的层提取出来即可。例如：</p>
-
-<pre><code class="language-python"># Define model  
-class SimpleNet(nn.Module):
-    def __init__(self, **args):
-        super(SimpleNet, self).__init__()
-        self.features = nn.Sequential([...])
-        self.classifier = nn.Sequential([...])
-    ...
-...
-model = SimpleNet(...)
-loss.backward()
-clip_grad_norm_(model.classifier.parameters(), 0.5)
-optimizer.step()
-...
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Define model  </span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleNet</span>(nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self, <span style="color:#f92672">**</span>args):
+        super(SimpleNet, self)<span style="color:#f92672">.</span>__init__()
+        self<span style="color:#f92672">.</span>features <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Sequential([<span style="color:#f92672">...</span>])
+        self<span style="color:#f92672">.</span>classifier <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Sequential([<span style="color:#f92672">...</span>])
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">...</span>
+model <span style="color:#f92672">=</span> SimpleNet(<span style="color:#f92672">...</span>)
+loss<span style="color:#f92672">.</span>backward()
+clip_grad_norm_(model<span style="color:#f92672">.</span>classifier<span style="color:#f92672">.</span>parameters(), <span style="color:#ae81ff">0.5</span>)
+optimizer<span style="color:#f92672">.</span>step()
+<span style="color:#f92672">...</span></code></pre></div>
 <h4 id="限制范围">限制范围</h4>
 
 <blockquote>
@@ -239,17 +231,14 @@ optimizer.step()
 <p>当我们自定义层的时候，对自定义层的<code>weights</code>有一些要求，比如限制其始终非负，或限制其在某个范围内等。<br />
 对<code>weights</code>的限定与对<code>weights.grad</code>的限制类似。<br />
 例如，这里我们限制<code>weights</code>范围在<code>[_min, _max]</code>之间：</p>
-
-<pre><code class="language-python">...
-# Backward and optimize
-model.zero_grad()
-loss.backward()
-optimizer.step()
-for p in model.parameters():
-    p.data.clamp_(_min, _max)
-...
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">...</span>
+<span style="color:#75715e"># Backward and optimize</span>
+model<span style="color:#f92672">.</span>zero_grad()
+loss<span style="color:#f92672">.</span>backward()
+optimizer<span style="color:#f92672">.</span>step()
+<span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>parameters():
+    p<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>clamp_(_min, _max)
+<span style="color:#f92672">...</span></code></pre></div>
 <p>这里<code>clamp</code>操作要放在<code>step()</code>之后，因为这个时候更新完<code>weights</code>了，限制之后再进入下一个<code>batch</code>，达到限制的目的。</p>
 
 <h3 id="总结">总结</h3>
@@ -310,7 +299,7 @@ for p in model.parameters():
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

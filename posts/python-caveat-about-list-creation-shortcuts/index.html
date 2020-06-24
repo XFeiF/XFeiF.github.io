@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>Python快速创建二维数组 [[0]*n]*n ？ &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -167,11 +168,8 @@
                         <div class="inner-content">
                             <p>早先在刷Leetcode的时候，遇到了一个莫名的<code>bug</code>，为什么二维数组的元素没有按自己的预期改变呢？<br />
 当我们这样定义一个二维数组的时候，</p>
-
-<pre><code class="language-python">n = 3
-res = [[0] * n] * n
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+res <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> n] <span style="color:#f92672">*</span> n</code></pre></div>
 <p>发生了什么？</p>
 
 <p><code>[0] * n</code> 创建了一个有n个0的<code>list</code>。<br />
@@ -184,40 +182,31 @@ res = [[0] * n] * n
 <h4 id="1d-array">1D Array</h4>
 
 <p>初始化一个指定大小的<code>list</code>很简单：</p>
-
-<pre><code class="language-python">&gt;&gt;&gt; zeros = [0] * 3
-&gt;&gt;&gt; zeros
-[0, 0, 0]
-&gt;&gt;&gt; id(zeros)
-4602255816
-&gt;&gt;&gt; id(zeros[0])
-4559308816
-&gt;&gt;&gt; id(0)
-4559308816
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> zeros <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> zeros
+[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>]
+<span style="color:#f92672">&gt;&gt;&gt;</span> id(zeros)
+<span style="color:#ae81ff">4602255816</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> id(zeros[<span style="color:#ae81ff">0</span>])
+<span style="color:#ae81ff">4559308816</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> id(<span style="color:#ae81ff">0</span>)
+<span style="color:#ae81ff">4559308816</span></code></pre></div>
 <p>可以看到这里创建一维数组<code>zeros</code>的时候，内部复制了3次0，所以其本身具有一个内存地址，元素的地址则和<code>0</code>的地址相同，和我们预期的一样。</p>
 
 <h4 id="2d-array-wrong">2D Array (Wrong)</h4>
 
 <p>利用<code>[[0]*n]*n</code> 创建一个二维数组。</p>
-
-<pre><code class="language-python">&gt;&gt;&gt; zeros2d = [[0]*3]*3
-&gt;&gt;&gt; zeros2d
-[[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-&gt;&gt;&gt; zeros2d[0][1] = 1
- [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> zeros2d <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>]<span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> zeros2d
+[[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>]]
+<span style="color:#f92672">&gt;&gt;&gt;</span> zeros2d[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+ [[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]]</code></pre></div>
 <p>这??? 只改变一个元素的值，为什么变了三个，还是相同位置的？<br />
 我们看一下它们的地址。</p>
-
-<pre><code class="language-python">&gt;&gt;&gt; id(zeros2d)
-4602725512
-&gt;&gt;&gt; print([id(ele) for ele in zeros2d])
-[4600869448, 4600869448, 4600869448]
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> id(zeros2d)
+<span style="color:#ae81ff">4602725512</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">print</span>([id(ele) <span style="color:#66d9ef">for</span> ele <span style="color:#f92672">in</span> zeros2d])
+[<span style="color:#ae81ff">4600869448</span>, <span style="color:#ae81ff">4600869448</span>, <span style="color:#ae81ff">4600869448</span>]</code></pre></div>
 <p>内部的三个一维数组其实是<strong>一个</strong>。</p>
 
 <p><strong>警告：</strong><br />
@@ -227,10 +216,7 @@ res = [[0] * n] * n
 <h4 id="2d-array-right">2D Array (right)</h4>
 
 <p>知道了问题所在，那么正确的使用方式应该有如下形式：</p>
-
-<pre><code class="language-python">zeros2d = [[0] * 3 for _ in range(3)]
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">zeros2d <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>)]</code></pre></div>
 <h3 id="references">References</h3>
 
 <p><a href="https://en.wikibooks.org/wiki/Python_Programming/Lists#List_creation_shortcuts">Wiki</a><br />
@@ -290,7 +276,7 @@ res = [[0] * n] * n
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

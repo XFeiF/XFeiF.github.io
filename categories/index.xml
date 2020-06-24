@@ -1,48 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on </title>
     <link>https://blog.x-fei.me/categories/</link>
     <description>Recent content in Categories on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 16 Apr 2019 20:44:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2020 20:43:34 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Activity</title>
-      <link>https://blog.x-fei.me/categories/activity/</link>
-      <pubDate>Tue, 16 Apr 2019 20:44:23 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/categories/activity/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Algorithm</title>
-      <link>https://blog.x-fei.me/categories/algorithm/</link>
-      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/categories/algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Fragments</title>
       <link>https://blog.x-fei.me/categories/fragments/</link>
-      <pubDate>Mon, 04 Nov 2019 15:21:50 +0800</pubDate>
+      <pubDate>Wed, 24 Jun 2020 20:43:34 +0800</pubDate>
       
       <guid>https://blog.x-fei.me/categories/fragments/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Geek</title>
-      <link>https://blog.x-fei.me/categories/geek/</link>
-      <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
+      <title>python</title>
+      <link>https://blog.x-fei.me/categories/python/</link>
+      <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/categories/geek/</guid>
+      <guid>https://blog.x-fei.me/categories/python/</guid>
       <description></description>
     </item>
     
@@ -65,11 +47,29 @@
     </item>
     
     <item>
-      <title>Python</title>
-      <link>https://blog.x-fei.me/categories/python/</link>
-      <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
+      <title>Activity</title>
+      <link>https://blog.x-fei.me/categories/activity/</link>
+      <pubDate>Tue, 16 Apr 2019 20:44:23 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/categories/python/</guid>
+      <guid>https://blog.x-fei.me/categories/activity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Algorithm</title>
+      <link>https://blog.x-fei.me/categories/algorithm/</link>
+      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/categories/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Geek</title>
+      <link>https://blog.x-fei.me/categories/geek/</link>
+      <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/categories/geek/</guid>
       <description></description>
     </item>
     

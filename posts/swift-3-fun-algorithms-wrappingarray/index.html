@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>Swift 3 Fun Algorithms:Wrapping Array &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -179,28 +180,27 @@
 <h4 id="实现1">实现1</h4>
 
 <p>新建Playground，GeneratePlayList</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 假设我们有一个歌单tracks</span>
+<span style="color:#66d9ef">let</span> tracks = [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#e6db74">&#34;d&#34;</span>, <span style="color:#e6db74">&#34;e&#34;</span>]
 
-<pre><code class="language-swift">// 假设我们有一个歌单tracks
-let tracks = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+<span style="color:#75715e">// 如果我们选择了&#34;d&#34;,算法应该返回下面这个播放列表  </span>
+[<span style="color:#e6db74">&#34;d&#34;</span>, <span style="color:#e6db74">&#34;e&#34;</span>, <span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>]  
 
-// 如果我们选择了&quot;d&quot;,算法应该返回下面这个播放列表  
-[&quot;d&quot;, &quot;e&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]  
+<span style="color:#75715e">// 选中歌曲</span>
+<span style="color:#66d9ef">let</span> selectedTrack = <span style="color:#e6db74">&#34;d&#34;</span>
 
-// 选中歌曲
-let selectedTrack = &quot;d&quot;
+<span style="color:#75715e">// 新建播放列表</span>
+<span style="color:#66d9ef">var</span> playList = [String]()  
 
-// 新建播放列表
-var playList = [String]()  
+<span style="color:#75715e">// 所选歌曲之前的歌曲列表</span>
+<span style="color:#66d9ef">var</span> priorTracks = [String]()
 
-// 所选歌曲之前的歌曲列表
-var priorTracks = [String]()
-
-// for循环加入列表  
-for track in tracks {
+<span style="color:#75715e">// for循环加入列表  </span>
+<span style="color:#66d9ef">for</span> track <span style="color:#66d9ef">in</span> tracks {
     print(track)
-    if track == selectedTrack || playlist.count &gt; 0{
+    <span style="color:#66d9ef">if</span> track == selectedTrack <span style="color:#f92672">||</span> playlist.count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>{
         playlist.append(track)
-    } else {
+    } <span style="color:#66d9ef">else</span> {
         priorTracks.append(track)
     }
 }
@@ -208,43 +208,34 @@ for track in tracks {
 playList
 priorTracks
 
-// 加在一起
-playList + priorTracks
-</code></pre>
-
+<span style="color:#75715e">// 加在一起</span>
+playList <span style="color:#f92672">+</span> priorTracks</code></pre></div>
 <h4 id="实现2">实现2</h4>
 
 <p>这次，不用<code>for循环</code>，利用Swift的<code>Array</code>的一些函数。<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a> </sup></p>
 
 <p>这里联系应用场景，我们可能需要用的函数包括，找一个元素的index，获得子序列</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">// 假设我们有一个歌单tracks</span>
+<span style="color:#66d9ef">let</span> tracks = [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#e6db74">&#34;d&#34;</span>, <span style="color:#e6db74">&#34;e&#34;</span>]
 
-<pre><code class="language-swift">// 假设我们有一个歌单tracks
-let tracks = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+<span style="color:#75715e">// 如果我们选择了&#34;d&#34;,算法应该返回下面这个播放列表  </span>
+[<span style="color:#e6db74">&#34;d&#34;</span>, <span style="color:#e6db74">&#34;e&#34;</span>, <span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>]  
 
-// 如果我们选择了&quot;d&quot;,算法应该返回下面这个播放列表  
-[&quot;d&quot;, &quot;e&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]  
+<span style="color:#75715e">// 选中歌曲</span>
+<span style="color:#66d9ef">let</span> selectedTrack = <span style="color:#e6db74">&#34;d&#34;</span>
 
-// 选中歌曲
-let selectedTrack = &quot;d&quot;
+<span style="color:#75715e">// 这里可以用array的index的许多方法</span>
+<span style="color:#66d9ef">let</span> index = tracks.index(<span style="color:#66d9ef">where</span>: {<span style="color:#66d9ef">return</span> $0 == selectedTrack})
 
-// 这里可以用array的index的许多方法
-let index = tracks.index(where: {return $0 == selectedTrack})
+<span style="color:#75715e">// 上面获得的index是可选值，因此需要强制解析</span>
+<span style="color:#75715e">// upTo 左闭右开</span>
+<span style="color:#66d9ef">let</span> prefixArray = tracks.<span style="color:#66d9ef">prefix</span>(upTo: index!)
+<span style="color:#66d9ef">let</span> suffixArray = tracks.suffix(from: index!)
 
-// 上面获得的index是可选值，因此需要强制解析
-// upTo 左闭右开
-let prefixArray = tracks.prefix(upTo: index!)
-let suffixArray = tracks.suffix(from: index!)
-
-// 最后注意组装的顺序
-let arr = suffixArray + prefixArray
-
-</code></pre>
-
+<span style="color:#75715e">// 最后注意组装的顺序</span>
+<span style="color:#66d9ef">let</span> arr = suffixArray <span style="color:#f92672">+</span> prefixArray</code></pre></div>
 <p>这里的<a href="https://developer.apple.com/documentation/swift/array/1688966-index">index</a>函数，声明是这样的：</p>
-
-<pre><code class="language-swift">func index(where predicate: (Element) throws -&gt; Bool) rethrows -&gt; Int?
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">index</span>(<span style="color:#66d9ef">where</span> predicate: (Element) <span style="color:#66d9ef">throws</span> -&gt; Bool) <span style="color:#66d9ef">rethrows</span> -&gt; Int?</code></pre></div>
 <p>where后面是一个闭包，以<code>$0</code> 表示一个参数，预测参数和传入的元素是否匹配，匹配则返回<code>Int</code>，否则返回<code>nil</code>，所以最终的返回值是可选值 <code>Int?</code>。</p>
 
 <p>希望这个小的算法<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a> </sup> 可以运用到你的Application当中！</p>
@@ -326,7 +317,7 @@ let arr = suffixArray + prefixArray
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

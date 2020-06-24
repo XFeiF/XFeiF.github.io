@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title></title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 <body>
@@ -106,7 +107,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -142,8 +143,74 @@
         <div class="page-template page-index container-wrapper">
     
     <ol id="masonry" class="posts">
+         <li class="card">
+    <div class="card-container">
+        <div class="card-body">
+            <a href="https://blog.x-fei.me/posts/ml/1x1_convolution/" title="link to 1x1卷积的作用" >
+                <div class="material-cover" style="background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/bg_1x1Conv.jpg)"></div>
+                <div class="card-content">
+                    <h2>1x1卷积的作用</h2>
+                    <div class="description">
+                        <p>我们在<code>ResNet</code>深层结构以及<code>Inception</code>中都见过<code>1x1</code>卷积层，或者说<code>bottleneck layer</code>，为什么我们会需要<code>1x1</code>的卷积核呢？<br />
+总的来说<code>1x1</code>卷积可以用作升降维度、减少参数量和计算量、增加非线性特征的作用。</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="card-footer">
+            <div class="meta">
+                
+                
+                    <time datetime="2019-03-14">Mar 14, 2019</time>
+                
+                <span class="categories">
+                     on 
     
-        <li class="card">
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</li>
+  <li class="card">
+    <div class="card-container">
+        <div class="card-body">
+            <a href="https://blog.x-fei.me/posts/paper/resnet/" title="link to Paper Notes[2]: ResNet" >
+                <div class="material-cover" style="background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/resnet_bg.jpg)"></div>
+                <div class="card-content">
+                    <h2>Paper Notes[2]: ResNet</h2>
+                    <div class="description">
+                        <p>ResNet的提出是为了解决梯度消失问题吗？<br />
+残差思想是什么？<br />
+本文简单回顾一下<code>ResNet</code>，重点理解其中的残差学习思想。</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="card-footer">
+            <div class="meta">
+                
+                
+                    <time datetime="2019-03-06">Mar 6, 2019</time>
+                
+                <span class="categories">
+                     on 
+    
+        <a class="badge badge-primary" href="/categories/paper">Paper</a>
+    
+
+
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</li>
+  <li class="card">
     <div class="card-container">
         <div class="card-body">
             <a href="https://blog.x-fei.me/posts/ml/convolution_in_pytorch/" title="link to Convolution&#39;s Numpy and Pytorch implementation" >
@@ -175,9 +242,7 @@
         </div>
     </div>
 </li>
-
-    
-        <li class="card">
+  <li class="card">
     <div class="card-container">
         <div class="card-body">
             <a href="https://blog.x-fei.me/posts/lambda_function_in_python/" title="link to Lambda Function in Python" >
@@ -210,9 +275,7 @@
         </div>
     </div>
 </li>
-
-    
-        <li class="card">
+  <li class="card">
     <div class="card-container">
         <div class="card-body">
             <a href="https://blog.x-fei.me/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/" title="link to 深度解析Python Super" >
@@ -222,12 +285,10 @@
                     <div class="description">
                         <p>为什么<code>pytorch</code>里面的网络初始化的时候都调用了<code>super</code>函数，并且第一个参数名是类名呢？<br />
 即为什么<code>python</code>定义类的时候是这样设置的？</p>
-
-<pre><code class="language-python">class C(B):
-	def __init__(self):
-		super(C, self).__init__()
-		print('B')
-</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">C</span>(B):
+	<span style="color:#66d9ef">def</span> __init__(self):
+		super(C, self)<span style="color:#f92672">.</span>__init__()
+		<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;B&#39;</span>)</code></pre></div>
                     </div>
                 </div>
             </a>
@@ -251,9 +312,7 @@
         </div>
     </div>
 </li>
-
-    
-        <li class="card">
+  <li class="card">
     <div class="card-container">
         <div class="card-body">
             <a href="https://blog.x-fei.me/posts/2018/" title="link to 2018" >
@@ -289,78 +348,7 @@
         </div>
     </div>
 </li>
-
-    
-        <li class="card">
-    <div class="card-container">
-        <div class="card-body">
-            <a href="https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/" title="link to LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️" >
-                <div class="material-cover" style="background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/reward.jpg)"></div>
-                <div class="card-content">
-                    <h2>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</h2>
-                    <div class="description">
-                        <h1 id="failure">Failure</h1>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="card-footer">
-            <div class="meta">
-                
-                
-                    <time datetime="2018-12-27">Dec 27, 2018</time>
-                
-                <span class="categories">
-                     on 
-    
-        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
-    
-
-
-                </span>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-</li>
-
-    
-        <li class="card">
-    <div class="card-container">
-        <div class="card-body">
-            <a href="https://blog.x-fei.me/posts/ml/svm2/" title="link to SVM(Part II)" >
-                <div class="material-cover" style="background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/svm_kernel.jpg)"></div>
-                <div class="card-content">
-                    <h2>SVM(Part II)</h2>
-                    <div class="description">
-                        <p>About These  Articles：</p>
-
-<p>SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="card-footer">
-            <div class="meta">
-                
-                
-                    <time datetime="2018-12-26">Dec 26, 2018</time>
-                
-                <span class="categories">
-                     on 
-    
-        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
-    
-
-
-                </span>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-</li>
-
-    
+ 
     </ol>
     <nav id="post-nav" class="pagination nav-fillpath">
     
@@ -392,21 +380,19 @@
 </div>
 
 <script type="text/javascript">
-  
- var $grid = $('.posts').masonry({
-   itemSelector: '.card',
-   percentPosition: true,
-   columnWidth: '.card',
-   isAnimated: true,
-   gutterWidth : 20,
- });
- 
- $grid.imagesLoaded().progress( function() {
-   $grid.masonry();
- });
-
+    
+    var $grid = $('.posts').masonry({
+        itemSelector: '.card',
+        percentPosition: true,
+        columnWidth: '.card',
+        isAnimated: true,
+        gutterWidth: 20,
+    });
+    
+    $grid.imagesLoaded().progress(function() {
+        $grid.masonry();
+    });
 </script>
-
     </section>
     <a id="rocket" href="#top" class=""></a>
 <script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
@@ -414,7 +400,7 @@
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

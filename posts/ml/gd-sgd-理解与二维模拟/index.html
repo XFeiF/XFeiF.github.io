@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>GD &amp; SGD 理解与二维模拟 &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -193,19 +194,16 @@ say in simple words, what the algorithm is doing?<br /></li>
 首先生成2000个分布在0~1范围之间的随机散点，从统计学的角度理解，它们具有均匀的密度，质心是最能代表这群点的点，它到所有点距离之和最小。由于点的生成是随机的，所以期望的点是<code>(0.5, 0.5)</code>。</p>
 
 <p>我们利用如下的代码生成2000个分布在0~1范围之间的随机散点，用蓝色点标出，同时用红点标注我们期望的质心。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt  
 
-<pre><code class="language-py">import numpy as np
-import matplotlib.pyplot as plt  
+Sample_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>
+x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random_sample((Sample_num, ))
+y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random_sample((Sample_num, ))
 
-Sample_num = 2000
-x = np.random.random_sample((Sample_num, ))
-y = np.random.random_sample((Sample_num, ))
-
-plt.figure(figsize=(8, 8))
-plt.plot(x, y, 'b.')
-plt.plot(0.5, 0.5, 'ro')
-</code></pre>
-
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>))
+plt<span style="color:#f92672">.</span>plot(x, y, <span style="color:#e6db74">&#39;b.&#39;</span>)
+plt<span style="color:#f92672">.</span>plot(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#e6db74">&#39;ro&#39;</span>)</code></pre></div>
 <div align=center>
 <img src="/images/hw2_points.png" width="60%" alt="Sample">
 </div>   
@@ -220,18 +218,15 @@ plt.plot(0.5, 0.5, 'ro')
 </div></p>
 
 <p>此时我们可以定义损失函数如下：</p>
-
-<pre><code class="language-py">def cost(c, points):
-    '''
-    params:
-      c: (x,y) 表示待求的质心坐标
-      points: 所有的点
-    return:
-      dist: c到所有点的距离之和
-    '''
-    return sum(sum((c - points) ** 2, axis=1) ** 0.5)
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cost</span>(c, points):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    params:
+</span><span style="color:#e6db74">      c: (x,y) 表示待求的质心坐标
+</span><span style="color:#e6db74">      points: 所有的点
+</span><span style="color:#e6db74">    return:
+</span><span style="color:#e6db74">      dist: c到所有点的距离之和
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">return</span> sum(sum((c <span style="color:#f92672">-</span> points) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>)</code></pre></div>
 <h4 id="q3">Q3</h4>
 
 <p><strong>Apply gradient descent (GD) to find the centroid.</strong></p>
@@ -244,73 +239,64 @@ plt.plot(0.5, 0.5, 'ro')
 </div></p>
 
 <p>其代码如下：</p>
-
-<pre><code class="language-py">def gradient_raw(c, points):
-    '''
-    params:
-      c: (x,y) 表示待求的质心坐标
-      points: 所有的点
-    return:
-      (dx, dy), 在c点时cost在两个维度方向的梯度
-    '''
-    x = points[:, 0]
-    y = points[:, 1]
-    dist = sum((c - points) ** 2, axis=1) ** 0.5
-    dx = sum((c[0] - x) / dist)  #求x偏导数
-    dy = sum((c[1] - y) / dist)  #求y偏导数
-    return np.asarray([dx, dy])
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gradient_raw</span>(c, points):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    params:
+</span><span style="color:#e6db74">      c: (x,y) 表示待求的质心坐标
+</span><span style="color:#e6db74">      points: 所有的点
+</span><span style="color:#e6db74">    return:
+</span><span style="color:#e6db74">      (dx, dy), 在c点时cost在两个维度方向的梯度
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    x <span style="color:#f92672">=</span> points[:, <span style="color:#ae81ff">0</span>]
+    y <span style="color:#f92672">=</span> points[:, <span style="color:#ae81ff">1</span>]
+    dist <span style="color:#f92672">=</span> sum((c <span style="color:#f92672">-</span> points) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>
+    dx <span style="color:#f92672">=</span> sum((c[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> x) <span style="color:#f92672">/</span> dist)  <span style="color:#75715e">#求x偏导数</span>
+    dy <span style="color:#f92672">=</span> sum((c[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> y) <span style="color:#f92672">/</span> dist)  <span style="color:#75715e">#求y偏导数</span>
+    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>asarray([dx, dy])</code></pre></div>
 <h5 id="gd">GD</h5>
 
 <p>这一步设置一些参数，编写好梯度下降函数。</p>
-
-<pre><code class="language-py">def gradientDescent_raw(points, start=array([1, 1]), theta=0.01, iterations=500, eps=1e-6):
-    '''
-    params:
-      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
-      points: 所有采样点
-      theta: 步长，即学习率，控制步长
-      iterations: 迭代次数
-      eps: 阈值，通过比较前后连续两次的cost差值控制迭代。
-    return:
-      x_route: centroid路径
-      x: 收敛时的centroid
-      i: end iteration, 退出迭代时已经迭代了多少次
-    '''
-    x = start
-    x_route = x
-    pre_cost = cost(x, points) # 初始cost
-    for i in range(iterations):
-        grad = gradient(x, points)
-        x_i = x - theta * grad
-        cur_cost = cost(x_i, points)
-        if abs(pre_cost - cur_cost) &gt; eps: # 前一个cost与当前cost的差大于阈值，可以继续迭代
-            x = x_i
-            pre_cost = cur_cost
-        else:
-            return x_route, x, i+1
-        x_route = vstack((x_route, x))
-    return x_route, x, i+1
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gradientDescent_raw</span>(points, start<span style="color:#f92672">=</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]), theta<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, iterations<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, eps<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-6</span>):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    params:
+</span><span style="color:#e6db74">      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
+</span><span style="color:#e6db74">      points: 所有采样点
+</span><span style="color:#e6db74">      theta: 步长，即学习率，控制步长
+</span><span style="color:#e6db74">      iterations: 迭代次数
+</span><span style="color:#e6db74">      eps: 阈值，通过比较前后连续两次的cost差值控制迭代。
+</span><span style="color:#e6db74">    return:
+</span><span style="color:#e6db74">      x_route: centroid路径
+</span><span style="color:#e6db74">      x: 收敛时的centroid
+</span><span style="color:#e6db74">      i: end iteration, 退出迭代时已经迭代了多少次
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    x <span style="color:#f92672">=</span> start
+    x_route <span style="color:#f92672">=</span> x
+    pre_cost <span style="color:#f92672">=</span> cost(x, points) <span style="color:#75715e"># 初始cost</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(iterations):
+        grad <span style="color:#f92672">=</span> gradient(x, points)
+        x_i <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> theta <span style="color:#f92672">*</span> grad
+        cur_cost <span style="color:#f92672">=</span> cost(x_i, points)
+        <span style="color:#66d9ef">if</span> abs(pre_cost <span style="color:#f92672">-</span> cur_cost) <span style="color:#f92672">&gt;</span> eps: <span style="color:#75715e"># 前一个cost与当前cost的差大于阈值，可以继续迭代</span>
+            x <span style="color:#f92672">=</span> x_i
+            pre_cost <span style="color:#f92672">=</span> cur_cost
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> x_route, x, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        x_route <span style="color:#f92672">=</span> vstack((x_route, x))
+    <span style="color:#66d9ef">return</span> x_route, x, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span></code></pre></div>
 <h5 id="结果绘图与分析">结果绘图与分析</h5>
 
 <p>编写辅助函数与测试函数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plotRoute</span>(points, route, c, endIteration):
+    plt<span style="color:#f92672">.</span>plot(points[:, <span style="color:#ae81ff">0</span>], points[:, <span style="color:#ae81ff">1</span>], <span style="color:#e6db74">&#39;b,&#39;</span>)
+    plt<span style="color:#f92672">.</span>plot(route[:, <span style="color:#ae81ff">0</span>], route[:, <span style="color:#ae81ff">1</span>], <span style="color:#e6db74">&#39;r.&#39;</span>)
+    plt<span style="color:#f92672">.</span>plot(route[:, <span style="color:#ae81ff">0</span>], route[:, <span style="color:#ae81ff">1</span>], <span style="color:#e6db74">&#39;k-&#39;</span>)
+    plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;c = (</span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74">, </span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74">), endAt = </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (c[<span style="color:#ae81ff">0</span>], c[<span style="color:#ae81ff">1</span>], endIteration))
+    <span style="color:#66d9ef">print</span>(c)
+    plt<span style="color:#f92672">.</span>show()
 
-<pre><code class="language-py">def plotRoute(points, route, c, endIteration):
-    plt.plot(points[:, 0], points[:, 1], 'b,')
-    plt.plot(route[:, 0], route[:, 1], 'r.')
-    plt.plot(route[:, 0], route[:, 1], 'k-')
-    plt.xlabel('c = (%.3f, %.3f), endAt = %d' % (c[0], c[1], endIteration))
-    print(c)
-    plt.show()
-
-def test():
-    x_b, c, i = gradientDescent(points, theta=0.1,, iterations=1000, lr_decay=0.8)
-    plotRoute(points, x_b, c, i)
-</code></pre>
-
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test</span>():
+    x_b, c, i <span style="color:#f92672">=</span> gradientDescent(points, theta<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>,, iterations<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, lr_decay<span style="color:#f92672">=</span><span style="color:#ae81ff">0.8</span>)
+    plotRoute(points, x_b, c, i)</code></pre></div>
 <p>运行上面的程序并绘图。
 <div align=center>
 <img src="/images/gd_2errors.png" width="60%" alt="Error1">
@@ -321,39 +307,36 @@ def test():
 <p><strong>问题1：不收敛</strong>
 图示路径与最终得到的<code>centroid(x,y)</code>表明达到<strong>最大迭代次数后，没有收敛</strong>，尝试了增大迭代次数到10000，100000之后依然得到的是类似的结果。<br />
 观察发现路径不是一点一点慢慢向中心靠拢，而是在两边很夸张地跳跃，因此问题出在theta，也就是我们熟悉的学习率上。当某一步“跨”的过大，即本次迭代更新后的<code>cur_cost</code>比<code>pre_cost</code>要大的时候，说明我们不是朝着下降的方向在走，此时要调整我们的步伐，迈小一点的步子。因此我们更新我们的梯度下降函数如下。</p>
-
-<pre><code class="language-py">def gradientDescent(points, start=array([1, 1]), theta=0.01, iterations=500, eps=1e-6, lr_decay=0.5):
-    '''
-    params:
-      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
-      points: 所有采样点
-      theta: 步长，即学习率，控制步长
-      iterations: 迭代次数
-      eps: 阈值，通过比较前后连续两次的cost差值控制迭代
-      lr_decay: 步长衰减比例
-    return:
-      x_route: centroid路径
-      x: 收敛时的centroid
-      i: end iteration, 退出迭代时已经迭代了多少次
-    '''
-    x = start
-    x_route = x
-    pre_cost = cost(x, points) # 初始cost
-    for i in range(iterations):
-        grad = gradient(x, points)
-        x_i = x - theta * grad
-        cur_cost = cost(x_i, points)
-        if pre_cost - cur_cost &gt; eps: # 前一个cost与当前cost的差大于阈值，可以继续迭代
-            x = x_i
-            pre_cost = cur_cost
-        elif cur_cost - pre_cost &gt; eps: # 这一步“跨”的过大，调小步长
-            theta = theta * lr_decay
-        else:
-            return x_route, x, i+1
-        x_route = vstack((x_route, x))
-    return x_route, x, i+1
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gradientDescent</span>(points, start<span style="color:#f92672">=</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]), theta<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, iterations<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, eps<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-6</span>, lr_decay<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    params:
+</span><span style="color:#e6db74">      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
+</span><span style="color:#e6db74">      points: 所有采样点
+</span><span style="color:#e6db74">      theta: 步长，即学习率，控制步长
+</span><span style="color:#e6db74">      iterations: 迭代次数
+</span><span style="color:#e6db74">      eps: 阈值，通过比较前后连续两次的cost差值控制迭代
+</span><span style="color:#e6db74">      lr_decay: 步长衰减比例
+</span><span style="color:#e6db74">    return:
+</span><span style="color:#e6db74">      x_route: centroid路径
+</span><span style="color:#e6db74">      x: 收敛时的centroid
+</span><span style="color:#e6db74">      i: end iteration, 退出迭代时已经迭代了多少次
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    x <span style="color:#f92672">=</span> start
+    x_route <span style="color:#f92672">=</span> x
+    pre_cost <span style="color:#f92672">=</span> cost(x, points) <span style="color:#75715e"># 初始cost</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(iterations):
+        grad <span style="color:#f92672">=</span> gradient(x, points)
+        x_i <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> theta <span style="color:#f92672">*</span> grad
+        cur_cost <span style="color:#f92672">=</span> cost(x_i, points)
+        <span style="color:#66d9ef">if</span> pre_cost <span style="color:#f92672">-</span> cur_cost <span style="color:#f92672">&gt;</span> eps: <span style="color:#75715e"># 前一个cost与当前cost的差大于阈值，可以继续迭代</span>
+            x <span style="color:#f92672">=</span> x_i
+            pre_cost <span style="color:#f92672">=</span> cur_cost
+        <span style="color:#66d9ef">elif</span> cur_cost <span style="color:#f92672">-</span> pre_cost <span style="color:#f92672">&gt;</span> eps: <span style="color:#75715e"># 这一步“跨”的过大，调小步长</span>
+            theta <span style="color:#f92672">=</span> theta <span style="color:#f92672">*</span> lr_decay
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> x_route, x, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        x_route <span style="color:#f92672">=</span> vstack((x_route, x))
+    <span style="color:#66d9ef">return</span> x_route, x, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span></code></pre></div>
 <p>再次运行结果绘图。<br />
 <div align=center>
 <img src="/images/hw2_error1.png" width="60%" alt="Error2">
@@ -362,26 +345,23 @@ def test():
 <p>出现新的问题。
 <strong>问题2:第一步直接“跨”到中心位置附近</strong>
 在<code>gradient_raw</code>函数中，我们得到的梯度不仅包含方向，也包含了在该方向上的长度，这个长度数值可能较大，因此我们将其单位化，即<code>dx</code>和<code>dy</code>分别除以它们的欧式距离。因此更新我们的<code>gradient</code>函数如下。</p>
-
-<pre><code class="language-py">def gradient(c, points):
-    '''
-    params:
-      c: (x,y) 表示待求的质心坐标
-      points: 所有的点
-    return:
-      (dx, dy), 在c点时cost在两个维度方向的梯度
-    '''
-    x = points[:, 0]
-    y = points[:, 1]
-    dist = sum((c - points) ** 2, axis=1) ** 0.5
-    dx = sum((c[0] - x) / dist)  #求x偏导数
-    dy = sum((c[1] - y) / dist)  #求y偏导数
-    s = (dx ** 2 + dy ** 2) ** 0.5 # 欧式距离
-    dx = dx/s
-    dy = dy/s
-    return np.asarray([dx, dy])
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gradient</span>(c, points):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    params:
+</span><span style="color:#e6db74">      c: (x,y) 表示待求的质心坐标
+</span><span style="color:#e6db74">      points: 所有的点
+</span><span style="color:#e6db74">    return:
+</span><span style="color:#e6db74">      (dx, dy), 在c点时cost在两个维度方向的梯度
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    x <span style="color:#f92672">=</span> points[:, <span style="color:#ae81ff">0</span>]
+    y <span style="color:#f92672">=</span> points[:, <span style="color:#ae81ff">1</span>]
+    dist <span style="color:#f92672">=</span> sum((c <span style="color:#f92672">-</span> points) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>
+    dx <span style="color:#f92672">=</span> sum((c[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> x) <span style="color:#f92672">/</span> dist)  <span style="color:#75715e">#求x偏导数</span>
+    dy <span style="color:#f92672">=</span> sum((c[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> y) <span style="color:#f92672">/</span> dist)  <span style="color:#75715e">#求y偏导数</span>
+    s <span style="color:#f92672">=</span> (dx <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> dy <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span> <span style="color:#75715e"># 欧式距离</span>
+    dx <span style="color:#f92672">=</span> dx<span style="color:#f92672">/</span>s
+    dy <span style="color:#f92672">=</span> dy<span style="color:#f92672">/</span>s
+    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>asarray([dx, dy])</code></pre></div>
 <p>运行结果绘图。<br />
 <div align=center>
 <img src="/images/gd_good.png" width="60%" alt="GradientDescent">
@@ -398,58 +378,52 @@ def test():
 2. 梯度下降最终的结果是一般是稳定的，即稳定收敛到某个点；随机梯度下降可能会陷入某个局部最小值。</p>
 
 <p>修改<code>gradient</code>参数，使得迭代时随机选取一个点。</p>
-
-<pre><code class="language-py">def stochasticgradient(c, points):
-    '''
-    params:
-      c: (x,y) 表示待求的质心坐标
-      points: 所有的点
-    return:
-      (dx, dy), 在c点时cost在两个维度方向的梯度
-    '''
-    r = choice(points)
-    dx = (c[0] - r[0]) / sum((c - r) ** 2) ** 0.5 # x偏导
-    dy = (c[1] - r[1]) / sum((c - r) ** 2) ** 0.5  # y偏导
-    s = (dx ** 2 + dy ** 2) ** 0.5
-    dx = dx/s
-    dy = dy/s
-    return array([dx, dy])
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">stochasticgradient</span>(c, points):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    params:
+</span><span style="color:#e6db74">      c: (x,y) 表示待求的质心坐标
+</span><span style="color:#e6db74">      points: 所有的点
+</span><span style="color:#e6db74">    return:
+</span><span style="color:#e6db74">      (dx, dy), 在c点时cost在两个维度方向的梯度
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    r <span style="color:#f92672">=</span> choice(points)
+    dx <span style="color:#f92672">=</span> (c[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> r[<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">/</span> sum((c <span style="color:#f92672">-</span> r) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span> <span style="color:#75715e"># x偏导</span>
+    dy <span style="color:#f92672">=</span> (c[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> r[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">/</span> sum((c <span style="color:#f92672">-</span> r) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>  <span style="color:#75715e"># y偏导</span>
+    s <span style="color:#f92672">=</span> (dx <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> dy <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>
+    dx <span style="color:#f92672">=</span> dx<span style="color:#f92672">/</span>s
+    dy <span style="color:#f92672">=</span> dy<span style="color:#f92672">/</span>s
+    <span style="color:#66d9ef">return</span> array([dx, dy])</code></pre></div>
 <p>我们修改<code>gradientDescent</code>函数，在计算梯度的时候调用<code>stochasticgradient</code>方法，这样我们把计算梯度所用的函数作为一个参数，同样传递进去。修改后代码如下：</p>
-
-<pre><code class="language-py">def gd_final(points, gd_method=gradient,start=array([1, 1]), theta=0.01, iterations=500, eps=1e-6, lr_decay=0.5):
-    '''
-    params:
-      gd_method: 迭代的方式，可以在(stochasticgradient, gradient)中选择
-      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
-      points: 所有采样点
-      theta: 步长，即学习率，控制步长
-      iterations: 迭代次数
-      eps: 阈值，通过比较前后连续两次的cost差值控制循环结束。
-    return:
-      x_route: centroid路径
-      x: 收敛时的centroid
-      i: end iteration, 退出迭代时已经迭代了多少次
-    '''
-    x = start
-    x_route = x
-    pre_cost = cost(x, points) # 初始cost
-    for i in range(iterations):
-        grad = gd_method(x, points)
-        x_i = x - theta * grad
-        cur_cost = cost(x_i, points)
-        if pre_cost - cur_cost &gt; eps: # 前一个cost与当前cost的差大于阈值，可以继续迭代
-            x = x_i
-            pre_cost = cur_cost
-        elif cur_cost - pre_cost &gt; eps: # 这一步“跨”的过大，调小步长
-            theta = theta * lr_decay
-        else:
-            return x_route, x, i+1
-        x_route = vstack((x_route, x))
-    return x_route, x, i+1
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gd_final</span>(points, gd_method<span style="color:#f92672">=</span>gradient,start<span style="color:#f92672">=</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]), theta<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, iterations<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, eps<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-6</span>, lr_decay<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    params:
+</span><span style="color:#e6db74">      gd_method: 迭代的方式，可以在(stochasticgradient, gradient)中选择
+</span><span style="color:#e6db74">      start: 初始化点，即出发点，为了便于观察，可以设置为四个顶点中的任意一个，这里默认为右上角的顶点
+</span><span style="color:#e6db74">      points: 所有采样点
+</span><span style="color:#e6db74">      theta: 步长，即学习率，控制步长
+</span><span style="color:#e6db74">      iterations: 迭代次数
+</span><span style="color:#e6db74">      eps: 阈值，通过比较前后连续两次的cost差值控制循环结束。
+</span><span style="color:#e6db74">    return:
+</span><span style="color:#e6db74">      x_route: centroid路径
+</span><span style="color:#e6db74">      x: 收敛时的centroid
+</span><span style="color:#e6db74">      i: end iteration, 退出迭代时已经迭代了多少次
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    x <span style="color:#f92672">=</span> start
+    x_route <span style="color:#f92672">=</span> x
+    pre_cost <span style="color:#f92672">=</span> cost(x, points) <span style="color:#75715e"># 初始cost</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(iterations):
+        grad <span style="color:#f92672">=</span> gd_method(x, points)
+        x_i <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> theta <span style="color:#f92672">*</span> grad
+        cur_cost <span style="color:#f92672">=</span> cost(x_i, points)
+        <span style="color:#66d9ef">if</span> pre_cost <span style="color:#f92672">-</span> cur_cost <span style="color:#f92672">&gt;</span> eps: <span style="color:#75715e"># 前一个cost与当前cost的差大于阈值，可以继续迭代</span>
+            x <span style="color:#f92672">=</span> x_i
+            pre_cost <span style="color:#f92672">=</span> cur_cost
+        <span style="color:#66d9ef">elif</span> cur_cost <span style="color:#f92672">-</span> pre_cost <span style="color:#f92672">&gt;</span> eps: <span style="color:#75715e"># 这一步“跨”的过大，调小步长</span>
+            theta <span style="color:#f92672">=</span> theta <span style="color:#f92672">*</span> lr_decay
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> x_route, x, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+        x_route <span style="color:#f92672">=</span> vstack((x_route, x))
+    <span style="color:#66d9ef">return</span> x_route, x, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span></code></pre></div>
 <p>最终得到下图：<br />
 <div align=center>
 <img src="/images/sgd_good.png" width="60%" alt="SGD">
@@ -516,7 +490,7 @@ def test():
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

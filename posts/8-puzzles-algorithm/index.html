@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="XFeiF">
 		<meta name="description" content="XFeiF的独立博客">
-		<meta name="generator" content="Hugo 0.53" />
+		<meta name="generator" content="Hugo 0.69.2" />
 		<title>8-puzzles algorithm &middot; </title>
 		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
 		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
@@ -22,7 +22,9 @@
 
 <link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
 <script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 <script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
         tex2jax: {
@@ -91,7 +93,6 @@
 <script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
 <link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
-
 	</head>
 
 
@@ -107,7 +108,7 @@
     <div class="header-wrap site-nav">
     <div class="home-info-container">
         <a href="https://blog.x-fei.me/">
-            <h2>Ferry dimmed in moonlight</h2>
+            <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
@@ -196,50 +197,47 @@ averaged on many randomly generate different start states.
 <p>这里我们为了方便，将空白格用数字0表示。</p>
 
 <p>两种做法的代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># Solution 1: genRandomState-&gt;check-&gt;genRandomState....</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">genRandomState</span>():
+    puzzle <span style="color:#f92672">=</span> [x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">9</span>)]
+    random<span style="color:#f92672">.</span>shuffle(puzzle)
+    puzzle <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>asarray(puzzle)<span style="color:#f92672">.</span>reshape((<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>))
+    <span style="color:#66d9ef">return</span> puzzle
+<span style="color:#75715e"># getInvCount</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getInvCount</span>(state):
+    state <span style="color:#f92672">=</span> state<span style="color:#f92672">.</span>flatten()
+    int_count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">8</span>):
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">9</span>):
+            <span style="color:#66d9ef">if</span> state[j] <span style="color:#f92672">and</span> state[i] <span style="color:#f92672">and</span> state[i] <span style="color:#f92672">&gt;</span> state[j]:
+                int_count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> int_count
+<span style="color:#75715e"># judge</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">isSolvable</span>(state):
+    invCount <span style="color:#f92672">=</span> getInvCount(state)
+    <span style="color:#66d9ef">return</span> invCount <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
 
-<pre><code class="language-py"># Solution 1: genRandomState-&gt;check-&gt;genRandomState....
-def genRandomState():
-    puzzle = [x for x in range(9)]
-    random.shuffle(puzzle)
-    puzzle = np.asarray(puzzle).reshape((3,3))
-    return puzzle
-# getInvCount
-def getInvCount(state):
-    state = state.flatten()
-    int_count = 0
-    for i in range(8):
-        for j in range(i+1, 9):
-            if state[j] and state[i] and state[i] &gt; state[j]:
-                int_count += 1
-    return int_count
-# judge
-def isSolvable(state):
-    invCount = getInvCount(state)
-    return invCount % 2 == 0:
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">genSolvableRandomState</span>():
+    puzzle <span style="color:#f92672">=</span> genRandomState()
+    <span style="color:#66d9ef">if</span> isSolvable(puzzle):
+        <span style="color:#66d9ef">return</span> puzzle
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> genSolvableRandomState()
 
-def genSolvableRandomState():
-    puzzle = genRandomState()
-    if isSolvable(puzzle):
-        return puzzle
-    else:
-        return genSolvableRandomState()
+<span style="color:#75715e"># Solution 2: targetState-&gt;randomWalk-&gt;randomState  </span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">shuffle</span>(self, numAct):
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(numAct):
+        self<span style="color:#f92672">.</span>move(self<span style="color:#f92672">.</span>directions[random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)])
 
-# Solution 2: targetState-&gt;randomWalk-&gt;randomState  
-def shuffle(self, numAct):
-    for i in range(numAct):
-        self.move(self.directions[random.randint(0, 3)])
-
-def move(self, direction):
-    if direction == 'U':
-        self.up()
-    if direction == 'D':
-        self.down()
-    if direction == 'L':
-        self.left()
-    if direction == 'R':
-        self.right()
-</code></pre>
-
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">move</span>(self, direction):
+    <span style="color:#66d9ef">if</span> direction <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;U&#39;</span>:
+        self<span style="color:#f92672">.</span>up()
+    <span style="color:#66d9ef">if</span> direction <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;D&#39;</span>:
+        self<span style="color:#f92672">.</span>down()
+    <span style="color:#66d9ef">if</span> direction <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;L&#39;</span>:
+        self<span style="color:#f92672">.</span>left()
+    <span style="color:#66d9ef">if</span> direction <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;R&#39;</span>:
+        self<span style="color:#f92672">.</span>right()</code></pre></div>
 <p><strong>思考</strong>：<br />
 第二种做法里，我们需要对状态做一些变化，从当前状态到下一个状态，需要判断可以走的方向，并更新0点的位置，都是一些可以重复并高度聚合的方法，因此可以将这些操作都封装到<code>Puzzle</code>类中。</p>
 
@@ -262,29 +260,26 @@ def move(self, direction):
 在IDS中，我们更多的需要对<code>节点</code>进行操作，而不是直接对<code>Puzzle</code>操作，所以可以尝试构建<code>Node</code>类，简化代码逻辑。</p>
 
 <p>IDS实现代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">IDS</span>(self):
+    depth <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    result <span style="color:#f92672">=</span> None
+    <span style="color:#66d9ef">while</span> result <span style="color:#f92672">==</span> None:
+        result <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>depthLimited(depth)
+        depth <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> result
 
-<pre><code class="language-py">def IDS(self):
-    depth = 0
-    result = None
-    while result == None:
-        result = self.depthLimited(depth)
-        depth += 1
-    return result
-
-def depthLimited(self, depth):
-    stack = LifoQueue()
-    stack.put(self.start)
-    while True:
-        if stack.empty():
-            return None
-        top = stack.get()
-        if top.isGoal():
-            return top
-        elif top.depth is not depth:
-            for neighbor in top.neighbors():
-                stack.put(neighbor)
-</code></pre>
-
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">depthLimited</span>(self, depth):
+    stack <span style="color:#f92672">=</span> LifoQueue()
+    stack<span style="color:#f92672">.</span>put(self<span style="color:#f92672">.</span>start)
+    <span style="color:#66d9ef">while</span> True:
+        <span style="color:#66d9ef">if</span> stack<span style="color:#f92672">.</span>empty():
+            <span style="color:#66d9ef">return</span> None
+        top <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>get()
+        <span style="color:#66d9ef">if</span> top<span style="color:#f92672">.</span>isGoal():
+            <span style="color:#66d9ef">return</span> top
+        <span style="color:#66d9ef">elif</span> top<span style="color:#f92672">.</span>depth <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> depth:
+            <span style="color:#66d9ef">for</span> neighbor <span style="color:#f92672">in</span> top<span style="color:#f92672">.</span>neighbors():
+                stack<span style="color:#f92672">.</span>put(neighbor)</code></pre></div>
 <h3 id="uninformed-v-s-informed-search">Uninformed v.s. Informed search</h3>
 
 <p><code>Uninformed Search</code>，不知情搜索，无先验知识的搜索，通俗一点理解就是摸着石头过河，把所有可能的路都走一遍。个人理解，不同之处就在于走的顺序是全随机，还是半随机，对于DFS和BFS，可以归类为全随机，而IDS可以算半随机。<br />
@@ -294,24 +289,21 @@ def depthLimited(self, depth):
 
 <p>对中间状态的选择取决于其到目标状态的“距离”，这个距离可以有不同的衡量标准。贪心算法基于“距离”，通过维护一个优先队列，每次选择距离目标状态最近的中间状态去扩展。为了避免陷入死循环，维护<code>visited</code>数组。<br />
 贪心算法的实现如下：</p>
-
-<pre><code class="language-py">def greedy(self, heuristic_mode):
-    cur_node = self.start
-    nodes = PriorityQueue()
-    nodes.put((cur_node.cost(heuristic_mode), cur_node))
-    visited = []
-    while True:
-        if nodes.empty():
-            return None
-        cur_node = nodes.get()[1]
-        if cur_node.isGoal():
-            return cur_node
-        elif cur_node.state.puzzle not in visited:
-            visited.append(cur_node.state.puzzle)
-            for neighbor in cur_node.neighbors():
-                nodes.put((neighbor.cost(heuristic_mode), neighbor))
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">greedy</span>(self, heuristic_mode):
+    cur_node <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>start
+    nodes <span style="color:#f92672">=</span> PriorityQueue()
+    nodes<span style="color:#f92672">.</span>put((cur_node<span style="color:#f92672">.</span>cost(heuristic_mode), cur_node))
+    visited <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">while</span> True:
+        <span style="color:#66d9ef">if</span> nodes<span style="color:#f92672">.</span>empty():
+            <span style="color:#66d9ef">return</span> None
+        cur_node <span style="color:#f92672">=</span> nodes<span style="color:#f92672">.</span>get()[<span style="color:#ae81ff">1</span>]
+        <span style="color:#66d9ef">if</span> cur_node<span style="color:#f92672">.</span>isGoal():
+            <span style="color:#66d9ef">return</span> cur_node
+        <span style="color:#66d9ef">elif</span> cur_node<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>puzzle <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> visited:
+            visited<span style="color:#f92672">.</span>append(cur_node<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>puzzle)
+            <span style="color:#66d9ef">for</span> neighbor <span style="color:#f92672">in</span> cur_node<span style="color:#f92672">.</span>neighbors():
+                nodes<span style="color:#f92672">.</span>put((neighbor<span style="color:#f92672">.</span>cost(heuristic_mode), neighbor))</code></pre></div>
 <h3 id="a">A*</h3>
 
 <p>启发式函数<code>h(n)</code>告诉<code>A*</code>从任何结点n到目标结点的最小代价评估值。因此选择一个好的启发式函数很重要。<br />
@@ -322,24 +314,21 @@ def depthLimited(self, depth):
 </div></p>
 
 <p><code>A*</code>算法实现如下：</p>
-
-<pre><code class="language-py">def aStar(self, heuristic_mode):
-    cur_node = self.start
-    nodes = PriorityQueue()
-    nodes.put((cur_node.cost(heuristic_mode), cur_node))
-    visited = []
-    while True:
-        if nodes.empty():
-            return None
-        cur_node = nodes.get()[1]
-        if cur_node.isGoal():
-            return cur_node
-        elif cur_node.state.puzzle not in visited:
-            visited.append(cur_node.state.puzzle)
-            for neighbor in cur_node.neighbors():
-                nodes.put((neighbor.cost(heuristic_mode) + neighbor.depth, neighbor))
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">aStar</span>(self, heuristic_mode):
+    cur_node <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>start
+    nodes <span style="color:#f92672">=</span> PriorityQueue()
+    nodes<span style="color:#f92672">.</span>put((cur_node<span style="color:#f92672">.</span>cost(heuristic_mode), cur_node))
+    visited <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">while</span> True:
+        <span style="color:#66d9ef">if</span> nodes<span style="color:#f92672">.</span>empty():
+            <span style="color:#66d9ef">return</span> None
+        cur_node <span style="color:#f92672">=</span> nodes<span style="color:#f92672">.</span>get()[<span style="color:#ae81ff">1</span>]
+        <span style="color:#66d9ef">if</span> cur_node<span style="color:#f92672">.</span>isGoal():
+            <span style="color:#66d9ef">return</span> cur_node
+        <span style="color:#66d9ef">elif</span> cur_node<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>puzzle <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> visited:
+            visited<span style="color:#f92672">.</span>append(cur_node<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>puzzle)
+            <span style="color:#66d9ef">for</span> neighbor <span style="color:#f92672">in</span> cur_node<span style="color:#f92672">.</span>neighbors():
+                nodes<span style="color:#f92672">.</span>put((neighbor<span style="color:#f92672">.</span>cost(heuristic_mode) <span style="color:#f92672">+</span> neighbor<span style="color:#f92672">.</span>depth, neighbor))</code></pre></div>
 <h3 id="启发式函数">启发式函数</h3>
 
 <p>针对八数码问题，考虑两个相对间的的启发式函数：<br />
@@ -347,31 +336,28 @@ def depthLimited(self, depth):
 2. <code>distance_manhattan</code>，曼哈顿距离，计算元素当前位置到目标位置的曼哈顿距离之和。</p>
 
 <p>两个启发式函数的代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cost</span>(self, heuristic_mode):
+    <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>placeWrong() <span style="color:#66d9ef">if</span> heuristic_mode <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> self<span style="color:#f92672">.</span>distance_manhattan()
 
-<pre><code class="language-py">def cost(self, heuristic_mode):
-    return self.placeWrong() if heuristic_mode == 0 else self.distance_manhattan()
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">placeWrong</span>(self):
+    errors <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    all <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>order <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>order):
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>order):
+            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>puzzle[i][j] <span style="color:#f92672">!=</span> count <span style="color:#f92672">%</span> all:
+                errors <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+            count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">return</span> errors
 
-def placeWrong(self):
-    errors = 0
-    count = 1
-    all = self.state.order ** 2
-    for i in range(self.state.order):
-        for j in range(self.state.order):
-            if self.state.puzzle[i][j] != count % all:
-                errors += 1
-            count += 1
-    return errors
-
-def distance_manhattan(self):
-    res = 0
-    for i in range(self.state.order):
-        for j in range(self.state.order):
-            index = self.state.puzzle[i][j] - 1
-            dis = 0 if index == -1 else abs(i - int(index/self.state.order)) + abs(j - int(index % self.state.order))
-            res += dis
-    return res
-</code></pre>
-
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">distance_manhattan</span>(self):
+    res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>order):
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>order):
+            index <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>puzzle[i][j] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+            dis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> index <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> abs(i <span style="color:#f92672">-</span> int(index<span style="color:#f92672">/</span>self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>order)) <span style="color:#f92672">+</span> abs(j <span style="color:#f92672">-</span> int(index <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>order))
+            res <span style="color:#f92672">+=</span> dis
+    <span style="color:#66d9ef">return</span> res</code></pre></div>
 <h2 id="代码">代码</h2>
 
 <h3 id="puzzle-node">Puzzle, Node</h3>
@@ -390,16 +376,13 @@ def distance_manhattan(self):
 <h2 id="结果分析">结果分析</h2>
 
 <p>生成30个随机初始状态。</p>
-
-<pre><code class="language-py">order = 3
-steps = 30
-puzzles = []
-for i in range(30):
-    t = puzzle.Puzzle(order)
-    t.shuffle(steps)
-    puzzles.append(t)
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">order <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+steps <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+puzzles <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">30</span>):
+    t <span style="color:#f92672">=</span> puzzle<span style="color:#f92672">.</span>Puzzle(order)
+    t<span style="color:#f92672">.</span>shuffle(steps)
+    puzzles<span style="color:#f92672">.</span>append(t)</code></pre></div>
 <p>生成的随机初始状态如下：<br />
 <pre>
 1 0 2       2 3 6       1 2 3       1 3 0
@@ -422,58 +405,55 @@ for i in range(30):
 </pre></p>
 
 <p>执行不同搜索算法，并记录平均执行时间：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># 0: Greedy with wrongplace cost</span>
+<span style="color:#75715e"># 1: Greedy with manhattan cost</span>
+<span style="color:#75715e"># 2: A* with wrongplace cost</span>
+<span style="color:#75715e"># 3: A* with manhattan cost</span>
+<span style="color:#75715e"># 4: IDS</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">eval</span>(puzzles, algos):
+    timeuse <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> algos:
+        start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-------------------IDS------------------------&#34;</span>)
+            <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> puzzles:
+<span style="color:#75715e">#                 t.toString()</span>
+                s <span style="color:#f92672">=</span> solution<span style="color:#f92672">.</span>Solution(t)
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Routes:&#34;</span>, s<span style="color:#f92672">.</span>IDS())
+        <span style="color:#66d9ef">elif</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;----------Greedy heuristic wrongPlace----------------&#34;</span>)
+            <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> puzzles:
+<span style="color:#75715e">#                 t.toString()</span>
+                s <span style="color:#f92672">=</span> solution<span style="color:#f92672">.</span>Solution(t)
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Routes:&#34;</span>, s<span style="color:#f92672">.</span>greedy(<span style="color:#ae81ff">0</span>))
+        <span style="color:#66d9ef">elif</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;----------Greedy heuristic manhattan----------------&#34;</span>)
+            <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> puzzles:
+<span style="color:#75715e">#                 t.toString()</span>
+                s <span style="color:#f92672">=</span> solution<span style="color:#f92672">.</span>Solution(t)
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Routes:&#34;</span>, s<span style="color:#f92672">.</span>greedy(<span style="color:#ae81ff">1</span>))
+        <span style="color:#66d9ef">elif</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-------------A* heuristic wrongPlace----------------&#34;</span>)
+            <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> puzzles:
+<span style="color:#75715e">#                 t.toString()</span>
+                s <span style="color:#f92672">=</span> solution<span style="color:#f92672">.</span>Solution(t)
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Routes:&#34;</span>, s<span style="color:#f92672">.</span>aStar(<span style="color:#ae81ff">0</span>))
+        <span style="color:#66d9ef">elif</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>:
+            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;-------------A* heuristic manhattan-----------------&#34;</span>)
+            <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> puzzles:
+<span style="color:#75715e">#                 t.toString()</span>
+                s <span style="color:#f92672">=</span> solution<span style="color:#f92672">.</span>Solution(t)
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Routes:&#34;</span>, s<span style="color:#f92672">.</span>aStar(<span style="color:#ae81ff">1</span>))
 
-<pre><code class="language-py"># 0: Greedy with wrongplace cost
-# 1: Greedy with manhattan cost
-# 2: A* with wrongplace cost
-# 3: A* with manhattan cost
-# 4: IDS
-def eval(puzzles, algos):
-    timeuse = []
-    for i in algos:
-        start = time.time()
-        if i == 4:
-            print(&quot;-------------------IDS------------------------&quot;)
-            for t in puzzles:
-#                 t.toString()
-                s = solution.Solution(t)
-                print(&quot;Routes:&quot;, s.IDS())
-        elif i == 0:
-            print(&quot;----------Greedy heuristic wrongPlace----------------&quot;)
-            for t in puzzles:
-#                 t.toString()
-                s = solution.Solution(t)
-                print(&quot;Routes:&quot;, s.greedy(0))
-        elif i == 1:
-            print(&quot;----------Greedy heuristic manhattan----------------&quot;)
-            for t in puzzles:
-#                 t.toString()
-                s = solution.Solution(t)
-                print(&quot;Routes:&quot;, s.greedy(1))
-        elif i == 2:
-            print(&quot;-------------A* heuristic wrongPlace----------------&quot;)
-            for t in puzzles:
-#                 t.toString()
-                s = solution.Solution(t)
-                print(&quot;Routes:&quot;, s.aStar(0))
-        elif i == 3:
-            print(&quot;-------------A* heuristic manhattan-----------------&quot;)
-            for t in puzzles:
-#                 t.toString()
-                s = solution.Solution(t)
-                print(&quot;Routes:&quot;, s.aStar(1))
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;--------------------Time------------------------------&#34;</span>)
+        during <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start
+        timeuse<span style="color:#f92672">.</span>append(during)
+        <span style="color:#66d9ef">print</span>(during<span style="color:#f92672">/</span>len(puzzles))
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;----------------------------------------------------------&#34;</span>)
+    <span style="color:#66d9ef">return</span> timeuse
 
-        print(&quot;--------------------Time------------------------------&quot;)
-        during = time.time() - start
-        timeuse.append(during)
-        print(during/len(puzzles))
-        print(&quot;----------------------------------------------------------&quot;)
-    return timeuse
-
-timeuse = eval(puzzles, [4, 0, 1, 2, 3])
-print(timeuse)
-</code></pre>
-
+timeuse <span style="color:#f92672">=</span> eval(puzzles, [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])
+<span style="color:#66d9ef">print</span>(timeuse)</code></pre></div>
 <h3 id="执行结果">执行结果</h3>
 
 <p><strong>IDS执行结果</strong><br />
@@ -586,7 +566,7 @@ print(timeuse)
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2019 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

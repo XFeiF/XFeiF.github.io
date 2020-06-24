@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Leetcode on </title>
+    <title>leetcode on </title>
     <link>https://blog.x-fei.me/tags/leetcode/</link>
-    <description>Recent content in Leetcode on </description>
+    <description>Recent content in leetcode on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 27 Dec 2018 12:00:00 +0800</lastBuildDate>
     
