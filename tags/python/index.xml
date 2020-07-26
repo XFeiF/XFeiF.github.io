@@ -5,10 +5,21 @@
     <link>https://blog.x-fei.me/tags/python/</link>
     <description>Recent content in python on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 10 Oct 2019 16:22:52 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2020 12:09:10 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>一周几道算法题 [2020-07-25]</title>
+      <link>https://blog.x-fei.me/posts/algo/20200726algo/</link>
+      <pubDate>Sun, 26 Jul 2020 12:09:10 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/algo/20200726algo/</guid>
+      <description>&lt;p&gt;一周几道算法题！&lt;/p&gt;
+
+&lt;p&gt;本周算法以动态规划为主，题解如下：&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>GIL in Python</title>

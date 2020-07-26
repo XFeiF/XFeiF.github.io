@@ -4,7 +4,57 @@
   
   <url>
     <loc>https://blog.x-fei.me/</loc>
-    <lastmod>2020-06-24T20:43:34+08:00</lastmod>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/timelines/2020algo/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/categories/algorithm/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/tags/algorithm/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/categories/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/tags/leetcode/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/posts/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/tags/python/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/tags/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/timelines/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.x-fei.me/posts/algo/20200726algo/</loc>
+    <lastmod>2020-07-26T12:09:10+08:00</lastmod>
   </url>
   
   <url>
@@ -13,22 +63,7 @@
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/categories/</loc>
-    <lastmod>2020-06-24T20:43:34+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.x-fei.me/categories/fragments/</loc>
-    <lastmod>2020-06-24T20:43:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.x-fei.me/posts/</loc>
-    <lastmod>2020-06-24T20:43:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.x-fei.me/tags/</loc>
     <lastmod>2020-06-24T20:43:34+08:00</lastmod>
   </url>
   
@@ -53,22 +88,12 @@
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/tags/python/</loc>
-    <lastmod>2019-10-10T16:22:52+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.x-fei.me/categories/python/</loc>
     <lastmod>2019-10-10T16:22:52+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.x-fei.me/timelines/2019weeklyalgo/</loc>
-    <lastmod>2019-08-26T22:04:06+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.x-fei.me/timelines/</loc>
     <lastmod>2019-08-26T22:04:06+08:00</lastmod>
   </url>
   
@@ -203,22 +228,7 @@
   </url>
   
   <url>
-    <loc>https://blog.x-fei.me/categories/algorithm/</loc>
-    <lastmod>2018-12-27T12:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.x-fei.me/tags/algorithm/</loc>
-    <lastmod>2018-12-27T12:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.x-fei.me/tags/dynamic-programming/</loc>
-    <lastmod>2018-12-27T12:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.x-fei.me/tags/leetcode/</loc>
     <lastmod>2018-12-27T12:00:00+08:00</lastmod>
   </url>
   

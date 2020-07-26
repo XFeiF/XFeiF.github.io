@@ -5,10 +5,37 @@
     <link>https://blog.x-fei.me/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 24 Jun 2020 20:43:34 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2020 12:09:10 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>algorithm</title>
+      <link>https://blog.x-fei.me/tags/algorithm/</link>
+      <pubDate>Sun, 26 Jul 2020 12:09:10 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leetcode</title>
+      <link>https://blog.x-fei.me/tags/leetcode/</link>
+      <pubDate>Sun, 26 Jul 2020 12:09:10 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/leetcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://blog.x-fei.me/tags/python/</link>
+      <pubDate>Sun, 26 Jul 2020 12:09:10 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/python/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>think</title>
@@ -16,15 +43,6 @@
       <pubDate>Wed, 24 Jun 2020 20:43:34 +0800</pubDate>
       
       <guid>https://blog.x-fei.me/tags/think/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://blog.x-fei.me/tags/python/</link>
-      <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/python/</guid>
       <description></description>
     </item>
     
@@ -83,29 +101,11 @@
     </item>
     
     <item>
-      <title>algorithm</title>
-      <link>https://blog.x-fei.me/tags/algorithm/</link>
-      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>dynamic programming</title>
       <link>https://blog.x-fei.me/tags/dynamic-programming/</link>
       <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
       
       <guid>https://blog.x-fei.me/tags/dynamic-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>leetcode</title>
-      <link>https://blog.x-fei.me/tags/leetcode/</link>
-      <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/leetcode/</guid>
       <description></description>
     </item>
     

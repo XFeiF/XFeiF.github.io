@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.69.2" />
+		<title>一周几道算法题 [2020-07-25] &middot; </title>
+		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
+		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            displayMath: [
+                ['$$', '$$'],
+                ['\[\[', '\]\]']
+            ],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(),
+            i;
+        for (i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    MathJax.Hub.Config({
+        CommonHTML: {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+    });
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+<script src="https://cdn.staticfile.org/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.staticfile.org/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+	</head>
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="https://blog.x-fei.me/" class="left swing">
+        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+ 
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/leetcode_contest_bg.jpg);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="https://blog.x-fei.me/">
+            <h2>Do not go gentle into that good night</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href='https://blog.x-fei.me/'> Home</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/archives'>Archives</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/friends'>Friends</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+ 
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">一周几道算法题 [2020-07-25]</h1>
+                            
+                            
+                                <time datetime="2020-07-26">Jul 26, 2020</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/algorithm">Algorithm</a>
+    
+
+
+                            </span> - 5 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p>一周几道算法题！</p>
+
+<p>本周算法以动态规划为主，题解如下：</p>
+
+<ul>
+<li><a href="https://leetcode.com/problems/unique-paths-ii/">Unique Paths ||</a>   🍉 🍉 🍉  <em>dp</em></li>
+<li><a href="https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to/">Group the People Given the Group Size They Belong To</a>  🍉 🍉  <em>greedy</em></li>
+<li><a href="https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/">Find a Corresponding Node of a Binary Tree in a Clone of That Tree</a> 🍉 tree</li>
+<li><a href="https://leetcode.com/problems/deepest-leaves-sum/">Deepest Leaves Sum</a> 🍉🍉 <em>tree</em></li>
+<li><a href="https://leetcode.com/problems/max-increase-to-keep-city-skyline/">Max Increase to Keep City Skyline</a>  🍉🍉</li>
+<li><a href="https://leetcode.com/problems/unique-paths-ii/">Unique Paths ||</a>   🍉 🍉 🍉  <em>dp</em></li>
+<li><a href="https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to/">Group the People Given the Group Size They Belong To</a>  🍉 🍉  <em>greedy</em></li>
+<li><a href="https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/">Find a Corresponding Node of a Binary Tree in a Clone of That Tree</a> 🍉 tree</li>
+<li><a href="https://leetcode.com/problems/deepest-leaves-sum/">Deepest Leaves Sum</a> 🍉🍉 <em>tree</em></li>
+<li><a href="https://leetcode.com/problems/max-increase-to-keep-city-skyline/">Max Increase to Keep City Skyline</a>  🍉🍉</li>
+<li><a href="https://leetcode.com/problems/matrix-block-sum/">Matrix Block Sum</a>  🍉 🍉 🍉 <em>dp</em></li>
+<li><a href="https://leetcode.com/problems/count-square-submatrices-with-all-ones/">Count Square Submatrices with All Ones</a> 🍉 🍉🍉 <em>dp</em></li>
+<li><a href="https://leetcode.com/problems/house-robber/">House Robber</a> 🍉 dp</li>
+<li><a href="https://leetcode.com/problems/house-robber-ii/">House Robber ||</a> 🍉🍉dp</li>
+</ul>
+
+<h3 id="unique-paths">Unique Paths ||</h3>
+
+<p><strong>指数：</strong>🍉 🍉 🍉<br />
+<strong>思路：</strong>不算难，多模拟几次就能发现思路，边界条件永远要注意！</p>
+
+<p>机器人从左上角走到右下角，每次要么向下要么向右。中间如果是1，就不能走。那么自然而然可以推出能够达到当前所在位置的只有从它上面或者左面走过来，即能到当前位置的路径数目是上面位置以及左面位置路径之和。于是得到状态方程：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dp[i][j] <span style="color:#f92672">=</span> d[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">+</span> dp[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]</code></pre></div>
+<p>当然这里一些边界条件的细节需要注意一下。</p>
+
+<p>算法时间空间复杂度都是$O(mn)$</p>
+
+<p><strong>C++：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> uniquePathsWithObstacles(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> obs) {
+        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> obs.size();
+        <span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> obs[<span style="color:#ae81ff">0</span>].size();
+        <span style="color:#66d9ef">if</span> (obs[n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> obs[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+        
+        vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> dp(n, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> (m, <span style="color:#ae81ff">0</span>));
+        dp[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&lt;</span>n; i<span style="color:#f92672">++</span>){
+            <span style="color:#66d9ef">if</span>(dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>obs[i][<span style="color:#ae81ff">0</span>])
+                dp[i][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        }
+        
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&lt;</span>m; i<span style="color:#f92672">++</span>){
+            <span style="color:#66d9ef">if</span>(dp[<span style="color:#ae81ff">0</span>][i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>obs[<span style="color:#ae81ff">0</span>][i])
+                dp[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        }
+        
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&lt;</span>n; i<span style="color:#f92672">++</span>)
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>; j<span style="color:#f92672">&lt;</span>m; j<span style="color:#f92672">++</span>){
+                <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>obs[i][j])
+                    dp[i][j] <span style="color:#f92672">=</span> dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">+</span> dp[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+            }
+        <span style="color:#66d9ef">return</span> dp[n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+    }
+};
+</code></pre></div>
+<p>同样思路的python代码很简单。</p>
+
+<p><strong>Python3:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">uniquePathsWithObstacles</span>(self, A: List[List[int]]) <span style="color:#f92672">-&gt;</span> int:
+        n, m <span style="color:#f92672">=</span> len(A), len(A[<span style="color:#ae81ff">0</span>])
+        <span style="color:#66d9ef">if</span> A[n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">or</span> A[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+        dp <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>m <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)]
+        dp[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n):
+            <span style="color:#66d9ef">if</span> dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">and</span> A[i][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">!=</span><span style="color:#ae81ff">1</span>:
+                dp[i][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, m):
+            <span style="color:#66d9ef">if</span> dp[<span style="color:#ae81ff">0</span>][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">and</span> A[<span style="color:#ae81ff">0</span>][j]<span style="color:#f92672">!=</span><span style="color:#ae81ff">1</span>:
+                dp[<span style="color:#ae81ff">0</span>][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n):
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, m):
+                <span style="color:#66d9ef">if</span> A[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+                    dp[i][j] <span style="color:#f92672">+=</span> dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j]
+                <span style="color:#66d9ef">if</span> A[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+                    dp[i][j] <span style="color:#f92672">+=</span> dp[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        <span style="color:#66d9ef">return</span> dp[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]</code></pre></div>
+<h3 id="group-the-people-given-the-group-size-they-belong-to">Group the People Given the Group Size They Belong To</h3>
+
+<p><strong>指数：</strong>🍉🍉</p>
+
+<p><strong>思路：</strong> 每个人属于不同大小的组，只要组的大小对，组里其他人是谁都不用管。直观上，只需要把人按组的大小归类得到若干大组，然后再按大组进行小组划分即可。</p>
+
+<p><strong>python:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">groupThePeople</span>(self, A):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        :type groupSizes: List[int]
+</span><span style="color:#e6db74">        :rtype: List[List[int]]
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        n <span style="color:#f92672">=</span> len(A)
+        mat <span style="color:#f92672">=</span> [[] <span style="color:#f92672">*</span> (n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)]
+        <span style="color:#66d9ef">for</span> i, c <span style="color:#f92672">in</span> enumerate(A):
+            mat[c]<span style="color:#f92672">.</span>append(i)
+        res <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+            cl <span style="color:#f92672">=</span> len(mat[i])
+            <span style="color:#66d9ef">if</span>  cl <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+                j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+                <span style="color:#66d9ef">while</span> j <span style="color:#f92672">&lt;</span> cl:
+                    res<span style="color:#f92672">.</span>append(mat[i][j:j<span style="color:#f92672">+</span>i])
+                    j <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> i
+        <span style="color:#66d9ef">return</span> res</code></pre></div>
+<p><strong>c++:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> groupThePeople(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A) {
+        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> A.size();
+        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> mp;
+        
+        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>n; i<span style="color:#f92672">++</span>)
+            mp[A[i]].push_back(i);
+        vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> v;
+        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> m:mp) {
+            <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> m.second.size(), i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+            
+            <span style="color:#66d9ef">while</span> (i<span style="color:#f92672">&lt;</span>n) {
+                vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> res;
+                <span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> m.first;
+                <span style="color:#66d9ef">while</span> (k<span style="color:#f92672">--&amp;&amp;</span>i<span style="color:#f92672">&lt;</span>n)
+                    res.push_back(m.second[i<span style="color:#f92672">++</span>]);
+                v.push_back(res);
+            }
+        }
+        <span style="color:#66d9ef">return</span> v;
+    }
+};
+</code></pre></div>
+<h3 id="find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree">Find a Corresponding Node of a Binary Tree in a Clone of That Tree</h3>
+
+<p><strong>指数</strong>：🍉</p>
+
+<p><strong>思路</strong>：有一棵树及其克隆树，给定原始树上某个节点，找克隆树上对应的节点。层次遍历。树的层次遍历使用队列。</p>
+
+<p><strong>python:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Definition for a binary tree node.</span>
+<span style="color:#75715e"># class TreeNode:</span>
+<span style="color:#75715e">#     def __init__(self, x):</span>
+<span style="color:#75715e">#         self.val = x</span>
+<span style="color:#75715e">#         self.left = None</span>
+<span style="color:#75715e">#         self.right = None</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getTargetCopy</span>(self, original: TreeNode, cloned: TreeNode, target: TreeNode) <span style="color:#f92672">-&gt;</span> TreeNode:
+        oq <span style="color:#f92672">=</span> [original]
+        cq <span style="color:#f92672">=</span> [cloned]
+        <span style="color:#66d9ef">while</span> oq:
+            ocur <span style="color:#f92672">=</span> oq<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+            ccur <span style="color:#f92672">=</span> cq<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+            <span style="color:#66d9ef">if</span> ocur <span style="color:#f92672">==</span> target:
+                <span style="color:#66d9ef">return</span> ccur
+            <span style="color:#66d9ef">if</span> ocur<span style="color:#f92672">.</span>left: 
+                oq<span style="color:#f92672">.</span>append(ocur<span style="color:#f92672">.</span>left)
+                cq<span style="color:#f92672">.</span>append(ccur<span style="color:#f92672">.</span>left)
+            <span style="color:#66d9ef">if</span> ocur<span style="color:#f92672">.</span>right:
+                oq<span style="color:#f92672">.</span>append(ocur<span style="color:#f92672">.</span>right)
+                cq<span style="color:#f92672">.</span>append(ccur<span style="color:#f92672">.</span>right)</code></pre></div>
+<h3 id="deepest-leaves-sum">Deepest Leaves Sum</h3>
+
+<p><strong>指数：</strong>🍉🍉</p>
+
+<p><strong>思路</strong>：给定一棵树，返回最深的叶节点之和。最深的叶节点就在最后一层，所以直观上通过层次遍历就可以取到最后一层所有的节点了，之后再进行求和。</p>
+
+<p><strong>python:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Definition for a binary tree node.</span>
+<span style="color:#75715e"># class TreeNode:</span>
+<span style="color:#75715e">#     def __init__(self, val=0, left=None, right=None):</span>
+<span style="color:#75715e">#         self.val = val</span>
+<span style="color:#75715e">#         self.left = left</span>
+<span style="color:#75715e">#         self.right = right</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deepestLeavesSum</span>(self, root: TreeNode) <span style="color:#f92672">-&gt;</span> int:
+        q <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">if</span> root:
+            q<span style="color:#f92672">.</span>append(root)
+        levels <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">while</span> q:
+            level <span style="color:#f92672">=</span> []
+            lenq <span style="color:#f92672">=</span> len(q)
+            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(lenq):
+                cur <span style="color:#f92672">=</span> q<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+                <span style="color:#66d9ef">if</span> cur<span style="color:#f92672">.</span>left:
+                    q<span style="color:#f92672">.</span>append(cur<span style="color:#f92672">.</span>left)
+                <span style="color:#66d9ef">if</span> cur<span style="color:#f92672">.</span>right:
+                    q<span style="color:#f92672">.</span>append(cur<span style="color:#f92672">.</span>right)
+                level<span style="color:#f92672">.</span>append(cur<span style="color:#f92672">.</span>val)
+            levels<span style="color:#f92672">.</span>append(level)
+        <span style="color:#66d9ef">return</span> sum(levels[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])</code></pre></div>
+<h3 id="max-increase-to-keep-city-skyline">Max Increase to Keep City Skyline</h3>
+
+<p><strong>指数：</strong>🍉🍉</p>
+
+<p><strong>思路：</strong> 首先要理解City Skyline这个概念，即都市天际线。其特点是从上面和从下面看是相同的，左右是相同的。那么为了保持天际线，增加高度时需要保持不超过上下和左右的最高建筑。即小于等于二者较小值。理清这个思路，找准对应的位置即可写出代码。</p>
+
+<p><strong>python:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maxIncreaseKeepingSkyline</span>(self, A: List[List[int]]) <span style="color:#f92672">-&gt;</span> int:
+        n, m <span style="color:#f92672">=</span> len(A), len(A[<span style="color:#ae81ff">0</span>])
+        <span style="color:#75715e"># Get top/bottom skyline</span>
+        T <span style="color:#f92672">=</span> [max([A[j][i] <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(n)]) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(m)]
+        <span style="color:#75715e"># Get left/right skyline</span>
+        L <span style="color:#f92672">=</span> [max(A[i][:]) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n)]
+        cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(m):
+                cnt <span style="color:#f92672">+=</span> min(T[j], L[i]) <span style="color:#f92672">-</span> A[i][j]
+        <span style="color:#66d9ef">return</span> cnt</code></pre></div>
+<h3 id="matrix-block-sum">Matrix Block Sum</h3>
+
+<p><strong>指数：</strong>🍉🍉🍉</p>
+
+<p><strong>思路：</strong> 这可以算是一道数学问题，核心是计算二维数组的前缀和，通过前缀和简化answer矩阵元素的计算。</p>
+
+<p><img src="https://assets.leetcode.com/users/images/05c37b0a-4feb-4716-84c5-eaeac1d0f955_1594554629.5759783.png" alt="" /></p>
+
+<p>首先本题借用leetcode上的一张图来解释。$area<em>1 = area</em>{1+2+3+4} - area<em>{2+3} - area</em>{3+4} + area_3$</p>
+
+<p><em>二维数组前缀和求法：</em></p>
+
+<p>以当前位置为右下角的matrix的二维数组的和，即:</p>
+
+<p>$$prefix(x2, y2) = matrix(x2, y2) + prefix(x1,y2) + prefix(x2, y1) - prefix(x1, y1)$$</p>
+
+<p><strong>python:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">matrixBlockSum</span>(self, mat: List[List[int]], k: int) <span style="color:#f92672">-&gt;</span> List[List[int]]:
+        <span style="color:#75715e"># 一道数学问题，核心是计算二维数组的前缀和，通过前缀和简化answer矩阵元素的计算</span>
+        <span style="color:#75715e"># 二维数组前缀和</span>
+        n, m <span style="color:#f92672">=</span> len(mat), len(mat[<span style="color:#ae81ff">0</span>])
+        psum <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> (m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)]
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+                <span style="color:#75715e"># 左边+上边-交叉部分</span>
+                psum[i][j] <span style="color:#f92672">=</span> mat[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> psum[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">+</span> psum[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> psum[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+        ans <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> m <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)]
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(m):
+                x1, y1 <span style="color:#f92672">=</span> min(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, i<span style="color:#f92672">+</span>k)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, min(m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, j<span style="color:#f92672">+</span>k)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+                x2, y2 <span style="color:#f92672">=</span> max(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, i<span style="color:#f92672">-</span>k<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, max(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, j<span style="color:#f92672">-</span>k<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+                ans[i][j] <span style="color:#f92672">=</span> psum[x1][y1] <span style="color:#f92672">-</span> psum[x2][y1] <span style="color:#f92672">-</span> psum[x1][y2] <span style="color:#f92672">+</span> psum[x2][y2]
+        <span style="color:#66d9ef">return</span> ans</code></pre></div>
+<h3 id="count-square-submatrices-with-all-ones">Count Square Submatrices with All Ones</h3>
+
+<p><strong>指数：</strong>🍉🍉🍉</p>
+
+<p><strong>思路：</strong> 给定 $m*n$ 的一个01矩阵，返回<strong>全1的方形矩阵</strong>的数量。单个1也算（边长为1的正方形）。</p>
+
+<p>首先，判断出用动态规划解。（子问题、无后效性、最优子结构）</p>
+
+<p>接下来重点在于理解当前位置$(i,j)$所能构成的最大边长的正方形取决于什么。看一个例子：</p>
+<pre><code>0 0 0 0 0 0 0 0 0 
+0 1 1 1 1 0 0 0 0 
+0 1 1 1 1 1 0 0 0 
+0 1 1 1 1 1 n 0 0 
+0 1 1 1 1 1 j 0 0 
+0 0 0 0 m i 0 0 0 </code></pre>
+<p>当前位置$(i,j)$所能构成的最大边长的正方形受三方面的限制，上、左、左上。三者但凡有一个短板就会影响当前位置所能构成正方形的最大边长。</p>
+
+<p><strong>python:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">countSquares</span>(self, A: List[List[int]]) <span style="color:#f92672">-&gt;</span> int:
+        n, m <span style="color:#f92672">=</span> len(A), len(A[<span style="color:#ae81ff">0</span>])
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n):
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, m):
+                <span style="color:#66d9ef">if</span> A[i][j]:
+                    A[i][j] <span style="color:#f92672">+=</span> min(A[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], A[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j], A[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+        <span style="color:#66d9ef">return</span> sum(map(sum, A))</code></pre></div>
+<h3 id="house-robber">House Robber</h3>
+
+<p><strong>指数：</strong>🍉</p>
+
+<p><strong>思路：</strong> 经典的dp问题，需要弄明白当前位置取不取的判断标准。取就说明，取了i，那么加上之前最大的i-2，比i-1位置的和要大。即：</p>
+
+<p>$ans[i+1] = max(ans[i], ans[i-1] + nums[i])$.</p>
+
+<p><strong>python:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rob</span>(self, nums: List[int]) <span style="color:#f92672">-&gt;</span> int:
+        n <span style="color:#f92672">=</span> len(nums)
+        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>: <span style="color:#66d9ef">return</span> sum(nums)
+        me <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> (n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+        me[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> nums[<span style="color:#ae81ff">0</span>]
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
+            me[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> max(me[i], me[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> nums[i])
+        <span style="color:#66d9ef">return</span> me[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]</code></pre></div>
+<h3 id="house-robber-ii">House Robber II</h3>
+
+<p><strong>指数：</strong>🍉🍉</p>
+
+<p><strong>思路：</strong>和上一题的区别在于现在数据以环状连接，即第一个和最后一个不能同时取。问题转换为在[0,n-2]和[1,n-1]两个区间里分别求最大，最后取二者大的那个即可。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/leetcode">leetcode</a>
+                            
+                                <a class="badge badge-primary" href="/tags/python">python</a>
+                            
+                                <a class="badge badge-primary" href="/tags/algorithm">algorithm</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/f_think/202006/">6月乱七八糟 &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>
