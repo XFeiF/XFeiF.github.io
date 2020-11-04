@@ -5,10 +5,19 @@
     <link>https://blog.x-fei.me/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Jul 2020 12:09:10 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2020 20:09:32 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyTorch</title>
+      <link>https://blog.x-fei.me/tags/pytorch/</link>
+      <pubDate>Wed, 04 Nov 2020 20:09:32 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/tags/pytorch/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>algorithm</title>
@@ -43,15 +52,6 @@
       <pubDate>Wed, 24 Jun 2020 20:43:34 +0800</pubDate>
       
       <guid>https://blog.x-fei.me/tags/think/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PyTorch</title>
-      <link>https://blog.x-fei.me/tags/pytorch/</link>
-      <pubDate>Wed, 10 Jul 2019 10:15:11 +0800</pubDate>
-      
-      <guid>https://blog.x-fei.me/tags/pytorch/</guid>
       <description></description>
     </item>
     
