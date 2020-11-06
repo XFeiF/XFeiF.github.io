@@ -5,10 +5,20 @@
     <link>https://blog.x-fei.me/tags/pytorch/</link>
     <description>Recent content in PyTorch on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Nov 2020 10:48:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2020 18:38:55 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dropout</title>
+      <link>https://blog.x-fei.me/posts/ml/dropout/</link>
+      <pubDate>Fri, 06 Nov 2020 18:38:55 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/ml/dropout/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Dropout&lt;/code&gt;已经被证明可以有效缓解过拟合，在一定程度上达到正则化的效果。这篇博客简单记录一下在
+实现的时候进行&lt;code&gt;rescale&lt;/code&gt;的操作。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Pytorch_nn_module</title>
