@@ -5,10 +5,21 @@
     <link>https://blog.x-fei.me/categories/machine-learning/</link>
     <description>Recent content in Machine Learning on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Nov 2020 20:09:32 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2020 10:48:17 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.x-fei.me/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pytorch_nn_module</title>
+      <link>https://blog.x-fei.me/posts/ml/pytorch_nn_module/</link>
+      <pubDate>Thu, 05 Nov 2020 10:48:17 +0800</pubDate>
+      
+      <guid>https://blog.x-fei.me/posts/ml/pytorch_nn_module/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;序言&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;定义模型类的时候，一般都需要继承&lt;code&gt;nn.Module&lt;/code&gt;类。当我们后续对模型进行查看或者定位修改的时候很头疼它的api那么多，应该用哪个，怎么用，为什么……这篇博客就好好捋一捋&lt;code&gt;nn.Module&lt;/code&gt;。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>DataParallel vs DistributedDataParallel</title>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="XFeiF">
+		<meta name="description" content="XFeiF的独立博客">
+		<meta name="generator" content="Hugo 0.69.2" />
+		<title>Pytorch_nn_module &middot; </title>
+		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
+		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		
+		
+		
+		
+
+		
+
+		
+		<link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="https://cdn.staticfile.org/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<script src="https://cdn.staticfile.org/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script type="text/javascript" async src="https://cdn.staticfile.org/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            displayMath: [
+                ['$$', '$$'],
+                ['\[\[', '\]\]']
+            ],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: {
+                    autoNumber: "AMS"
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        
+        
+        
+        var all = MathJax.Hub.getAllJax(),
+            i;
+        for (i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    MathJax.Hub.Config({
+        CommonHTML: {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            }
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+    });
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+<script src="https://cdn.staticfile.org/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.staticfile.org/jquery.imagesloaded/2.1.0/jquery.imagesloaded.js"></script>
+<script src="https://cdn.staticfile.org/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot.min.js"></script>
+<link href="https://cdn.staticfile.org/bigfoot/2.1.4/bigfoot-default.min.css" rel="stylesheet">
+	</head>
+
+
+<body>
+    <div class="nav-header nav-header-fixed animated">
+    <a href="https://blog.x-fei.me/" class="left swing">
+        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    </a>
+</div>
+
+ 
+<header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/pytorch.jpg);">
+    <div class="header-wrap site-nav">
+    <div class="home-info-container">
+        <a href="https://blog.x-fei.me/">
+            <h2>Do not go gentle into that good night</h2>
+        </a>
+    </div>
+    <div class="nav-header-container">
+        <ul class="links">
+            <li class="nav-blog">
+                <a href='https://blog.x-fei.me/'> Home</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/archives'>Archives</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/friends'>Friends</a>
+            </li>
+            <li>
+                <a href='https://blog.x-fei.me/about'>About</a>
+            </li>
+        </ul>
+
+
+    	
+
+    	
+    </div>
+</div>
+
+</header>
+ 
+    <div id="main">
+        <article class="page-template page-index container-wrapper">
+            <div class="post-card">
+                <div class="post-container">
+                    <div class="post-header">
+                        <div class="meta">
+                            <h1 id="post-title">Pytorch_nn_module</h1>
+                            
+                            
+                                <time datetime="2020-11-05">Nov 5, 2020</time>
+                            
+                            <span class="categories">
+                                 on 
+    
+        <a class="badge badge-primary" href="/categories/machine-learning">Machine Learning</a>
+    
+
+
+                            </span> - 8 min read.
+
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div id="toc" class="">
+
+                        </div>
+                        <div class="inner-content">
+                            <p><strong>序言</strong></p>
+
+<p>定义模型类的时候，一般都需要继承<code>nn.Module</code>类。当我们后续对模型进行查看或者定位修改的时候很头疼它的api那么多，应该用哪个，怎么用，为什么……这篇博客就好好捋一捋<code>nn.Module</code>。</p>
+
+<p>(建议配合官网源码一起阅读。)</p>
+
+<p>源文件第一行： <code>from collections import OrderedDict, namedtuple</code>，导入的这两个包很重要，尤其是<code>OrderedDict</code>，Module类的属性大多数都是这个类型的。<code>OrderedDict</code>就是一个有序的字典类型。</p>
+
+<h3 id="类定义">类定义</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> __init__(self):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Initializes internal Module state, shared by both nn.Module and ScriptModule.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    torch<span style="color:#f92672">.</span>_C<span style="color:#f92672">.</span>_log_api_usage_once(<span style="color:#e6db74">&#34;python.nn_module&#34;</span>)
+
+    self<span style="color:#f92672">.</span>training <span style="color:#f92672">=</span> True                             <span style="color:#75715e"># 重要，设定本组件的模式：训练/测试</span>
+    self<span style="color:#f92672">.</span>_parameters <span style="color:#f92672">=</span> OrderedDict()                 <span style="color:#75715e"># 模型的参数</span>
+    self<span style="color:#f92672">.</span>_buffers <span style="color:#f92672">=</span> OrderedDict()                    <span style="color:#75715e"># 缓冲区，存储非参数但又属于模型state</span>
+    self<span style="color:#f92672">.</span>_non_persistent_buffers_set <span style="color:#f92672">=</span> set()         <span style="color:#75715e"># 配合上一属性使用</span>
+    self<span style="color:#f92672">.</span>_backward_hooks <span style="color:#f92672">=</span> OrderedDict()		     <span style="color:#75715e"># 反向传播的钩子 </span>
+    self<span style="color:#f92672">.</span>_forward_hooks <span style="color:#f92672">=</span> OrderedDict()				 <span style="color:#75715e"># 正向传播的钩子</span>
+    self<span style="color:#f92672">.</span>_forward_pre_hooks <span style="color:#f92672">=</span> OrderedDict()			 <span style="color:#75715e"># 正向传播预定义钩子</span>
+    self<span style="color:#f92672">.</span>_state_dict_hooks <span style="color:#f92672">=</span> OrderedDict()			 <span style="color:#75715e"># 模型状态钩子</span>
+    self<span style="color:#f92672">.</span>_load_state_dict_pre_hooks <span style="color:#f92672">=</span> OrderedDict()  <span style="color:#75715e"># </span>
+    self<span style="color:#f92672">.</span>_modules <span style="color:#f92672">=</span> OrderedDict() 					 <span style="color:#75715e"># 重要！子模块属性</span></code></pre></div>
+<p>首先这里只有<code>self.training</code>是公开类属性，其他都加了<code>_</code>来约定这些实例变量都只在类内使用。如果想要使用其实也可以，毕竟<code>_</code>不是强约束。但对一些重要属性，<code>Module</code>类暴露了相应的接口给我们。</p>
+
+<p>类定义中，设置了很多<code>OrderedDict</code>类型的实例变量，其中<code>self._parameters, self._modules</code>这两个属性用的最多，分别存储了本组件的参数和自组件。</p>
+
+<p>这里还定义了4个不同类型的<code>hook</code>属性，它们是实现<code>Module</code>模块几个钩子函数的关键。</p>
+
+<p>或许你可能会困惑这里定义的<code>self._buffers</code>属性有什么用。其实它是<code>self._parameters</code>的补充。
+如果你模型有参数应该被保存在<code>state_dict</code>中，但是它用优化器来训练。那么就应该将其存在<code>self._buffers</code>这个属性中。<code>Buffers</code>不会通过<code>model.parameters()</code>返回，所以优化器不能更新它们。<br />
+另外<code>persistent</code>和<code>non_persistent</code>的区别在于后者不属于本组件的<code>state_dict</code>属性。</p>
+
+<h3 id="register-buffer">register buffer</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register_buffer</span>(self, name: str, tensor: Optional[Tensor], persistent: bool <span style="color:#f92672">=</span> True) <span style="color:#f92672">-&gt;</span> None:
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">        name (string): name of the buffer. The buffer can be accessed
+</span><span style="color:#e6db74">            from this module using the given name
+</span><span style="color:#e6db74">        tensor (Tensor): buffer to be registered.
+</span><span style="color:#e6db74">        persistent (bool): whether the buffer is part of this module&#39;s
+</span><span style="color:#e6db74">            :attr:`state_dict`.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">if</span> persistent <span style="color:#f92672">is</span> False <span style="color:#f92672">and</span> isinstance(self, torch<span style="color:#f92672">.</span>jit<span style="color:#f92672">.</span>ScriptModule):
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">RuntimeError</span>(<span style="color:#e6db74">&#34;ScriptModule does not support non-persistent buffers&#34;</span>)
+        <span style="color:#75715e"># torch.jit.ScriptModule 几乎用不上，不用管这个</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;_buffers&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>__dict__:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">AttributeError</span>(
+            <span style="color:#e6db74">&#34;cannot assign buffer before Module.__init__() call&#34;</span>)
+        <span style="color:#75715e"># 需要先初始化，毕竟要先有`self._buffers`容器</span>
+        <span style="color:#75715e"># 下面是一些buffer的key的类型检查，存在性检查</span>
+        <span style="color:#75715e"># 注意buffer的val一定是torch.Tensor类型</span>
+    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">not</span> isinstance(name, torch<span style="color:#f92672">.</span>_six<span style="color:#f92672">.</span>string_classes):
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;buffer name should be a string. &#34;</span>
+                        <span style="color:#e6db74">&#34;Got {}&#34;</span><span style="color:#f92672">.</span>format(torch<span style="color:#f92672">.</span>typename(name)))
+    <span style="color:#66d9ef">elif</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">in</span> name:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;buffer name can&#39;t contain </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">.</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">elif</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;buffer name can&#39;t be empty string </span><span style="color:#ae81ff">\&#34;\&#34;</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">elif</span> hasattr(self, name) <span style="color:#f92672">and</span> name <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_buffers:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;attribute &#39;{}&#39; already exists&#34;</span><span style="color:#f92672">.</span>format(name))
+    <span style="color:#66d9ef">elif</span> tensor <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> isinstance(tensor, torch<span style="color:#f92672">.</span>Tensor):
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;cannot assign &#39;{}&#39; object to buffer &#39;{}&#39; &#34;</span>
+                        <span style="color:#e6db74">&#34;(torch Tensor or None required)&#34;</span>
+                        <span style="color:#f92672">.</span>format(torch<span style="color:#f92672">.</span>typename(tensor), name))
+    <span style="color:#66d9ef">else</span>:
+        self<span style="color:#f92672">.</span>_buffers[name] <span style="color:#f92672">=</span> tensor
+        <span style="color:#75715e"># 根据persistent属性存储</span>
+        <span style="color:#66d9ef">if</span> persistent:
+            self<span style="color:#f92672">.</span>_non_persistent_buffers_set<span style="color:#f92672">.</span>discard(name)
+        <span style="color:#66d9ef">else</span>:
+            self<span style="color:#f92672">.</span>_non_persistent_buffers_set<span style="color:#f92672">.</span>add(name)</code></pre></div>
+<p>在预定义里解释过，需要随模型被保存，但不需要训练的参数（Tensor类型）可以使用本函数进行保存。<br />
+比如<code>BatchNorm</code>里的<code>running_mean</code>。<br />
+但是实际中很少用到这个函数。（</p>
+
+<h3 id="register-parameter">register parameter</h3>
+
+<p>这个函数大部分设定和<code>register_buffers</code>相似，下面有部分不同之处的解读。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register_parameter</span>(self, name: str, param: Optional[Parameter]) <span style="color:#f92672">-&gt;</span> None:
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">        name (string): name of the parameter. The parameter can be accessed
+</span><span style="color:#e6db74">            from this module using the given name
+</span><span style="color:#e6db74">        param (Parameter): parameter to be added to the module.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;_parameters&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>__dict__:
+        <span style="color:#75715e"># 初始化检查，要先有`self._parameters`容器</span>
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">AttributeError</span>(
+            <span style="color:#e6db74">&#34;cannot assign parameter before Module.__init__() call&#34;</span>)
+        <span style="color:#75715e"># 下面是一些parameter的key的类型检查，存在性检查</span>
+    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">not</span> isinstance(name, torch<span style="color:#f92672">.</span>_six<span style="color:#f92672">.</span>string_classes):
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;parameter name should be a string. &#34;</span>
+                        <span style="color:#e6db74">&#34;Got {}&#34;</span><span style="color:#f92672">.</span>format(torch<span style="color:#f92672">.</span>typename(name)))
+    <span style="color:#66d9ef">elif</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">in</span> name:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;parameter name can&#39;t contain </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">.</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">elif</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;parameter name can&#39;t be empty string </span><span style="color:#ae81ff">\&#34;\&#34;</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">elif</span> hasattr(self, name) <span style="color:#f92672">and</span> name <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_parameters:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;attribute &#39;{}&#39; already exists&#34;</span><span style="color:#f92672">.</span>format(name))
+    <span style="color:#75715e"># parameter 类型检查</span>
+    <span style="color:#66d9ef">if</span> param <span style="color:#f92672">is</span> None:
+        self<span style="color:#f92672">.</span>_parameters[name] <span style="color:#f92672">=</span> None
+    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">not</span> isinstance(param, Parameter):
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;cannot assign &#39;{}&#39; object to parameter &#39;{}&#39; &#34;</span>
+                        <span style="color:#e6db74">&#34;(torch.nn.Parameter or None required)&#34;</span>
+                        <span style="color:#f92672">.</span>format(torch<span style="color:#f92672">.</span>typename(param), name))
+    <span style="color:#66d9ef">elif</span> param<span style="color:#f92672">.</span>grad_fn:
+        <span style="color:#75715e"># 这里涉及到pytorch的autograd设计机制。最表象的规定就是nn.Parameter必须是一个</span>
+        <span style="color:#75715e"># 叶节点。 如果这个tensor含有`.grad_fn`属性，那么它就不是叶节点，就不能赋值。</span>
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(
+            <span style="color:#e6db74">&#34;Cannot assign non-leaf Tensor to parameter &#39;{0}&#39;. Model &#34;</span>
+            <span style="color:#e6db74">&#34;parameters must be created explicitly. To express &#39;{0}&#39; &#34;</span>
+            <span style="color:#e6db74">&#34;as a function of another Tensor, compute the value in &#34;</span>
+            <span style="color:#e6db74">&#34;the forward() method.&#34;</span><span style="color:#f92672">.</span>format(name))
+    <span style="color:#66d9ef">else</span>:
+        self<span style="color:#f92672">.</span>_parameters[name] <span style="color:#f92672">=</span> param</code></pre></div>
+<p>又有一个问题，什么时候使用这个函数？（至少我之前没有用过）<br />
+上面已经分析过知道<code>parameter</code>和<code>buffer</code>的区别了，<code>parameter</code>是需要优化器训练学习的。
+顺着<code>BatchNorm</code>里的<code>running_mean</code>找到<code>nn.modules.batchnorm</code>，这里提供了<code>register_buffers, register_parameters</code> 这两个函数的使用样例。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PYTHON" data-lang="PYTHON"><span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>affine: 
+     self<span style="color:#f92672">.</span>weight <span style="color:#f92672">=</span> Parameter(torch<span style="color:#f92672">.</span>Tensor(num_features)) 
+     self<span style="color:#f92672">.</span>bias <span style="color:#f92672">=</span> Parameter(torch<span style="color:#f92672">.</span>Tensor(num_features)) 
+ <span style="color:#66d9ef">else</span>: 
+     self<span style="color:#f92672">.</span>register_parameter(<span style="color:#e6db74">&#39;weight&#39;</span>, None) 
+     self<span style="color:#f92672">.</span>register_parameter(<span style="color:#e6db74">&#39;bias&#39;</span>, None) 
+ <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>track_running_stats: 
+     self<span style="color:#f92672">.</span>register_buffer(<span style="color:#e6db74">&#39;running_mean&#39;</span>, torch<span style="color:#f92672">.</span>zeros(num_features)) 
+     self<span style="color:#f92672">.</span>register_buffer(<span style="color:#e6db74">&#39;running_var&#39;</span>, torch<span style="color:#f92672">.</span>ones(num_features)) 
+     self<span style="color:#f92672">.</span>register_buffer(<span style="color:#e6db74">&#39;num_batches_tracked&#39;</span>, torch<span style="color:#f92672">.</span>tensor(<span style="color:#ae81ff">0</span>, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>long)) 
+ <span style="color:#66d9ef">else</span>: 
+     self<span style="color:#f92672">.</span>register_parameter(<span style="color:#e6db74">&#39;running_mean&#39;</span>, None) 
+     self<span style="color:#f92672">.</span>register_parameter(<span style="color:#e6db74">&#39;running_var&#39;</span>, None) 
+     self<span style="color:#f92672">.</span>register_parameter(<span style="color:#e6db74">&#39;num_batches_tracked&#39;</span>, None)</code></pre></div>
+<p><code>BatchNorm</code>里的<code>running_mean, runing_var</code>在<code>model.train(), model.eval()</code>两个状态下是不同的！所以可以通过这两个函数进行设置。</p>
+
+<p>至于其他什么场景下会使用到这两个函数，就要看实际需求了。</p>
+
+<h3 id="add-module">add module</h3>
+
+<p>给当前组件添加子组件，套娃警告 &gt;_&gt;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_module</span>(self, name: str, module: Optional[<span style="color:#e6db74">&#39;Module&#39;</span>]) <span style="color:#f92672">-&gt;</span> None:
+    <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;&#34;&#34;Adds a child module to the current module.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    The module can be accessed as an attribute using the given name.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">        name (string): name of the child module. The child module can be
+</span><span style="color:#e6db74">            accessed from this module using the given name
+</span><span style="color:#e6db74">        module (Module): child module to be added to the module.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#75715e"># 参数检查</span>
+    <span style="color:#75715e"># 是否是Module</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(module, Module) <span style="color:#f92672">and</span> module <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;{} is not a Module subclass&#34;</span><span style="color:#f92672">.</span>format(
+            torch<span style="color:#f92672">.</span>typename(module)))
+    <span style="color:#75715e"># 子组件名称</span>
+    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">not</span> isinstance(name, torch<span style="color:#f92672">.</span>_six<span style="color:#f92672">.</span>string_classes):
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;module name should be a string. Got {}&#34;</span><span style="color:#f92672">.</span>format(
+            torch<span style="color:#f92672">.</span>typename(name)))
+    <span style="color:#75715e"># 子组件名称是否重复</span>
+    <span style="color:#66d9ef">elif</span> hasattr(self, name) <span style="color:#f92672">and</span> name <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_modules:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;attribute &#39;{}&#39; already exists&#34;</span><span style="color:#f92672">.</span>format(name))
+    <span style="color:#66d9ef">elif</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">in</span> name:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;module name can&#39;t contain </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">.</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">elif</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">&#34;module name can&#39;t be empty string </span><span style="color:#ae81ff">\&#34;\&#34;</span><span style="color:#e6db74">&#34;</span>)
+    self<span style="color:#f92672">.</span>_modules[name] <span style="color:#f92672">=</span> module</code></pre></div>
+<h3 id="apply">_apply</h3>
+
+<p>从名字就可以看出，这个函数是个建议只在类内使用的函数。本类中出现次数最多，使用最多的函数。因为
+很多有了上面那个函数可以套娃，所以在对组件进行操作的时候，需要对子组件进行同样的操作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_apply</span>(self, fn):
+    <span style="color:#75715e"># 循环嵌套</span>
+    <span style="color:#66d9ef">for</span> module <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>children():
+        module<span style="color:#f92672">.</span>_apply(fn)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_should_use_set_data</span>(tensor, tensor_applied):
+        <span style="color:#66d9ef">pass</span>  <span style="color:#75715e"># 内置函数  </span>
+    <span style="color:#75715e"># 对自身的参数进行操作，包括参数本身，梯度</span>
+    <span style="color:#66d9ef">for</span> key, param <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_parameters<span style="color:#f92672">.</span>items():
+        <span style="color:#66d9ef">pass</span>
+    <span style="color:#75715e"># 对buffer内的参数进行操作</span>
+    <span style="color:#66d9ef">for</span> key, buf <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_buffers<span style="color:#f92672">.</span>items():
+        <span style="color:#66d9ef">if</span> buf <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+            self<span style="color:#f92672">.</span>_buffers[key] <span style="color:#f92672">=</span> fn(buf)
+
+    <span style="color:#66d9ef">return</span> self</code></pre></div>
+<h3 id="apply-1">apply</h3>
+
+<p>递归调用<code>fn</code>函数到每一个子模块。暴露给用户的接口，经常在初始化模型层参数的时候会用到。相当简单。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">apply</span>(self: T, fn: Callable[[<span style="color:#e6db74">&#39;Module&#39;</span>], None]) <span style="color:#f92672">-&gt;</span> T:
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">        fn (:class:`Module` -&gt; None): function to be applied to each submodule
+</span><span style="color:#e6db74">    Returns:
+</span><span style="color:#e6db74">        Module: self
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">for</span> module <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>children():
+        module<span style="color:#f92672">.</span>apply(fn)
+    fn(self)
+    <span style="color:#66d9ef">return</span> self</code></pre></div>
+<h3 id="cuda-cpu-type-float">cuda cpu type float&hellip;</h3>
+
+<p>省略号里还包括了double half bfloat16等函数，这些函数都比较简单。<code>cuda(), cpu()</code>的作用就是
+把参数从一个device移到另一个device上。剩下的都是类型转换。都需要用到上面讲到的<code>self._apply()</code>函数。它们返回的都是模块本身。</p>
+
+<h3 id="to">to</h3>
+
+<p>这个函数和<code>cuda(), cpu()</code>类似，可以看到函数内定义了一个子函数<code>convert(t)</code>，用于将state迁移
+到其他设备上。最后做了一个<code>_apply()</code>函数，应用到所有子模块。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PYTHON" data-lang="PYTHON"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to</span>(self, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+    <span style="color:#f92672">...</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">convert</span>(t):
+        <span style="color:#66d9ef">if</span> convert_to_format <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None <span style="color:#f92672">and</span> t<span style="color:#f92672">.</span>dim() <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>:
+            <span style="color:#66d9ef">return</span> t<span style="color:#f92672">.</span>to(device, dtype <span style="color:#66d9ef">if</span> t<span style="color:#f92672">.</span>is_floating_point() <span style="color:#66d9ef">else</span> None, non_blocking, memory_format<span style="color:#f92672">=</span>convert_to_format)
+        <span style="color:#66d9ef">return</span> t<span style="color:#f92672">.</span>to(device, dtype <span style="color:#66d9ef">if</span> t<span style="color:#f92672">.</span>is_floating_point() <span style="color:#66d9ef">else</span> None, non_blocking)
+
+    <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_apply(convert)</code></pre></div>
+<h3 id="hook">hook</h3>
+
+<p>有关<code>hook</code>，我在之前的一篇博客里写过相关的介绍，可以<a href="https://blog.x-fei.me/posts/ml/pytorchhooks/">移步去看看</a>。</p>
+
+<h3 id="魔法方法">魔法方法</h3>
+
+<p>名称前后各有两个下划线的方法，具有特殊意义的。这些方法过一遍就好，主要是类本身属性相关的一些内容。</p>
+
+<h4 id="setstate"><strong>setstate</strong></h4>
+
+<p>更新<code>self.__dict__.update(state)</code>。</p>
+
+<h4 id="getattr"><strong>getattr</strong></h4>
+
+<p>获取属性，主要包括<code>parameters</code>,<code>buffers</code>,<code>module</code>中的属。首先在<code>self.__dict__</code>找到这几个字典，
+然后通过<code>name</code>属性去查找。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PYTHON" data-lang="PYTHON"><span style="color:#66d9ef">def</span> __getattr__(self, name: str) <span style="color:#f92672">-&gt;</span> Union[Tensor, <span style="color:#e6db74">&#39;Module&#39;</span>]:
+    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;_parameters&#39;</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>__dict__:
+        _parameters <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;_parameters&#39;</span>]
+        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">in</span> _parameters:
+            <span style="color:#66d9ef">return</span> _parameters[name]
+    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;_buffers&#39;</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>__dict__:
+        _buffers <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;_buffers&#39;</span>]
+        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">in</span> _buffers:
+            <span style="color:#66d9ef">return</span> _buffers[name]
+    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;_modules&#39;</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>__dict__:
+        modules <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;_modules&#39;</span>]
+        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">in</span> modules:
+            <span style="color:#66d9ef">return</span> modules[name]
+    <span style="color:#66d9ef">raise</span> ModuleAttributeError(<span style="color:#e6db74">&#34;&#39;{}&#39; object has no attribute &#39;{}&#39;&#34;</span><span style="color:#f92672">.</span>format(
+        type(self)<span style="color:#f92672">.</span>__name__, name))</code></pre></div>
+<h4 id="setattr"><strong>setattr</strong></h4>
+
+<p>和<code>__getattr__</code>相对应，设置的时候也分 <code>parameters</code>,<code>buffers</code>,<code>module</code>三类。以<code>parameters</code>为例，
+1.先获取已有的params，2.对要设置的value进行类型检查，3.对要插入的name（key）进行存在性检测。
+另外两个类似。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> __setattr__(self, name: str, value: Union[Tensor, <span style="color:#e6db74">&#39;Module&#39;</span>]) <span style="color:#f92672">-&gt;</span> None:
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_from</span>(<span style="color:#f92672">*</span>dicts_or_sets):
+            <span style="color:#66d9ef">for</span> d <span style="color:#f92672">in</span> dicts_or_sets:
+                <span style="color:#66d9ef">if</span> name <span style="color:#f92672">in</span> d:
+                    <span style="color:#66d9ef">if</span> isinstance(d, dict):
+                        <span style="color:#66d9ef">del</span> d[name]
+                    <span style="color:#66d9ef">else</span>:
+                        d<span style="color:#f92672">.</span>discard(name)
+
+    params <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__dict__<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;_parameters&#39;</span>)
+    <span style="color:#66d9ef">if</span> isinstance(value, Parameter):
+        <span style="color:#66d9ef">if</span> params <span style="color:#f92672">is</span> None:
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">AttributeError</span>(
+                <span style="color:#e6db74">&#34;cannot assign parameters before Module.__init__() call&#34;</span>)
+        remove_from(self<span style="color:#f92672">.</span>__dict__, self<span style="color:#f92672">.</span>_buffers, self<span style="color:#f92672">.</span>_modules, self<span style="color:#f92672">.</span>_non_persistent_buffers_set)
+        self<span style="color:#f92672">.</span>register_parameter(name, value)
+    <span style="color:#66d9ef">elif</span> params <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None <span style="color:#f92672">and</span> name <span style="color:#f92672">in</span> params:
+        <span style="color:#66d9ef">if</span> value <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;cannot assign &#39;{}&#39; as parameter &#39;{}&#39; &#34;</span>
+                            <span style="color:#e6db74">&#34;(torch.nn.Parameter or None expected)&#34;</span>
+                            <span style="color:#f92672">.</span>format(torch<span style="color:#f92672">.</span>typename(value), name))
+        self<span style="color:#f92672">.</span>register_parameter(name, value)
+    <span style="color:#66d9ef">else</span>:
+        modules <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__dict__<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;_modules&#39;</span>)
+        <span style="color:#66d9ef">if</span> isinstance(value, Module):
+            <span style="color:#66d9ef">pass</span>
+        <span style="color:#66d9ef">else</span>:
+            buffers <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__dict__<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;_buffers&#39;</span>)
+            <span style="color:#66d9ef">if</span> buffers <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None <span style="color:#f92672">and</span> name <span style="color:#f92672">in</span> buffers:
+                <span style="color:#66d9ef">pass</span></code></pre></div>
+<h4 id="delattr"><strong>delattr</strong></h4>
+
+<p>参考上面两个函数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PYTHON" data-lang="PYTHON"><span style="color:#66d9ef">def</span> __delattr__(self, name):
+    <span style="color:#66d9ef">if</span> name <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_parameters:
+        <span style="color:#66d9ef">del</span> self<span style="color:#f92672">.</span>_parameters[name]
+    <span style="color:#66d9ef">elif</span> name <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_buffers:
+        <span style="color:#66d9ef">del</span> self<span style="color:#f92672">.</span>_buffers[name]
+        self<span style="color:#f92672">.</span>_non_persistent_buffers_set<span style="color:#f92672">.</span>discard(name)
+    <span style="color:#66d9ef">elif</span> name <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_modules:
+        <span style="color:#66d9ef">del</span> self<span style="color:#f92672">.</span>_modules[name]
+    <span style="color:#66d9ef">else</span>:
+        object<span style="color:#f92672">.</span>__delattr__(self, name)</code></pre></div>
+<h4 id="repr-extra-repr"><strong>repr</strong>  extra_repr</h4>
+
+<p><code>extra_repr</code>是<code>__repr__</code>的用户补充，即我们可以根据自己的需要自定义模组的repr属性。<br />
+<code>__repr__</code>的定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> __repr__(self):
+    <span style="color:#75715e"># We treat the extra repr like the sub-module, one item per line</span>
+    extra_lines <span style="color:#f92672">=</span> []
+    extra_repr <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>extra_repr()
+    <span style="color:#75715e"># empty string will be split into list [&#39;&#39;]</span>
+    <span style="color:#66d9ef">if</span> extra_repr:
+        extra_lines <span style="color:#f92672">=</span> extra_repr<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+    child_lines <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> key, module <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_modules<span style="color:#f92672">.</span>items():
+        mod_str <span style="color:#f92672">=</span> repr(module)
+        mod_str <span style="color:#f92672">=</span> _addindent(mod_str, <span style="color:#ae81ff">2</span>)
+        child_lines<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#39;(&#39;</span> <span style="color:#f92672">+</span> key <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;): &#39;</span> <span style="color:#f92672">+</span> mod_str)
+    lines <span style="color:#f92672">=</span> extra_lines <span style="color:#f92672">+</span> child_lines
+
+    main_str <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_get_name() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;(&#39;</span>
+    <span style="color:#66d9ef">if</span> lines:
+        <span style="color:#75715e"># simple one-liner info, which most builtin Modules will use</span>
+        <span style="color:#66d9ef">if</span> len(extra_lines) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> child_lines:
+            main_str <span style="color:#f92672">+=</span> extra_lines[<span style="color:#ae81ff">0</span>]
+        <span style="color:#66d9ef">else</span>:
+            main_str <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  &#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  &#39;</span><span style="color:#f92672">.</span>join(lines) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+
+    main_str <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;)&#39;</span>
+    <span style="color:#66d9ef">return</span> main_str</code></pre></div>
+<p>先获取<code>extra_repr</code>表示，然后遍历子<code>module</code>，按照<code>key</code>，构造<code>module</code>名字，根据层级在前面加空格，然后拼接起来。</p>
+
+<h4 id="dir"><strong>dir</strong></h4>
+
+<p>python类内置的方法，用于返回字母顺序排列的属性列。这里<code>module</code>除了默认属性，
+还要加上<code>parameters</code>,<code>buffers</code>,<code>modules</code>这些。
+代码很简洁：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__dir__</span>(self):
+    module_attrs <span style="color:#f92672">=</span> dir(self<span style="color:#f92672">.</span>__class__)
+    attrs <span style="color:#f92672">=</span> list(self<span style="color:#f92672">.</span>__dict__<span style="color:#f92672">.</span>keys())
+    parameters <span style="color:#f92672">=</span> list(self<span style="color:#f92672">.</span>_parameters<span style="color:#f92672">.</span>keys())
+    modules <span style="color:#f92672">=</span> list(self<span style="color:#f92672">.</span>_modules<span style="color:#f92672">.</span>keys())
+    buffers <span style="color:#f92672">=</span> list(self<span style="color:#f92672">.</span>_buffers<span style="color:#f92672">.</span>keys())
+    keys <span style="color:#f92672">=</span> module_attrs <span style="color:#f92672">+</span> attrs <span style="color:#f92672">+</span> parameters <span style="color:#f92672">+</span> modules <span style="color:#f92672">+</span> buffers
+
+    <span style="color:#75715e"># Eliminate attrs that are not legal Python variable names</span>
+    keys <span style="color:#f92672">=</span> [key <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> keys <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> key[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>isdigit()]
+
+    <span style="color:#66d9ef">return</span> sorted(keys)</code></pre></div>
+<h3 id="state-dict-load-state-dict">state_dict load_state_dict</h3>
+
+<p><code>state_dict()</code>返回一个包含整个module状态的字典，包括参数和<code>persistent</code>的buffers。键就是这些参数和buffer的名字。
+通过函数描述，我觉得我也能写出这个函数来。)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">state_dict</span>(self, destination<span style="color:#f92672">=</span>None, prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>, keep_vars<span style="color:#f92672">=</span>False):
+    <span style="color:#66d9ef">if</span> destination <span style="color:#f92672">is</span> None:
+        destination <span style="color:#f92672">=</span> OrderedDict()
+        destination<span style="color:#f92672">.</span>_metadata <span style="color:#f92672">=</span> OrderedDict()
+    destination<span style="color:#f92672">.</span>_metadata[prefix[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]] <span style="color:#f92672">=</span> local_metadata <span style="color:#f92672">=</span> dict(version<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>_version)
+    self<span style="color:#f92672">.</span>_save_to_state_dict(destination, prefix, keep_vars)
+    <span style="color:#66d9ef">for</span> name, module <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_modules<span style="color:#f92672">.</span>items():
+        <span style="color:#66d9ef">if</span> module <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+            module<span style="color:#f92672">.</span>state_dict(destination, prefix <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span>, keep_vars<span style="color:#f92672">=</span>keep_vars)
+    <span style="color:#66d9ef">for</span> hook <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_state_dict_hooks<span style="color:#f92672">.</span>values():
+        hook_result <span style="color:#f92672">=</span> hook(self, destination, prefix, local_metadata)
+        <span style="color:#66d9ef">if</span> hook_result <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+            destination <span style="color:#f92672">=</span> hook_result
+    <span style="color:#66d9ef">return</span> destination</code></pre></div>
+<p><code>load_state_dict()</code>也是常用的一个函数，但是要注意当前使用的模型的<code>model.state_dict</code>的key要和导入的这个匹配。
+因为源码会对这个进行检查，另外<code>strict</code>参数可以限制是否严格限制状态匹配。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_state_dict</span>(self, state_dict: Union[Dict[str, Tensor], Dict[str, Tensor]],
+                        strict: bool <span style="color:#f92672">=</span> True):
+    <span style="color:#75715e"># 检查匹配，缺失的，预期有但是没有的，错误信息。</span>
+    missing_keys <span style="color:#f92672">=</span> []
+    unexpected_keys <span style="color:#f92672">=</span> []
+    error_msgs <span style="color:#f92672">=</span> []
+    
+    <span style="color:#75715e"># copy state_dict so _load_from_state_dict can modify it</span>
+    metadata <span style="color:#f92672">=</span> getattr(state_dict, <span style="color:#e6db74">&#39;_metadata&#39;</span>, None)
+    state_dict <span style="color:#f92672">=</span> state_dict<span style="color:#f92672">.</span>copy()
+    <span style="color:#66d9ef">if</span> metadata <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+        state_dict<span style="color:#f92672">.</span>_metadata <span style="color:#f92672">=</span> metadata
+
+    <span style="color:#75715e"># 内置函数，使用_load_from_state_dict导入，隐去了处理的细节。</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load</span>(module, prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>):
+        local_metadata <span style="color:#f92672">=</span> {} <span style="color:#66d9ef">if</span> metadata <span style="color:#f92672">is</span> None <span style="color:#66d9ef">else</span> metadata<span style="color:#f92672">.</span>get(prefix[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], {})
+        module<span style="color:#f92672">.</span>_load_from_state_dict(
+            state_dict, prefix, local_metadata, True, missing_keys, unexpected_keys, error_msgs)
+        <span style="color:#66d9ef">for</span> name, child <span style="color:#f92672">in</span> module<span style="color:#f92672">.</span>_modules<span style="color:#f92672">.</span>items():
+            <span style="color:#66d9ef">if</span> child <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+                load(child, prefix <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.&#39;</span>)
+
+    load(self)
+    load <span style="color:#f92672">=</span> None  <span style="color:#75715e"># break load-&gt;load reference cycle</span>
+
+    <span style="color:#75715e"># strict的两种模式，如果设置了且存在error就会引发RuntimeError，否则没有。</span>
+    <span style="color:#66d9ef">if</span> strict:
+        <span style="color:#66d9ef">if</span> len(unexpected_keys) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+            error_msgs<span style="color:#f92672">.</span>insert(
+                <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;Unexpected key(s) in state_dict: {}. &#39;</span><span style="color:#f92672">.</span>format(
+                    <span style="color:#e6db74">&#39;, &#39;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;&#34;{}&#34;&#39;</span><span style="color:#f92672">.</span>format(k) <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> unexpected_keys)))
+        <span style="color:#66d9ef">if</span> len(missing_keys) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+            error_msgs<span style="color:#f92672">.</span>insert(
+                <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;Missing key(s) in state_dict: {}. &#39;</span><span style="color:#f92672">.</span>format(
+                    <span style="color:#e6db74">&#39;, &#39;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;&#34;{}&#34;&#39;</span><span style="color:#f92672">.</span>format(k) <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> missing_keys)))
+
+    <span style="color:#66d9ef">if</span> len(error_msgs) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">RuntimeError</span>(<span style="color:#e6db74">&#39;Error(s) in loading state_dict for {}:</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">{}&#39;</span><span style="color:#f92672">.</span>format(
+                            self<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__name__, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(error_msgs)))
+    <span style="color:#66d9ef">return</span> _IncompatibleKeys(missing_keys, unexpected_keys)</code></pre></div>
+<h3 id="named-members">_named_members</h3>
+
+<p>这是后续两大类方法的一个辅助函数，用于生成多种 name + members of modules.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_named_members</span>(self, get_members_fn, prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>, recurse<span style="color:#f92672">=</span>True):
+    <span style="color:#75715e"># 由于named member 都是Orderdict类型，所以这里是set类型</span>
+    memo <span style="color:#f92672">=</span> set() 
+    <span style="color:#75715e"># 递归获取所有的module</span>
+    modules <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>named_modules(prefix<span style="color:#f92672">=</span>prefix) <span style="color:#66d9ef">if</span> recurse <span style="color:#66d9ef">else</span> [(prefix, self)]
+    <span style="color:#66d9ef">for</span> module_prefix, module <span style="color:#f92672">in</span> modules:
+        <span style="color:#75715e"># 这里 `get_members_fn` 用函数作为变量，根据函数不同动态获取不同的member</span>
+        members <span style="color:#f92672">=</span> get_members_fn(module)
+        <span style="color:#75715e"># 遍历members对象，构造生成器</span>
+        <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> members:
+            <span style="color:#66d9ef">if</span> v <span style="color:#f92672">is</span> None <span style="color:#f92672">or</span> v <span style="color:#f92672">in</span> memo:
+                <span style="color:#66d9ef">continue</span>
+            memo<span style="color:#f92672">.</span>add(v)
+            name <span style="color:#f92672">=</span> module_prefix <span style="color:#f92672">+</span> (<span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#66d9ef">if</span> module_prefix <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#f92672">+</span> k
+            <span style="color:#66d9ef">yield</span> name, v</code></pre></div>
+<h4 id="named-parameters-parameters">named_parameters parameters</h4>
+
+<p><code>named_parameters()</code>返回遍历所有模型参数的迭代器，生成 名字+参数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">named_parameters</span>(self, prefix: str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>, recurse: bool <span style="color:#f92672">=</span> True) <span style="color:#f92672">-&gt;</span> Iterator[Tuple[str, Tensor]]:
+    <span style="color:#75715e"># 调用上面的_named_memebers()方法，注意这里传入的`get_members_fn`是个lambda函数</span>
+    <span style="color:#75715e"># lambda接受一个module参数，返回他的_parameters内容（在module定义部分可以找到，这是个OrderDict类型变量）</span>
+    gen <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_named_members(
+        <span style="color:#66d9ef">lambda</span> module: module<span style="color:#f92672">.</span>_parameters<span style="color:#f92672">.</span>items(),
+        prefix<span style="color:#f92672">=</span>prefix, recurse<span style="color:#f92672">=</span>recurse)
+    <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> gen:
+        <span style="color:#66d9ef">yield</span> elem</code></pre></div>
+<p><code>parameters()</code> 是<code>named_parameters()</code>的一个简化函数，因为它不需要name属性。
+这个函数通常是用来将参数传递给优化器。所以代码也很简洁。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PYTHON" data-lang="PYTHON"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parameters</span>(self, recurse: bool <span style="color:#f92672">=</span> True) <span style="color:#f92672">-&gt;</span> Iterator[Parameter]:
+        <span style="color:#66d9ef">for</span> name, param <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>named_parameters(recurse<span style="color:#f92672">=</span>recurse):
+            <span style="color:#66d9ef">yield</span> param</code></pre></div>
+<h4 id="named-buffers-buffers">named_buffers buffers</h4>
+
+<p>同上，这里<code>get_members_fn</code>是 <code>lambda module: module._buffers.item()</code>.</p>
+
+<h3 id="children-modules">children modules</h3>
+
+<p><code>children(), named_children()</code>和<code>modules(), named_modules()</code>这两类方法比较类似。<br />
+<code>named_children()</code>返回生成直接子模型（即只有下一层）的迭代器，生成 名字 + 子模型。<br />
+注意这里并不会递归迭代。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">named_children</span>(self) <span style="color:#f92672">-&gt;</span> Iterator[Tuple[str, <span style="color:#e6db74">&#39;Module&#39;</span>]]:
+    memo <span style="color:#f92672">=</span> set()
+    <span style="color:#66d9ef">for</span> name, module <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_modules<span style="color:#f92672">.</span>items():
+        <span style="color:#66d9ef">if</span> module <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None <span style="color:#f92672">and</span> module <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> memo:
+            memo<span style="color:#f92672">.</span>add(module)
+            <span style="color:#66d9ef">yield</span> name, module</code></pre></div>
+<p><code>named_modules()</code>则是对上面的补充，它会返回模型所有的子模型，即它会递归遍历。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">named_modules</span>(self, memo: Optional[Set[<span style="color:#e6db74">&#39;Module&#39;</span>]] <span style="color:#f92672">=</span> None, prefix: str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>):
+    <span style="color:#66d9ef">if</span> memo <span style="color:#f92672">is</span> None:
+        memo <span style="color:#f92672">=</span> set()
+    <span style="color:#66d9ef">if</span> self <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> memo:
+        memo<span style="color:#f92672">.</span>add(self)
+        <span style="color:#66d9ef">yield</span> prefix, self
+        <span style="color:#66d9ef">for</span> name, module <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_modules<span style="color:#f92672">.</span>items():
+            <span style="color:#66d9ef">if</span> module <span style="color:#f92672">is</span> None:
+                <span style="color:#66d9ef">continue</span>
+            submodule_prefix <span style="color:#f92672">=</span> prefix <span style="color:#f92672">+</span> (<span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#66d9ef">if</span> prefix <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#f92672">+</span> name
+            <span style="color:#75715e"># 递归调用</span>
+            <span style="color:#66d9ef">for</span> m <span style="color:#f92672">in</span> module<span style="color:#f92672">.</span>named_modules(memo, submodule_prefix):
+                <span style="color:#66d9ef">yield</span> m</code></pre></div>
+<p>合理利用这两个函数，我们可以定位到任意我们需要的层级。</p>
+
+<h3 id="train-eval">train eval</h3>
+
+<p>这两个函数源码没有意思，因为只是递归设置了状态。需要再挖深一点才能看到有什么区别。</p>
+
+<h3 id="requires-grad">requires<em>grad</em></h3>
+
+<p>用于设置autograd是否需要记录这个组件上参数的操作。<br />
+它会设置该组件所有参数的<code>requires_grad</code>参数。<br />
+当我们需要freeze某一个组件的时候十分有用，可以用于finetune或者只训练模型的一部分。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">requires_grad_</span>(self: T, requires_grad: bool <span style="color:#f92672">=</span> True) <span style="color:#f92672">-&gt;</span> T:
+    <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>parameters():
+        p<span style="color:#f92672">.</span>requires_grad_(requires_grad)
+    <span style="color:#66d9ef">return</span> self</code></pre></div>
+<h3 id="zero-grad">zero_grad</h3>
+
+<p>设置组件的所有参数的梯度为0，用于下一步更新之类的。正常训练过程中必须要用的一步骤。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">zero_grad</span>(self, set_to_none: bool <span style="color:#f92672">=</span> False) <span style="color:#f92672">-&gt;</span> None:
+    <span style="color:#66d9ef">if</span> getattr(self, <span style="color:#e6db74">&#39;_is_replica&#39;</span>, False):
+        warnings<span style="color:#f92672">.</span>warn(
+            <span style="color:#e6db74">&#34;Calling .zero_grad() from a module created with nn.DataParallel() has no effect. &#34;</span>
+            <span style="color:#e6db74">&#34;The parameters are copied (in a differentiable manner) from the original module. &#34;</span>
+            <span style="color:#e6db74">&#34;This means they are not leaf nodes in autograd and so don&#39;t accumulate gradients. &#34;</span>
+            <span style="color:#e6db74">&#34;If you need gradients in your forward method, consider using autograd.grad instead.&#34;</span>)
+
+    <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>parameters():
+        <span style="color:#66d9ef">if</span> p<span style="color:#f92672">.</span>grad <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+            <span style="color:#66d9ef">if</span> set_to_none:
+                p<span style="color:#f92672">.</span>grad <span style="color:#f92672">=</span> None
+            <span style="color:#66d9ef">else</span>:
+                <span style="color:#66d9ef">if</span> p<span style="color:#f92672">.</span>grad<span style="color:#f92672">.</span>grad_fn <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+                    p<span style="color:#f92672">.</span>grad<span style="color:#f92672">.</span>detach_()
+                <span style="color:#66d9ef">else</span>:
+                    p<span style="color:#f92672">.</span>grad<span style="color:#f92672">.</span>requires_grad_(False)
+                p<span style="color:#f92672">.</span>grad<span style="color:#f92672">.</span>zero_()</code></pre></div>
+<p>以上就是<code>nn.Module</code>类的一个大概了。
+<br></p>
+                        </div>
+                    </div>
+                    
+                    <div class="post-tags">
+                        <span># Tags: </span>
+                            
+                                <a class="badge badge-primary" href="/tags/pytorch">PyTorch</a>
+                            
+                    </div>
+                    
+                    <nav class="post-related">
+                            
+
+
+    <a rel="next" id="next-btn" class="btn hvr-grow" href="/posts/ml/pytorch_dp_vs_ddp/">DataParallel vs DistributedDataParallel &raquo;</a>
+
+
+                    </nav>
+                    <footer class="comments">
+                        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "xfeif" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </footer>
+                </div>
+            </div>
+
+        </article>
+    </div>
+    <a id="rocket" href="#top" class=""></a>
+<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<footer id="footer" class='site-footer'>
+    
+    <section class="footer">
+    
+       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2020 <i class="fa fa-heart" aria-hidden="true"></i>
+    
+    </section>
+    <section>
+        Theme Fx <a href="https://github.com/XFeiF" class="github-repo"><span class="gadget-github"></span>Star</a>
+        Designed By <a href="https://github.com/XFeiF">@XFeiF</a>
+    </section>
+    <section class="poweredby">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a>
+    </section>
+</footer>
+
+</body>
+</html>
