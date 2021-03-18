@@ -8,8 +8,8 @@
 		<meta name="description" content="XFeiF的独立博客">
 		<meta name="generator" content="Hugo 0.69.2" />
 		<title>Paper Notes[2]: ResNet &middot; </title>
-		<link rel="shortcut icon" href="https://blog.x-fei.me/images/favicon.ico">
-		<link rel="stylesheet" href="https://blog.x-fei.me/css/style.css">
+		<link rel="shortcut icon" href="https://xfeif.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://xfeif.github.io/css/style.css">
 		
 		
 		
@@ -98,8 +98,8 @@
 
 <body>
     <div class="nav-header nav-header-fixed animated">
-    <a href="https://blog.x-fei.me/" class="left swing">
-        <img src="https://blog.x-fei.me/images/Feiaaa.png" alt="" class="icon rounded">
+    <a href="https://xfeif.github.io/" class="left swing">
+        <img src="https://xfeif.github.io/images/Feiaaa.png" alt="" class="icon rounded">
     </a>
 </div>
 
@@ -107,26 +107,26 @@
 <header id="header" class="blog-background banner-mask lazy no-cover" style="display: table; background-image: url(https://raw.githubusercontent.com/XFeiF/Photos/master/blog/resnet_bg.jpg);">
     <div class="header-wrap site-nav">
     <div class="home-info-container">
-        <a href="https://blog.x-fei.me/">
+        <a href="https://xfeif.github.io/">
             <h2>Do not go gentle into that good night</h2>
         </a>
     </div>
     <div class="nav-header-container">
         <ul class="links">
             <li class="nav-blog">
-                <a href='https://blog.x-fei.me/'> Home</a>
+                <a href='https://xfeif.github.io/'> Home</a>
             </li>
             <li>
-                <a href='https://blog.x-fei.me/archives'>Archives</a>
+                <a href='https://xfeif.github.io/archives'>Archives</a>
             </li>
             <li>
-                <a href='https://blog.x-fei.me/timelines'>Timelines</a>
+                <a href='https://xfeif.github.io/timelines'>Timelines</a>
             </li>
             <li>
-                <a href='https://blog.x-fei.me/friends'>Friends</a>
+                <a href='https://xfeif.github.io/friends'>Friends</a>
             </li>
             <li>
-                <a href='https://blog.x-fei.me/about'>About</a>
+                <a href='https://xfeif.github.io/about'>About</a>
             </li>
         </ul>
 
@@ -179,7 +179,7 @@
 <h3 id="gradient-vanish">Gradient Vanish</h3>
 
 <p>在接触神经网络的时候，我们都学习过梯度消失这个概念。梯度消失的根源在于<strong>深度神经网络和反向传播</strong>。目前深度学习方法中，GPU加速运算以及深度神经网络的发展使得我们可以构建更深的网络完成更复杂的任务。<br />
-但是目前优化神经网络的方法都是基于<strong>反向传播</strong>思想的，即：<strong>根据损失函数计算的误差通过梯度反向传播的方式，指导深度网络权值的更新优化</strong>。这样做是一定原因的，我们在<a href="https://blog.x-fei.me/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/">模拟GD、SGD</a>一文中了解过其更新方式。首先深层网络由许多非线性层堆叠而成，每一层非线性层都可以看作是一个非线性函数 $f_i(x)$（非线性来自非线性激活函数），因此整个深度网络可以视为是一个复杂的非线性多元函数：<br />
+但是目前优化神经网络的方法都是基于<strong>反向传播</strong>思想的，即：<strong>根据损失函数计算的误差通过梯度反向传播的方式，指导深度网络权值的更新优化</strong>。这样做是一定原因的，我们在<a href="https://blog.xfeif.github.io/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/">模拟GD、SGD</a>一文中了解过其更新方式。首先深层网络由许多非线性层堆叠而成，每一层非线性层都可以看作是一个非线性函数 $f_i(x)$（非线性来自非线性激活函数），因此整个深度网络可以视为是一个复杂的非线性多元函数：<br />
 $$ F(x) = f_n(&hellip;f_3(f_2(f_1(x)*\theta_1 + b) * \theta_2 +b)) $$<br />
 我们最终的目的是希望这个多元函数可以很好的完成输入到输出之间的映射，假设不同的输入，输出的最优解是 $g(x)$ ，那么，优化深度网络就是为了寻找到合适的权值，满足 $Loss = L(g(x), F(x))$ 取得极小值点，比如最简单的<code>MSE Loss</code>。<br />
 随着深度的加深，激活函数的作用，根据链式法则，传到浅层的梯度越来越小，直至无法感应，或者即使感应也推不动进一步的学习。这就是所谓的梯度消失问题。</p>
@@ -302,12 +302,12 @@ Resnet提出的背景是，更深层的网络不应该比浅层网络差，至�
         </article>
     </div>
     <a id="rocket" href="#top" class=""></a>
-<script type="text/javascript" src="https://blog.x-fei.me/js/totop.js"></script>
+<script type="text/javascript" src="https://xfeif.github.io/js/totop.js"></script>
 <footer id="footer" class='site-footer'>
     
     <section class="footer">
     
-       🍓<a href="https://blog.x-fei.me">XFeiF</a> © 2015-2021 <i class="fa fa-heart" aria-hidden="true"></i>
+       🍓<a href="https://xfeif.github.io/">XFeiF</a> © 2015-2021 <i class="fa fa-heart" aria-hidden="true"></i>
     
     </section>
     <section>

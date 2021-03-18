@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on </title>
-    <link>https://blog.x-fei.me/categories/python/</link>
+    <link>https://xfeif.github.io/categories/python/</link>
     <description>Recent content in python on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 10 Oct 2019 16:22:52 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.x-fei.me/categories/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xfeif.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>GIL in Python</title>
-      <link>https://blog.x-fei.me/posts/py/gil_in_python/</link>
+      <link>https://xfeif.github.io/posts/py/gil_in_python/</link>
       <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/py/gil_in_python/</guid>
+      <guid>https://xfeif.github.io/posts/py/gil_in_python/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Python下多线程是鸡肋，推荐使用多进程！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -27,20 +27,20 @@
     
     <item>
       <title>Lambda Function in Python</title>
-      <link>https://blog.x-fei.me/posts/lambda_function_in_python/</link>
+      <link>https://xfeif.github.io/posts/lambda_function_in_python/</link>
       <pubDate>Fri, 01 Mar 2019 09:34:30 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/lambda_function_in_python/</guid>
+      <guid>https://xfeif.github.io/posts/lambda_function_in_python/</guid>
       <description>&lt;p&gt;匿名函数，就是我们需要一个函数，但是没有必要给它起一个名字，因为这个名字无关紧要，而且有时影响效率。&lt;br /&gt;
 在Python中，&lt;code&gt;def&lt;/code&gt;关键字是用来定义常规函数的，而&lt;code&gt;lambda&lt;/code&gt;关键字则是用来创建匿名函数的。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>深度解析Python Super</title>
-      <link>https://blog.x-fei.me/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</link>
+      <link>https://xfeif.github.io/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</link>
       <pubDate>Mon, 25 Feb 2019 21:36:57 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</guid>
+      <guid>https://xfeif.github.io/drafts/%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90python-super/</guid>
       <description>&lt;p&gt;为什么&lt;code&gt;pytorch&lt;/code&gt;里面的网络初始化的时候都调用了&lt;code&gt;super&lt;/code&gt;函数，并且第一个参数名是类名呢？&lt;br /&gt;
 即为什么&lt;code&gt;python&lt;/code&gt;定义类的时候是这样设置的？&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;C&lt;/span&gt;(B):
@@ -51,10 +51,10 @@
     
     <item>
       <title>Python快速创建二维数组 [[0]*n]*n ？</title>
-      <link>https://blog.x-fei.me/posts/python-caveat-about-list-creation-shortcuts/</link>
+      <link>https://xfeif.github.io/posts/python-caveat-about-list-creation-shortcuts/</link>
       <pubDate>Tue, 18 Dec 2018 11:23:25 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/python-caveat-about-list-creation-shortcuts/</guid>
+      <guid>https://xfeif.github.io/posts/python-caveat-about-list-creation-shortcuts/</guid>
       <description>&lt;p&gt;早先在刷Leetcode的时候，遇到了一个莫名的&lt;code&gt;bug&lt;/code&gt;，为什么二维数组的元素没有按自己的预期改变呢？&lt;br /&gt;
 当我们这样定义一个二维数组的时候，&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;

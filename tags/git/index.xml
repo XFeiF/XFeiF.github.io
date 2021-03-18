@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>git on </title>
-    <link>https://blog.x-fei.me/tags/git/</link>
+    <link>https://xfeif.github.io/tags/git/</link>
     <description>Recent content in git on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 21 Sep 2018 10:27:28 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.x-fei.me/tags/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xfeif.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>事故-SSL23_GET_SERVER_HELLO</title>
-      <link>https://blog.x-fei.me/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</link>
+      <link>https://xfeif.github.io/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</link>
       <pubDate>Fri, 21 Sep 2018 10:27:28 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</guid>
+      <guid>https://xfeif.github.io/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;fatal: unable to access &amp;lsquo;&lt;a href=&#34;https://github.com/xxx/yyyy.git/&#39;:&#34;&gt;https://github.com/xxx/yyyy.git/&#39;:&lt;/a&gt; error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol&lt;/p&gt;
 &lt;/blockquote&gt;</description>

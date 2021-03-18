@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on </title>
-    <link>https://blog.x-fei.me/tags/web/</link>
+    <link>https://xfeif.github.io/tags/web/</link>
     <description>Recent content in Web on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 02 Sep 2017 23:08:52 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.x-fei.me/tags/web/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xfeif.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>给Hexo(Hugo)添加Bigfoot</title>
-      <link>https://blog.x-fei.me/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</link>
+      <link>https://xfeif.github.io/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</link>
       <pubDate>Sat, 02 Sep 2017 23:08:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</guid>
+      <guid>https://xfeif.github.io/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</guid>
       <description>&lt;p&gt;我之前搭建Ghost博客的时候，在萌天的博客上有看到过Bigfoot，经过萌天介绍，认识了Bigfoot。现在将Bigfoot集成到我&lt;del&gt;目前在用的hexo博客hiker主题中&lt;/del&gt;Hugo博客Fx主题中。&lt;/p&gt;</description>
     </item>
     

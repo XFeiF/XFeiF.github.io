@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PyTorch on </title>
-    <link>https://blog.x-fei.me/tags/pytorch/</link>
+    <link>https://xfeif.github.io/tags/pytorch/</link>
     <description>Recent content in PyTorch on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 06 Nov 2020 18:38:55 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.x-fei.me/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xfeif.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dropout</title>
-      <link>https://blog.x-fei.me/posts/ml/dropout/</link>
+      <link>https://xfeif.github.io/posts/ml/dropout/</link>
       <pubDate>Fri, 06 Nov 2020 18:38:55 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/dropout/</guid>
+      <guid>https://xfeif.github.io/posts/ml/dropout/</guid>
       <description>&lt;p&gt;&lt;code&gt;Dropout&lt;/code&gt;已经被证明可以有效缓解过拟合，在一定程度上达到正则化的效果。这篇博客简单记录一下在
 实现的时候进行&lt;code&gt;rescale&lt;/code&gt;的操作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Pytorch_nn_module</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_nn_module/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_nn_module/</link>
       <pubDate>Thu, 05 Nov 2020 10:48:17 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_nn_module/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_nn_module/</guid>
       <description>&lt;p&gt;&lt;strong&gt;序言&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;定义模型类的时候，一般都需要继承&lt;code&gt;nn.Module&lt;/code&gt;类。当我们后续对模型进行查看或者定位修改的时候很头疼它的api那么多，应该用哪个，怎么用，为什么……这篇博客就好好捋一捋&lt;code&gt;nn.Module&lt;/code&gt;。&lt;/p&gt;</description>
@@ -33,10 +33,10 @@
     
     <item>
       <title>DataParallel vs DistributedDataParallel</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_dp_vs_ddp/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_dp_vs_ddp/</link>
       <pubDate>Wed, 04 Nov 2020 20:09:32 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_dp_vs_ddp/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_dp_vs_ddp/</guid>
       <description>&lt;p&gt;多卡训练模型时绕不过的一个问题：&lt;code&gt;DataParallel&lt;/code&gt;(DP)和&lt;code&gt;DistributedDataParallel&lt;/code&gt;(DDP)有什么区别？&lt;br /&gt;
 单机单卡不用考虑。&lt;br /&gt;
 多机多卡用DDP也不用多想。&lt;br /&gt;
@@ -45,46 +45,46 @@
     
     <item>
       <title>Pytorch中的non_blocking</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_non_blocking/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_non_blocking/</link>
       <pubDate>Wed, 04 Nov 2020 16:57:22 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_non_blocking/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_non_blocking/</guid>
       <description>&lt;p&gt;思考一个问题，&lt;code&gt;x = x.cuda(non_blocking=True)&lt;/code&gt;中&lt;code&gt;non_blocking&lt;/code&gt;的作用，以及什么时候使用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>理解PyTorch Hooks</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorchhooks/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorchhooks/</link>
       <pubDate>Wed, 10 Jul 2019 10:15:11 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorchhooks/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorchhooks/</guid>
       <description>&lt;p&gt;&lt;code&gt;hook&lt;/code&gt;函数可以在你不修改模型代码的同时，帮助你提取（或修改）中间层的参数或者特征图。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PyTorch: Restrict range of variable or gradient during gradient descent</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</link>
       <pubDate>Sat, 16 Mar 2019 09:45:03 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</guid>
       <description>&lt;p&gt;一般来说，我们对卷积或者全连接层的&lt;code&gt;weights&lt;/code&gt;是没有限制的，但是如果我们自定义层的话，有可能会需要对权重或者梯度值进行限制。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Convolution&#39;s Numpy and Pytorch implementation</title>
-      <link>https://blog.x-fei.me/posts/ml/convolution_in_pytorch/</link>
+      <link>https://xfeif.github.io/posts/ml/convolution_in_pytorch/</link>
       <pubDate>Sun, 03 Mar 2019 19:42:33 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/convolution_in_pytorch/</guid>
+      <guid>https://xfeif.github.io/posts/ml/convolution_in_pytorch/</guid>
       <description>&lt;p&gt;初学CNN的时候，比较疑惑输入的维度是&lt;code&gt;(BatchSize, Channels, Height, Width)&lt;/code&gt;的&lt;code&gt;feature map&lt;/code&gt;经过size是k的卷积核后变成了输出是什么？以及它是怎么实现的？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>axis and argmax function</title>
-      <link>https://blog.x-fei.me/posts/argmax-function-and-its-usage/</link>
+      <link>https://xfeif.github.io/posts/argmax-function-and-its-usage/</link>
       <pubDate>Tue, 16 Oct 2018 00:53:13 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/argmax-function-and-its-usage/</guid>
+      <guid>https://xfeif.github.io/posts/argmax-function-and-its-usage/</guid>
       <description>&lt;p&gt;简单讨论一下&lt;code&gt;argmax&lt;/code&gt;函数及其用法，由于其在&lt;code&gt;numpy&lt;/code&gt;和&lt;code&gt;PyTorch&lt;/code&gt;中都有出现，所以先在&lt;code&gt;numpy&lt;/code&gt;中讨论，然后补充介绍在&lt;code&gt;PyTorch&lt;/code&gt;中的用法。&lt;/p&gt;
 
 &lt;p&gt;同理我们可以理解&lt;code&gt;argmin&lt;/code&gt;。&lt;/p&gt;</description>
@@ -92,10 +92,10 @@
     
     <item>
       <title>PyTorch Api Notes 📙</title>
-      <link>https://blog.x-fei.me/posts/pytorch-notes/</link>
+      <link>https://xfeif.github.io/posts/pytorch-notes/</link>
       <pubDate>Thu, 13 Sep 2018 01:14:38 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/pytorch-notes/</guid>
+      <guid>https://xfeif.github.io/posts/pytorch-notes/</guid>
       <description>&lt;p&gt;&lt;center&gt;Simple Api Notes ✍🏼 For Beginners！&lt;/center&gt;&lt;br /&gt;
 记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。&lt;/p&gt;</description>
     </item>

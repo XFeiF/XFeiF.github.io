@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Math on </title>
-    <link>https://blog.x-fei.me/tags/math/</link>
+    <link>https://xfeif.github.io/tags/math/</link>
     <description>Recent content in Math on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 14 Jun 2019 21:21:56 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.x-fei.me/tags/math/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xfeif.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>闲聊Activation Functions</title>
-      <link>https://blog.x-fei.me/posts/ml/activationfunctions/</link>
+      <link>https://xfeif.github.io/posts/ml/activationfunctions/</link>
       <pubDate>Fri, 14 Jun 2019 21:21:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/activationfunctions/</guid>
+      <guid>https://xfeif.github.io/posts/ml/activationfunctions/</guid>
       <description>&lt;p&gt;最近学习突然想到一些基本的问题，比如“为什么有那么多的激活函数？”，“这些激活函数背后的原理分别是什么？”，以及“什么时候用哪个激活函数效果更好？或者更能达到我们预期想要的结果。” “激活函数里面都是硬核的数学知识吗？”针对这些问题，重新把激活函数相关的内容学习了一下。&lt;br /&gt;
 希望本文也可以帮助到对上面这些问题感到困惑、想不全、有些地方不太理解的小伙伴。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>CS MindStorms</title>
-      <link>https://blog.x-fei.me/posts/cs-mindstorms/</link>
+      <link>https://xfeif.github.io/posts/cs-mindstorms/</link>
       <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/cs-mindstorms/</guid>
+      <guid>https://xfeif.github.io/posts/cs-mindstorms/</guid>
       <description>&lt;p&gt;&lt;center&gt;⚡️ MindStorms Collections ⚡️&lt;/center&gt;&lt;br /&gt;
 一些头脑风暴问题集锦。体验CS的一些乐趣～&lt;/p&gt;</description>
     </item>

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on </title>
-    <link>https://blog.x-fei.me/categories/machine-learning/</link>
+    <link>https://xfeif.github.io/categories/machine-learning/</link>
     <description>Recent content in Machine Learning on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 06 Nov 2020 18:38:55 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.x-fei.me/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xfeif.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dropout</title>
-      <link>https://blog.x-fei.me/posts/ml/dropout/</link>
+      <link>https://xfeif.github.io/posts/ml/dropout/</link>
       <pubDate>Fri, 06 Nov 2020 18:38:55 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/dropout/</guid>
+      <guid>https://xfeif.github.io/posts/ml/dropout/</guid>
       <description>&lt;p&gt;&lt;code&gt;Dropout&lt;/code&gt;已经被证明可以有效缓解过拟合，在一定程度上达到正则化的效果。这篇博客简单记录一下在
 实现的时候进行&lt;code&gt;rescale&lt;/code&gt;的操作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Pytorch_nn_module</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_nn_module/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_nn_module/</link>
       <pubDate>Thu, 05 Nov 2020 10:48:17 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_nn_module/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_nn_module/</guid>
       <description>&lt;p&gt;&lt;strong&gt;序言&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;定义模型类的时候，一般都需要继承&lt;code&gt;nn.Module&lt;/code&gt;类。当我们后续对模型进行查看或者定位修改的时候很头疼它的api那么多，应该用哪个，怎么用，为什么……这篇博客就好好捋一捋&lt;code&gt;nn.Module&lt;/code&gt;。&lt;/p&gt;</description>
@@ -33,10 +33,10 @@
     
     <item>
       <title>DataParallel vs DistributedDataParallel</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_dp_vs_ddp/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_dp_vs_ddp/</link>
       <pubDate>Wed, 04 Nov 2020 20:09:32 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_dp_vs_ddp/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_dp_vs_ddp/</guid>
       <description>&lt;p&gt;多卡训练模型时绕不过的一个问题：&lt;code&gt;DataParallel&lt;/code&gt;(DP)和&lt;code&gt;DistributedDataParallel&lt;/code&gt;(DDP)有什么区别？&lt;br /&gt;
 单机单卡不用考虑。&lt;br /&gt;
 多机多卡用DDP也不用多想。&lt;br /&gt;
@@ -45,66 +45,66 @@
     
     <item>
       <title>Pytorch中的non_blocking</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_non_blocking/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_non_blocking/</link>
       <pubDate>Wed, 04 Nov 2020 16:57:22 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_non_blocking/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_non_blocking/</guid>
       <description>&lt;p&gt;思考一个问题，&lt;code&gt;x = x.cuda(non_blocking=True)&lt;/code&gt;中&lt;code&gt;non_blocking&lt;/code&gt;的作用，以及什么时候使用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>理解PyTorch Hooks</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorchhooks/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorchhooks/</link>
       <pubDate>Wed, 10 Jul 2019 10:15:11 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorchhooks/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorchhooks/</guid>
       <description>&lt;p&gt;&lt;code&gt;hook&lt;/code&gt;函数可以在你不修改模型代码的同时，帮助你提取（或修改）中间层的参数或者特征图。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>闲聊Activation Functions</title>
-      <link>https://blog.x-fei.me/posts/ml/activationfunctions/</link>
+      <link>https://xfeif.github.io/posts/ml/activationfunctions/</link>
       <pubDate>Fri, 14 Jun 2019 21:21:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/activationfunctions/</guid>
+      <guid>https://xfeif.github.io/posts/ml/activationfunctions/</guid>
       <description>&lt;p&gt;最近学习突然想到一些基本的问题，比如“为什么有那么多的激活函数？”，“这些激活函数背后的原理分别是什么？”，以及“什么时候用哪个激活函数效果更好？或者更能达到我们预期想要的结果。” “激活函数里面都是硬核的数学知识吗？”针对这些问题，重新把激活函数相关的内容学习了一下。&lt;br /&gt;
 希望本文也可以帮助到对上面这些问题感到困惑、想不全、有些地方不太理解的小伙伴。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PyTorch: Restrict range of variable or gradient during gradient descent</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</link>
       <pubDate>Sat, 16 Mar 2019 09:45:03 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</guid>
       <description>&lt;p&gt;一般来说，我们对卷积或者全连接层的&lt;code&gt;weights&lt;/code&gt;是没有限制的，但是如果我们自定义层的话，有可能会需要对权重或者梯度值进行限制。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>1x1卷积的作用</title>
-      <link>https://blog.x-fei.me/posts/ml/1x1_convolution/</link>
+      <link>https://xfeif.github.io/posts/ml/1x1_convolution/</link>
       <pubDate>Thu, 14 Mar 2019 17:49:58 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/1x1_convolution/</guid>
+      <guid>https://xfeif.github.io/posts/ml/1x1_convolution/</guid>
       <description>&lt;p&gt;我们在&lt;code&gt;ResNet&lt;/code&gt;深层结构以及&lt;code&gt;Inception&lt;/code&gt;中都见过&lt;code&gt;1x1&lt;/code&gt;卷积层，或者说&lt;code&gt;bottleneck layer&lt;/code&gt;，为什么我们会需要&lt;code&gt;1x1&lt;/code&gt;的卷积核呢？&lt;br /&gt;
 总的来说&lt;code&gt;1x1&lt;/code&gt;卷积可以用作升降维度、减少参数量和计算量、增加非线性特征的作用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Convolution&#39;s Numpy and Pytorch implementation</title>
-      <link>https://blog.x-fei.me/posts/ml/convolution_in_pytorch/</link>
+      <link>https://xfeif.github.io/posts/ml/convolution_in_pytorch/</link>
       <pubDate>Sun, 03 Mar 2019 19:42:33 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/convolution_in_pytorch/</guid>
+      <guid>https://xfeif.github.io/posts/ml/convolution_in_pytorch/</guid>
       <description>&lt;p&gt;初学CNN的时候，比较疑惑输入的维度是&lt;code&gt;(BatchSize, Channels, Height, Width)&lt;/code&gt;的&lt;code&gt;feature map&lt;/code&gt;经过size是k的卷积核后变成了输出是什么？以及它是怎么实现的？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SVM(Part II)</title>
-      <link>https://blog.x-fei.me/posts/ml/svm2/</link>
+      <link>https://xfeif.github.io/posts/ml/svm2/</link>
       <pubDate>Wed, 26 Dec 2018 00:47:04 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/svm2/</guid>
+      <guid>https://xfeif.github.io/posts/ml/svm2/</guid>
       <description>&lt;p&gt;About These  Articles：&lt;/p&gt;
 
 &lt;p&gt;SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。&lt;/p&gt;</description>
@@ -112,10 +112,10 @@
     
     <item>
       <title>SVM(Part I)</title>
-      <link>https://blog.x-fei.me/posts/ml/svm/</link>
+      <link>https://xfeif.github.io/posts/ml/svm/</link>
       <pubDate>Sun, 23 Dec 2018 00:21:34 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/svm/</guid>
+      <guid>https://xfeif.github.io/posts/ml/svm/</guid>
       <description>&lt;p&gt;About These  Articles：&lt;/p&gt;
 
 &lt;p&gt;SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。(由于Markdown和MathJax的兼容问题，很多公式没有渲染出来，可以直接看手写推导过程。)&lt;/p&gt;</description>
@@ -123,10 +123,10 @@
     
     <item>
       <title>8-puzzles algorithm</title>
-      <link>https://blog.x-fei.me/posts/8-puzzles-algorithm/</link>
+      <link>https://xfeif.github.io/posts/8-puzzles-algorithm/</link>
       <pubDate>Sat, 20 Oct 2018 09:09:29 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/8-puzzles-algorithm/</guid>
+      <guid>https://xfeif.github.io/posts/8-puzzles-algorithm/</guid>
       <description>&lt;p&gt;&lt;center&gt;AIMA: 8-puzzles&lt;/center&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;题目描述&#34;&gt;题目描述&lt;/h2&gt;
@@ -137,10 +137,10 @@ Given any randomly generated start state and a goal state shown below, implement
     
     <item>
       <title>axis and argmax function</title>
-      <link>https://blog.x-fei.me/posts/argmax-function-and-its-usage/</link>
+      <link>https://xfeif.github.io/posts/argmax-function-and-its-usage/</link>
       <pubDate>Tue, 16 Oct 2018 00:53:13 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/argmax-function-and-its-usage/</guid>
+      <guid>https://xfeif.github.io/posts/argmax-function-and-its-usage/</guid>
       <description>&lt;p&gt;简单讨论一下&lt;code&gt;argmax&lt;/code&gt;函数及其用法，由于其在&lt;code&gt;numpy&lt;/code&gt;和&lt;code&gt;PyTorch&lt;/code&gt;中都有出现，所以先在&lt;code&gt;numpy&lt;/code&gt;中讨论，然后补充介绍在&lt;code&gt;PyTorch&lt;/code&gt;中的用法。&lt;/p&gt;
 
 &lt;p&gt;同理我们可以理解&lt;code&gt;argmin&lt;/code&gt;。&lt;/p&gt;</description>
@@ -148,10 +148,10 @@ Given any randomly generated start state and a goal state shown below, implement
     
     <item>
       <title>GD &amp; SGD 理解与二维模拟</title>
-      <link>https://blog.x-fei.me/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
+      <link>https://xfeif.github.io/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
       <pubDate>Wed, 10 Oct 2018 21:12:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
+      <guid>https://xfeif.github.io/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
       <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 2&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;
@@ -167,10 +167,10 @@ say in simple words, what the algorithm is doing?&lt;br /&gt;&lt;/li&gt;
     
     <item>
       <title>多项式拟合-线性回归</title>
-      <link>https://blog.x-fei.me/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</link>
+      <link>https://xfeif.github.io/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</link>
       <pubDate>Mon, 24 Sep 2018 23:24:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</guid>
+      <guid>https://xfeif.github.io/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</guid>
       <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 1&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;
@@ -181,10 +181,10 @@ say in simple words, what the algorithm is doing?&lt;br /&gt;&lt;/li&gt;
     
     <item>
       <title>PyTorch Api Notes 📙</title>
-      <link>https://blog.x-fei.me/posts/pytorch-notes/</link>
+      <link>https://xfeif.github.io/posts/pytorch-notes/</link>
       <pubDate>Thu, 13 Sep 2018 01:14:38 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/pytorch-notes/</guid>
+      <guid>https://xfeif.github.io/posts/pytorch-notes/</guid>
       <description>&lt;p&gt;&lt;center&gt;Simple Api Notes ✍🏼 For Beginners！&lt;/center&gt;&lt;br /&gt;
 记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。&lt;/p&gt;</description>
     </item>

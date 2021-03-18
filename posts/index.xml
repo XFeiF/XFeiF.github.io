@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on </title>
-    <link>https://blog.x-fei.me/posts/</link>
+    <link>https://xfeif.github.io/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 06 Nov 2020 18:38:55 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.x-fei.me/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xfeif.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dropout</title>
-      <link>https://blog.x-fei.me/posts/ml/dropout/</link>
+      <link>https://xfeif.github.io/posts/ml/dropout/</link>
       <pubDate>Fri, 06 Nov 2020 18:38:55 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/dropout/</guid>
+      <guid>https://xfeif.github.io/posts/ml/dropout/</guid>
       <description>&lt;p&gt;&lt;code&gt;Dropout&lt;/code&gt;已经被证明可以有效缓解过拟合，在一定程度上达到正则化的效果。这篇博客简单记录一下在
 实现的时候进行&lt;code&gt;rescale&lt;/code&gt;的操作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Pytorch_nn_module</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_nn_module/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_nn_module/</link>
       <pubDate>Thu, 05 Nov 2020 10:48:17 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_nn_module/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_nn_module/</guid>
       <description>&lt;p&gt;&lt;strong&gt;序言&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;定义模型类的时候，一般都需要继承&lt;code&gt;nn.Module&lt;/code&gt;类。当我们后续对模型进行查看或者定位修改的时候很头疼它的api那么多，应该用哪个，怎么用，为什么……这篇博客就好好捋一捋&lt;code&gt;nn.Module&lt;/code&gt;。&lt;/p&gt;</description>
@@ -33,10 +33,10 @@
     
     <item>
       <title>DataParallel vs DistributedDataParallel</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_dp_vs_ddp/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_dp_vs_ddp/</link>
       <pubDate>Wed, 04 Nov 2020 20:09:32 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_dp_vs_ddp/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_dp_vs_ddp/</guid>
       <description>&lt;p&gt;多卡训练模型时绕不过的一个问题：&lt;code&gt;DataParallel&lt;/code&gt;(DP)和&lt;code&gt;DistributedDataParallel&lt;/code&gt;(DDP)有什么区别？&lt;br /&gt;
 单机单卡不用考虑。&lt;br /&gt;
 多机多卡用DDP也不用多想。&lt;br /&gt;
@@ -45,19 +45,19 @@
     
     <item>
       <title>Pytorch中的non_blocking</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_non_blocking/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_non_blocking/</link>
       <pubDate>Wed, 04 Nov 2020 16:57:22 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_non_blocking/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_non_blocking/</guid>
       <description>&lt;p&gt;思考一个问题，&lt;code&gt;x = x.cuda(non_blocking=True)&lt;/code&gt;中&lt;code&gt;non_blocking&lt;/code&gt;的作用，以及什么时候使用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>一周几道算法题 [2020-07-25]</title>
-      <link>https://blog.x-fei.me/posts/algo/20200726algo/</link>
+      <link>https://xfeif.github.io/posts/algo/20200726algo/</link>
       <pubDate>Sun, 26 Jul 2020 12:09:10 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/algo/20200726algo/</guid>
+      <guid>https://xfeif.github.io/posts/algo/20200726algo/</guid>
       <description>&lt;p&gt;一周几道算法题！&lt;/p&gt;
 
 &lt;p&gt;本周算法以动态规划为主，题解如下：&lt;/p&gt;</description>
@@ -65,30 +65,30 @@
     
     <item>
       <title>6月乱七八糟</title>
-      <link>https://blog.x-fei.me/posts/f_think/202006/</link>
+      <link>https://xfeif.github.io/posts/f_think/202006/</link>
       <pubDate>Wed, 24 Jun 2020 20:43:34 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/f_think/202006/</guid>
+      <guid>https://xfeif.github.io/posts/f_think/202006/</guid>
       <description>&lt;p&gt;2020年6月，我……硕士毕业了。
 没有毕业典礼，自己也没有拍毕业照，我就这样在疫情中匆匆毕业了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Life And Rock</title>
-      <link>https://blog.x-fei.me/posts/f_think/lifeandrock/</link>
+      <link>https://xfeif.github.io/posts/f_think/lifeandrock/</link>
       <pubDate>Sun, 17 Nov 2019 20:21:36 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/f_think/lifeandrock/</guid>
+      <guid>https://xfeif.github.io/posts/f_think/lifeandrock/</guid>
       <description>&lt;p&gt;尽管我对摇滚的认识并不足，但我确信自己从未像这一刻一样，热爱摇滚。&lt;br /&gt;
 它给予我的不仅仅是那种 &lt;code&gt;Hey bro，you&#39;re not lonely&lt;/code&gt; 的感觉，它还具有那种让人捏紧拳头挥动，继续同当下、未来的种种obstacles抗争下去的信心。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>The Song For You</title>
-      <link>https://blog.x-fei.me/posts/f_think/asongforyou/</link>
+      <link>https://xfeif.github.io/posts/f_think/asongforyou/</link>
       <pubDate>Mon, 04 Nov 2019 15:21:50 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/f_think/asongforyou/</guid>
+      <guid>https://xfeif.github.io/posts/f_think/asongforyou/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;拥抱着你的沉默，离开不会是解脱。&lt;br /&gt;
 请你闭上双眼，静静的听这首歌。      ——《给你的歌》&lt;/p&gt;
@@ -97,10 +97,10 @@
     
     <item>
       <title>GIL in Python</title>
-      <link>https://blog.x-fei.me/posts/py/gil_in_python/</link>
+      <link>https://xfeif.github.io/posts/py/gil_in_python/</link>
       <pubDate>Thu, 10 Oct 2019 16:22:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/py/gil_in_python/</guid>
+      <guid>https://xfeif.github.io/posts/py/gil_in_python/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Python下多线程是鸡肋，推荐使用多进程！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -112,19 +112,19 @@
     
     <item>
       <title>理解PyTorch Hooks</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorchhooks/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorchhooks/</link>
       <pubDate>Wed, 10 Jul 2019 10:15:11 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorchhooks/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorchhooks/</guid>
       <description>&lt;p&gt;&lt;code&gt;hook&lt;/code&gt;函数可以在你不修改模型代码的同时，帮助你提取（或修改）中间层的参数或者特征图。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Meditation</title>
-      <link>https://blog.x-fei.me/posts/f_think/meditation/</link>
+      <link>https://xfeif.github.io/posts/f_think/meditation/</link>
       <pubDate>Fri, 05 Jul 2019 00:41:31 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/f_think/meditation/</guid>
+      <guid>https://xfeif.github.io/posts/f_think/meditation/</guid>
       <description>&lt;p&gt;思绪像一团散了的毛线球，有些乱，线头在哪，线又放出来多长呢？&lt;/p&gt;
 
 &lt;p&gt;有点烦现在的状态。&lt;/p&gt;
@@ -134,29 +134,29 @@
     
     <item>
       <title>Elastic:Improving CNNs with Dynamic Scaling Policies</title>
-      <link>https://blog.x-fei.me/posts/paper/elastic_improvingcnnswithdynamicscalingpolic/</link>
+      <link>https://xfeif.github.io/posts/paper/elastic_improvingcnnswithdynamicscalingpolic/</link>
       <pubDate>Fri, 21 Jun 2019 09:57:42 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/paper/elastic_improvingcnnswithdynamicscalingpolic/</guid>
+      <guid>https://xfeif.github.io/posts/paper/elastic_improvingcnnswithdynamicscalingpolic/</guid>
       <description>&lt;p&gt;这篇文章给我最大的感受是，虽然核心操作很简单，但是对背后的原理阐述十分清晰，实验也做的非常漂亮，值得学习。另外论文Related Work这段总结的也相当好。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>闲聊Activation Functions</title>
-      <link>https://blog.x-fei.me/posts/ml/activationfunctions/</link>
+      <link>https://xfeif.github.io/posts/ml/activationfunctions/</link>
       <pubDate>Fri, 14 Jun 2019 21:21:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/activationfunctions/</guid>
+      <guid>https://xfeif.github.io/posts/ml/activationfunctions/</guid>
       <description>&lt;p&gt;最近学习突然想到一些基本的问题，比如“为什么有那么多的激活函数？”，“这些激活函数背后的原理分别是什么？”，以及“什么时候用哪个激活函数效果更好？或者更能达到我们预期想要的结果。” “激活函数里面都是硬核的数学知识吗？”针对这些问题，重新把激活函数相关的内容学习了一下。&lt;br /&gt;
 希望本文也可以帮助到对上面这些问题感到困惑、想不全、有些地方不太理解的小伙伴。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>~&#34;圣徒的几日游&#34;</title>
-      <link>https://blog.x-fei.me/posts/f_think/ten-days-reflect/</link>
+      <link>https://xfeif.github.io/posts/f_think/ten-days-reflect/</link>
       <pubDate>Mon, 06 May 2019 23:03:42 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/f_think/ten-days-reflect/</guid>
+      <guid>https://xfeif.github.io/posts/f_think/ten-days-reflect/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;世界上有两件东西能够深深地震撼人们的心灵，一件是我们心中崇高的道德准则，另一件是我们头顶上灿烂的星空。&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -164,47 +164,47 @@
     
     <item>
       <title>Inceptions</title>
-      <link>https://blog.x-fei.me/posts/paper/inceptions/</link>
+      <link>https://xfeif.github.io/posts/paper/inceptions/</link>
       <pubDate>Tue, 16 Apr 2019 20:48:20 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/paper/inceptions/</guid>
+      <guid>https://xfeif.github.io/posts/paper/inceptions/</guid>
       <description>&lt;p&gt;基础分类网络的两大杰出网络，一是&lt;code&gt;ResNet&lt;/code&gt;，第二则是本文要说的&lt;code&gt;Inception&lt;/code&gt;。&lt;code&gt;Inception&lt;/code&gt;从最初的&lt;code&gt;GoogLeNet&lt;/code&gt;到&lt;code&gt;inception v4&lt;/code&gt;,&lt;code&gt;inception resnet&lt;/code&gt;，探究了通过将模型变得更深、更宽是否能变得更加高效。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>VALSE 2019</title>
-      <link>https://blog.x-fei.me/posts/world/valse_2019/</link>
+      <link>https://xfeif.github.io/posts/world/valse_2019/</link>
       <pubDate>Tue, 16 Apr 2019 20:44:23 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/world/valse_2019/</guid>
+      <guid>https://xfeif.github.io/posts/world/valse_2019/</guid>
       <description>&lt;p&gt;初次体验研讨会，感觉其意义大致在于拓宽视界、开拓思路、结交同行，附带有一些大大小小的企业在招聘，可谓是领域学术界和工业界的一次「盛会」了。简单回顾一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PyTorch: Restrict range of variable or gradient during gradient descent</title>
-      <link>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</link>
+      <link>https://xfeif.github.io/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</link>
       <pubDate>Sat, 16 Mar 2019 09:45:03 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</guid>
+      <guid>https://xfeif.github.io/posts/ml/pytorch_restrict_range_of_variable_or_gradient/</guid>
       <description>&lt;p&gt;一般来说，我们对卷积或者全连接层的&lt;code&gt;weights&lt;/code&gt;是没有限制的，但是如果我们自定义层的话，有可能会需要对权重或者梯度值进行限制。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>1x1卷积的作用</title>
-      <link>https://blog.x-fei.me/posts/ml/1x1_convolution/</link>
+      <link>https://xfeif.github.io/posts/ml/1x1_convolution/</link>
       <pubDate>Thu, 14 Mar 2019 17:49:58 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/1x1_convolution/</guid>
+      <guid>https://xfeif.github.io/posts/ml/1x1_convolution/</guid>
       <description>&lt;p&gt;我们在&lt;code&gt;ResNet&lt;/code&gt;深层结构以及&lt;code&gt;Inception&lt;/code&gt;中都见过&lt;code&gt;1x1&lt;/code&gt;卷积层，或者说&lt;code&gt;bottleneck layer&lt;/code&gt;，为什么我们会需要&lt;code&gt;1x1&lt;/code&gt;的卷积核呢？&lt;br /&gt;
 总的来说&lt;code&gt;1x1&lt;/code&gt;卷积可以用作升降维度、减少参数量和计算量、增加非线性特征的作用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Paper Notes[2]: ResNet</title>
-      <link>https://blog.x-fei.me/posts/paper/resnet/</link>
+      <link>https://xfeif.github.io/posts/paper/resnet/</link>
       <pubDate>Wed, 06 Mar 2019 10:49:24 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/paper/resnet/</guid>
+      <guid>https://xfeif.github.io/posts/paper/resnet/</guid>
       <description>&lt;p&gt;ResNet的提出是为了解决梯度消失问题吗？&lt;br /&gt;
 残差思想是什么？&lt;br /&gt;
 本文简单回顾一下&lt;code&gt;ResNet&lt;/code&gt;，重点理解其中的残差学习思想。&lt;/p&gt;</description>
@@ -212,29 +212,29 @@
     
     <item>
       <title>Convolution&#39;s Numpy and Pytorch implementation</title>
-      <link>https://blog.x-fei.me/posts/ml/convolution_in_pytorch/</link>
+      <link>https://xfeif.github.io/posts/ml/convolution_in_pytorch/</link>
       <pubDate>Sun, 03 Mar 2019 19:42:33 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/convolution_in_pytorch/</guid>
+      <guid>https://xfeif.github.io/posts/ml/convolution_in_pytorch/</guid>
       <description>&lt;p&gt;初学CNN的时候，比较疑惑输入的维度是&lt;code&gt;(BatchSize, Channels, Height, Width)&lt;/code&gt;的&lt;code&gt;feature map&lt;/code&gt;经过size是k的卷积核后变成了输出是什么？以及它是怎么实现的？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Lambda Function in Python</title>
-      <link>https://blog.x-fei.me/posts/lambda_function_in_python/</link>
+      <link>https://xfeif.github.io/posts/lambda_function_in_python/</link>
       <pubDate>Fri, 01 Mar 2019 09:34:30 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/lambda_function_in_python/</guid>
+      <guid>https://xfeif.github.io/posts/lambda_function_in_python/</guid>
       <description>&lt;p&gt;匿名函数，就是我们需要一个函数，但是没有必要给它起一个名字，因为这个名字无关紧要，而且有时影响效率。&lt;br /&gt;
 在Python中，&lt;code&gt;def&lt;/code&gt;关键字是用来定义常规函数的，而&lt;code&gt;lambda&lt;/code&gt;关键字则是用来创建匿名函数的。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>2018</title>
-      <link>https://blog.x-fei.me/posts/2018/</link>
+      <link>https://xfeif.github.io/posts/2018/</link>
       <pubDate>Wed, 02 Jan 2019 00:41:29 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/2018/</guid>
+      <guid>https://xfeif.github.io/posts/2018/</guid>
       <description>&lt;p&gt;2014年的现在应该紧张准备高考。&lt;br /&gt;
 2014年的9月正式入学。&lt;br /&gt;
 2018年的6月正式毕业。&lt;br /&gt;
@@ -244,19 +244,19 @@
     
     <item>
       <title>LeetCode Challenge 🏆 Dynamic Programming Problems X 100 ⚡️</title>
-      <link>https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
+      <link>https://xfeif.github.io/posts/leetcode-challenge-dynamic-programming-problems-x-100/</link>
       <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
+      <guid>https://xfeif.github.io/posts/leetcode-challenge-dynamic-programming-problems-x-100/</guid>
       <description>&lt;h1 id=&#34;failure&#34;&gt;Failure&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>SVM(Part II)</title>
-      <link>https://blog.x-fei.me/posts/ml/svm2/</link>
+      <link>https://xfeif.github.io/posts/ml/svm2/</link>
       <pubDate>Wed, 26 Dec 2018 00:47:04 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/svm2/</guid>
+      <guid>https://xfeif.github.io/posts/ml/svm2/</guid>
       <description>&lt;p&gt;About These  Articles：&lt;/p&gt;
 
 &lt;p&gt;SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。&lt;/p&gt;</description>
@@ -264,10 +264,10 @@
     
     <item>
       <title>SVM(Part I)</title>
-      <link>https://blog.x-fei.me/posts/ml/svm/</link>
+      <link>https://xfeif.github.io/posts/ml/svm/</link>
       <pubDate>Sun, 23 Dec 2018 00:21:34 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/svm/</guid>
+      <guid>https://xfeif.github.io/posts/ml/svm/</guid>
       <description>&lt;p&gt;About These  Articles：&lt;/p&gt;
 
 &lt;p&gt;SVM的学习，可以查询到大量的相关文章、视频，并且在几本经典的书（西瓜书，统计学习方法等）中也有相应的解读。本文为个人总结回顾。(由于Markdown和MathJax的兼容问题，很多公式没有渲染出来，可以直接看手写推导过程。)&lt;/p&gt;</description>
@@ -275,10 +275,10 @@
     
     <item>
       <title>10-12月</title>
-      <link>https://blog.x-fei.me/posts/10-12%E6%9C%88/</link>
+      <link>https://xfeif.github.io/posts/10-12%E6%9C%88/</link>
       <pubDate>Fri, 21 Dec 2018 14:33:41 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/10-12%E6%9C%88/</guid>
+      <guid>https://xfeif.github.io/posts/10-12%E6%9C%88/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;钱钟书先生说：“似乎我们总是很容易忽略当下的生活，忽略许多美好的时光。而当所有的时光在被辜负被浪费后，才能从记忆里将某一段拎出，拍拍上面沉积的灰尘，感叹它是最好的。”&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -286,10 +286,10 @@
     
     <item>
       <title>Python快速创建二维数组 [[0]*n]*n ？</title>
-      <link>https://blog.x-fei.me/posts/python-caveat-about-list-creation-shortcuts/</link>
+      <link>https://xfeif.github.io/posts/python-caveat-about-list-creation-shortcuts/</link>
       <pubDate>Tue, 18 Dec 2018 11:23:25 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/python-caveat-about-list-creation-shortcuts/</guid>
+      <guid>https://xfeif.github.io/posts/python-caveat-about-list-creation-shortcuts/</guid>
       <description>&lt;p&gt;早先在刷Leetcode的时候，遇到了一个莫名的&lt;code&gt;bug&lt;/code&gt;，为什么二维数组的元素没有按自己的预期改变呢？&lt;br /&gt;
 当我们这样定义一个二维数组的时候，&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
@@ -299,10 +299,10 @@ res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [[&lt;span style=&#
     
     <item>
       <title>Paper Notes[1]: Rethinking ImageNet Pre-training</title>
-      <link>https://blog.x-fei.me/posts/paper/rethinkingimagenetpretraining/</link>
+      <link>https://xfeif.github.io/posts/paper/rethinkingimagenetpretraining/</link>
       <pubDate>Tue, 11 Dec 2018 11:23:25 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/paper/rethinkingimagenetpretraining/</guid>
+      <guid>https://xfeif.github.io/posts/paper/rethinkingimagenetpretraining/</guid>
       <description>&lt;p&gt;论文笔记：&lt;br /&gt;
 Rethinking ImageNet Pre-training&lt;/p&gt;
 
@@ -311,10 +311,10 @@ Rethinking ImageNet Pre-training&lt;/p&gt;
     
     <item>
       <title>8-puzzles algorithm</title>
-      <link>https://blog.x-fei.me/posts/8-puzzles-algorithm/</link>
+      <link>https://xfeif.github.io/posts/8-puzzles-algorithm/</link>
       <pubDate>Sat, 20 Oct 2018 09:09:29 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/8-puzzles-algorithm/</guid>
+      <guid>https://xfeif.github.io/posts/8-puzzles-algorithm/</guid>
       <description>&lt;p&gt;&lt;center&gt;AIMA: 8-puzzles&lt;/center&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;题目描述&#34;&gt;题目描述&lt;/h2&gt;
@@ -325,10 +325,10 @@ Given any randomly generated start state and a goal state shown below, implement
     
     <item>
       <title>axis and argmax function</title>
-      <link>https://blog.x-fei.me/posts/argmax-function-and-its-usage/</link>
+      <link>https://xfeif.github.io/posts/argmax-function-and-its-usage/</link>
       <pubDate>Tue, 16 Oct 2018 00:53:13 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/argmax-function-and-its-usage/</guid>
+      <guid>https://xfeif.github.io/posts/argmax-function-and-its-usage/</guid>
       <description>&lt;p&gt;简单讨论一下&lt;code&gt;argmax&lt;/code&gt;函数及其用法，由于其在&lt;code&gt;numpy&lt;/code&gt;和&lt;code&gt;PyTorch&lt;/code&gt;中都有出现，所以先在&lt;code&gt;numpy&lt;/code&gt;中讨论，然后补充介绍在&lt;code&gt;PyTorch&lt;/code&gt;中的用法。&lt;/p&gt;
 
 &lt;p&gt;同理我们可以理解&lt;code&gt;argmin&lt;/code&gt;。&lt;/p&gt;</description>
@@ -336,10 +336,10 @@ Given any randomly generated start state and a goal state shown below, implement
     
     <item>
       <title>GD &amp; SGD 理解与二维模拟</title>
-      <link>https://blog.x-fei.me/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
+      <link>https://xfeif.github.io/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</link>
       <pubDate>Wed, 10 Oct 2018 21:12:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
+      <guid>https://xfeif.github.io/posts/ml/gd-sgd-%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BA%8C%E7%BB%B4%E6%A8%A1%E6%8B%9F/</guid>
       <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 2&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;
@@ -355,10 +355,10 @@ say in simple words, what the algorithm is doing?&lt;br /&gt;&lt;/li&gt;
     
     <item>
       <title>你也想要重来吗</title>
-      <link>https://blog.x-fei.me/posts/%E4%BD%A0%E4%B9%9F%E6%83%B3%E8%A6%81%E9%87%8D%E6%9D%A5%E5%90%97/</link>
+      <link>https://xfeif.github.io/posts/%E4%BD%A0%E4%B9%9F%E6%83%B3%E8%A6%81%E9%87%8D%E6%9D%A5%E5%90%97/</link>
       <pubDate>Mon, 08 Oct 2018 12:27:38 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E4%BD%A0%E4%B9%9F%E6%83%B3%E8%A6%81%E9%87%8D%E6%9D%A5%E5%90%97/</guid>
+      <guid>https://xfeif.github.io/posts/%E4%BD%A0%E4%B9%9F%E6%83%B3%E8%A6%81%E9%87%8D%E6%9D%A5%E5%90%97/</guid>
       <description>&lt;p&gt;上了发条跟有节奏感是两码事&lt;/p&gt;
 
 &lt;p&gt;上发条是走固定模式&lt;br /&gt;
@@ -370,29 +370,29 @@ say in simple words, what the algorithm is doing?&lt;br /&gt;&lt;/li&gt;
     
     <item>
       <title>这辈子还有很多很丧的时候</title>
-      <link>https://blog.x-fei.me/posts/%E8%BF%99%E8%BE%88%E5%AD%90%E8%BF%98%E6%9C%89%E5%BE%88%E5%A4%9A%E5%BE%88%E4%B8%A7%E7%9A%84%E6%97%B6%E5%80%99/</link>
+      <link>https://xfeif.github.io/posts/%E8%BF%99%E8%BE%88%E5%AD%90%E8%BF%98%E6%9C%89%E5%BE%88%E5%A4%9A%E5%BE%88%E4%B8%A7%E7%9A%84%E6%97%B6%E5%80%99/</link>
       <pubDate>Sat, 29 Sep 2018 21:53:13 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E8%BF%99%E8%BE%88%E5%AD%90%E8%BF%98%E6%9C%89%E5%BE%88%E5%A4%9A%E5%BE%88%E4%B8%A7%E7%9A%84%E6%97%B6%E5%80%99/</guid>
+      <guid>https://xfeif.github.io/posts/%E8%BF%99%E8%BE%88%E5%AD%90%E8%BF%98%E6%9C%89%E5%BE%88%E5%A4%9A%E5%BE%88%E4%B8%A7%E7%9A%84%E6%97%B6%E5%80%99/</guid>
       <description>&lt;p&gt;总是不开心地太突然。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>CS MindStorms</title>
-      <link>https://blog.x-fei.me/posts/cs-mindstorms/</link>
+      <link>https://xfeif.github.io/posts/cs-mindstorms/</link>
       <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/cs-mindstorms/</guid>
+      <guid>https://xfeif.github.io/posts/cs-mindstorms/</guid>
       <description>&lt;p&gt;&lt;center&gt;⚡️ MindStorms Collections ⚡️&lt;/center&gt;&lt;br /&gt;
 一些头脑风暴问题集锦。体验CS的一些乐趣～&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>LeetCode-Contest 103,104</title>
-      <link>https://blog.x-fei.me/posts/leetcode-contest_103-104/</link>
+      <link>https://xfeif.github.io/posts/leetcode-contest_103-104/</link>
       <pubDate>Mon, 24 Sep 2018 23:28:35 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/leetcode-contest_103-104/</guid>
+      <guid>https://xfeif.github.io/posts/leetcode-contest_103-104/</guid>
       <description>Contests From Contest103 to Contest 104 ~ Contest104 914-M 914. X of a Kind in a Deck of Cards  In a deck of cards, each card has an integer written on it.
 Return true if and only if you can choose X &amp;gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:
 Each group has exactly X cards. All the cards in each group have the same integer.</description>
@@ -400,10 +400,10 @@ Each group has exactly X cards. All the cards in each group have the same intege
     
     <item>
       <title>多项式拟合-线性回归</title>
-      <link>https://blog.x-fei.me/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</link>
+      <link>https://xfeif.github.io/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</link>
       <pubDate>Mon, 24 Sep 2018 23:24:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</guid>
+      <guid>https://xfeif.github.io/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88/</guid>
       <description>&lt;p&gt;&lt;strong&gt;&lt;center&gt;Machine Learning Exercise 1&lt;/center&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;实验题目&#34;&gt;实验题目&lt;/h3&gt;
@@ -414,10 +414,10 @@ Each group has exactly X cards. All the cards in each group have the same intege
     
     <item>
       <title>事故-SSL23_GET_SERVER_HELLO</title>
-      <link>https://blog.x-fei.me/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</link>
+      <link>https://xfeif.github.io/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</link>
       <pubDate>Fri, 21 Sep 2018 10:27:28 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</guid>
+      <guid>https://xfeif.github.io/posts/git%E4%BA%8B%E6%95%85-ssl23-get-server-hello/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;fatal: unable to access &amp;lsquo;&lt;a href=&#34;https://github.com/xxx/yyyy.git/&#39;:&#34;&gt;https://github.com/xxx/yyyy.git/&#39;:&lt;/a&gt; error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -425,20 +425,20 @@ Each group has exactly X cards. All the cards in each group have the same intege
     
     <item>
       <title>PyTorch Api Notes 📙</title>
-      <link>https://blog.x-fei.me/posts/pytorch-notes/</link>
+      <link>https://xfeif.github.io/posts/pytorch-notes/</link>
       <pubDate>Thu, 13 Sep 2018 01:14:38 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/pytorch-notes/</guid>
+      <guid>https://xfeif.github.io/posts/pytorch-notes/</guid>
       <description>&lt;p&gt;&lt;center&gt;Simple Api Notes ✍🏼 For Beginners！&lt;/center&gt;&lt;br /&gt;
 记录并尝试解释一些常见的Api，并部分介绍它们的原理、实战运用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Lazy Tricks🙈</title>
-      <link>https://blog.x-fei.me/posts/lazy-tricks/</link>
+      <link>https://xfeif.github.io/posts/lazy-tricks/</link>
       <pubDate>Sun, 26 Aug 2018 13:43:31 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/lazy-tricks/</guid>
+      <guid>https://xfeif.github.io/posts/lazy-tricks/</guid>
       <description>&lt;p&gt;🍻 高效率 &lt;del&gt;懒人&lt;/del&gt; 养成Tricks！🍻&lt;br /&gt;
 Ubuntu、Mac、Tools Collections～
 持续收集中～ 🛰&lt;/p&gt;</description>
@@ -446,10 +446,10 @@ Ubuntu、Mac、Tools Collections～
     
     <item>
       <title>训练网络管理实验的科学探索💪🏼</title>
-      <link>https://blog.x-fei.me/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</link>
+      <link>https://xfeif.github.io/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</link>
       <pubDate>Sun, 26 Aug 2018 11:26:49 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</guid>
+      <guid>https://xfeif.github.io/posts/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E6%8E%A2%E7%B4%A2/</guid>
       <description>&lt;p&gt;👏🏼 Some tips about how to manage your experiments！👏🏼&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -459,10 +459,10 @@ Ubuntu、Mac、Tools Collections～
     
     <item>
       <title>Summary: MICCAI 2018 Skin Lesion Contest</title>
-      <link>https://blog.x-fei.me/posts/summary-miccai-2018-skin-lesion-contest/</link>
+      <link>https://xfeif.github.io/posts/summary-miccai-2018-skin-lesion-contest/</link>
       <pubDate>Sun, 26 Aug 2018 01:31:37 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/summary-miccai-2018-skin-lesion-contest/</guid>
+      <guid>https://xfeif.github.io/posts/summary-miccai-2018-skin-lesion-contest/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Time：6.26-7.27&lt;br /&gt;
 Location: SYSU&lt;br /&gt;
@@ -474,10 +474,10 @@ Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
     
     <item>
       <title>Hackx上海</title>
-      <link>https://blog.x-fei.me/posts/hackx%E4%B8%8A%E6%B5%B7/</link>
+      <link>https://xfeif.github.io/posts/hackx%E4%B8%8A%E6%B5%B7/</link>
       <pubDate>Mon, 06 Nov 2017 11:49:33 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/hackx%E4%B8%8A%E6%B5%B7/</guid>
+      <guid>https://xfeif.github.io/posts/hackx%E4%B8%8A%E6%B5%B7/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Idea很重要！做一个有力的C位很重要！&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -488,10 +488,10 @@ Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
     
     <item>
       <title>技术分为术和道两种</title>
-      <link>https://blog.x-fei.me/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</link>
+      <link>https://xfeif.github.io/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</link>
       <pubDate>Sun, 01 Oct 2017 15:07:21 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</guid>
+      <guid>https://xfeif.github.io/posts/%E6%8A%80%E6%9C%AF%E5%88%86%E4%B8%BA%E6%9C%AF%E5%92%8C%E9%81%93%E4%B8%A4%E7%A7%8D/</guid>
       <description>&lt;p&gt;2017年9月回顾。&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -501,10 +501,10 @@ Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
     
     <item>
       <title>Canton Tower</title>
-      <link>https://blog.x-fei.me/posts/canton-tower/</link>
+      <link>https://xfeif.github.io/posts/canton-tower/</link>
       <pubDate>Tue, 26 Sep 2017 22:53:13 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/canton-tower/</guid>
+      <guid>https://xfeif.github.io/posts/canton-tower/</guid>
       <description>&lt;h3 id=&#34;初见-广州&#34;&gt;初见-广州&lt;/h3&gt;
 
 &lt;p&gt;23号去广州参加中山大学的研究生推免复试。之前请崔哥帮我把申请材料都寄过去了。但是没有参加夏令营，所以只能现在去参加复试。&lt;br /&gt;
@@ -513,20 +513,20 @@ Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
     
     <item>
       <title>武汉一行</title>
-      <link>https://blog.x-fei.me/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</link>
+      <link>https://xfeif.github.io/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</link>
       <pubDate>Wed, 20 Sep 2017 10:57:05 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</guid>
+      <guid>https://xfeif.github.io/posts/%E6%AD%A6%E6%B1%89%E4%B8%80%E8%A1%8C/</guid>
       <description>&lt;p&gt;9月17号，和宏伟去武汉工程大学流芳校区考PAT（Programming Ability Test），以及宏伟傍晚去百度的面试，然后赶晚上的火车，应该可以在18号凌晨回到寝室～。&lt;br /&gt;
 然而，计划始终赶不上变化。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Swift 3 Algorithm: 二叉搜索树</title>
-      <link>https://blog.x-fei.me/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://xfeif.github.io/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Mon, 04 Sep 2017 15:02:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://xfeif.github.io/posts/swift-3-algorithm-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -537,10 +537,10 @@ Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
     
     <item>
       <title>Swift 3 Fun Algorithms: Filter, Map, Reduce Higher Order Functions</title>
-      <link>https://blog.x-fei.me/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</link>
+      <link>https://xfeif.github.io/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</link>
       <pubDate>Mon, 04 Sep 2017 10:01:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</guid>
+      <guid>https://xfeif.github.io/posts/swift-3-fun-algorithms-filter-map-reduce-higher-order-functions/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -551,10 +551,10 @@ Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
     
     <item>
       <title>Swift 3 Fun Algorithms:Wrapping Array</title>
-      <link>https://blog.x-fei.me/posts/swift-3-fun-algorithms-wrappingarray/</link>
+      <link>https://xfeif.github.io/posts/swift-3-fun-algorithms-wrappingarray/</link>
       <pubDate>Sun, 03 Sep 2017 10:21:26 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/swift-3-fun-algorithms-wrappingarray/</guid>
+      <guid>https://xfeif.github.io/posts/swift-3-fun-algorithms-wrappingarray/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;有趣的 &lt;code&gt;Swift 3&lt;/code&gt; 算法。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -564,28 +564,28 @@ Rank: &lt;sup&gt;29&lt;/sup&gt;&amp;frasl;&lt;sub&gt;66&lt;/sub&gt;&lt;/p&gt;
     
     <item>
       <title>给Hexo(Hugo)添加Bigfoot</title>
-      <link>https://blog.x-fei.me/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</link>
+      <link>https://xfeif.github.io/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</link>
       <pubDate>Sat, 02 Sep 2017 23:08:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</guid>
+      <guid>https://xfeif.github.io/posts/%E7%BB%99hexo%E6%B7%BB%E5%8A%A0bigfoot/</guid>
       <description>&lt;p&gt;我之前搭建Ghost博客的时候，在萌天的博客上有看到过Bigfoot，经过萌天介绍，认识了Bigfoot。现在将Bigfoot集成到我&lt;del&gt;目前在用的hexo博客hiker主题中&lt;/del&gt;Hugo博客Fx主题中。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Stay hungry, Stay Young</title>
-      <link>https://blog.x-fei.me/posts/stay-hungry-stay-foolish/</link>
+      <link>https://xfeif.github.io/posts/stay-hungry-stay-foolish/</link>
       <pubDate>Tue, 29 Aug 2017 19:59:27 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/stay-hungry-stay-foolish/</guid>
+      <guid>https://xfeif.github.io/posts/stay-hungry-stay-foolish/</guid>
       <description>&lt;p&gt;忘记第几次重新搭建博客了，之前重装系统、换笔记本或者服务器到期，（其实更关键的是博客更新太少了）。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Welcome</title>
-      <link>https://blog.x-fei.me/posts/_about/</link>
+      <link>https://xfeif.github.io/posts/_about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/posts/_about/</guid>
+      <guid>https://xfeif.github.io/posts/_about/</guid>
       <description>&lt;p&gt;What ever you want?&lt;/p&gt;</description>
     </item>
     

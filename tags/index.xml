@@ -2,209 +2,209 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on </title>
-    <link>https://blog.x-fei.me/tags/</link>
+    <link>https://xfeif.github.io/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 06 Nov 2020 18:38:55 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.x-fei.me/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xfeif.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>PyTorch</title>
-      <link>https://blog.x-fei.me/tags/pytorch/</link>
+      <link>https://xfeif.github.io/tags/pytorch/</link>
       <pubDate>Fri, 06 Nov 2020 18:38:55 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/pytorch/</guid>
+      <guid>https://xfeif.github.io/tags/pytorch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>algorithm</title>
-      <link>https://blog.x-fei.me/tags/algorithm/</link>
+      <link>https://xfeif.github.io/tags/algorithm/</link>
       <pubDate>Sun, 26 Jul 2020 12:09:10 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/algorithm/</guid>
+      <guid>https://xfeif.github.io/tags/algorithm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>leetcode</title>
-      <link>https://blog.x-fei.me/tags/leetcode/</link>
+      <link>https://xfeif.github.io/tags/leetcode/</link>
       <pubDate>Sun, 26 Jul 2020 12:09:10 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/leetcode/</guid>
+      <guid>https://xfeif.github.io/tags/leetcode/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>https://blog.x-fei.me/tags/python/</link>
+      <link>https://xfeif.github.io/tags/python/</link>
       <pubDate>Sun, 26 Jul 2020 12:09:10 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/python/</guid>
+      <guid>https://xfeif.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>think</title>
-      <link>https://blog.x-fei.me/tags/think/</link>
+      <link>https://xfeif.github.io/tags/think/</link>
       <pubDate>Wed, 24 Jun 2020 20:43:34 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/think/</guid>
+      <guid>https://xfeif.github.io/tags/think/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Paper</title>
-      <link>https://blog.x-fei.me/tags/paper/</link>
+      <link>https://xfeif.github.io/tags/paper/</link>
       <pubDate>Fri, 21 Jun 2019 09:57:42 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/paper/</guid>
+      <guid>https://xfeif.github.io/tags/paper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>https://blog.x-fei.me/tags/machine-learning/</link>
+      <link>https://xfeif.github.io/tags/machine-learning/</link>
       <pubDate>Fri, 14 Jun 2019 21:21:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/machine-learning/</guid>
+      <guid>https://xfeif.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Math</title>
-      <link>https://blog.x-fei.me/tags/math/</link>
+      <link>https://xfeif.github.io/tags/math/</link>
       <pubDate>Fri, 14 Jun 2019 21:21:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/math/</guid>
+      <guid>https://xfeif.github.io/tags/math/</guid>
       <description></description>
     </item>
     
     <item>
       <title>life</title>
-      <link>https://blog.x-fei.me/tags/life/</link>
+      <link>https://xfeif.github.io/tags/life/</link>
       <pubDate>Mon, 06 May 2019 23:03:42 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/life/</guid>
+      <guid>https://xfeif.github.io/tags/life/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code</title>
-      <link>https://blog.x-fei.me/tags/code/</link>
+      <link>https://xfeif.github.io/tags/code/</link>
       <pubDate>Sun, 03 Mar 2019 19:42:33 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/code/</guid>
+      <guid>https://xfeif.github.io/tags/code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dynamic programming</title>
-      <link>https://blog.x-fei.me/tags/dynamic-programming/</link>
+      <link>https://xfeif.github.io/tags/dynamic-programming/</link>
       <pubDate>Thu, 27 Dec 2018 12:00:00 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/dynamic-programming/</guid>
+      <guid>https://xfeif.github.io/tags/dynamic-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CS</title>
-      <link>https://blog.x-fei.me/tags/cs/</link>
+      <link>https://xfeif.github.io/tags/cs/</link>
       <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/cs/</guid>
+      <guid>https://xfeif.github.io/tags/cs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MindStorms</title>
-      <link>https://blog.x-fei.me/tags/mindstorms/</link>
+      <link>https://xfeif.github.io/tags/mindstorms/</link>
       <pubDate>Tue, 25 Sep 2018 22:59:26 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/mindstorms/</guid>
+      <guid>https://xfeif.github.io/tags/mindstorms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://blog.x-fei.me/tags/git/</link>
+      <link>https://xfeif.github.io/tags/git/</link>
       <pubDate>Fri, 21 Sep 2018 10:27:28 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/git/</guid>
+      <guid>https://xfeif.github.io/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tool</title>
-      <link>https://blog.x-fei.me/tags/tool/</link>
+      <link>https://xfeif.github.io/tags/tool/</link>
       <pubDate>Sun, 26 Aug 2018 13:43:31 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/tool/</guid>
+      <guid>https://xfeif.github.io/tags/tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>trick</title>
-      <link>https://blog.x-fei.me/tags/trick/</link>
+      <link>https://xfeif.github.io/tags/trick/</link>
       <pubDate>Sun, 26 Aug 2018 13:43:31 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/trick/</guid>
+      <guid>https://xfeif.github.io/tags/trick/</guid>
       <description></description>
     </item>
     
     <item>
       <title>summary</title>
-      <link>https://blog.x-fei.me/tags/summary/</link>
+      <link>https://xfeif.github.io/tags/summary/</link>
       <pubDate>Sun, 26 Aug 2018 01:31:37 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/summary/</guid>
+      <guid>https://xfeif.github.io/tags/summary/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HACKx</title>
-      <link>https://blog.x-fei.me/tags/hackx/</link>
+      <link>https://xfeif.github.io/tags/hackx/</link>
       <pubDate>Mon, 06 Nov 2017 11:49:33 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/hackx/</guid>
+      <guid>https://xfeif.github.io/tags/hackx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>出行</title>
-      <link>https://blog.x-fei.me/tags/%E5%87%BA%E8%A1%8C/</link>
+      <link>https://xfeif.github.io/tags/%E5%87%BA%E8%A1%8C/</link>
       <pubDate>Mon, 06 Nov 2017 11:49:33 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/%E5%87%BA%E8%A1%8C/</guid>
+      <guid>https://xfeif.github.io/tags/%E5%87%BA%E8%A1%8C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>面试</title>
-      <link>https://blog.x-fei.me/tags/%E9%9D%A2%E8%AF%95/</link>
+      <link>https://xfeif.github.io/tags/%E9%9D%A2%E8%AF%95/</link>
       <pubDate>Wed, 20 Sep 2017 10:57:05 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/%E9%9D%A2%E8%AF%95/</guid>
+      <guid>https://xfeif.github.io/tags/%E9%9D%A2%E8%AF%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title>swift</title>
-      <link>https://blog.x-fei.me/tags/swift/</link>
+      <link>https://xfeif.github.io/tags/swift/</link>
       <pubDate>Mon, 04 Sep 2017 15:02:56 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/swift/</guid>
+      <guid>https://xfeif.github.io/tags/swift/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web</title>
-      <link>https://blog.x-fei.me/tags/web/</link>
+      <link>https://xfeif.github.io/tags/web/</link>
       <pubDate>Sat, 02 Sep 2017 23:08:52 +0800</pubDate>
       
-      <guid>https://blog.x-fei.me/tags/web/</guid>
+      <guid>https://xfeif.github.io/tags/web/</guid>
       <description></description>
     </item>
     
